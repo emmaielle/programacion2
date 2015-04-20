@@ -1,0 +1,5 @@
+c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\bin\Solucion_ObligatorioP2.dll
+c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\bin\Solucion_ObligatorioP2.pdb
+c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.csprojResolveAssemblyReference.cache
+c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.dll
+c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.pdb

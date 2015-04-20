@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Solucion_ObligatorioP2", "Solucion_ObligatorioP2\Solucion_ObligatorioP2.csproj", "{A74D0421-2A26-47C7-98DF-B73532F1935F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{A74D0421-2A26-47C7-98DF-B73532F1935F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A74D0421-2A26-47C7-98DF-B73532F1935F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A74D0421-2A26-47C7-98DF-B73532F1935F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
