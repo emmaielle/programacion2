@@ -1,1 +1,5 @@
 c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Dominio\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Dominio\bin\Debug\Dominio.dll
+C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Dominio\obj\Debug\Dominio.dll
+C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Dominio\obj\Debug\Dominio.pdb

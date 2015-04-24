@@ -1,0 +1,63 @@
+﻿body {
+    background-color:#edf6f5;
+}
+
+#div_home_contenedora {
+    padding-top:30px;
+    width:380px;
+    margin:auto;
+    text-align:center;
+}
+
+#div_home_central {
+    padding-top:10px;
+    text-align:center;
+    width:315px;
+    margin:auto;
+}
+
+#div_loginAdmin_central {
+    padding-top:30px;
+    width:380px;
+    margin:auto;
+    text-align:center;
+}
+
+#login_cliente {
+    margin-bottom:15px;
+}
+
+#home_link_loginAdmin {
+    width:auto;
+    float:right;
+}
+
+#lnk_home_registrarCliente, #lnk_loginAdmin_volver {
+    float:right;
+}
+
+#div_master_bienvenido {
+    margin:auto;
+    width:500px;
+}
+
+.letrasLinks {
+    font-family:Verdana;
+    font-size:13px;
+    color:navy;
+}
+
+.botones_Admin {
+    background-color:#c2c3de;
+    color:white;
+    border-radius:5px;
+    width:350px;
+    height:40px;
+    font-size:14px;
+    margin-top:3px;
+}
+
+#contenedora_centrarMaster {
+    width:350px;
+    margin:auto;
+}

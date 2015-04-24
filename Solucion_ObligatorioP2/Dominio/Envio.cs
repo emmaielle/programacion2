@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Dominio
 {
@@ -18,9 +19,11 @@ namespace Dominio
         protected Cliente cliente;
         protected Direccion dirOrigen;
         protected string nombreDestinatario;
-        protected Direccion dirDestino;
+        protected Direccion dirDestinatario;
         protected List<EtapaEnvio> etapasDelEnvio;
-        
+        protected decimal precioFinal;
+        private float peso; // para paquetes se guarda en KG, para documentos en Gramos.
+
         #endregion
         
         #region Properties
@@ -67,10 +70,10 @@ namespace Dominio
             set { nombreDestinatario = value; }
         }
 
-        internal Direccion DirDestino
+        internal Direccion DirDestinatario
         {
-            get { return dirDestino; }
-            set { dirDestino = value; }
+            get { return dirDestinatario; }
+            set { dirDestinatario = value; }
         }
 
         internal List<EtapaEnvio> EtapasDelEnvio
@@ -78,7 +81,18 @@ namespace Dominio
             get { return etapasDelEnvio; }
             set { etapasDelEnvio = value; }
         }
+        protected decimal PrecioFinal
+        {
+            get { return precioFinal; }
+            set { precioFinal = value; }
+        }
 
+        protected float Peso
+        {
+            get { return peso; }
+            set { peso = value; }
+        }
+        
         #endregion
 
         #region Constructor
@@ -93,12 +107,14 @@ namespace Dominio
             this.Cliente = pCliente;
             this.DirOrigen = pDirOrigen;
             this.NombreDestinatario = pNomDestinatario;
-            this.DirDestino = pDirDestino;
+            this.DirDestinatario = pDirDestino;
             this.EtapasDelEnvio = new List<EtapaEnvio>();
+            
             // si se crea un envio nuevo, en el constructor, de forma automática, se crea la primer 
             // etapa del envio, por eso este constructor toma como parametros tambien la fecha de ingreso
             // y la oficina en la que ingresó:
             EtapaEnvio unaEtapa = new EtapaEnvio(pFechaIngreso, 1, pOficinaIngreso);
+           
             // agrego esa etapa en la lista de etapas recorridas de este envío
             this.EtapasDelEnvio.Add(unaEtapa);
 

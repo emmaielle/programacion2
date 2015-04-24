@@ -57,12 +57,65 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin_ControlPanel.aspx" />
+    <Content Include="Admin_login.aspx" />
+    <Content Include="Cliente_Home.aspx" />
+    <Content Include="Estilos.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Inicio.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin_ControlPanel.aspx.cs">
+      <DependentUpon>Admin_ControlPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_ControlPanel.aspx.designer.cs">
+      <DependentUpon>Admin_ControlPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_login.aspx.cs">
+      <DependentUpon>Admin_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_login.aspx.designer.cs">
+      <DependentUpon>Admin_login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente_Home.aspx.cs">
+      <DependentUpon>Cliente_Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente_Home.aspx.designer.cs">
+      <DependentUpon>Cliente_Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Inicio.aspx.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Inicio.aspx.designer.cs">
+      <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pags_Admin.Master.cs">
+      <DependentUpon>Pags_Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pags_Admin.Master.designer.cs">
+      <DependentUpon>Pags_Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Pags_Cliente.Master.cs">
+      <DependentUpon>Pags_Cliente.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pags_Cliente.Master.designer.cs">
+      <DependentUpon>Pags_Cliente.Master</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pags_Cliente.Master" />
+    <Content Include="Pags_Admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

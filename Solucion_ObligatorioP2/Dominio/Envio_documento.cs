@@ -10,34 +10,22 @@ namespace Dominio
     {
         #region Atributos
 
-        private float pesoGRAMOS;
-        private static decimal costoBase = 100M;
+        private static decimal costoBasePorGramo = 100M;
         private bool esDocLegal;
-        private decimal precioFinal;
 
         #endregion
 
         #region Properties
 
-        public float PesoGRAMOS
+        public static decimal CostoBasePorGramo
         {
-            get { return pesoGRAMOS; }
-            set { pesoGRAMOS = value; }
-        }
-        public static decimal CostoBase
-        {
-            get { return Envio_documento.costoBase; }
-            set { Envio_documento.costoBase = value; }
+            get { return Envio_documento.costoBasePorGramo; }
+            set { Envio_documento.costoBasePorGramo = value; }
         }
         public bool EsDocLegal
         {
             get { return esDocLegal; }
             set { esDocLegal = value; }
-        }
-        public decimal PrecioFinal
-        {
-            get { return precioFinal; }
-            set { precioFinal = value; }
         }
 
         #endregion
@@ -45,27 +33,35 @@ namespace Dominio
         #region Constructor
 
         public Envio_documento(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario, 
-                                Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoGramos, bool pLegal) 
+                                Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal) 
             : base(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
-            this.PesoGRAMOS = pPesoGramos;
+            base.Peso = TransformarPesoAGramos(pPesoKilos);
             this.EsDocLegal = pLegal;
-            this.PrecioFinal = CalcularPrecioFinal();
+            base.PrecioFinal = CalcularPrecioFinal();
         }
 
         #endregion
 
         #region Comportamiento
 
+        // Transforma automáticamente el peso introducido por el admin en KG a Gramos, como se solicita en la letra para 
+        // los documentos. El atributo peso e encuentra común en la clase base Envio, para ambos tipos de envíos. En el caso de 
+        // los paquetes, no hay ninguna transformación porque se guarda en KG.
+        private float TransformarPesoAGramos(float pPesoKG)
+        {
+            return pPesoKG * 1000;
+        }
+
+        // precioFinal = costoBase/gr X pesoGramos + 5% si es documento legal
         public override decimal CalcularPrecioFinal()
         {
-            decimal final = Envio_documento.CostoBase * Convert.ToDecimal(this.PesoGRAMOS); // <-- ver si es la mejor forma de convertirlo <--
+            decimal final = Envio_documento.CostoBasePorGramo * Convert.ToDecimal(base.Peso); // <-- ver si es la mejor forma de convertirlo <--
             
             if (this.EsDocLegal)
             {
                 final += final * 0.05M;
             }
-
             return final;
             
         }

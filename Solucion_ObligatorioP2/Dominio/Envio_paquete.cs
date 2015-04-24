@@ -17,9 +17,7 @@ namespace Dominio
         private static decimal costoBasePorGramo = 300M;
         private decimal valorDeclarado;
         private bool tieneSeguro;
-        private float pesoKG;
         private string descripcion;
-        private decimal precioFinal;
 
         #endregion
 
@@ -55,20 +53,11 @@ namespace Dominio
             get { return tieneSeguro; }
             set { tieneSeguro = value; }
         }
-        public float PesoKG
-        {
-            get { return pesoKG; }
-            set { pesoKG = value; }
-        }
+
         public string Descripcion
         {
             get { return descripcion; }
             set { descripcion = value; }
-        }
-        public decimal PrecioFinal
-        {
-            get { return precioFinal; }
-            set { precioFinal = value; }
         }
 
         #endregion
@@ -77,7 +66,7 @@ namespace Dominio
 
         public Envio_paquete(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario,
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
-                                float pLargo, decimal pValorDeclarado, bool pSeguro, float pPesoKG, string pDescripcion)
+                                float pLargo, decimal pValorDeclarado, bool pSeguro, float pPesoKilos, string pDescripcion)
             : base (pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
             // alto, largo y ancho tienen que ser en cm!!!
@@ -86,9 +75,11 @@ namespace Dominio
             this.Largo = pLargo;
             this.ValorDeclarado = pValorDeclarado;
             this.TieneSeguro = pSeguro;
-            this.PesoKG = pPesoKG;
+            base.Peso = pPesoKilos;         
+            // El atributo peso e encuentra común en la clase base Envio, para ambos tipos de envíos. En el caso de 
+            // los paquetes, no hay ninguna transformación porque se guarda en KG.
             this.Descripcion = pDescripcion;        
-            this.PrecioFinal = CalcularPrecioFinal();
+            base.PrecioFinal = CalcularPrecioFinal();
         }
 
         #endregion
@@ -96,25 +87,27 @@ namespace Dominio
         #region Comportamiento
         // ver si todos los metodos necesitan ser publicos o si puedo hacer privado alguno, como calcularPrecios
         
-        private override decimal CalcularPrecioFinal()
+        public override decimal CalcularPrecioFinal()
         {
             // asigno a final el valor del precioPorPeso, y si es menor que el volumetrico, lo cambio
             decimal final = this.CalcularPrecioPorPeso();
             decimal volumetrico = this.CalcularPrecioVolumetrico();
-            
             if (volumetrico > final) final = volumetrico;
 
+            if (this.TieneSeguro) final = final + (this.ValorDeclarado * Convert.ToDecimal(0.01));
             return final;
         }
 
+        // precioPorPeso = costoBase/gr X peso en Kg
         private decimal CalcularPrecioPorPeso()
         {
-            return (Envio_paquete.CostoBasePorGramo / 1000) * Convert.ToDecimal(this.PesoKG);
+            return Envio_paquete.CostoBasePorGramo * 1000 * Convert.ToDecimal(base.Peso);
         }
 
+        // precioVolumetrico = (volumen de paquete en cm3) / 6000
         private decimal CalcularPrecioVolumetrico()
         {
-            return Convert.ToDecimal(this.Alto * this.Ancho * this.Largo);
+            return Convert.ToDecimal(this.Alto * this.Ancho * this.Largo) / 6000;
         }
 
         #endregion
