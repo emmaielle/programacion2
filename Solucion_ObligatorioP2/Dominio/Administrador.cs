@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Administrador
+    class Administrador : Usuario
     {
+
+        #region Constructor
+
+        public Administrador(string pUser, string pPassword, string pNombreCompleto)
+            : base(pUser, pPassword, pNombreCompleto)
+        {
+        }
     }
 }
