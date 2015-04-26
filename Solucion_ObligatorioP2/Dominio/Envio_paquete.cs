@@ -76,7 +76,7 @@ namespace Dominio
             this.ValorDeclarado = pValorDeclarado;
             this.TieneSeguro = pSeguro;
             base.Peso = pPesoKilos;         
-            // El atributo peso e encuentra común en la clase base Envio, para ambos tipos de envíos. En el caso de 
+            // El atributo peso se encuentra común en la clase base Envio, para ambos tipos de envíos. En el caso de 
             // los paquetes, no hay ninguna transformación porque se guarda en KG.
             this.Descripcion = pDescripcion;        
             base.PrecioFinal = CalcularPrecioFinal();
@@ -84,30 +84,26 @@ namespace Dominio
 
         #endregion
 
-        #region Comportamiento
         // ver si todos los metodos necesitan ser publicos o si puedo hacer privado alguno, como calcularPrecios
+        #region Comportamiento
         
+        //toma el peso Volumetrico como el peso final, a no ser que sea menor que el peso en Kg. Multiplica el peso elegido por el costoBasexGramo
+        //para paquetes y por 100, y si tiene seguro, le suma el 1% del valor declarado
         public override decimal CalcularPrecioFinal()
         {
-            // asigno a final el valor del precioPorPeso, y si es menor que el volumetrico, lo cambio
-            decimal final = this.CalcularPrecioPorPeso();
-            decimal volumetrico = this.CalcularPrecioVolumetrico();
-            if (volumetrico > final) final = volumetrico;
+            float pesoUsado = CalcularPesoVolumetrico();
+            if (base.Peso > pesoUsado) pesoUsado = base.Peso;
 
-            if (this.TieneSeguro) final = final + (this.ValorDeclarado * Convert.ToDecimal(0.01));
-            return final;
+            decimal precioFinal = Envio_paquete.CostoBasePorGramo * 1000 * Convert.ToDecimal(pesoUsado);
+
+            if (this.TieneSeguro) precioFinal = precioFinal + (this.ValorDeclarado * 0.01M);
+            return precioFinal;
         }
 
-        // precioPorPeso = costoBase/gr X peso en Kg
-        private decimal CalcularPrecioPorPeso()
+        // pesoVolumetrico = (volumen de paquete en cm3) / 6000
+        private float CalcularPesoVolumetrico()
         {
-            return Envio_paquete.CostoBasePorGramo * 1000 * Convert.ToDecimal(base.Peso);
-        }
-
-        // precioVolumetrico = (volumen de paquete en cm3) / 6000
-        private decimal CalcularPrecioVolumetrico()
-        {
-            return Convert.ToDecimal(this.Alto * this.Ancho * this.Largo) / 6000;
+            return (this.Alto * this.Ancho * this.Largo) / 6000;
         }
 
         #endregion

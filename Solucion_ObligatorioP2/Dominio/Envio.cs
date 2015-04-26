@@ -22,7 +22,7 @@ namespace Dominio
         protected Direccion dirDestinatario;
         protected List<EtapaEnvio> etapasDelEnvio;
         protected decimal precioFinal;
-        private float peso; // para paquetes se guarda en KG, para documentos en Gramos.
+        private float peso; // para paquetes se guarda en Kg, para documentos en Gramos (pero en ambos se ingresa en Kg).
 
         #endregion
         
