@@ -51,7 +51,9 @@ namespace Dominio
 
         #region Comportamiento
 
-
+        public void AltaCliente()
+        {
+        }
         #endregion
     }
 }
