@@ -39,8 +39,8 @@ namespace Dominio
 
         #region Constructor
 
-        public Cliente(string pUser, string pPassword, string pNombreCompleto, string pTelefono, string pDocumento, Direccion pDireccion)
-            : base(pUser, pPassword, pNombreCompleto)
+        public Cliente(string pUser, string pPassword, string pNombres, string pApellidos, string pTelefono, string pDocumento, Direccion pDireccion)
+            : base(pUser, pPassword, pNombres, pApellidos)
         {
             this.telefono = pTelefono;
             this.documento = pDocumento;

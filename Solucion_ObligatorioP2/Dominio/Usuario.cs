@@ -12,7 +12,8 @@ namespace Dominio
 
         private string user;
         private string password;
-        private string nombreCompleto;
+        private string nombres;
+        private string apellidos;
 
         #endregion
 
@@ -30,21 +31,28 @@ namespace Dominio
             set { password = value; }
         }
 
-        public string NombreCompleto
+        public string Nombre
         {
-            get { return nombreCompleto; }
-            set { nombreCompleto = value; }
+            get { return nombres; }
+            set { nombres = value; }
+        }
+
+        public string Apellidos
+        {
+            get { return apellidos; }
+            set { apellidos = value; }
         }
 
         #endregion
 
         #region Constructor
 
-        public Usuario(string pUser, string pPassword, string pNombreCompleto)
+        public Usuario(string pUser, string pPassword, string pNombres, string pApellidos)
         {
             this.user = pUser;
             this.Password = pPassword;
-            this.nombreCompleto = pNombreCompleto;
+            this.nombres = pNombres;
+            this.apellidos = pApellidos;
         }
 
         #endregion
