@@ -11,9 +11,13 @@ namespace Dominio
 
         #region Constructor
 
-        public Administrador(string pUser, string pPassword, string pNombreCompleto)
-            : base(pUser, pPassword, pNombreCompleto)
+        public Administrador(string pUser, string pPassword, string pNombre, string pApellido)
+            : base(pUser, pPassword, pNombre, pApellido)
         {
+
         }
+        #endregion
+
     }
+
 }

@@ -23,7 +23,7 @@
                 <TextBoxStyle Font-Size="0.8em" />
                 <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="#FFFFFF" Font-Size="0.9em" Wrap="True" />
             </asp:Login>
-            <asp:LinkButton ID="lnk_home_registrarCliente" CssClass="letrasLinks" runat="server">No tienes usuario?</asp:LinkButton>
+            <asp:LinkButton ID="lnk_home_registrarCliente" CssClass="letrasLinks" runat="server" PostBackUrl="~/Registro_Usuario.aspx" >No tienes usuario?</asp:LinkButton>
         </div>
     </div>
     </form>
