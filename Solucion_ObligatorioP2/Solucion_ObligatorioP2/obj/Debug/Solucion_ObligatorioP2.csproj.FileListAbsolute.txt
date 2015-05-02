@@ -3,3 +3,8 @@ c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\So
 c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.csprojResolveAssemblyReference.cache
 c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.dll
 c:\users\usuario\documents\visual studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.pdb
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\bin\Solucion_ObligatorioP2.dll
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\bin\Solucion_ObligatorioP2.pdb
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.csprojResolveAssemblyReference.cache
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.dll
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.pdb

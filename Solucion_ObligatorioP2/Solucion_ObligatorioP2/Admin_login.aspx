@@ -11,7 +11,7 @@
 <body>
     <form id="form1" runat="server">
         <div id="div_home_central">
-            <asp:Login ID="login_admin" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="2px" Font-Names="Arial" Font-Size="15px" LoginButtonText="Iniciar sesión" TitleText="Iniciar sesión como Administrador" BorderPadding="5" ForeColor="#333333" Width="300px" DestinationPageUrl="~/Admin_ControlPanel.aspx">
+            <asp:Login ID="login_admin" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="2px" Font-Names="Arial" Font-Size="15px" LoginButtonText="Iniciar sesión" TitleText="Iniciar sesión como Administrador" BorderPadding="5" ForeColor="#333333" Width="300px" DestinationPageUrl="~/Admin_ControlPanel.aspx" OnAuthenticate="login_admin_Authenticate">
                 <CheckBoxStyle Font-Size="10px" />
                 <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
                 <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
