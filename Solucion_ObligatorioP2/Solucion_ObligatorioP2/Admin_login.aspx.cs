@@ -19,5 +19,10 @@ namespace Solucion_ObligatorioP2
             jQuery.CdnDebugPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-2.1.3.js";
             ScriptManager.ScriptResourceMapping.AddDefinition("jquery", jQuery);
         }
+
+        protected void login_admin_Authenticate(object sender, AuthenticateEventArgs e)
+        {
+
+        }
     }
 }
