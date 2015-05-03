@@ -8,5 +8,8 @@ namespace Dominio
 {
     class OficinaPostal
     {
+        private int nroOficina;
+        private static int ultNroOficina;
+
     }
 }

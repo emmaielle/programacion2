@@ -57,9 +57,6 @@ namespace Dominio
 
         #endregion
 
-
-
-
     }
 }
 

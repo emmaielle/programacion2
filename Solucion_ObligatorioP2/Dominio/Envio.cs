@@ -10,7 +10,6 @@ namespace Dominio
     abstract class Envio
     {
         #region Atributos
-        //fijarme si protected estaba bien para las clases base, para que se pasen a sus derivadas
         protected int nroEnvio;
         protected static int ultNroEnvio; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
         protected string estado;
