@@ -66,6 +66,12 @@ namespace Dominio
             
         }
 
+        public override decimal SimularEnvio()
+        {
+            decimal precioSimulado = 0;
+            return precioSimulado;
+        }
+
         #endregion
 
     }

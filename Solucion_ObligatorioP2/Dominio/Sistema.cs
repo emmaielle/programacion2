@@ -55,10 +55,10 @@ namespace Dominio
 
         /*TODO: agregar controles y manejar exceptions. Ej: if ci no esta en la lista, add*/
         /*Recibe un cliente y lo agrega a la lista*/
-        public void AltaCliente(Cliente cliente)
+        public void AltaCliente(Cliente PCliente) // <--- parametros pAlgo
         {
 
-            this.listaClientes.Add(cliente);
+            this.listaClientes.Add(PCliente);
         }
 
         /*Dado una cedula, se recorre la lista de clientes para buscarlo. Retorna cliente encontrado o null*/
@@ -84,9 +84,9 @@ namespace Dominio
 
         #region Administradores
 
-        public void AltaAdministrador(Administrador administrador)
+        public void AltaAdministrador(Administrador pAdministrador)
         {
-            this.listaAdmins.Add(administrador);
+            this.listaAdmins.Add(pAdministrador);
         }
 
         #endregion
@@ -95,9 +95,9 @@ namespace Dominio
 
         /*TODO: agregar controles y manejar exceptions. */
         /*Recibe un envio y lo agrega a la lista*/
-        public void AltaEnvio(Envio envio)
+        public void AltaEnvio(Envio pEnvio)
         {
-            this.listaEnvios.Add(envio);
+            this.listaEnvios.Add(pEnvio);
         }
 
         /*Dado una Nro de envio se recorre la lista de envios para buscarlo. Retorna Envio encontrado o null*/
@@ -117,7 +117,31 @@ namespace Dominio
             return aux;
         }
 
+        // dandole de input el numero de envio, busca el evio a ver si existe, y si existe, busca las etapas de envio a partir de ese objeto.
+        // Si no existe el envio, devielve una lista vacia.
+        public List<EtapaEnvio> RastrearEnvio(int pNroEnvio)
+        {
+            Envio envioEncontrado = BuscarEnvio(pNroEnvio);
+            List<EtapaEnvio> listaEtapas = new List<EtapaEnvio>();
+
+            if (envioEncontrado != null)
+            {
+                listaEtapas = envioEncontrado.RastrearEnvio();
+            }
+            return listaEtapas;
+        }
+
         #endregion
+
+        #region OficinaPostal
+
+        public void AltaOficina(OficinaPostal pOficina)
+        {
+            this.listaOficinasPostales.Add(pOficina);
+        }
+
+        #endregion
+
 
     }
 

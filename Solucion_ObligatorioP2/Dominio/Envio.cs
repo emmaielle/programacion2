@@ -11,7 +11,7 @@ namespace Dominio
     {
         #region Atributos
         protected int nroEnvio;
-        protected static int ultNroEnvio; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
+        private static int ultNroEnvio; 
         protected string estado;
         protected string nombreRecibio;
         protected string firmaRecibio; // IMAGEN!!!
@@ -31,6 +31,11 @@ namespace Dominio
         {
             get { return nroEnvio; }
             set { nroEnvio = value; } // si es un autonumerado, no deberia tener un set, no?
+        }
+
+        protected static int UltNroEnvio
+        {
+            get { return Envio.ultNroEnvio; } // solo get
         }
 
         public string Estado
@@ -135,6 +140,21 @@ namespace Dominio
         {
             this.EtapasDelEnvio.Add(pNuevaEtapa);
         }
+
+        // devuelve la lista con todas las etapas del envio por las que paso hasta el momento
+        public List<EtapaEnvio> RastrearEnvio()
+        {
+            List<EtapaEnvio> aux = new List<EtapaEnvio>();
+
+            foreach (EtapaEnvio item in this.EtapasDelEnvio)
+            {
+                aux.Add(item);
+            }
+
+            return aux;
+        }
+
+        public abstract decimal SimularEnvio();
 
         #endregion
     }

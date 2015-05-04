@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin_ControlPanel.aspx" />
-    <Content Include="Admin_login.aspx" />
     <Content Include="Cliente_Home.aspx" />
     <Content Include="Estilos.css" />
     <Content Include="Global.asax" />
@@ -73,13 +72,6 @@
     </Compile>
     <Compile Include="Admin_ControlPanel.aspx.designer.cs">
       <DependentUpon>Admin_ControlPanel.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin_login.aspx.cs">
-      <DependentUpon>Admin_login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_login.aspx.designer.cs">
-      <DependentUpon>Admin_login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cliente_Home.aspx.cs">
       <DependentUpon>Cliente_Home.aspx</DependentUpon>
