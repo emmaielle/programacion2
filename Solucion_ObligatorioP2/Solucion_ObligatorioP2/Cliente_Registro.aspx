@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro_Usuario.aspx.cs" Inherits="Solucion_ObligatorioP2.Registro_Usuario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Cliente_Registro.aspx.cs" Inherits="Solucion_ObligatorioP2.Registro_Usuario" %>
 
 <!DOCTYPE html>
 

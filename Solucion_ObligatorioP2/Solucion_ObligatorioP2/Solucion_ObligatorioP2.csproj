@@ -62,7 +62,7 @@
     <Content Include="Estilos.css" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
-    <Content Include="Registro_Usuario.aspx" />
+    <Content Include="Cliente_Registro.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -105,12 +105,12 @@
       <DependentUpon>Pags_Cliente.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registro_Usuario.aspx.cs">
-      <DependentUpon>Registro_Usuario.aspx</DependentUpon>
+    <Compile Include="Cliente_Registro.aspx.cs">
+      <DependentUpon>Cliente_Registro.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registro_Usuario.aspx.designer.cs">
-      <DependentUpon>Registro_Usuario.aspx</DependentUpon>
+    <Compile Include="Cliente_Registro.aspx.designer.cs">
+      <DependentUpon>Cliente_Registro.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
