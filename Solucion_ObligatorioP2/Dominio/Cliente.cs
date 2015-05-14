@@ -23,6 +23,7 @@ namespace Dominio
             set { telefono = value; }
         }
 
+
         internal Direccion Direccion
         {
             get { return direccion; }
@@ -33,10 +34,9 @@ namespace Dominio
         #region Constructor
 
         public Cliente(string pUser, string pPassword, string pNombres, string pApellidos, string pTelefono, string pDocumento, Direccion pDireccion)
-            : base(pUser, pPassword, pNombres, pApellidos)
+            : base(pUser, pDocumento, pPassword, pNombres, pApellidos)
         {
             this.telefono = pTelefono;
-            this.documento = pDocumento;
             this.direccion = pDireccion;
         }
 
