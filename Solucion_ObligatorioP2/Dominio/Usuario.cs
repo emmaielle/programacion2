@@ -14,6 +14,7 @@ namespace Dominio
         private string password;
         private string nombres;
         private string apellidos;
+        private string documento;
 
         #endregion
 
@@ -41,6 +42,12 @@ namespace Dominio
         {
             get { return apellidos; }
             set { apellidos = value; }
+        }
+
+        public string Documento
+        {
+            get { return documento; }
+            set { documento = value; }
         }
 
         #endregion

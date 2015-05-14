@@ -11,7 +11,6 @@ namespace Dominio
         #region Atributos
 
         private string telefono;
-        private string documento;
         private Direccion direccion;
 
         #endregion
@@ -22,12 +21,6 @@ namespace Dominio
         {
             get { return telefono; }
             set { telefono = value; }
-        }
-
-        public string Documento
-        {
-            get { return documento; }
-            set { documento = value; }
         }
 
         internal Direccion Direccion
