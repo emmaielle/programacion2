@@ -99,9 +99,10 @@ namespace Dominio
 
         /*TODO: agregar controles y manejar exceptions. Ej: if ci no esta en la lista, add*/
         /*Recibe datos para crear un Admin, crea el admin y lo agrega a la lista*/
-        public Administrador AltaAdministrador(string pUsr, string pPass, string pNom, string pApell)
+        public Administrador AltaAdministrador(string pUsr, string pDoc, string pPass, string pNom, string pApell)
         {
-            Administrador encontro = BuscarAdmin(pUsr);
+            Administrador encontro = BuscarAdmin(pDoc);
+
             Administrador admin = null;
 
             if (encontro == null)
@@ -116,8 +117,8 @@ namespace Dominio
             return admin;
         }
 
-        /*Dado un nombre de usuario, se recorre la lista de admins para buscarlo. Retorna admin encontrado o null*/
-        public Administrador BuscarAdmin(string pUser) // <------------- here
+        /*Dado un documento, se recorre la lista de admins para buscarlo. Retorna admin encontrado o null*/
+        public Administrador BuscarAdmin(string pDocumento) 
         {
             Administrador aux = null;
 
@@ -126,7 +127,7 @@ namespace Dominio
             while (i < this.listaAdmins.Count && aux == null)
             {
                 Administrador admin = this.listaAdmins[i];
-                if (admin.User == pUser) // <-------- here. Documento para admin?
+                if (admin.User == pDocumento) 
                 {
                     aux = admin;
                 }
