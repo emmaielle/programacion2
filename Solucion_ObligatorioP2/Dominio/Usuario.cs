@@ -14,6 +14,7 @@ namespace Dominio
         private string password;
         private string nombres;
         private string apellidos;
+        private string documento;
 
         #endregion
 
@@ -43,14 +44,21 @@ namespace Dominio
             set { apellidos = value; }
         }
 
+        public string Documento
+        {
+            get { return documento; }
+            set { documento = value; }
+        }
+
         #endregion
 
         #region Constructor
 
-        public Usuario(string pUser, string pPassword, string pNombres, string pApellidos)
+        public Usuario(string pUser, string pDocumento, string pPassword, string pNombres, string pApellidos)
         {
             this.user = pUser;
-            this.Password = pPassword;
+            this.documento = pDocumento;
+            this.password = pPassword;
             this.nombres = pNombres;
             this.apellidos = pApellidos;
         }
