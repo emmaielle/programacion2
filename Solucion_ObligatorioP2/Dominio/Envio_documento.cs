@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Envio_documento : Envio
+    class EnvioDocumento : Envio
     {
         #region Atributos
 
@@ -19,8 +19,8 @@ namespace Dominio
 
         public static decimal CostoBasePorGramo
         {
-            get { return Envio_documento.costoBasePorGramo; }
-            set { Envio_documento.costoBasePorGramo = value; }
+            get { return EnvioDocumento.costoBasePorGramo; }
+            set { EnvioDocumento.costoBasePorGramo = value; }
         }
         public bool EsDocLegal
         {
@@ -32,7 +32,7 @@ namespace Dominio
 
         #region Constructor
 
-        public Envio_documento(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario, 
+        public EnvioDocumento(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario, 
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal) 
             : base(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
@@ -56,7 +56,7 @@ namespace Dominio
         // precioFinal = costoBase/gr X pesoGramos + 5% si es documento legal
         public override decimal CalcularPrecioFinal()
         {
-            decimal final = Envio_documento.CostoBasePorGramo * Convert.ToDecimal(base.Peso); // <-- ver si es la mejor forma de convertirlo <--
+            decimal final = EnvioDocumento.CostoBasePorGramo * Convert.ToDecimal(base.Peso); // <-- ver si es la mejor forma de convertirlo <--
             
             if (this.EsDocLegal)
             {
