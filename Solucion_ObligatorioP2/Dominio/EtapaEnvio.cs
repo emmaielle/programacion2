@@ -11,16 +11,15 @@ namespace Dominio
         #region Atributos
 
         private DateTime fechaIngreso;
-        private enum etapa {
+
+        public enum etapa {
             EnOrigen,
             EnTransito,
             ParaEntregar,
+            Entregado
 
         }
         private OficinaPostal ubicacion;
-
-       
-
         #endregion
 
         #region Properties
@@ -30,12 +29,9 @@ namespace Dominio
             get { return fechaIngreso; }
             set { fechaIngreso = value; }
         }
-        public int Etapa
-        {
-            get { return etapa; }
-            set { etapa = value; }
-        }
-        internal OficinaPostal Ubicacion
+       
+        
+        public OficinaPostal Ubicacion
         {
             get { return ubicacion; }
             set { ubicacion = value; }

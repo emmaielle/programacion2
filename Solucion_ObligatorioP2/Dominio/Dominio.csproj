@@ -40,11 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cliente.cs" />
     <Compile Include="Direccion.cs" />
     <Compile Include="Envio.cs" />
-    <Compile Include="Envio_documento.cs" />
-    <Compile Include="Envio_paquete.cs" />
+    <Compile Include="EnvioDocumento.cs" />
+    <Compile Include="EnvioPaquete.cs" />
     <Compile Include="EtapaEnvio.cs" />
     <Compile Include="OficinaPostal.cs" />
     <Compile Include="Sistema.cs" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public abstract class Usuario
+    public class Usuario
     {
         #region Atributos
 
@@ -17,6 +17,7 @@ namespace Dominio
         private string documento;
         private string telefono;
         private Direccion direccion;
+        private bool esAdmin; 
         private List<Envio> enviosCliente;
 
         #endregion
@@ -59,8 +60,14 @@ namespace Dominio
             set { telefono = value; }
         }
 
+          public bool EsAdmin
+        {
+            get { return esAdmin; }
+            set { esAdmin = value; }
+              
+        }
 
-        internal Direccion Direccion
+        public Direccion Direccion
         {
             get { return direccion; }
             set { direccion = value; }
@@ -91,13 +98,12 @@ namespace Dominio
 
         #endregion
 
-
         #region Comportamiento
 
-
+        /*Return lista de envios que superen el monto ingresado */
         public List<Envio> EnviosQueSuperanMonto(decimal pMonto)
         {
-            List<Envio> lista = null;
+            List<Envio> lista=null;
 
             foreach (Envio env in enviosCliente)
             {
@@ -109,7 +115,29 @@ namespace Dominio
 
             return lista;
         }
-    
+
+        /*Agrega un envio a la lista de envios que tiene el cliente */
+        public void AgregarEnvio(Envio pEnvio)
+        {
+            enviosCliente.Add(pEnvio);
+        }
+
+        /*Lista todos los envios del cliente que fueron entregados
+        public List<Envio> ListarEnviosEntregados()
+        {
+            List<Envio> lista=null;
+
+            foreach (Envio env in enviosCliente)
+
+            {
+
+                if (EtapaEnvio.etapa.Entregado.Equals (env.EtapasDelEnvio) ) {
+                   lista.Add (env);
+                  
+                }
+                return lista;
+            }*/
+        }
         #endregion
     }
 
