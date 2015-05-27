@@ -58,11 +58,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Admin_ControlPanel.aspx" />
+    <Content Include="Admin_login.aspx" />
     <Content Include="Cliente_Home.aspx" />
     <Content Include="Estilos.css" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
-    <Content Include="Cliente_Registro.aspx" />
+    <Content Include="Registro_Usuario.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +73,13 @@
     </Compile>
     <Compile Include="Admin_ControlPanel.aspx.designer.cs">
       <DependentUpon>Admin_ControlPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_login.aspx.cs">
+      <DependentUpon>Admin_login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_login.aspx.designer.cs">
+      <DependentUpon>Admin_login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Cliente_Home.aspx.cs">
       <DependentUpon>Cliente_Home.aspx</DependentUpon>
@@ -105,12 +113,12 @@
       <DependentUpon>Pags_Cliente.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Cliente_Registro.aspx.cs">
-      <DependentUpon>Cliente_Registro.aspx</DependentUpon>
+    <Compile Include="Registro_Usuario.aspx.cs">
+      <DependentUpon>Registro_Usuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Cliente_Registro.aspx.designer.cs">
-      <DependentUpon>Cliente_Registro.aspx</DependentUpon>
+    <Compile Include="Registro_Usuario.aspx.designer.cs">
+      <DependentUpon>Registro_Usuario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

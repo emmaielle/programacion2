@@ -10,7 +10,7 @@
 namespace Solucion_ObligatorioP2 {
     
     
-    public partial class Inicio {
+    public partial class Admin_login {
         
         /// <summary>
         /// Control form1.
@@ -22,30 +22,21 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Control link_loginAdmin.
+        /// Control login_admin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton link_loginAdmin;
+        protected global::System.Web.UI.WebControls.Login login_admin;
         
         /// <summary>
-        /// Control login_cliente.
+        /// Control lnk_loginAdmin_volver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Login login_cliente;
-        
-        /// <summary>
-        /// Control lnk_home_registrarCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnk_home_registrarCliente;
+        protected global::System.Web.UI.WebControls.LinkButton lnk_loginAdmin_volver;
     }
 }

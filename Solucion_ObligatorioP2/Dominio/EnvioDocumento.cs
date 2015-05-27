@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class EnvioDocumento : Envio
+    public class EnvioDocumento : Envio
     {
         #region Atributos
 
         private static decimal costoBasePorGramo = 100M;
         private bool esDocLegal;
+        private Direccion dirOrigen;
 
         #endregion
 
@@ -28,17 +29,25 @@ namespace Dominio
             set { esDocLegal = value; }
         }
 
+        public Direccion DirOrigen
+        {
+            get { return dirOrigen; }
+            set { dirOrigen = value; }
+        }
+
         #endregion
 
         #region Constructor
 
-        public EnvioDocumento(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario, 
+        public EnvioDocumento(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario, 
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal) 
-            : base(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+            : base(pNomRecibio, pFirma, pCliente, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+            
         {
             base.Peso = TransformarPesoAGramos(pPesoKilos);
             this.EsDocLegal = pLegal;
             base.PrecioFinal = CalcularPrecioFinal();
+            this.DirOrigen = pDirOrigen;
         }
 
         #endregion
@@ -64,12 +73,6 @@ namespace Dominio
             }
             return final;
             
-        }
-
-        public override decimal SimularEnvio()
-        {
-            decimal precioSimulado = 0;
-            return precioSimulado;
         }
 
         #endregion

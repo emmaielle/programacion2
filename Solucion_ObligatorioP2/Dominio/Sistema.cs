@@ -35,8 +35,8 @@ namespace Dominio
 
         #region Listas
 
-        private List<Cliente> listaClientes;
-        private List<Administrador> listaAdmins;
+        private List<Usuario> listaClientes;
+        private List<Usuario> listaAdmins;
         private List<Envio> listaEnvios;
         private List<OficinaPostal> listaOficinasPostales;
 
@@ -54,18 +54,22 @@ namespace Dominio
 
         /*TODO: agregar controles y manejar exceptions. Ej: if ci no esta en la lista, add*/
         /*Recibe datos para crear un cliente, crea el cliente y su dirección, lo agrega a la lista y devuelve el cliente nuevo o ya existente */
-        public Cliente AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pTel, string pDoc, string pCalle, int pNum, 
+       
+        /*Reveer constructores*/
+        public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pTel, string pDoc, string pCalle, int pNum, 
                                 string pCP, string pCiu, string pPais) 
         {
-            Cliente encontro = BuscarCliente(pDoc);
-            Cliente cli = null;
+            Usuario encontro = BuscarCliente(pDoc);
+            Usuario cli = null;
 
             if (encontro == null)
             {
                 Direccion dir = new Direccion(pCalle, pNum, pCP, pCiu, pPais);
-                cli = new Cliente(pUsr, pPass, pNom, pApell, pTel, pDoc, dir);
+               // cli = new Usuario(pUsr, pPass, pNom, pApell, pTel, pDoc, pDir, pEsAdmin);
+
+          
                 
-                if (this.listaClientes == null) this.listaClientes = new List<Cliente>();
+                if (this.listaClientes == null) this.listaClientes = new List<Usuario>();
                 this.listaClientes.Add(cli);
             }
             else cli = encontro;
@@ -75,15 +79,15 @@ namespace Dominio
         }
 
         /*Dado una cedula, se recorre la lista de clientes para buscarlo. Retorna cliente encontrado o null*/
-        public Cliente BuscarCliente (string pCi) 
+        public Usuario BuscarCliente (string pCi) 
         {
-            Cliente aux = null;
+            Usuario aux = null;
            
             int i = 0;
             // foreach
             while (i < this.listaClientes.Count && aux == null)
             {
-                Cliente cli = this.listaClientes[i];
+                Usuario cli = this.listaClientes[i];
                 if (cli.Documento == pCi)
                 {
                     aux = cli;
@@ -99,17 +103,18 @@ namespace Dominio
 
         /*TODO: agregar controles y manejar exceptions. Ej: if ci no esta en la lista, add*/
         /*Recibe datos para crear un Admin, crea el admin y lo agrega a la lista*/
-        public Administrador AltaAdministrador(string pUsr, string pDoc, string pPass, string pNom, string pApell)
+        public Usuario AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono, string pDir, bool pEsAdmin)
         {
-            Administrador encontro = BuscarAdmin(pDoc);
-
-            Administrador admin = null;
+            Usuario encontro = BuscarAdmin(pDoc);
+            Usuario admin = null;
 
             if (encontro == null)
             {
-                admin = new Administrador(pUsr, pPass, pNom, pApell);
+                //admin = new Usuario(pUsr, pPass, pNombre, pApellido, pDoc, pTelefono, pDir, pEsAdmin);
 
-                if (this.listaAdmins == null) this.listaAdmins = new List<Administrador>();
+          
+
+                if (this.listaAdmins == null) this.listaAdmins = new List<Usuario>();
                 this.listaAdmins.Add(admin);
             }
             else admin = encontro;
@@ -118,15 +123,15 @@ namespace Dominio
         }
 
         /*Dado un documento, se recorre la lista de admins para buscarlo. Retorna admin encontrado o null*/
-        public Administrador BuscarAdmin(string pDocumento) 
+        public Usuario BuscarAdmin(string pDocumento) 
         {
-            Administrador aux = null;
+            Usuario aux = null;
 
             int i = 0;
             // foreach
             while (i < this.listaAdmins.Count && aux == null)
             {
-                Administrador admin = this.listaAdmins[i];
+                Usuario admin = this.listaAdmins[i];
                 if (admin.User == pDocumento) 
                 {
                     aux = admin;
@@ -142,10 +147,10 @@ namespace Dominio
 
         /* TODO: agregar controles y manejar exceptions */
         /* Recibe parametros para crear envio de documentos, y lo agrega a la lista de envios */
-        public void AltaEnvioDocumento(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario, 
+        public void AltaEnvioDocumento(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario, 
                                  Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal)
         {
-            Envio_documento env = new Envio_documento(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, 
+            EnvioDocumento env = new EnvioDocumento(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, 
                                                             pFechaIngreso, pOficinaIngreso, pPesoKilos, pLegal);
             this.listaEnvios.Add(env);
          
@@ -154,11 +159,11 @@ namespace Dominio
 
         /* TODO: agregar controles y manejar exceptions */
         /* Recibe parametros para crear envio de paquetes, y lo agrega a la lista de envios */
-        public void AltaEnvioDocumento(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario,
+        public void AltaEnvioDocumento(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario,
                                  Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
                                  float pLargo, decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
         {
-            Envio_paquete env = new Envio_paquete(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino,
+            EnvioPaquete env = new EnvioPaquete(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino,
                                                   pFechaIngreso, pOficinaIngreso,pAlto, pAncho, pLargo, pValorDecl, pSeguro, pPesoKg, pDescr);
             this.listaEnvios.Add(env);
 
@@ -191,7 +196,7 @@ namespace Dominio
 
             if (envioEncontrado != null)
             {
-                listaEtapas = envioEncontrado.RastrearEnvio();
+             //   listaEtapas = envioEncontrado.RastrearEnvio();
             }
             return listaEtapas;
         }

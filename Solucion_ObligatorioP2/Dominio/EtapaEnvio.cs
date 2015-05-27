@@ -6,14 +6,19 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class EtapaEnvio
+    public class EtapaEnvio
     {
         #region Atributos
 
         private DateTime fechaIngreso;
-        private int etapa;
-        private OficinaPostal ubicacion;
 
+        public enum etapa {
+            EnOrigen,
+            EnTransito,
+            ParaEntregar,
+            Entregado
+        }
+        private OficinaPostal ubicacion;
         #endregion
 
         #region Properties
@@ -23,25 +28,21 @@ namespace Dominio
             get { return fechaIngreso; }
             set { fechaIngreso = value; }
         }
-        public int Etapa
-        {
-            get { return etapa; }
-            set { etapa = value; }
-        }
-        internal OficinaPostal Ubicacion
+               
+        public OficinaPostal Ubicacion
         {
             get { return ubicacion; }
             set { ubicacion = value; }
         }
-
+        
         #endregion
 
         #region Constructor
 
+        /*Me falta la etapa, no deberia ser con property o si?*/
         public EtapaEnvio(DateTime pFechaIng, int pEtapa, OficinaPostal pUbicacion) 
         {
             this.FechaIngreso = pFechaIng;
-            this.Etapa = pEtapa;
             this.Ubicacion = pUbicacion;
         }
 

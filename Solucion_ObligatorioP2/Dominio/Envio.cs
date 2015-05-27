@@ -7,16 +7,15 @@ using System.Drawing;
 
 namespace Dominio
 {
-    abstract class Envio
+    public abstract class Envio
     {
         #region Atributos
         protected int nroEnvio;
-        private static int ultNroEnvio; 
+        protected static int ultNroEnvio; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
         protected string estado;
         protected string nombreRecibio;
         protected string firmaRecibio; // IMAGEN!!!
-        protected Cliente cliente;
-        protected Direccion dirOrigen;
+        protected Usuario cliente;
         protected string nombreDestinatario;
         protected Direccion dirDestinatario;
         protected List<EtapaEnvio> etapasDelEnvio;
@@ -31,11 +30,6 @@ namespace Dominio
         {
             get { return nroEnvio; }
             set { nroEnvio = value; } // si es un autonumerado, no deberia tener un set, no?
-        }
-
-        protected static int UltNroEnvio
-        {
-            get { return Envio.ultNroEnvio; } // solo get
         }
 
         public string Estado
@@ -56,16 +50,10 @@ namespace Dominio
             set { firmaRecibio = value; }
         }
 
-        internal Cliente Cliente
+        public Usuario Cliente
         {
             get { return cliente; }
             set { cliente = value; }
-        }
-
-        internal Direccion DirOrigen
-        {
-            get { return dirOrigen; }
-            set { dirOrigen = value; }
         }
 
         public string NombreDestinatario
@@ -74,24 +62,24 @@ namespace Dominio
             set { nombreDestinatario = value; }
         }
 
-        internal Direccion DirDestinatario
+        public Direccion DirDestinatario
         {
             get { return dirDestinatario; }
             set { dirDestinatario = value; }
         }
 
-        internal List<EtapaEnvio> EtapasDelEnvio
+        public List<EtapaEnvio> EtapasDelEnvio
         {
             get { return etapasDelEnvio; }
             set { etapasDelEnvio = value; }
         }
-        protected decimal PrecioFinal
+        public decimal PrecioFinal
         {
             get { return precioFinal; }
             set { precioFinal = value; }
         }
 
-        protected float Peso
+        public float Peso
         {
             get { return peso; }
             set { peso = value; }
@@ -101,7 +89,7 @@ namespace Dominio
 
         #region Constructor
 
-        public Envio(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
+        public Envio(string pNomRecibio, string pFirma, Usuario pCliente, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
         {
             this.NroEnvio = Envio.ultNroEnvio;
             Envio.ultNroEnvio += 1; // si pongo una propiedad en el atributo, cambiar aca <---
@@ -109,7 +97,6 @@ namespace Dominio
             this.NombreRecibio = pNomRecibio;
             this.FirmaRecibio = pFirma; // <<---- firma: imagen!
             this.Cliente = pCliente;
-            this.DirOrigen = pDirOrigen;
             this.NombreDestinatario = pNomDestinatario;
             this.DirDestinatario = pDirDestino;
             this.EtapasDelEnvio = new List<EtapaEnvio>();
@@ -140,21 +127,6 @@ namespace Dominio
         {
             this.EtapasDelEnvio.Add(pNuevaEtapa);
         }
-
-        // devuelve la lista con todas las etapas del envio por las que paso hasta el momento
-        public List<EtapaEnvio> RastrearEnvio()
-        {
-            List<EtapaEnvio> aux = new List<EtapaEnvio>();
-
-            foreach (EtapaEnvio item in this.EtapasDelEnvio)
-            {
-                aux.Add(item);
-            }
-
-            return aux;
-        }
-
-        public abstract decimal SimularEnvio();
 
         #endregion
     }

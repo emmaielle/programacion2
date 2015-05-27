@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class OficinaPostal
+    public class OficinaPostal
     {
         #region atributos
 
@@ -30,7 +30,7 @@ namespace Dominio
 
         public static int UltNroOficina
         {
-            get { return OficinaPostal.ultNroOficina; }
+            get { return OficinaPostal.ultNroOficina; } // no tiene set
         }
 
         public string Pais
@@ -79,5 +79,6 @@ namespace Dominio
         }
 
         #endregion
+
     }
 }

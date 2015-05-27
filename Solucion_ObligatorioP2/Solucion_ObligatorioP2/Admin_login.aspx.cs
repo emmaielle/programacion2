@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Solucion_ObligatorioP2
 {
-    public partial class Inicio : System.Web.UI.Page
+    public partial class Admin_login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -17,9 +17,12 @@ namespace Solucion_ObligatorioP2
             jQuery.DebugPath = "~/scripts/jquery-2.1.3.js";
             jQuery.CdnPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-2.1.3.min.js";
             jQuery.CdnDebugPath = "http://ajax.microsoft.com/ajax/jQuery/jquery-2.1.3.js";
-            ScriptManager.ScriptResourceMapping.AddDefinition("jquery", jQuery); 
+            ScriptManager.ScriptResourceMapping.AddDefinition("jquery", jQuery);
         }
 
+        protected void login_admin_Authenticate(object sender, AuthenticateEventArgs e)
+        {
 
+        }
     }
 }

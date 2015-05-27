@@ -14,7 +14,7 @@ namespace Dominio
         private float alto;
         private float ancho;
         private float largo;
-        private static decimal costoBasePorGramo = 300M;
+        private decimal costoBasePorGramo = 300M;
         private decimal valorDeclarado;
         private bool tieneSeguro;
         private string descripcion;
@@ -38,10 +38,10 @@ namespace Dominio
             get { return largo; }
             set { largo = value; }
         }
-        public static decimal CostoBasePorGramo
+        public decimal CostoBasePorGramo
         {
-            get { return EnvioPaquete.costoBasePorGramo; }
-            set { EnvioPaquete.costoBasePorGramo = value; }
+            get { return costoBasePorGramo; }
+            set { costoBasePorGramo = value; }
         }
         public decimal ValorDeclarado
         {
@@ -64,10 +64,10 @@ namespace Dominio
 
         #region Constructor
 
-        public EnvioPaquete(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario,
+        public EnvioPaquete(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario,
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
                                 float pLargo, decimal pValorDeclarado, bool pSeguro, float pPesoKilos, string pDescripcion)
-            : base (pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+            : base(pNomRecibio, pFirma, pCliente, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
             // alto, largo y ancho tienen que ser en cm!!!
             this.Alto = pAlto;
@@ -94,7 +94,7 @@ namespace Dominio
             float pesoUsado = CalcularPesoVolumetrico();
             if (base.Peso > pesoUsado) pesoUsado = base.Peso;
 
-            decimal precioFinal = EnvioPaquete.CostoBasePorGramo * 1000 * Convert.ToDecimal(pesoUsado);
+            decimal precioFinal = this.CostoBasePorGramo * 1000 * Convert.ToDecimal(pesoUsado);
 
             if (this.TieneSeguro) precioFinal = precioFinal + (this.ValorDeclarado * 0.01M);
             return precioFinal;

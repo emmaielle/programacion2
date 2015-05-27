@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    public abstract class Usuario
+    public class Usuario
     {
         #region Atributos
 
@@ -15,6 +15,10 @@ namespace Dominio
         private string nombre;
         private string apellido;
         private string documento;
+        private string telefono;
+        private Direccion direccionUsuario; 
+        private bool esAdmin; 
+        private List<Envio> enviosCliente;
 
         #endregion
 
@@ -50,22 +54,96 @@ namespace Dominio
             set { documento = value; }
         }
 
-        #endregion
-
-        #region Constructor
-
-        public Usuario(string pUser, string pDocumento, string pPassword, string pNombres, string pApellidos)
+        public string Telefono
         {
-            this.user = pUser;
-            this.documento = pDocumento;
-            this.password = pPassword;
-            this.nombre = pNombres;
-            this.apellido = pApellidos;
+            get { return telefono; }
+            set { telefono = value; }
+        }
+
+          public bool EsAdmin
+        {
+            get { return esAdmin; }
+            set { esAdmin = value; }
+              
+        }
+
+        public Direccion DireccionUsuario
+        {
+            get { return direccionUsuario; }
+            set { direccionUsuario = value; }
+        }
+
+        public List<Envio> EnviosCliente
+        {
+            get { return enviosCliente; }
+            set { enviosCliente = value; }
         }
 
         #endregion
 
+        #region Constructor
+
+        public Usuario(string pUser, string pPassword, string pNombre, string pApellido, string pDocumento, 
+            string pTelefono, Direccion direccion, bool esAdmin)
+        {
+            this.user = pUser;
+            this.documento = pDocumento;
+            this.password = pPassword;
+            this.nombre = pNombre;
+            this.apellido = pApellido;
+            this.documento = pDocumento;
+            this.telefono = pTelefono;
+            this.direccionUsuario = direccion;
+            this.esAdmin = esAdmin;
+        }
+
+        #endregion
+
+        #region Comportamiento
+
+        /*Return lista de envios que superen el monto ingresado */
+        public List<Envio> EnviosQueSuperanMonto(decimal pMonto)
+        {
+            List<Envio> lista=null;
+
+            foreach (Envio env in enviosCliente)
+            {
+                if (env.PrecioFinal > pMonto)
+                {
+                    lista.Add(env);
+                }
+            }
+
+            return lista;
+        }
+
+        /*Agrega un envio a la lista de envios que tiene el cliente */
+        public void AgregarEnvio(Envio pEnvio)
+        {
+            enviosCliente.Add(pEnvio);
+        }
+
+        /*Lista todos los envios del cliente que fueron entregados
+        public List<Envio> ListarEnviosEntregados()
+        {
+            List<Envio> lista=null;
+
+            foreach (Envio env in enviosCliente)
+
+            {
+
+                if (EtapaEnvio.etapa.Entregado.Equals (env.EtapasDelEnvio) ) {
+                   lista.Add (env);
+                  
+                }
+                return lista;
+            }*/
+        }
+        #endregion
     }
-}
+
+
+
+
 
 

@@ -1,10 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Cliente_Registro.aspx.cs" Inherits="Solucion_ObligatorioP2.Registro_Usuario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro_Usuario.aspx.cs" Inherits="Solucion_ObligatorioP2.Registro_Usuario" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<link type="text/css" rel="stylesheet" href="Estilos.css"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
