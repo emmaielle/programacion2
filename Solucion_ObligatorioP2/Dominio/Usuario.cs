@@ -15,6 +15,9 @@ namespace Dominio
         private string nombre;
         private string apellido;
         private string documento;
+        private string telefono;
+        private Direccion direccion;
+        private List<Envio> enviosCliente;
 
         #endregion
 
@@ -50,22 +53,68 @@ namespace Dominio
             set { documento = value; }
         }
 
-        #endregion
-
-        #region Constructor
-
-        public Usuario(string pUser, string pDocumento, string pPassword, string pNombres, string pApellidos)
+        public string Telefono
         {
-            this.user = pUser;
-            this.documento = pDocumento;
-            this.password = pPassword;
-            this.nombre = pNombres;
-            this.apellido = pApellidos;
+            get { return telefono; }
+            set { telefono = value; }
+        }
+
+
+        internal Direccion Direccion
+        {
+            get { return direccion; }
+            set { direccion = value; }
+        }
+
+        public List<Envio> EnviosCliente
+        {
+            get { return enviosCliente; }
+            set { enviosCliente = value; }
         }
 
         #endregion
 
+        #region Constructor
+
+        public Usuario(string pUser, string pPassword, string pNombre, string pApellido, string pDocumento, 
+            string pTelefono, Direccion direccion)
+        {
+            this.user = pUser;
+            this.documento = pDocumento;
+            this.password = pPassword;
+            this.nombre = pNombre;
+            this.apellido = pApellido;
+            this.documento = pDocumento;
+            this.telefono = pTelefono;
+            this.direccion = Direccion;
+        }
+
+        #endregion
+
+
+        #region Comportamiento
+
+
+        public List<Envio> EnviosQueSuperanMonto(decimal pMonto)
+        {
+            List<Envio> lista = null;
+
+            foreach (Envio env in enviosCliente)
+            {
+                if (env.PrecioFinal > pMonto)
+                {
+                    lista.Add(env);
+                }
+            }
+
+            return lista;
+        }
+    
+        #endregion
     }
+
+
 }
+
 
 

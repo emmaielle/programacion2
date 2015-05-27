@@ -3,3 +3,6 @@ C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Do
 C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Dominio\bin\Debug\Dominio.pdb
 C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Dominio\obj\Debug\Dominio.dll
 C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Dominio\obj\Debug\Dominio.pdb
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Dominio\obj\Debug\Dominio.csprojResolveAssemblyReference.cache
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Dominio\obj\Debug\Dominio.dll
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Dominio\obj\Debug\Dominio.pdb

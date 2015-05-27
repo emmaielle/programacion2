@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrador.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Direccion.cs" />
     <Compile Include="Envio.cs" />

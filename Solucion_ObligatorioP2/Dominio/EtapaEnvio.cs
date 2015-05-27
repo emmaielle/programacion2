@@ -11,8 +11,15 @@ namespace Dominio
         #region Atributos
 
         private DateTime fechaIngreso;
-        private int etapa;
+        private enum etapa {
+            EnOrigen,
+            EnTransito,
+            ParaEntregar,
+
+        }
         private OficinaPostal ubicacion;
+
+       
 
         #endregion
 
