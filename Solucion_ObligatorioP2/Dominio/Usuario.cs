@@ -84,7 +84,7 @@ namespace Dominio
         #region Constructor
 
         public Usuario(string pUser, string pPassword, string pNombre, string pApellido, string pDocumento, 
-            string pTelefono, Direccion direccion)
+            string pTelefono, Direccion direccion, bool esAdmin)
         {
             this.user = pUser;
             this.documento = pDocumento;
@@ -93,7 +93,8 @@ namespace Dominio
             this.apellido = pApellido;
             this.documento = pDocumento;
             this.telefono = pTelefono;
-            this.direccion = Direccion;
+            this.direccion = direccion;
+            this.esAdmin = esAdmin;
         }
 
         #endregion
@@ -142,7 +143,7 @@ namespace Dominio
     }
 
 
-}
+
 
 
 

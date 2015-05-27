@@ -64,10 +64,10 @@ namespace Dominio
 
         #region Constructor
 
-        public EnvioPaquete(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario,
+        public EnvioPaquete(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario,
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
                                 float pLargo, decimal pValorDeclarado, bool pSeguro, float pPesoKilos, string pDescripcion)
-            : base (pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+            : base(pNomRecibio, pFirma, pCliente, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
             // alto, largo y ancho tienen que ser en cm!!!
             this.Alto = pAlto;

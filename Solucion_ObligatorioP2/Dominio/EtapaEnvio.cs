@@ -37,14 +37,16 @@ namespace Dominio
             set { ubicacion = value; }
         }
 
+
+
         #endregion
 
         #region Constructor
 
+        /*Me falta la etapa, no deberia ser con property o si?*/
         public EtapaEnvio(DateTime pFechaIng, int pEtapa, OficinaPostal pUbicacion) 
         {
             this.FechaIngreso = pFechaIng;
-            this.Etapa = pEtapa;
             this.Ubicacion = pUbicacion;
         }
 
