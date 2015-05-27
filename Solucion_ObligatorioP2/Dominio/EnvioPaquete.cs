@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Envio_paquete : Envio
+    class EnvioPaquete : Envio
     {
 
         #region Atributos
@@ -40,8 +40,8 @@ namespace Dominio
         }
         public static decimal CostoBasePorGramo
         {
-            get { return Envio_paquete.costoBasePorGramo; }
-            set { Envio_paquete.costoBasePorGramo = value; }
+            get { return EnvioPaquete.costoBasePorGramo; }
+            set { EnvioPaquete.costoBasePorGramo = value; }
         }
         public decimal ValorDeclarado
         {
@@ -64,7 +64,7 @@ namespace Dominio
 
         #region Constructor
 
-        public Envio_paquete(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario,
+        public EnvioPaquete(string pNomRecibio, string pFirma, Cliente pCliente, Direccion pDirOrigen, string pNomDestinatario,
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
                                 float pLargo, decimal pValorDeclarado, bool pSeguro, float pPesoKilos, string pDescripcion)
             : base (pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
@@ -94,7 +94,7 @@ namespace Dominio
             float pesoUsado = CalcularPesoVolumetrico();
             if (base.Peso > pesoUsado) pesoUsado = base.Peso;
 
-            decimal precioFinal = Envio_paquete.CostoBasePorGramo * 1000 * Convert.ToDecimal(pesoUsado);
+            decimal precioFinal = EnvioPaquete.CostoBasePorGramo * 1000 * Convert.ToDecimal(pesoUsado);
 
             if (this.TieneSeguro) precioFinal = precioFinal + (this.ValorDeclarado * 0.01M);
             return precioFinal;

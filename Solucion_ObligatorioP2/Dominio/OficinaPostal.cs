@@ -30,10 +30,10 @@ namespace Dominio
 
         public static int UltNroOficina
         {
-            get { return OficinaPostal.ultNroOficina; } // no tiene set
+            get { return OficinaPostal.ultNroOficina; }
         }
 
-        public string Pais 
+        public string Pais
         {
             get { return pais; }
             set { pais = value; }
@@ -42,7 +42,7 @@ namespace Dominio
         public int Numero
         {
             get { return numero; }
-            set {numero = value;}
+            set { numero = value; }
         }
 
         public string Calle
