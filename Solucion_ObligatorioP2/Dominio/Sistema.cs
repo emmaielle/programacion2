@@ -56,8 +56,8 @@ namespace Dominio
         /*Recibe datos para crear un cliente, crea el cliente y su dirección, lo agrega a la lista y devuelve el cliente nuevo o ya existente */
        
         /*Reveer constructores*/
-        public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pTel, string pDoc, string pCalle, int pNum, 
-                                string pCP, string pCiu, string pPais) 
+        public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pDoc, string pTel, string pCalle, int pNum, 
+                                string pCP, string pCiu, string pPais)  
         {
             Usuario encontro = BuscarCliente(pDoc);
             Usuario cli = null;
@@ -65,9 +65,7 @@ namespace Dominio
             if (encontro == null)
             {
                 Direccion dir = new Direccion(pCalle, pNum, pCP, pCiu, pPais);
-               // cli = new Usuario(pUsr, pPass, pNom, pApell, pTel, pDoc, pDir, pEsAdmin);
-
-          
+                cli = new Usuario(pUsr, pPass, pNom, pApell, pDoc, pTel, dir, false);
                 
                 if (this.listaClientes == null) this.listaClientes = new List<Usuario>();
                 this.listaClientes.Add(cli);
@@ -84,11 +82,10 @@ namespace Dominio
             Usuario aux = null;
            
             int i = 0;
-            // foreach
             while (i < this.listaClientes.Count && aux == null)
             {
                 Usuario cli = this.listaClientes[i];
-                if (cli.Documento == pCi)
+                if (cli.Documento == pCi && cli.EsAdmin == false)
                 {
                     aux = cli;
                 }
@@ -97,20 +94,45 @@ namespace Dominio
             return aux;
         }
 
+        public List<Envio> ListarEnviosEntregados(string pDoc)
+        {
+            List<Envio> envEntregados = null;
+            
+            return envEntregados;
+        }
+
+
+        // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo //    
+        public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
+        {
+            decimal total = 0M;
+
+            Usuario cli = this.BuscarCliente(pDoc);
+
+            if (cli != null)
+            {
+                total = cli.TotalFacturadoEnIntervalo(pFechaInicio, pFechaFinal);
+            }
+
+            return total;
+        }
+
         #endregion
 
         #region Administradores
 
         /*TODO: agregar controles y manejar exceptions. Ej: if ci no esta en la lista, add*/
         /*Recibe datos para crear un Admin, crea el admin y lo agrega a la lista*/
-        public Usuario AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono, string pDir, bool pEsAdmin)
+        public Usuario AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono, 
+            string pCalle, int pNum, string pCP, string pCiu, string pPais)
         {
             Usuario encontro = BuscarAdmin(pDoc);
             Usuario admin = null;
 
             if (encontro == null)
             {
-                //admin = new Usuario(pUsr, pPass, pNombre, pApellido, pDoc, pTelefono, pDir, pEsAdmin);
+                Direccion dir = new Direccion(pCalle, pNum,pCP,pCiu,pPais);
+                admin = new Usuario(pUsr, pPass, pNombre, pApellido, pDoc, pTelefono, dir, true);
 
           
 
@@ -132,7 +154,7 @@ namespace Dominio
             while (i < this.listaAdmins.Count && aux == null)
             {
                 Usuario admin = this.listaAdmins[i];
-                if (admin.User == pDocumento) 
+                if (admin.User == pDocumento && admin.EsAdmin == true) 
                 {
                     aux = admin;
                 }
@@ -146,30 +168,51 @@ namespace Dominio
         #region Envios
 
         /* TODO: agregar controles y manejar exceptions */
-        /* Recibe parametros para crear envio de documentos, y lo agrega a la lista de envios */
-        public void AltaEnvioDocumento(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario, 
+        /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de documento, 
+         * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
+        public void AltaEnvioDocumento(string pNomRecibio, string pFirma, string pCliente, Direccion pDirOrigen, string pNomDestinatario, 
                                  Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal)
         {
-            EnvioDocumento env = new EnvioDocumento(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino, 
-                                                            pFechaIngreso, pOficinaIngreso, pPesoKilos, pLegal);
-            this.listaEnvios.Add(env);
-         
-        } // <<<--------- pensar de otra manera para unir ambos envios??
+            Usuario cli = this.BuscarCliente(pCliente);
 
+            if (cli != null)
+            {
+                EnvioDocumento env = new EnvioDocumento(pNomRecibio, pFirma, pDirOrigen, pNomDestinatario, pDirDestino,
+                                                                pFechaIngreso, pOficinaIngreso, pPesoKilos, pLegal);
+
+                if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
+                this.listaEnvios.Add(env);
+
+                cli.AgregarEnvio(env);
+
+            }
+         
+        } 
 
         /* TODO: agregar controles y manejar exceptions */
-        /* Recibe parametros para crear envio de paquetes, y lo agrega a la lista de envios */
-        public void AltaEnvioDocumento(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario,
+        /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de paquetes, 
+         * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
+        public void AltaEnvioPaquete(string pNomRecibio, string pFirma, string pCliente, string pNomDestinatario,
                                  Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
-                                 float pLargo, decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
+                                 float pLargo, decimal pCostoBaseGr,decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
         {
-            EnvioPaquete env = new EnvioPaquete(pNomRecibio, pFirma, pCliente, pDirOrigen, pNomDestinatario, pDirDestino,
-                                                  pFechaIngreso, pOficinaIngreso,pAlto, pAncho, pLargo, pValorDecl, pSeguro, pPesoKg, pDescr);
-            this.listaEnvios.Add(env);
+            Usuario cli = this.BuscarCliente(pCliente);
+           
+            if (cli != null)
+            {
+                EnvioPaquete env = new EnvioPaquete(pNomRecibio, pFirma, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso,
+                                                    pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg, pDescr);
 
-        } // <<<--------- pensar de otra manera para unir ambos envios??
+                if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
+                this.listaEnvios.Add(env);
 
-        /*Dado una Nro de envio se recorre la lista de envios para buscarlo. Retorna Envio encontrado o null*/
+                cli.AgregarEnvio(env);
+
+            }
+
+        }
+
+        /*Dado un Nro de envio se recorre la lista de envios para buscarlo. Retorna Envio encontrado o null*/
         public Envio BuscarEnvio(int pId)
         {
             Envio aux = null;
@@ -196,9 +239,27 @@ namespace Dominio
 
             if (envioEncontrado != null)
             {
-             //   listaEtapas = envioEncontrado.RastrearEnvio();
+                listaEtapas = envioEncontrado.EtapasDelEnvio;
             }
             return listaEtapas;
+        }
+        // arma una lista de todos los envios que se encuentran en estado actual "EnTransito" (de acuerdo con el metodo
+        // ObtenerEstadoActual, en Envio), y de ellos, toma aquellos que fueron ingresados hace mas de 5 dias en
+        // la primer oficinaPostal por el cliente.
+        public List<Envio> EnviosEnTransitoAtrasados()
+        {
+            List<Envio> listEnvios = null;
+
+            foreach (Envio env in this.listaEnvios)
+            {
+                if (env.ObtenerEstadoActual() == EtapaEnvio.Etapas.EnTransito) 
+                {
+                    int diasDesdeIngreso = env.ObtenerDiasDesdeIngreso();
+                    if (diasDesdeIngreso > 5) { listEnvios.Add(env); }
+                }
+            }
+
+            return listEnvios;
         }
 
         #endregion

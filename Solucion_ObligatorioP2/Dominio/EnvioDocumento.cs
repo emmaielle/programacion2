@@ -39,9 +39,9 @@ namespace Dominio
 
         #region Constructor
 
-        public EnvioDocumento(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario, 
+        public EnvioDocumento(string pNomRecibio, string pFirma, Direccion pDirOrigen, string pNomDestinatario, 
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal) 
-            : base(pNomRecibio, pFirma, pCliente, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+            : base(pNomRecibio, pFirma, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
             
         {
             base.Peso = TransformarPesoAGramos(pPesoKilos);

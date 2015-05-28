@@ -14,7 +14,7 @@ namespace Dominio
         private float alto;
         private float ancho;
         private float largo;
-        private decimal costoBasePorGramo = 300M;
+        private decimal costoBasePorGramo;
         private decimal valorDeclarado;
         private bool tieneSeguro;
         private string descripcion;
@@ -64,15 +64,16 @@ namespace Dominio
 
         #region Constructor
 
-        public EnvioPaquete(string pNomRecibio, string pFirma, Usuario pCliente, Direccion pDirOrigen, string pNomDestinatario,
-                                Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
-                                float pLargo, decimal pValorDeclarado, bool pSeguro, float pPesoKilos, string pDescripcion)
-            : base(pNomRecibio, pFirma, pCliente, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+        public EnvioPaquete(string pNomRecibio, string pFirma, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, 
+                            OficinaPostal pOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGramo, decimal pValorDeclarado, 
+                            bool pSeguro, float pPesoKilos, string pDescripcion)
+            : base(pNomRecibio, pFirma, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
             // alto, largo y ancho tienen que ser en cm!!!
             this.Alto = pAlto;
             this.Ancho = pAncho;
             this.Largo = pLargo;
+            this.costoBasePorGramo = pCostoBaseGramo;
             this.ValorDeclarado = pValorDeclarado;
             this.TieneSeguro = pSeguro;
             base.Peso = pPesoKilos;         
