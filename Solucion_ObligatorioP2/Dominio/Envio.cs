@@ -147,7 +147,9 @@ namespace Dominio
         // revisa las fechas de ingreso de cada etapaDeEnvio, para quedarse con la etapa que tiene la fecha más cercana al 
         // día actual (la ultima fecha encontrada), y devolver el enum de Etapas en que se encuentra esa Etapa, que es el estado 
         // actual del envio <----
-        public EtapaEnvio.Etapas ObtenerEstadoActual()
+ 
+
+        public EtapaEnvio ObtenerEtapaActual()
         {
             DateTime ultimaFecha = DateTime.MinValue;
             EtapaEnvio etapaActual = null;
@@ -160,7 +162,7 @@ namespace Dominio
                 }
             }
 
-            return etapaActual.Etapa;
+            return etapaActual;
         }
 
 

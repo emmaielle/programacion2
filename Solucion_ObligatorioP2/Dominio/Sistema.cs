@@ -96,8 +96,14 @@ namespace Dominio
 
         public List<Envio> ListarEnviosEntregados(string pDoc)
         {
-            List<Envio> envEntregados = null;
+            if (this.BuscarCliente (pDoc) != null)  {
+               
+                Usuario cli = this.BuscarCliente(pDoc);
+                cli.ListarEnviosEntregados();
             
+            }
+
+            List<Envio> envEntregados = null;
             return envEntregados;
         }
 
@@ -133,8 +139,6 @@ namespace Dominio
             {
                 Direccion dir = new Direccion(pCalle, pNum,pCP,pCiu,pPais);
                 admin = new Usuario(pUsr, pPass, pNombre, pApellido, pDoc, pTelefono, dir, true);
-
-          
 
                 if (this.listaAdmins == null) this.listaAdmins = new List<Usuario>();
                 this.listaAdmins.Add(admin);
@@ -174,7 +178,6 @@ namespace Dominio
                                  Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal)
         {
             Usuario cli = this.BuscarCliente(pCliente);
-
             if (cli != null)
             {
                 EnvioDocumento env = new EnvioDocumento(pNomRecibio, pFirma, pDirOrigen, pNomDestinatario, pDirDestino,
@@ -252,7 +255,7 @@ namespace Dominio
 
             foreach (Envio env in this.listaEnvios)
             {
-                if (env.ObtenerEstadoActual() == EtapaEnvio.Etapas.EnTransito) 
+                if (env.ObtenerEtapaActual().Etapa == EtapaEnvio.Etapas.EnTransito) 
                 {
                     int diasDesdeIngreso = env.ObtenerDiasDesdeIngreso();
                     if (diasDesdeIngreso > 5) { listEnvios.Add(env); }
