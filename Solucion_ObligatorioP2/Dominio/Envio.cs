@@ -7,16 +7,14 @@ using System.Drawing;
 
 namespace Dominio
 {
-    abstract class Envio
+    public abstract class Envio
     {
         #region Atributos
-        //fijarme si protected estaba bien para las clases base, para que se pasen a sus derivadas
         protected int nroEnvio;
         protected static int ultNroEnvio; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
         protected string estado;
         protected string nombreRecibio;
         protected string firmaRecibio; // IMAGEN!!!
-        protected Usuario cliente;
         protected string nombreDestinatario;
         protected Direccion dirDestinatario;
         protected List<EtapaEnvio> etapasDelEnvio;
@@ -49,12 +47,6 @@ namespace Dominio
         {
             get { return firmaRecibio; }
             set { firmaRecibio = value; }
-        }
-
-        public Usuario Cliente
-        {
-            get { return cliente; }
-            set { cliente = value; }
         }
 
         public string NombreDestinatario
@@ -90,14 +82,13 @@ namespace Dominio
 
         #region Constructor
 
-        public Envio(string pNomRecibio, string pFirma, Usuario pCliente, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
+        public Envio(string pNomRecibio, string pFirma, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
         {
             this.NroEnvio = Envio.ultNroEnvio;
             Envio.ultNroEnvio += 1; // si pongo una propiedad en el atributo, cambiar aca <---
             this.Estado = "En origen";
             this.NombreRecibio = pNomRecibio;
             this.FirmaRecibio = pFirma; // <<---- firma: imagen!
-            this.Cliente = pCliente;
             this.NombreDestinatario = pNomDestinatario;
             this.DirDestinatario = pDirDestino;
             this.EtapasDelEnvio = new List<EtapaEnvio>();
@@ -105,7 +96,7 @@ namespace Dominio
             // si se crea un envio nuevo, en el constructor, de forma automática, se crea la primer 
             // etapa del envio, por eso este constructor toma como parametros tambien la fecha de ingreso
             // y la oficina en la que ingresó:
-            EtapaEnvio unaEtapa = new EtapaEnvio(pFechaIngreso, 1, pOficinaIngreso);
+            EtapaEnvio unaEtapa = new EtapaEnvio(pFechaIngreso, EtapaEnvio.Etapas.EnOrigen, pOficinaIngreso);
            
             // agrego esa etapa en la lista de etapas recorridas de este envío
             this.EtapasDelEnvio.Add(unaEtapa);
@@ -118,16 +109,59 @@ namespace Dominio
 
         public abstract decimal CalcularPrecioFinal();
 
-        public EtapaEnvio CrearNuevaEtapa(DateTime pFecha, int nroEtapa, OficinaPostal pOficinaUbicada)
+        public EtapaEnvio CrearNuevaEtapa(DateTime pFecha, EtapaEnvio.Etapas pEtapa, OficinaPostal pOficinaUbicada)
         {
-            EtapaEnvio otraEtapa = new EtapaEnvio(pFecha, nroEtapa, pOficinaUbicada);
+            EtapaEnvio otraEtapa = new EtapaEnvio(pFecha, pEtapa, pOficinaUbicada);
             return otraEtapa;
         }
 
-        public void AgregarEtapa(EtapaEnvio pNuevaEtapa)
+
+        public void AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa , OficinaPostal pUbicacion)
         {
-            this.EtapasDelEnvio.Add(pNuevaEtapa);
+            EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
+            this.EtapasDelEnvio.Add(etp);
         }
+
+
+        // Busca la EtapaEnvio que representa el ingreso a oficina Postal, y retorna la fecha en que se realizó
+        // y se obtiene la diferencia entre el día actual y la fecha de ingreso.
+        public int ObtenerDiasDesdeIngreso()
+        {
+            DateTime fechaIng = DateTime.Now;
+
+            foreach (EtapaEnvio etp in this.EtapasDelEnvio)
+            {
+                if (etp.Etapa == EtapaEnvio.Etapas.EnOrigen) 
+                {
+                    fechaIng = etp.FechaIngreso;
+                }
+            }
+            TimeSpan time = DateTime.Now - fechaIng;
+
+            int dias = time.Days;
+
+            return dias;
+        }
+
+        // revisa las fechas de ingreso de cada etapaDeEnvio, para quedarse con la etapa que tiene la fecha más cercana al 
+        // día actual (la ultima fecha encontrada), y devolver el enum de Etapas en que se encuentra esa Etapa, que es el estado 
+        // actual del envio <----
+        public EtapaEnvio.Etapas ObtenerEstadoActual()
+        {
+            DateTime ultimaFecha = DateTime.MinValue;
+            EtapaEnvio etapaActual = null;
+
+            foreach (EtapaEnvio etp in this.etapasDelEnvio)
+            {
+                if (etp.FechaIngreso > ultimaFecha)
+                {
+                    etapaActual = etp;
+                }
+            }
+
+            return etapaActual.Etapa;
+        }
+
 
         #endregion
     }

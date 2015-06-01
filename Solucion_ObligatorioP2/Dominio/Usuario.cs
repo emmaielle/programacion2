@@ -16,8 +16,8 @@ namespace Dominio
         private string apellido;
         private string documento;
         private string telefono;
-        private Direccion direccion;
-        private bool esAdmin; 
+        private Direccion direccionUsuario;
+        private bool esAdmin;
         private List<Envio> enviosCliente;
 
         #endregion
@@ -60,17 +60,16 @@ namespace Dominio
             set { telefono = value; }
         }
 
-          public bool EsAdmin
+        public bool EsAdmin
         {
             get { return esAdmin; }
             set { esAdmin = value; }
-              
         }
 
-        public Direccion Direccion
+        public Direccion DireccionUsuario
         {
-            get { return direccion; }
-            set { direccion = value; }
+            get { return direccionUsuario; }
+            set { direccionUsuario = value; }
         }
 
         public List<Envio> EnviosCliente
@@ -83,7 +82,7 @@ namespace Dominio
 
         #region Constructor
 
-        public Usuario(string pUser, string pPassword, string pNombre, string pApellido, string pDocumento, 
+        public Usuario(string pUser, string pPassword, string pNombre, string pApellido, string pDocumento,
             string pTelefono, Direccion direccion, bool esAdmin)
         {
             this.user = pUser;
@@ -91,9 +90,8 @@ namespace Dominio
             this.password = pPassword;
             this.nombre = pNombre;
             this.apellido = pApellido;
-            this.documento = pDocumento;
             this.telefono = pTelefono;
-            this.direccion = direccion;
+            this.direccionUsuario = direccion;
             this.esAdmin = esAdmin;
         }
 
@@ -104,7 +102,7 @@ namespace Dominio
         /*Return lista de envios que superen el monto ingresado */
         public List<Envio> EnviosQueSuperanMonto(decimal pMonto)
         {
-            List<Envio> lista=null;
+            List<Envio> lista = null;
 
             foreach (Envio env in enviosCliente)
             {
@@ -120,27 +118,37 @@ namespace Dominio
         /*Agrega un envio a la lista de envios que tiene el cliente */
         public void AgregarEnvio(Envio pEnvio)
         {
+            if (enviosCliente == null) { enviosCliente = new List<Envio>(); }
             enviosCliente.Add(pEnvio);
         }
 
-        /*Lista todos los envios del cliente que fueron entregados
+        /*Lista todos los envios del cliente que fueron entregados */
         public List<Envio> ListarEnviosEntregados()
         {
-            List<Envio> lista=null;
+            List<Envio> lista = null;
 
             foreach (Envio env in enviosCliente)
-
             {
-
-                if (EtapaEnvio.etapa.Entregado.Equals (env.EtapasDelEnvio) ) {
-                   lista.Add (env);
-                  
+                if (EtapaEnvio.Etapas.Entregado.Equals(env.EtapasDelEnvio))
+                {
+                    lista.Add(env);
                 }
-                return lista;
-            }*/
+            }
+
+            return lista;
         }
+
+        public decimal TotalFacturadoEnIntervalo(DateTime pFechaInicio, DateTime pFechaFinal)
+        {
+            decimal total = 0M;
+
+
+            return total;
+        }
+
         #endregion
     }
+}
 
 
 

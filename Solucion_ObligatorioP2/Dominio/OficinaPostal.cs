@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class OficinaPostal
+    public class OficinaPostal
     {
-
         #region atributos
 
         private int nroOficina;
