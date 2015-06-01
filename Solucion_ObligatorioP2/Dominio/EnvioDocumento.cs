@@ -50,6 +50,15 @@ namespace Dominio
             this.DirOrigen = pDirOrigen;
         }
 
+        // constructor para simulacion de envioDocumento
+
+        public EnvioDocumento(float pPesoKilos, bool pLegal)
+        {
+            base.Peso = TransformarPesoAGramos(pPesoKilos);
+            this.EsDocLegal = pLegal;
+            base.PrecioFinal = CalcularPrecioFinal();
+        }
+
         #endregion
 
         #region Comportamiento
@@ -73,6 +82,32 @@ namespace Dominio
             }
             return final;
             
+        }
+
+        public override bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio)
+        {
+            bool output = false;
+
+            if (pEtapa == EtapaEnvio.Etapas.Entregado)
+            {
+                if (this.esDocLegal)
+                {
+                    if (pNombreRecibio == this.NombreDestinatario)
+                    {
+                        output = true;
+                    }
+                }
+                else { output = true; }
+            }
+            else { output = true;}
+
+            if (output) 
+            {
+                EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
+                this.EtapasDelEnvio.Add(etp);
+            }
+
+            return output;
         }
 
         #endregion

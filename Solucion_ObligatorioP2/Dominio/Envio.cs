@@ -12,7 +12,6 @@ namespace Dominio
         #region Atributos
         protected int nroEnvio;
         protected static int ultNroEnvio; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
-        protected string estado;
         protected string nombreRecibio;
         protected string firmaRecibio; // IMAGEN!!!
         protected string nombreDestinatario;
@@ -82,6 +81,7 @@ namespace Dominio
 
         #region Constructor
 
+        // constructor convencional
         public Envio(string pNomRecibio, string pFirma, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
         {
             this.NroEnvio = Envio.ultNroEnvio;
@@ -103,6 +103,11 @@ namespace Dominio
 
         }
 
+        // constructor para simulación
+        public Envio()
+        {
+        }
+
         #endregion
 
         #region Comportamiento
@@ -115,12 +120,8 @@ namespace Dominio
             return otraEtapa;
         }
 
-
-        public void AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa , OficinaPostal pUbicacion)
-        {
-            EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
-            this.EtapasDelEnvio.Add(etp);
-        }
+        // agrega etapas de rastreo al envío. Es polimórfico para Paquete y Doc, porque Documento necesita confirmar
+        public abstract bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio);
 
 
         // Busca la EtapaEnvio que representa el ingreso a oficina Postal, y retorna la fecha en que se realizó

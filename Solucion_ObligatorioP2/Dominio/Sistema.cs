@@ -262,6 +262,27 @@ namespace Dominio
             return listEnvios;
         }
 
+        // Utiliza el constructor alternativo de EnvioPaquete, que toma solo datos necesarios para calcular el precio final del envio.
+        // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioPaquete
+        public decimal simularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, decimal pValorDecl, 
+                                            bool pSeguro, float pPesoKg)
+        {
+            EnvioPaquete simulPaquete = new EnvioPaquete(pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg);
+            decimal precioSimulado = simulPaquete.PrecioFinal;
+
+            return precioSimulado;
+        }
+
+        // Utiliza el constructor alternativo de EnvioDocumento, que toma solo datos necesarios para calcular el precio final del envio.
+        // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioDocumento
+        public decimal simularEnvioDocumento(float pPesoKilos, bool pLegal)
+        {
+            EnvioDocumento simulDoc = new EnvioDocumento(pPesoKilos, pLegal);
+            decimal precioSimulado = simulDoc.PrecioFinal;
+
+            return precioSimulado;
+        }
+
         #endregion
 
         #region OficinaPostal
