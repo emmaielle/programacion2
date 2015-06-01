@@ -102,7 +102,7 @@ namespace Dominio
         /*Return lista de envios que superen el monto ingresado */
         public List<Envio> EnviosQueSuperanMonto(decimal pMonto)
         {
-            List<Envio> lista = null;
+            List<Envio> lista = new List<Envio>();
 
             foreach (Envio env in enviosCliente)
             {
@@ -118,18 +118,19 @@ namespace Dominio
         /*Agrega un envio a la lista de envios que tiene el cliente */
         public void AgregarEnvio(Envio pEnvio)
         {
-            if (enviosCliente == null) { enviosCliente = new List<Envio>(); }
+            if (enviosCliente == null)
+            { enviosCliente = new List<Envio>(); }
             enviosCliente.Add(pEnvio);
         }
 
         /*Lista todos los envios del cliente que fueron entregados */
         public List<Envio> ListarEnviosEntregados()
         {
-            List<Envio> lista = null;
+            List<Envio> lista = new List<Envio>();
 
             foreach (Envio env in enviosCliente)
             {
-                if (EtapaEnvio.Etapas.Entregado.Equals(env.EtapasDelEnvio))
+                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa)
                 {
                     lista.Add(env);
                 }
@@ -138,18 +139,26 @@ namespace Dominio
             return lista;
         }
 
+        /*Devuelve el total facturado de ese cliente dado un intervalo*/
+
         public decimal TotalFacturadoEnIntervalo(DateTime pFechaInicio, DateTime pFechaFinal)
         {
             decimal total = 0M;
 
-
+            foreach (Envio env in enviosCliente)
+            {
+                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa && env.ObtenerEtapaActual().FechaIngreso >= pFechaInicio
+                    && env.ObtenerEtapaActual().FechaIngreso <= pFechaFinal)
+                {
+                    total = total + env.PrecioFinal;
+                }        
+            }
             return total;
         }
 
         #endregion
     }
 }
-
 
 
 
