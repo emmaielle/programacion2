@@ -44,12 +44,19 @@ namespace Dominio
             : base(pNomRecibio, pFirma, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
             
         {
-            base.Peso = TransformarPesoAGramos(pPesoKilos);
-            this.EsDocLegal = pLegal;
-            base.PrecioFinal = CalcularPrecioFinal();
-            this.DirOrigen = pDirOrigen;
+       
+            if (base.dirDestinatario != pDirOrigen)
+            {
+                this.DirOrigen = pDirOrigen;
+                base.Peso = TransformarPesoAGramos(pPesoKilos);
+                this.EsDocLegal = pLegal;
+                base.PrecioFinal = CalcularPrecioFinal();
+            }
         }
 
+        public EnvioDocumento() { 
+        
+        }
         #endregion
 
         #region Comportamiento

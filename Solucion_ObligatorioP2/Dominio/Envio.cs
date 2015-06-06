@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Dominio
 {
-    public abstract class Envio
+    public abstract class Envio :IComparable <Envio>, IComparer<Envio>
     {
         #region Atributos
         protected int nroEnvio;
@@ -103,6 +103,10 @@ namespace Dominio
 
         }
 
+        public Envio() { 
+        
+        }
+
         #endregion
 
         #region Comportamiento
@@ -165,9 +169,23 @@ namespace Dominio
         }
 
 
-        
-        
+        #endregion
+
+        #region Implementacion Interfaces
+      
+        //Metodo que me compara envios por fechas de manera descendente
+        int IComparable<Envio>.CompareTo(Envio env)
+        {
+            return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaEntrega.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaEntrega);
+         
+        }
+
+        //Me falta implementar este para el metodo listar envios en transito y con demora de 5 dias. Ordeno por fecha y por doc del cliente
+        int IComparer<Envio>.Compare(Envio x, Envio y)
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }
+
 }

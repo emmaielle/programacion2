@@ -76,7 +76,15 @@ namespace Dominio
             this.Calle = pCalle;
             this.Ciudad = pCiudad;
             this.CodPostal = pCodPost;
+
         }
+    
+            public OficinaPostal () { 
+            
+            }
+        
+    
+    
 
         #endregion
 

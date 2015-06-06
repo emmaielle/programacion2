@@ -95,6 +95,10 @@ namespace Dominio
             this.esAdmin = esAdmin;
         }
 
+        public Usuario () {
+        
+        }
+
         #endregion
 
         #region Comportamiento
@@ -108,7 +112,7 @@ namespace Dominio
             {
                 if (env.PrecioFinal > pMonto)
                 {
-                    lista.Add(env);
+                    lista.Add(env); 
                 }
             }
 
@@ -123,19 +127,23 @@ namespace Dominio
             enviosCliente.Add(pEnvio);
         }
 
-        /*Lista todos los envios del cliente que fueron entregados */
+        /*Lista todos los envios del cliente que fueron entregados O ESTAN EN ULTIMA OFICINA POSTAL for fecha de entregado
+         * en forma descendente*/
         public List<Envio> ListarEnviosEntregados()
         {
             List<Envio> lista = new List<Envio>();
 
+
             foreach (Envio env in enviosCliente)
             {
-                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa)
+                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa || EtapaEnvio.Etapas.ParaEntregar == env.ObtenerEtapaActual().Etapa)
                 {
                     lista.Add(env);
                 }
             }
 
+            lista.Sort(); 
+                
             return lista;
         }
 
@@ -155,6 +163,8 @@ namespace Dominio
             }
             return total;
         }
+
+       
 
         #endregion
     }
