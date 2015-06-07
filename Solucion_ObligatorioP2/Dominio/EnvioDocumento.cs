@@ -44,13 +44,16 @@ namespace Dominio
             : base(pNomRecibio, pFirma, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
             
         {
-            base.Peso = TransformarPesoAGramos(pPesoKilos);
-            this.EsDocLegal = pLegal;
-            base.PrecioFinal = CalcularPrecioFinal();
-            this.DirOrigen = pDirOrigen;
+           if (base.dirDestinatario != pDirOrigen)
+            {
+                this.DirOrigen = pDirOrigen;
+                base.Peso = TransformarPesoAGramos(pPesoKilos);
+                this.EsDocLegal = pLegal;
+                base.PrecioFinal = CalcularPrecioFinal();
+            }
         }
 
-         // constructor para simulacion de envioDocumento
+        // constructor para simulacion de envioDocumento
         public EnvioDocumento(float pPesoKilos, bool pLegal) 
         {
             this.esDocLegal = pLegal;
@@ -59,6 +62,10 @@ namespace Dominio
  
         }
 
+        // este constructor vacio para que está??
+        public EnvioDocumento() { 
+        
+        }
         #endregion
 
         #region Comportamiento

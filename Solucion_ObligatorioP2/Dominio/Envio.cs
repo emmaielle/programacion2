@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Dominio
 {
-    public abstract class Envio
+    public abstract class Envio :IComparable <Envio>, IComparer<Envio>
     {
         #region Atributos
         protected int nroEnvio;
@@ -99,6 +99,7 @@ namespace Dominio
         // constructor para simulación
         public Envio()
         {
+
         }
 
         #endregion
@@ -114,11 +115,12 @@ namespace Dominio
         }
 
         // agrega etapas de rastreo al envío. Es polimórfico para Paquete y Doc, porque Documento necesita confirmar
-        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio) 
+        public void AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa , OficinaPostal pUbicacion) // porque sacamos el virtual??
         {
-            return false;
+            EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
+            this.EtapasDelEnvio.Add(etp);
         }
-        
+
 
         // Busca la EtapaEnvio que representa el ingreso a oficina Postal, y retorna la fecha en que se realizó
         // y se obtiene la diferencia entre el día actual y la fecha de ingreso.
@@ -143,8 +145,6 @@ namespace Dominio
         // revisa las fechas de ingreso de cada etapaDeEnvio, para quedarse con la etapa que tiene la fecha más cercana al 
         // día actual (la ultima fecha encontrada), y devolver el enum de Etapas en que se encuentra esa Etapa, que es el estado 
         // actual del envio <----
- 
-
         public EtapaEnvio ObtenerEtapaActual()
         {
             DateTime ultimaFecha = DateTime.MinValue;
@@ -160,8 +160,24 @@ namespace Dominio
 
             return etapaActual;
         }
+        
+        #endregion
 
+        #region Implementacion Interfaces
+      
+        //Metodo que me compara envios por fechas de manera descendente
+        int IComparable<Envio>.CompareTo(Envio env)
+        {
+            return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaEntrega.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaEntrega);
+         
+        }
 
+        //Me falta implementar este para el metodo listar envios en transito y con demora de 5 dias. Ordeno por fecha y por doc del cliente
+        int IComparer<Envio>.Compare(Envio x, Envio y)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
     }
+
 }
