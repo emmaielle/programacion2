@@ -40,10 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-=======
     <Compile Include="ComparadoraDeEnviosPorFechaDesc.cs" />
->>>>>>> 061e277ad2af0dd2ea41a6eb7826a327aba69896
     <Compile Include="Direccion.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="EnvioDocumento.cs" />
