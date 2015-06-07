@@ -30,12 +30,6 @@ namespace Dominio
             set { nroEnvio = value; } // si es un autonumerado, no deberia tener un set, no?
         }
 
-        public string Estado
-        {
-            get { return estado; }
-            set { estado = value; }
-        }
-
         public string NombreRecibio
         {
             get { return nombreRecibio; }
@@ -86,7 +80,6 @@ namespace Dominio
         {
             this.NroEnvio = Envio.ultNroEnvio;
             Envio.ultNroEnvio += 1; // si pongo una propiedad en el atributo, cambiar aca <---
-            this.Estado = "En origen";
             this.NombreRecibio = pNomRecibio;
             this.FirmaRecibio = pFirma; // <<---- firma: imagen!
             this.NombreDestinatario = pNomDestinatario;
@@ -121,8 +114,11 @@ namespace Dominio
         }
 
         // agrega etapas de rastreo al envío. Es polimórfico para Paquete y Doc, porque Documento necesita confirmar
-        public abstract bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio);
-
+        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio) 
+        {
+            return false;
+        }
+        
 
         // Busca la EtapaEnvio que representa el ingreso a oficina Postal, y retorna la fecha en que se realizó
         // y se obtiene la diferencia entre el día actual y la fecha de ingreso.

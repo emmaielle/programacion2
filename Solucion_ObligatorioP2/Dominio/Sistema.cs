@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 
 namespace Dominio
@@ -37,6 +38,7 @@ namespace Dominio
 
         private List<Usuario> listaClientes;
         private List<Usuario> listaAdmins;
+        private List<Usuario> listaUsuarios;
         private List<Envio> listaEnvios;
         private List<OficinaPostal> listaOficinasPostales;
 
@@ -46,6 +48,9 @@ namespace Dominio
 
         void CargarDatosIniciales()
         {
+            this.AltaAdministrador("admin1", "admin", "Administrador", "Administrador", "123456-7", "25005050", "Somewhere st.", "0", "11034", "Montevideo", "Uruguay");
+            this.AltaCliente("cliente1", "cliente", "ElCliente", "ApellidoCliente", "1234567-8", "101010101", "Some St.", "123", "90210", "Miami", "USA");
+            this.AltaCliente("cliente2", "cliente", "Jesus", "Livestrong", "2939486-5", "294759200", "", "298", "AA5783", "Montevideo", "Uruguay");
         }
 
         #endregion
@@ -56,7 +61,7 @@ namespace Dominio
         /*Recibe datos para crear un cliente, crea el cliente y su dirección, lo agrega a la lista y devuelve el cliente nuevo o ya existente */
        
         /*Reveer constructores*/
-        public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pDoc, string pTel, string pCalle, int pNum, 
+        public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pDoc, string pTel, string pCalle, string pNum, 
                                 string pCP, string pCiu, string pPais)  
         {
             Usuario encontro = BuscarCliente(pDoc);
@@ -69,6 +74,8 @@ namespace Dominio
                 
                 if (this.listaClientes == null) this.listaClientes = new List<Usuario>();
                 this.listaClientes.Add(cli);
+                if (this.listaUsuarios == null) this.listaUsuarios = new List<Usuario>();
+                this.listaUsuarios.Add(cli);
             }
             else cli = encontro;
 
@@ -81,17 +88,33 @@ namespace Dominio
         {
             Usuario aux = null;
            
-            int i = 0;
-            while (i < this.listaClientes.Count && aux == null)
+            if (this.listaClientes != null)
             {
-                Usuario cli = this.listaClientes[i];
-                if (cli.Documento == pCi && cli.EsAdmin == false)
+                foreach (Usuario cli in this.listaClientes)
                 {
-                    aux = cli;
+                    if (cli.Documento == pCi && cli.EsAdmin == false)
+                    {
+                        aux = cli;
+                    }
                 }
-                i++;
             }
             return aux;
+        }
+
+        public void ModificarUsuario(string pUsr, string pPass, string pNom, string pApell, string pTel, string pCalle, string pNum,
+                                string pCP, string pCiu, string pPais)
+        {
+            Usuario usr = this.buscarUsuarioPorUsername(pUsr);
+
+            usr.Nombre = pNom;
+            usr.Password = pPass;
+            usr.Apellido = pApell;
+            usr.Telefono = pTel;
+            usr.DireccionUsuario.Calle = pCalle;
+            usr.DireccionUsuario.Numero = pNum;
+            usr.DireccionUsuario.CodPostal = pCP;
+            usr.DireccionUsuario.Ciudad = pCiu;
+            usr.DireccionUsuario.Pais = pPais;
         }
 
         public List<Envio> ListarEnviosEntregados(string pDoc)
@@ -130,7 +153,7 @@ namespace Dominio
         /*TODO: agregar controles y manejar exceptions. Ej: if ci no esta en la lista, add*/
         /*Recibe datos para crear un Admin, crea el admin y lo agrega a la lista*/
         public Usuario AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono, 
-            string pCalle, int pNum, string pCP, string pCiu, string pPais)
+            string pCalle, string pNum, string pCP, string pCiu, string pPais)
         {
             Usuario encontro = BuscarAdmin(pDoc);
             Usuario admin = null;
@@ -142,6 +165,8 @@ namespace Dominio
 
                 if (this.listaAdmins == null) this.listaAdmins = new List<Usuario>();
                 this.listaAdmins.Add(admin);
+                if (this.listaUsuarios == null) this.listaUsuarios = new List<Usuario>();
+                this.listaUsuarios.Add(admin);
             }
             else admin = encontro;
 
@@ -153,18 +178,39 @@ namespace Dominio
         {
             Usuario aux = null;
 
-            int i = 0;
-            // foreach
-            while (i < this.listaAdmins.Count && aux == null)
+            if (this.listaAdmins != null)
             {
-                Usuario admin = this.listaAdmins[i];
-                if (admin.User == pDocumento && admin.EsAdmin == true) 
+                foreach (Usuario adminAux in this.listaAdmins)
                 {
-                    aux = admin;
+                    if (adminAux.User == pDocumento && adminAux.EsAdmin == true)
+                    {
+                        aux = adminAux;
+                    }
                 }
-                i++;
             }
             return aux;
+        }
+
+        #endregion
+
+        #region Usuario
+
+        public Usuario buscarUsuarioPorUsername(string pUser)
+        {
+            Usuario usr = null;
+
+            if (this.listaUsuarios != null)
+            {
+                foreach (Usuario usuLista in this.listaUsuarios)
+                {
+                    if (usuLista.User == pUser)
+                    {
+                        usr = usuLista;
+                    }
+                }
+            }
+
+            return usr;
         }
 
         #endregion
@@ -220,14 +266,18 @@ namespace Dominio
         {
             Envio aux = null;
             int i = 0;
-            while (i < this.listaEnvios.Count && aux == null)
+
+            if (this.listaEnvios != null)
             {
-                Envio env = this.listaEnvios[i];
-                if (env.NroEnvio == pId)
+                while (i < this.listaEnvios.Count && aux == null)
                 {
-                    aux = env;
+                    Envio env = this.listaEnvios[i];
+                    if (env.NroEnvio == pId)
+                    {
+                        aux = env;
+                    }
+                    i++;
                 }
-                i++;
             }
             return aux;
         }
@@ -253,15 +303,17 @@ namespace Dominio
         {
             List<Envio> listEnvios = null;
 
-            foreach (Envio env in this.listaEnvios)
+            if (this.listaEnvios != null)
             {
-                if (env.ObtenerEtapaActual().Etapa == EtapaEnvio.Etapas.EnTransito) 
+                foreach (Envio env in this.listaEnvios)
                 {
-                    int diasDesdeIngreso = env.ObtenerDiasDesdeIngreso();
-                    if (diasDesdeIngreso > 5) { listEnvios.Add(env); }
+                    if (env.ObtenerEtapaActual().Etapa == EtapaEnvio.Etapas.EnTransito)
+                    {
+                        int diasDesdeIngreso = env.ObtenerDiasDesdeIngreso();
+                        if (diasDesdeIngreso > 5) { listEnvios.Add(env); }
+                    }
                 }
             }
-
             return listEnvios;
         }
 
@@ -312,15 +364,17 @@ namespace Dominio
         {
             OficinaPostal ofi = null;
 
-            foreach(OficinaPostal item in this.listaOficinasPostales)
+            if (this.listaOficinasPostales != null)
             {
-                if (item.Ciudad.ToLower() == pCiudad.ToLower() && item.Calle.ToLower() == pCalle.ToLower() &&
-                    item.CodPostal.ToLower() == pCP.ToLower() && item.Pais.ToLower() == pPais.ToLower() && item.Numero == pNroCalle) 
+                foreach (OficinaPostal item in this.listaOficinasPostales)
                 {
-                    ofi = item;
+                    if (item.Ciudad.ToLower() == pCiudad.ToLower() && item.Calle.ToLower() == pCalle.ToLower() &&
+                        item.CodPostal.ToLower() == pCP.ToLower() && item.Pais.ToLower() == pPais.ToLower() && item.Numero == pNroCalle)
+                    {
+                        ofi = item;
+                    }
                 }
             }
-
             return ofi;
         }
 
@@ -329,12 +383,34 @@ namespace Dominio
         {
             OficinaPostal ofi = null;
 
-            foreach (OficinaPostal item in this.listaOficinasPostales)
+            if (this.listaOficinasPostales != null)
             {
-                if (item.NroOficina == pNroOficina) ofi = item;
+                foreach (OficinaPostal item in this.listaOficinasPostales)
+                {
+                    if (item.NroOficina == pNroOficina) ofi = item;
+                }
             }
-
             return ofi;
+        }
+
+        #endregion
+
+        #region Validaciones
+
+        public bool ChequearEsSoloNumero(string pString)
+        {
+            int nroDelString;
+            bool resultado = int.TryParse(pString, out nroDelString);
+
+            return resultado;
+        }
+
+        public bool ChequearEsFormatoCedula(string pString)
+        {
+            string regEx = @"\d{7}-\d";
+            var match = Regex.Match(pString, regEx);
+
+            return match.Success;
         }
 
         #endregion

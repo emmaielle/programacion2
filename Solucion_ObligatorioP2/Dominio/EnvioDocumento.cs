@@ -50,6 +50,15 @@ namespace Dominio
             this.DirOrigen = pDirOrigen;
         }
 
+         // constructor para simulacion de envioDocumento
+        public EnvioDocumento(float pPesoKilos, bool pLegal) 
+        {
+            this.esDocLegal = pLegal;
+            base.Peso = pPesoKilos;
+            base.PrecioFinal = CalcularPrecioFinal();
+ 
+        }
+
         #endregion
 
         #region Comportamiento

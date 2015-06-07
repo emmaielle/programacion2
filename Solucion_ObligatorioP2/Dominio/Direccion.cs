@@ -11,7 +11,7 @@ namespace Dominio
         #region Atributos
 
         private string calle;
-        private int numero;
+        private string numero;
         private string codPostal;
         private string ciudad;
         private string pais;
@@ -25,8 +25,7 @@ namespace Dominio
             get { return calle; }
             set { calle = value; }
         }
-
-        public int Numero
+        public string Numero
         {
             get { return numero; }
             set { numero = value; }
@@ -54,7 +53,7 @@ namespace Dominio
 
         #region Constructor
 
-        public Direccion(string pCalle, int pNumero, string pCodPostal, string pCiudad, string pPais)
+        public Direccion(string pCalle, string pNumero, string pCodPostal, string pCiudad, string pPais)
         {
             this.calle = pCalle;
             this.numero = pNumero;
