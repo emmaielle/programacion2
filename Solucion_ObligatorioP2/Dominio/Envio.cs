@@ -106,21 +106,18 @@ namespace Dominio
 
         #region Comportamiento
 
+        // forma de implementación depende de tipo de envío
         public abstract decimal CalcularPrecioFinal();
 
-        public EtapaEnvio CrearNuevaEtapa(DateTime pFecha, EtapaEnvio.Etapas pEtapa, OficinaPostal pOficinaUbicada)
-        {
-            EtapaEnvio otraEtapa = new EtapaEnvio(pFecha, pEtapa, pOficinaUbicada);
-            return otraEtapa;
-        }
-
-        // agrega etapas de rastreo al envío. Es polimórfico para Paquete y Doc, porque Documento necesita confirmar
-        public void AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa , OficinaPostal pUbicacion) // porque sacamos el virtual??
+        // agregar etapas de rastreo al envío. Es polimórfico para EnvioDocumento, porque Documento necesita corroborar quien 
+        // recibe el envio para agregarla (ver metodo en EnvioDocumento)
+        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio) 
         {
             EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
             this.EtapasDelEnvio.Add(etp);
-        }
 
+            return true;
+        }
 
         // Busca la EtapaEnvio que representa el ingreso a oficina Postal, y retorna la fecha en que se realizó
         // y se obtiene la diferencia entre el día actual y la fecha de ingreso.

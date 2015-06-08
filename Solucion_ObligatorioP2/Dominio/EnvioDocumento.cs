@@ -91,6 +91,30 @@ namespace Dominio
             
         }
 
+        // variante de método base AgregarEtapa, que corrobora si el documento es legal tiene que ser recibido (pNomRecibio) por el 
+        // propio destinatario (base.NombreDestinatario), y devuelve un bool para éxito o fracaso.
+        public override bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio)
+        {
+            bool seHace = true;
+            bool exito = false;
+
+            if (this.esDocLegal)
+            {
+                if (pNombreRecibio != base.NombreDestinatario)
+                {
+                    seHace = false;
+                }
+            }
+
+            if (seHace) 
+            { 
+                base.AgregarEtapa(pFechaIngreso, pEtapa, pUbicacion, pNombreRecibio);
+                exito = true;
+            }
+
+            return exito;
+        }
+
         #endregion
 
     }

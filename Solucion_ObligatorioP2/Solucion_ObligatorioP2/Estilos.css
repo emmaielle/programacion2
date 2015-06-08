@@ -16,7 +16,7 @@
     text-align:center;
 }
 
-#div_formulario_registro, #div_formulario_homeCli {
+#div_formulario_registro, #div_formulario_homeCli, #div_formulario_homeAdmin {
     width:540px;
     margin:auto;
     text-align:center;

@@ -57,10 +57,10 @@ namespace Dominio
 
         #region Clientes
 
-        /*TODO: agregar controles y manejar exceptions. Ej: if ci no esta en la lista, add*/
-        /*Recibe datos para crear un cliente, crea el cliente y su dirección, lo agrega a la lista y devuelve el cliente nuevo o ya existente */
-       
-        /*Reveer constructores*/
+        /*TODO: agregar controles y manejar exceptions */
+
+        // Recibe datos para crear un cliente, crea el cliente y su dirección, lo agrega a la lista de usuarios y de clientes y devuelve el 
+        // cliente nuevo o el ya existente
         public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pDoc, string pTel, string pCalle, string pNum, 
                                 string pCP, string pCiu, string pPais)  
         {
@@ -100,36 +100,22 @@ namespace Dominio
             return aux;
         }
 
-        public void ModificarUsuario(string pUsr, string pPass, string pNom, string pApell, string pTel, string pCalle, string pNum,
-                                string pCP, string pCiu, string pPais)
-        {
-            Usuario usr = this.buscarUsuarioPorUsername(pUsr);
-
-            usr.Nombre = pNom;
-            usr.Password = pPass;
-            usr.Apellido = pApell;
-            usr.Telefono = pTel;
-            usr.DireccionUsuario.Calle = pCalle;
-            usr.DireccionUsuario.Numero = pNum;
-            usr.DireccionUsuario.CodPostal = pCP;
-            usr.DireccionUsuario.Ciudad = pCiu;
-            usr.DireccionUsuario.Pais = pPais;
-        }
-
+        // retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados
         public List<Envio> ListarEnviosEntregados(string pDoc)
         {
-            if (this.BuscarCliente (pDoc) != null)  {
-               
+            List<Envio> envEntregados = null;
+
+            if (this.BuscarCliente (pDoc) != null)  
+            {   
                 Usuario cli = this.BuscarCliente(pDoc);
-                cli.ListarEnviosEntregados();
+                envEntregados = cli.ListarEnviosEntregados();
             
             }
-            List<Envio> envEntregados = null;
             return envEntregados;
         }
 
 
-        // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo //    
+        // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo (en Usuario)    
         public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
         {
             decimal total = 0M;
@@ -148,8 +134,10 @@ namespace Dominio
 
         #region Administradores
 
-        /*TODO: agregar controles y manejar exceptions. Ej: if ci no esta en la lista, add*/
-        /*Recibe datos para crear un Admin, crea el admin y lo agrega a la lista*/
+        /*TODO: agregar controles y manejar exceptions*/
+
+        // Recibe datos para crear un Admin, crea el admin y lo agrega a la lista de usuarios y de admins. Devuelve el admin nuevo o 
+        // el ya existente
         public Usuario AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono, 
             string pCalle, string pNum, string pCP, string pCiu, string pPais)
         {
@@ -193,6 +181,7 @@ namespace Dominio
 
         #region Usuario
 
+        // busca usuario (ya sea admin o cliente) por su nombre de usuario elegido. Devuelve el usuario o null //
         public Usuario buscarUsuarioPorUsername(string pUser)
         {
             Usuario usr = null;
@@ -211,11 +200,30 @@ namespace Dominio
             return usr;
         }
 
+        // toma parametros que corresponden a las propiedades de todos los atributos del usuario (inclusive su direccion) para modificar
+        // alguno de ellos o todos
+        public void ModificarUsuario(string pUsr, string pPass, string pNom, string pApell, string pTel, string pCalle, string pNum,
+                                string pCP, string pCiu, string pPais)
+        {
+            Usuario usr = this.buscarUsuarioPorUsername(pUsr);
+
+            usr.Nombre = pNom;
+            usr.Password = pPass;
+            usr.Apellido = pApell;
+            usr.Telefono = pTel;
+            usr.DireccionUsuario.Calle = pCalle;
+            usr.DireccionUsuario.Numero = pNum;
+            usr.DireccionUsuario.CodPostal = pCP;
+            usr.DireccionUsuario.Ciudad = pCiu;
+            usr.DireccionUsuario.Pais = pPais;
+        }
+
         #endregion
 
         #region Envios
 
         /* TODO: agregar controles y manejar exceptions */
+
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de documento, 
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
         public void AltaEnvioDocumento(string pNomRecibio, string pFirma, string pCliente, Direccion pDirOrigen, string pNomDestinatario, 
@@ -238,6 +246,7 @@ namespace Dominio
         } 
 
         /* TODO: agregar controles y manejar exceptions */
+
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de paquetes, 
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
         public void AltaEnvioPaquete(string pNomRecibio, string pFirma, string pCliente, string pNomDestinatario,
@@ -280,7 +289,7 @@ namespace Dominio
             return aux;
         }
 
-        // dandole de input el numero de envio, busca si existe el envio. Si existe, 
+        // dandole de parámetro el numero de envio, busca si existe el envio. Si existe, 
         // busca las etapas de envio a partir de ese objeto, para procesarse luego.
         // Si no existe el envio, devuelve una lista vacia.
         public List<EtapaEnvio> RastrearEnvio(int pNroEnvio)
@@ -343,7 +352,7 @@ namespace Dominio
 
         // Crea una oficina postal luego de revisar si existe una oficina con los mismos datos, 
         // y la suma a la lista de oficinas postales del sistema. No devuelve nada.
-        public void AltaOficina(string pCiudad, string pCalle, string pCP, string pPais, int pNro)
+        public void AltaOficina(string pCiudad, string pCalle, string pCP, string pPais, string pNro)
         {
             OficinaPostal encontro = BuscarOficinaXDatos(pCiudad, pCalle, pCP, pPais, pNro);
             OficinaPostal ofi = null;
@@ -359,7 +368,7 @@ namespace Dominio
         // Busca la oficina postal por la identidad de todos sus atributos, porque lo que no queremos es que se repitan oficinas al dar
         // altas, ya que el identificador de las oficinas es un autonumerado y eso no lo podemos controlar en la creación.
         // Devuelve la oficina encontrada o NULL
-        public OficinaPostal BuscarOficinaXDatos(string pCiudad, string pCalle, string pCP, string pPais, int pNroCalle)
+        public OficinaPostal BuscarOficinaXDatos(string pCiudad, string pCalle, string pCP, string pPais, string pNroCalle)
         {
             OficinaPostal ofi = null;
 
@@ -367,8 +376,10 @@ namespace Dominio
             {
                 foreach (OficinaPostal item in this.listaOficinasPostales)
                 {
-                    if (item.Ciudad.ToLower() == pCiudad.ToLower() && item.Calle.ToLower() == pCalle.ToLower() &&
-                        item.CodPostal.ToLower() == pCP.ToLower() && item.Pais.ToLower() == pPais.ToLower() && item.Numero == pNroCalle)
+                    if (item.DireccionOfiPostal.Ciudad.ToLower() == pCiudad.ToLower() &&
+                        item.DireccionOfiPostal.Calle.ToLower() == pCalle.ToLower() &&
+                        item.DireccionOfiPostal.CodPostal.ToLower() == pCP.ToLower() &&
+                        item.DireccionOfiPostal.Pais.ToLower() == pPais.ToLower() && item.DireccionOfiPostal.Numero == pNroCalle)
                     {
                         ofi = item;
                     }

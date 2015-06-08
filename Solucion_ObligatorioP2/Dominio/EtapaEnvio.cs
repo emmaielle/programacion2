@@ -55,7 +55,6 @@ namespace Dominio
 
         #region Constructor
 
-        /*Me falta la etapa, no deberia ser con property o si?*/
         public EtapaEnvio(DateTime pFechaIng, Etapas pEtp, OficinaPostal pUbicacion) 
         {
             this.etapa = pEtp;

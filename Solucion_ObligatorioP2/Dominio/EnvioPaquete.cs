@@ -123,14 +123,6 @@ namespace Dominio
             return (this.Alto * this.Ancho * this.Largo) / 6000;
         }
 
-        public override bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio)
-        {
-            EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
-            this.EtapasDelEnvio.Add(etp);
-            return true;
-
-        }
-
         #endregion
 
     }

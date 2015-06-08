@@ -23,9 +23,8 @@ namespace Solucion_ObligatorioP2
             if (!this.IsPostBack)
             {
                 cargarCliente();
-                p_home_messageServer.InnerText = "";
-
             }
+            else p_home_messageServer.InnerText = "";
         }
 
         protected void btn_homeCli_modificar_Click(object sender, EventArgs e)
