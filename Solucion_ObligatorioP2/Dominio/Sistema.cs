@@ -100,36 +100,6 @@ namespace Dominio
             return aux;
         }
 
-        // retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados
-        public List<Envio> ListarEnviosEntregados(string pDoc)
-        {
-            List<Envio> envEntregados = null;
-
-            if (this.BuscarCliente (pDoc) != null)  
-            {   
-                Usuario cli = this.BuscarCliente(pDoc);
-                envEntregados = cli.ListarEnviosEntregados();
-            
-            }
-            return envEntregados;
-        }
-
-
-        // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo (en Usuario)    
-        public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
-        {
-            decimal total = 0M;
-
-            Usuario cli = this.BuscarCliente(pDoc);
-
-            if (cli != null)
-            {
-                total = cli.TotalFacturadoEnIntervalo(pFechaInicio, pFechaFinal);
-            }
-
-            return total;
-        }
-
         #endregion
 
         #region Administradores
@@ -182,7 +152,7 @@ namespace Dominio
         #region Usuario
 
         // busca usuario (ya sea admin o cliente) por su nombre de usuario elegido. Devuelve el usuario o null //
-        public Usuario buscarUsuarioPorUsername(string pUser)
+        public Usuario BuscarUsuarioPorUsername(string pUser)
         {
             Usuario usr = null;
 
@@ -205,7 +175,7 @@ namespace Dominio
         public void ModificarUsuario(string pUsr, string pPass, string pNom, string pApell, string pTel, string pCalle, string pNum,
                                 string pCP, string pCiu, string pPais)
         {
-            Usuario usr = this.buscarUsuarioPorUsername(pUsr);
+            Usuario usr = this.BuscarUsuarioPorUsername(pUsr);
 
             usr.Nombre = pNom;
             usr.Password = pPass;
@@ -325,9 +295,47 @@ namespace Dominio
             return listEnvios;
         }
 
+        // retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados
+        public List<Envio> ListarEnviosEntregados(string pDoc)
+        {
+            List<Envio> envEntregados = null;
+
+            if (this.BuscarCliente(pDoc) != null)
+            {
+                Usuario cli = this.BuscarCliente(pDoc);
+                envEntregados = cli.ListarEnviosEntregados();
+
+            }
+            return envEntregados;
+        }
+
+
+        // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo (en Usuario)    
+        public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
+        {
+            decimal total = 0M;
+
+            Usuario cli = this.BuscarCliente(pDoc);
+
+            if (cli != null)
+            {
+                total = cli.TotalFacturadoEnIntervalo(pFechaInicio, pFechaFinal);
+            }
+
+            return total;
+        }
+
+
+        // ------------------>>>> faltaba <<<-----------
+        public List<Envio> EnviosQueSuperanMontoParaCliente(string pDoc, decimal pMonto)
+        {
+            return new List<Envio>();
+        }
+
+
         // Utiliza el constructor alternativo de EnvioPaquete, que toma solo datos necesarios para calcular el precio final del envio.
         // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioPaquete
-        public decimal simularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, decimal pValorDecl, 
+        public decimal SimularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, decimal pValorDecl, 
                                             bool pSeguro, float pPesoKg)
         {
             EnvioPaquete simulPaquete = new EnvioPaquete(pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg);
@@ -338,7 +346,7 @@ namespace Dominio
 
         // Utiliza el constructor alternativo de EnvioDocumento, que toma solo datos necesarios para calcular el precio final del envio.
         // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioDocumento
-        public decimal simularEnvioDocumento(float pPesoKilos, bool pLegal)
+        public decimal SimularEnvioDocumento(float pPesoKilos, bool pLegal)
         {
             EnvioDocumento simulDoc = new EnvioDocumento(pPesoKilos, pLegal);
             decimal precioSimulado = simulDoc.PrecioFinal;

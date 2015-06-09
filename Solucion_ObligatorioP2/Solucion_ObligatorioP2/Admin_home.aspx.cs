@@ -65,7 +65,7 @@ namespace Solucion_ObligatorioP2
         protected void cargarCliente()
         {
             string usrName = Session["UsuarioLogueado"].ToString();
-            Usuario usuario = elSis.buscarUsuarioPorUsername(usrName);
+            Usuario usuario = elSis.BuscarUsuarioPorUsername(usrName);
 
             txt_homeAdmin_Apellido.Text = usuario.Apellido;
             txt_homeAdmin_Calle.Text = usuario.DireccionUsuario.Calle;
