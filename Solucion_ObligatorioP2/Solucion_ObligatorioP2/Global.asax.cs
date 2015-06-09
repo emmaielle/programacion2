@@ -17,7 +17,9 @@ namespace Solucion_ObligatorioP2
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+            Session["esAdmin"] = false;
+            Session["esCliente"] = false;
+            Session["UsuarioLogueado"] = "";
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

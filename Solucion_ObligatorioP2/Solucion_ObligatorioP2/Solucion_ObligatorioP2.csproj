@@ -57,9 +57,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin_ControlPanel.aspx" />
-    <Content Include="Admin_login.aspx" />
-    <Content Include="Cliente_Home.aspx" />
+    <Content Include="Admin_ActualizarEnvio.aspx" />
+    <Content Include="Admin_CrearAdmin.aspx" />
+    <Content Include="Admin_crearEnvio.aspx" />
+    <Content Include="Admin_home.aspx" />
+    <Content Include="Ambos_EnTransito5dias.aspx" />
+    <Content Include="Ambos_EnvSuperanMonto.aspx" />
+    <Content Include="Ambos_RastrearEnvio.aspx" />
+    <Content Include="Ambos_SimularEnvio.aspx" />
+    <Content Include="Ambos_TotalFacturado.aspx" />
+    <Content Include="Cliente_home.aspx" />
     <Content Include="Estilos.css" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
@@ -67,26 +74,75 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin_ControlPanel.aspx.cs">
-      <DependentUpon>Admin_ControlPanel.aspx</DependentUpon>
+    <Compile Include="Admin_ActualizarEnvio.aspx.cs">
+      <DependentUpon>Admin_ActualizarEnvio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin_ControlPanel.aspx.designer.cs">
-      <DependentUpon>Admin_ControlPanel.aspx</DependentUpon>
+    <Compile Include="Admin_ActualizarEnvio.aspx.designer.cs">
+      <DependentUpon>Admin_ActualizarEnvio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin_login.aspx.cs">
-      <DependentUpon>Admin_login.aspx</DependentUpon>
+    <Compile Include="Admin_CrearAdmin.aspx.cs">
+      <DependentUpon>Admin_CrearAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin_login.aspx.designer.cs">
-      <DependentUpon>Admin_login.aspx</DependentUpon>
+    <Compile Include="Admin_CrearAdmin.aspx.designer.cs">
+      <DependentUpon>Admin_CrearAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Cliente_Home.aspx.cs">
-      <DependentUpon>Cliente_Home.aspx</DependentUpon>
+    <Compile Include="Admin_crearEnvio.aspx.cs">
+      <DependentUpon>Admin_crearEnvio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Cliente_Home.aspx.designer.cs">
-      <DependentUpon>Cliente_Home.aspx</DependentUpon>
+    <Compile Include="Admin_crearEnvio.aspx.designer.cs">
+      <DependentUpon>Admin_crearEnvio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_home.aspx.cs">
+      <DependentUpon>Admin_home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin_home.aspx.designer.cs">
+      <DependentUpon>Admin_home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ambos_EnTransito5dias.aspx.cs">
+      <DependentUpon>Ambos_EnTransito5dias.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ambos_EnTransito5dias.aspx.designer.cs">
+      <DependentUpon>Ambos_EnTransito5dias.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ambos_EnvSuperanMonto.aspx.cs">
+      <DependentUpon>Ambos_EnvSuperanMonto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ambos_EnvSuperanMonto.aspx.designer.cs">
+      <DependentUpon>Ambos_EnvSuperanMonto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ambos_RastrearEnvio.aspx.cs">
+      <DependentUpon>Ambos_RastrearEnvio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ambos_RastrearEnvio.aspx.designer.cs">
+      <DependentUpon>Ambos_RastrearEnvio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ambos_SimularEnvio.aspx.cs">
+      <DependentUpon>Ambos_SimularEnvio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ambos_SimularEnvio.aspx.designer.cs">
+      <DependentUpon>Ambos_SimularEnvio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ambos_TotalFacturado.aspx.cs">
+      <DependentUpon>Ambos_TotalFacturado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ambos_TotalFacturado.aspx.designer.cs">
+      <DependentUpon>Ambos_TotalFacturado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Cliente_home.aspx.cs">
+      <DependentUpon>Cliente_home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Cliente_home.aspx.designer.cs">
+      <DependentUpon>Cliente_home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -98,19 +154,12 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pags_Admin.Master.cs">
-      <DependentUpon>Pags_Admin.Master</DependentUpon>
+    <Compile Include="Master.Master.cs">
+      <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pags_Admin.Master.designer.cs">
-      <DependentUpon>Pags_Admin.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Pags_Cliente.Master.cs">
-      <DependentUpon>Pags_Cliente.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pags_Cliente.Master.designer.cs">
-      <DependentUpon>Pags_Cliente.Master</DependentUpon>
+    <Compile Include="Master.Master.designer.cs">
+      <DependentUpon>Master.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Registro_Usuario.aspx.cs">
@@ -122,14 +171,19 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pags_Cliente.Master" />
-    <Content Include="Pags_Admin.Master" />
+    <Content Include="Master.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dominio\Dominio.csproj">
+      <Project>{74f911b5-ac2a-4f9a-ab44-515c1e7ad06d}</Project>
+      <Name>Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

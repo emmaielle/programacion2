@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Solucion_ObligatorioP2
 {
-    public partial class Admin_ControlPanel : System.Web.UI.Page
+    public partial class Ambos_EnvSuperanMonto : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

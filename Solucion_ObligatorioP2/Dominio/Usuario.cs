@@ -95,8 +95,8 @@ namespace Dominio
             this.esAdmin = esAdmin;
         }
 
-        public Usuario () {
-        
+        public Usuario () { //<<<---
+
         }
 
         #endregion
@@ -133,7 +133,6 @@ namespace Dominio
         {
             List<Envio> lista = new List<Envio>();
 
-
             foreach (Envio env in enviosCliente)
             {
                 if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa || EtapaEnvio.Etapas.ParaEntregar == env.ObtenerEtapaActual().Etapa)
@@ -141,18 +140,14 @@ namespace Dominio
                     lista.Add(env);
                 }
             }
-
             lista.Sort(); 
-                
             return lista;
         }
 
         /*Devuelve el total facturado de ese cliente dado un intervalo*/
-
         public decimal TotalFacturadoEnIntervalo(DateTime pFechaInicio, DateTime pFechaFinal)
         {
             decimal total = 0M;
-
             foreach (Envio env in enviosCliente)
             {
                 if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa && env.ObtenerEtapaActual().FechaIngreso >= pFechaInicio
@@ -163,13 +158,9 @@ namespace Dominio
             }
             return total;
         }
-
-       
-
         #endregion
     }
 }
-
 
 
 

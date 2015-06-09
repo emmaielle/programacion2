@@ -21,7 +21,7 @@ namespace Dominio
         private DateTime fechaIngreso;
         private Etapas etapa;
         private OficinaPostal ubicacion;
-        private DateTime fechaEntrega;
+ 
        
         #endregion
 
@@ -31,12 +31,6 @@ namespace Dominio
         {
             get { return fechaIngreso; }
             set { fechaIngreso = value; }
-        }
-
-        public DateTime FechaEntrega
-        {
-            get { return fechaEntrega; }
-            set { fechaEntrega = value; }
         }
 
         public Etapas Etapa
@@ -55,7 +49,6 @@ namespace Dominio
 
         #region Constructor
 
-        /*Me falta la etapa, no deberia ser con property o si?*/
         public EtapaEnvio(DateTime pFechaIng, Etapas pEtp, OficinaPostal pUbicacion) 
         {
             this.etapa = pEtp;

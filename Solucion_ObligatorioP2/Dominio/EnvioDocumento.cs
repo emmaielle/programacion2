@@ -44,8 +44,7 @@ namespace Dominio
             : base(pNomRecibio, pFirma, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
             
         {
-       
-            if (base.dirDestinatario != pDirOrigen)
+           if (base.dirDestinatario != pDirOrigen)
             {
                 this.DirOrigen = pDirOrigen;
                 base.Peso = TransformarPesoAGramos(pPesoKilos);
@@ -54,6 +53,16 @@ namespace Dominio
             }
         }
 
+        // constructor para simulacion de envioDocumento
+        public EnvioDocumento(float pPesoKilos, bool pLegal) 
+        {
+            this.esDocLegal = pLegal;
+            base.Peso = pPesoKilos;
+            base.PrecioFinal = CalcularPrecioFinal();
+ 
+        }
+
+        // este constructor vacio para que está??
         public EnvioDocumento() { 
         
         }
@@ -80,6 +89,30 @@ namespace Dominio
             }
             return final;
             
+        }
+
+        // variante de método base AgregarEtapa, que corrobora si el documento es legal tiene que ser recibido (pNomRecibio) por el 
+        // propio destinatario (base.NombreDestinatario), y devuelve un bool para éxito o fracaso.
+        public override bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio)
+        {
+            bool seHace = true;
+            bool exito = false;
+
+            if (this.esDocLegal)
+            {
+                if (pNombreRecibio != base.NombreDestinatario)
+                {
+                    seHace = false;
+                }
+            }
+
+            if (seHace) 
+            { 
+                base.AgregarEtapa(pFechaIngreso, pEtapa, pUbicacion, pNombreRecibio);
+                exito = true;
+            }
+
+            return exito;
         }
 
         #endregion

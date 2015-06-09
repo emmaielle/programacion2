@@ -12,7 +12,6 @@ namespace Dominio
         #region Atributos
         protected int nroEnvio;
         protected static int ultNroEnvio; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
-        protected string estado;
         protected string nombreRecibio;
         protected string firmaRecibio; // IMAGEN!!!
         protected string nombreDestinatario;
@@ -29,12 +28,6 @@ namespace Dominio
         {
             get { return nroEnvio; }
             set { nroEnvio = value; } // si es un autonumerado, no deberia tener un set, no?
-        }
-
-        public string Estado
-        {
-            get { return estado; }
-            set { estado = value; }
         }
 
         public string NombreRecibio
@@ -82,11 +75,11 @@ namespace Dominio
 
         #region Constructor
 
+        // constructor convencional
         public Envio(string pNomRecibio, string pFirma, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
         {
             this.NroEnvio = Envio.ultNroEnvio;
             Envio.ultNroEnvio += 1; // si pongo una propiedad en el atributo, cambiar aca <---
-            this.Estado = "En origen";
             this.NombreRecibio = pNomRecibio;
             this.FirmaRecibio = pFirma; // <<---- firma: imagen!
             this.NombreDestinatario = pNomDestinatario;
@@ -103,29 +96,28 @@ namespace Dominio
 
         }
 
-        public Envio() { 
-        
+        // constructor para simulación
+        public Envio()
+        {
+
         }
 
         #endregion
 
         #region Comportamiento
 
+        // forma de implementación depende de tipo de envío
         public abstract decimal CalcularPrecioFinal();
 
-        public EtapaEnvio CrearNuevaEtapa(DateTime pFecha, EtapaEnvio.Etapas pEtapa, OficinaPostal pOficinaUbicada)
-        {
-            EtapaEnvio otraEtapa = new EtapaEnvio(pFecha, pEtapa, pOficinaUbicada);
-            return otraEtapa;
-        }
-
-
-        public void AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa , OficinaPostal pUbicacion)
+        // agregar etapas de rastreo al envío. Es polimórfico para EnvioDocumento, porque Documento necesita corroborar quien 
+        // recibe el envio para agregarla (ver metodo en EnvioDocumento)
+        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio) 
         {
             EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
             this.EtapasDelEnvio.Add(etp);
-        }
 
+            return true;
+        }
 
         // Busca la EtapaEnvio que representa el ingreso a oficina Postal, y retorna la fecha en que se realizó
         // y se obtiene la diferencia entre el día actual y la fecha de ingreso.
@@ -150,8 +142,6 @@ namespace Dominio
         // revisa las fechas de ingreso de cada etapaDeEnvio, para quedarse con la etapa que tiene la fecha más cercana al 
         // día actual (la ultima fecha encontrada), y devolver el enum de Etapas en que se encuentra esa Etapa, que es el estado 
         // actual del envio <----
- 
-
         public EtapaEnvio ObtenerEtapaActual()
         {
             DateTime ultimaFecha = DateTime.MinValue;
@@ -167,8 +157,7 @@ namespace Dominio
 
             return etapaActual;
         }
-
-
+        
         #endregion
 
         #region Implementacion Interfaces
@@ -176,7 +165,7 @@ namespace Dominio
         //Metodo que me compara envios por fechas de manera descendente
         int IComparable<Envio>.CompareTo(Envio env)
         {
-            return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaEntrega.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaEntrega);
+            return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaIngreso.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaIngreso);
          
         }
 

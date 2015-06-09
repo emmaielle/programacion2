@@ -10,22 +10,56 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div id="home_link_loginAdmin">
-            <asp:LinkButton ID="link_loginAdmin"  CssClass="letrasLinks" runat="server" PostBackUrl="~/Admin_login.aspx">Login Administrador</asp:LinkButton></div>
         <div id="div_home_contenedora">
-        <p style="font-size:22px; font-family:Verdana;" class="letrasLinks">Bienvenido a nom_EmpresaPostal</p>
-        <p style="font-size:13px; font-family:Verdana;" class="letrasLinks">Registrate como cliente o ingresa si ya estás registrado para simular o seguir tus envíos</p>
-        <div id="div_home_central">
-             <asp:Login ID="login_cliente" runat="server" BackColor="#F7F6F3" BorderColor="#E6E2D8" BorderStyle="Solid" BorderWidth="2px" Font-Names="Arial" Font-Size="15px" LoginButtonText="Iniciar sesión" TitleText="Iniciar sesión como Cliente" BorderPadding="5" ForeColor="#333333" Width="300px" DestinationPageUrl="~/Cliente_Home.aspx">
-                <CheckBoxStyle Font-Size="10px" />
-                <InstructionTextStyle Font-Italic="True" ForeColor="Black" />
-                <LoginButtonStyle BackColor="#FFFBFF" BorderColor="#CCCCCC" BorderStyle="Solid" BorderWidth="1px" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284775" />
-                <TextBoxStyle Font-Size="0.8em" />
-                <TitleTextStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="#FFFFFF" Font-Size="0.9em" Wrap="True" />
-            </asp:Login>
-            <asp:LinkButton ID="lnk_home_registrarCliente" CssClass="letrasLinks" runat="server" PostBackUrl="~/Registro_Usuario.aspx" >No tienes usuario?</asp:LinkButton>
+            <p style="font-size:22px; font-family:Verdana;" class="letrasLinks">Bienvenido a EmpresaPostal</p>
+            <div id="div_home_central">
+                <p style="font-size:13px; font-family:Verdana;" class="letrasLinks">Registrate como cliente o ingresa si ya estás registrado para simular o seguir tus envíos</p>
+            
+                <div id="div_login_cliente">
+                    <p id="p_inicio_iniciarSesion">Inicio de sesión</p>
+                    <div id="div_ursrname">
+                        <asp:Label ID="lbl_usuario_login" runat="server" Text="Nombre de usuario" AssociatedControlID="txt_username_login"></asp:Label>
+                        <asp:TextBox ID="txt_username_login" runat="server" CausesValidation="True" ValidateRequestMode="Enabled" ValidationGroup="val_login"></asp:TextBox>                     
+                        <asp:RequiredFieldValidator ID="valid1_txt_username_inicio" runat="server" ControlToValidate="txt_username_login" ForeColor="Red" ValidationGroup="val_login" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+                    </div>
+                    <div>
+                        <asp:Label ID="lbl_password" runat="server" Text="Contraseña" AssociatedControlID="txt_password"></asp:Label>
+                        <asp:TextBox ID="txt_password" TextMode="Password" runat="server" CausesValidation="True" ValidateRequestMode="Enabled" ValidationGroup="val_login"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="valid2_txtpassword_inicio" runat="server" ControlToValidate="txt_password" ForeColor="Red" ValidationGroup="val_login" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+
+                    </div>
+                    <br />
+                    <asp:LinkButton ID="lnk_home_registrarCliente" CssClass="letrasLinks" runat="server" PostBackUrl="~/Registro_Usuario.aspx" >No tienes usuario?</asp:LinkButton>
+                    <div id="div_validationSummary_inicio">
+                        <asp:ValidationSummary ID="valid_summary_inicio" runat="server" CssClass="letrasLinks" DisplayMode="List" ForeColor="Red" HeaderText="Debes introducir los campos señalados" ValidationGroup="val_login" />
+                    </div>
+                    <div id="div_btnLogin_inicio"><asp:Button ID="btn_login_inicio" runat="server" Text="Iniciar sesión" ValidationGroup="val_login" OnClick="btn_login_inicio_Click" /></div>
+                </div>
+            </div>
+
+            <div id="div_home_accesoria">
+                <p style="font-size:13px; font-family:Verdana;" class="letrasLinks">O rastrea un envío como usuario no registrado con el código del envío deseado</p>
+                <div id="div_seguirEnvio">
+                    <p id="p_inicio_rastreo">Rastreo de envíos</p>
+                    <div id="div_nroEnvio">
+                        <asp:Label ID="lbl_home_nroEnvio" runat="server" Text="Código de envío "></asp:Label>
+                        <asp:TextBox ID="txt_home_nroEnvio" runat="server"></asp:TextBox>
+                    </div>
+                    <div id="div_btnHome_seguirEnvio">
+                        <asp:Button ID="btn_home_seguirEnvio" runat="server" Text="Rastrear envío" OnClick="btn_home_seguirEnvio_Click" />
+                    </div>
+                    <asp:Panel ID="pnl_rastreo_USR" style="margin-top: 15px;clear:both;" runat="server" Visible="False">
+                        <asp:Label ID="Label1" runat="server" Text="Poner algo aca"></asp:Label>
+
+                    </asp:Panel>
+
+                </div>
+            </div>
+
         </div>
-    </div>
+        <div id="div_messageSuccess">
+            <p id="p_Inicio_messageServer" runat="server" style="color:red; text-align:center; clear:both" class="letrasLinks"></p>
+        </div>
     </form>
 </body>
 </html>

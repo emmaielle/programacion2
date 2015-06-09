@@ -8,3 +8,7 @@ C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\So
 C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.csprojResolveAssemblyReference.cache
 C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.dll
 C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\obj\Debug\Solucion_ObligatorioP2.pdb
+C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\bin\Dominio.dll
+C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\bin\Dominio.pdb
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\bin\Dominio.dll
+C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\bin\Dominio.pdb

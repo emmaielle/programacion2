@@ -64,6 +64,7 @@ namespace Dominio
 
         #region Constructor
 
+        // constructor convencional
         public EnvioPaquete(string pNomRecibio, string pFirma, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, 
                             OficinaPostal pOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGramo, decimal pValorDeclarado, 
                             bool pSeguro, float pPesoKilos, string pDescripcion)
@@ -81,6 +82,21 @@ namespace Dominio
             // los paquetes, no hay ninguna transformación porque se guarda en KG.
             this.Descripcion = pDescripcion;        
             base.PrecioFinal = CalcularPrecioFinal();
+        }
+
+        // constructor para simulacion de envioPaquete
+        public EnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGramo, decimal pValorDeclarado,
+                            bool pSeguro, float pPesoKilos) 
+        {
+            this.Alto = pAlto;
+            this.Ancho = pAncho;
+            this.Largo = pLargo;
+            this.costoBasePorGramo = pCostoBaseGramo;
+            this.ValorDeclarado = pValorDeclarado;
+            this.TieneSeguro = pSeguro;
+            base.Peso = pPesoKilos;
+            base.PrecioFinal = CalcularPrecioFinal();
+ 
         }
 
         #endregion

@@ -8,19 +8,15 @@ namespace Dominio
 {
     public class OficinaPostal
     {
-        #region atributos
+        #region Atributos
 
         private int nroOficina;
         private static int ultNroOficina;
-        private string pais;
-        private int numero;
-        private string calle;
-        private string ciudad;
-        private string codPostal;
+        private Direccion direccionOfiPostal;
 
         #endregion
 
-        #region propiedades
+        #region Propiedades
 
         public int NroOficina
         {
@@ -33,58 +29,23 @@ namespace Dominio
             get { return OficinaPostal.ultNroOficina; } // no tiene set
         }
 
-        public string Pais
+        public Direccion DireccionOfiPostal
         {
-            get { return pais; }
-            set { pais = value; }
+            get { return direccionOfiPostal; }
+            set { direccionOfiPostal = value; }
         }
-
-        public int Numero
-        {
-            get { return numero; }
-            set { numero = value; }
-        }
-
-        public string Calle
-        {
-            get { return calle; }
-            set { calle = value; }
-        }
-
-        public string Ciudad
-        {
-            get { return ciudad; }
-            set { ciudad = value; }
-        }
-
-        public string CodPostal
-        {
-            get { return codPostal; }
-            set { codPostal = value; }
-        }
-
         #endregion
 
         #region Constructor
 
-        public OficinaPostal(string pPais, int pNumero, string pCalle, string pCiudad, string pCodPost)
+        public OficinaPostal(string pPais, string pNumero, string pCalle, string pCiudad, string pCodPost)
         {
             OficinaPostal.ultNroOficina += 1;
             this.nroOficina = OficinaPostal.ultNroOficina;
-            this.Pais = pPais;
-            this.Numero = pNumero;
-            this.Calle = pCalle;
-            this.Ciudad = pCiudad;
-            this.CodPostal = pCodPost;
+            this.direccionOfiPostal = new Direccion(pCalle, pNumero, pCodPost, pCiudad, pPais);
 
         }
-    
-            public OficinaPostal () { 
-            
-            }
-        
-    
-    
+
 
         #endregion
 

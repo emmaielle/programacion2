@@ -2,18 +2,11 @@
     background-color:#edf6f5;
 }
 
-#div_home_contenedora {
+#div_home_contenedora, #div_registro_contenedora {
     padding-top:30px;
-    width:380px;
+    width:760px;
     margin:auto;
     text-align:center;
-}
-
-#div_home_central {
-    padding-top:10px;
-    text-align:center;
-    width:315px;
-    margin:auto;
 }
 
 #div_loginAdmin_central {
@@ -22,6 +15,13 @@
     margin:auto;
     text-align:center;
 }
+
+#div_formulario_registro, #div_formulario_homeCli, #div_formulario_homeAdmin {
+    width:540px;
+    margin:auto;
+    text-align:center;
+}
+
 
 #login_cliente {
     margin-bottom:15px;
@@ -34,6 +34,10 @@
 
 #lnk_home_registrarCliente, #lnk_loginAdmin_volver {
     float:right;
+}
+
+#lnk_home_registrarCliente {
+    clear:both;
 }
 
 #div_master_bienvenido {
@@ -60,4 +64,118 @@
 #contenedora_centrarMaster {
     width:350px;
     margin:auto;
+}
+
+#div_home_central {
+    float:left;
+}
+
+#div_home_central, #div_home_accesoria {
+    width:365px;
+    margin:auto;
+}
+
+#div_home_accesoria {
+    float:right;
+}
+
+#div_btnHome_seguirEnvio {
+    padding-top:15px;
+    clear:both;
+}
+
+.labels {
+    font-family:Verdana;
+    font-size:13px;
+}
+
+#div_login_cliente{
+    width:336px;
+    border-style:dashed;
+    border-color: #9cc4ef;
+    border-width:2px;
+    padding-bottom:15px;
+    padding-left:12px;
+    padding-right:12px;
+    margin-bottom: 15px;
+    text-align:center;
+}
+
+.cajitas {
+    border-style:dashed;
+    border-color: #9cc4ef;
+    border-width:2px;
+    padding-bottom:15px;
+    padding-left:12px;
+    padding-right:12px;
+    padding-top:15px;
+
+}
+
+#div_seguirEnvio {
+    width:336px;
+    border-style:dashed;
+    border-color: #bdd5ef;
+    border-width:2px;
+    padding-bottom:15px;
+    padding-left:12px;
+    padding-right:12px;
+    margin-bottom: 15px;
+    text-align:center;
+}
+
+#lbl_usuario_login, #lbl_password, #lbl_home_nroEnvio {
+    float:left;
+    font-family:Verdana;
+    font-size:13px;
+}
+
+#lbl_password, #txt_password, #valid2_txtpassword_inicio {
+    margin-top:2px;
+    margin-bottom:10px;
+}
+
+#txt_username_login, #txt_password, #txt_home_nroEnvio {
+    float:right;
+}
+
+#txt_username_login, #txt_password, #txt_home_nroEnvio, .txt_fields_registro {
+    width:130px;
+}
+
+#btn_login_inicio {
+    text-align:center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+}
+
+#div_btnLogin_inicio {
+    clear:both;
+    text-align:center;
+    margin:auto;
+
+}
+
+#div_ursrname {
+    margin-bottom:3px;
+}
+
+#valid2_txtpassword_inicio, #valid1_txt_username_inicio {
+    float:left;
+    margin-left:2px;
+}
+
+#p_inicio_iniciarSesion, #p_inicio_rastreo {
+    background-color: #042bc4;
+    font-family: Verdana;
+    color: white;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+#div_validationSummary_inicio {
+    padding-top:10px;
+    height:30px;
+    clear:both;
 }
