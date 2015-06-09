@@ -10,7 +10,6 @@ namespace Dominio
     public abstract class Envio :IComparable <Envio>, IComparer<Envio>
     {
         #region Atributos
-
         protected int nroEnvio;
         protected static int ultNroEnvio; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
         protected string nombreRecibio;
@@ -163,11 +162,10 @@ namespace Dominio
 
         #region Implementacion Interfaces
       
-        //Metodo que compara envios por fechas de manera descendente
+        //Metodo que me compara envios por fechas de manera descendente
         int IComparable<Envio>.CompareTo(Envio env)
         {
-            return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaEntrega.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaEntrega);
-         
+            return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaIngreso.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaIngreso);      
         }
 
         //Me falta implementar este para el metodo listar envios en transito y con demora de 5 dias. Ordeno por fecha y por doc del cliente

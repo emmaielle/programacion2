@@ -51,6 +51,11 @@ namespace Dominio
             this.AltaAdministrador("admin1", "admin", "Administrador", "Administrador", "123456-7", "25005050", "Somewhere st.", "0", "11034", "Montevideo", "Uruguay");
             this.AltaCliente("cliente1", "cliente", "ElCliente", "ApellidoCliente", "1234567-8", "101010101", "Some St.", "123", "90210", "Miami", "USA");
             this.AltaCliente("cliente2", "cliente", "Jesus", "Livestrong", "2939486-5", "294759200", "", "298", "AA5783", "Montevideo", "Uruguay");
+            this.AltaOficina("Miami", "Ocean Drive", "J134,", "Estados Unidos", "1234");
+            this.AltaOficina("Montevideo", "Cuareim", "11200,", "Uruguay", "2234");
+            this.AltaOficina("Buenos Aires", "9 de Julio", "1345,", "Argentina", "2346");
+            this.AltaOficina("Berlin", "calle", "A134", "Alemania", "1345");
+            this.AltaOficina("Montreal", "Calle", "A231", "Canada", "4321,");   
         }
 
         #endregion

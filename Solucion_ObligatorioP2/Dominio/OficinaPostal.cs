@@ -45,10 +45,6 @@ namespace Dominio
             this.direccionOfiPostal = new Direccion(pCalle, pNumero, pCodPost, pCiudad, pPais);
 
         }
-    
-        public OficinaPostal () { // <<<---- lo sacamos?
-        
-        }
 
         #endregion
 
