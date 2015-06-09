@@ -36,7 +36,6 @@ namespace Solucion_ObligatorioP2
 
         protected void btn_login_inicio_Click(object sender, EventArgs e)
         {
-
            Usuario elUsr = elSis.BuscarUsuarioPorUsername(txt_username_login.Text);
 
            if (elUsr != null)
