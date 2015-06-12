@@ -85,6 +85,15 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.LinkButton lnk_home_registrarCliente;
         
         /// <summary>
+        /// Control p_inicioErr_messageServer.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_inicioErr_messageServer;
+        
+        /// <summary>
         /// Control valid_summary_inicio.
         /// </summary>
         /// <remarks>

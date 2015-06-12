@@ -76,12 +76,10 @@ namespace Dominio
         #region Constructor
 
         // constructor convencional
-        public Envio(string pNomRecibio, string pFirma, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
+        public Envio(string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
         {
             this.NroEnvio = Envio.ultNroEnvio;
             Envio.ultNroEnvio += 1; // si pongo una propiedad en el atributo, cambiar aca <---
-            this.NombreRecibio = pNomRecibio;
-            this.FirmaRecibio = pFirma; // <<---- firma: imagen!
             this.NombreDestinatario = pNomDestinatario;
             this.DirDestinatario = pDirDestino;
             this.EtapasDelEnvio = new List<EtapaEnvio>();

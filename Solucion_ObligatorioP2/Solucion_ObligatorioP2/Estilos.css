@@ -16,12 +16,18 @@
     text-align:center;
 }
 
-#div_formulario_registro, #div_formulario_homeCli, #div_formulario_homeAdmin {
+#div_formulario_registro, #div_formulario_homeCli, #div_formulario_homeAdmin, #div_formulario_homes {
     width:540px;
     margin:auto;
     text-align:center;
 }
 
+#div_actualizarEnv_contenedora {
+    width:450px;
+    margin:auto;
+    text-align:center;
+
+}
 
 #login_cliente {
     margin-bottom:15px;
