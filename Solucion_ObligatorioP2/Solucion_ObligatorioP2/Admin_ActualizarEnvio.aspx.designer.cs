@@ -76,6 +76,33 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.DropDownList ddl_actualizarEnv_etapaEnv;
         
         /// <summary>
+        /// Control div_actualizarEnv_nomRecibio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_nomRecibio;
+        
+        /// <summary>
+        /// Control lbl_actualizarEnv_nomRecibio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_nomRecibio;
+        
+        /// <summary>
+        /// Control txt_actualizarEnv_nomRecibio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_actualizarEnv_nomRecibio;
+        
+        /// <summary>
         /// Control lbl_actlualizarEnv_fechaIng.
         /// </summary>
         /// <remarks>
@@ -92,6 +119,24 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar calendar_actualizarEnv_fchIngreso;
+        
+        /// <summary>
+        /// Control div_actualizarEnv_messageDiv.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_messageDiv;
+        
+        /// <summary>
+        /// Control p_actualizarEnv_messageServer.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_actualizarEnv_messageServer;
         
         /// <summary>
         /// Control btn_actualizarEnv_AgregarEtapa.

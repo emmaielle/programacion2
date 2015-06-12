@@ -15,9 +15,13 @@
                     <asp:DropDownList ID="ddl_actualizarEnv_Oficinas" style="float:right; margin-left:5px" CssClass="labels" runat="server"></asp:DropDownList>
                 </div>
             </div>
-            <div style="clear:both">
+            <div style="padding-top:15px; clear:both">
                 <asp:Label ID="lbl_actualizarEnv_etapaEnv" runat="server" style="float:left" CssClass="labels" Text="Ingrese la etapa de envio: "></asp:Label>
-                <asp:DropDownList ID="ddl_actualizarEnv_etapaEnv" runat="server"></asp:DropDownList>
+                <asp:DropDownList ID="ddl_actualizarEnv_etapaEnv" style="margin-left:5px; float:left" CssClass="labels" runat="server" OnSelectedIndexChanged="ddl_actualizarEnv_etapaEnv_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+            </div>
+            <div id="div_actualizarEnv_nomRecibio" runat="server" visible="false" style="clear:both; padding-top:15px">
+                <asp:Label ID="lbl_actualizarEnv_nomRecibio" style="float:left" CssClass="labels" runat="server" Text="Recibido por: "></asp:Label>
+                <asp:TextBox ID="txt_actualizarEnv_nomRecibio" style="float:left; margin-left:5px" CssClass="labels" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px">
                 <div style="margin-top:25px; margin-bottom:5px; clear:both">
@@ -35,6 +39,9 @@
                         <WeekendDayStyle BackColor="#CCCCFF" />
                     </asp:Calendar>
                 </div>
+            </div>
+            <div id ="div_actualizarEnv_messageDiv" style="clear:both" runat="server" visible="false">
+                <p id="p_actualizarEnv_messageServer" runat="server" style="color:red; text-align:center; clear:both" class="letrasLinks"></p>
             </div>
             <div style="clear:both; margin-top:30px">
                 <asp:Button ID="btn_actualizarEnv_AgregarEtapa" runat="server" Text="Agregar Etapa" OnClick="btn_actualizarEnv_AgregarEtapa_Click" />

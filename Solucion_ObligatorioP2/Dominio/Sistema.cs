@@ -57,7 +57,7 @@ namespace Dominio
             this.AltaOficina("Berlin", "calle", "A134", "Alemania", "1345");
             this.AltaOficina("Montreal", "Calle", "A231", "Canada", "4321,");
             this.AltaEnvioDocumento("1234567-8", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
-                "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 3, 15), 1, 1.5F, false);
+                "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 3, 15), 1, 1.5F, true);
             
         }
 
