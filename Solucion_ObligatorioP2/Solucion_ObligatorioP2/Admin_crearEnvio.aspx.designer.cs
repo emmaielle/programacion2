@@ -76,6 +76,15 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_crearEnvio_codPostal;
         
         /// <summary>
+        /// Control PanelRadioButtons.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelRadioButtons;
+        
+        /// <summary>
         /// Control radiobtn_crearEnvio_esPaquete.
         /// </summary>
         /// <remarks>
@@ -83,6 +92,24 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RadioButton radiobtn_crearEnvio_esPaquete;
+        
+        /// <summary>
+        /// Control radiobtn_crearEnvio_esDoc.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton radiobtn_crearEnvio_esDoc;
+        
+        /// <summary>
+        /// Control PanelPaquete.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel PanelPaquete;
         
         /// <summary>
         /// Control txt_crearEnvio_largoPaquete.
@@ -139,13 +166,13 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.CheckBox chkbox_crearEnvio_seguro;
         
         /// <summary>
-        /// Control radiobtn_crearEnvio_esDoc.
+        /// Control PanelDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton radiobtn_crearEnvio_esDoc;
+        protected global::System.Web.UI.WebControls.Panel PanelDocumento;
         
         /// <summary>
         /// Control chkbox_crearEnvio_esDocLegal.
@@ -209,5 +236,14 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_crearEnvio_crearEnvio;
+        
+        /// <summary>
+        /// Control lbl_crearEnvio_muestraNroEnvio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_crearEnvio_muestraNroEnvio;
     }
 }

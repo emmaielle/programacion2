@@ -52,26 +52,39 @@ namespace Solucion_ObligatorioP2
                 string alto = txt_crearEnvio_altoPaquete.Text;
                 string descrip = txt_crearEnvio_DescripPaquete.Text;
                 string valorDec = txt_crearEnvio_valorDeclaradoPaquete.Text;
-                bool TieneSeguro = chkbox_crearEnvio_seguro.Checked; //Esto esta bien? 
-            }  
-                 //elSis.AltaEnvioPaquete();
-            else {
+                bool TieneSeguro = chkbox_crearEnvio_seguro.Checked; 
+                
+            }
+            int numeroEnvio = 0; //elSis.AltaEnvioPaquete();
+                lbl_crearEnvio_muestraNroEnvio.Text = "Su numero de envio es:" + numeroEnvio.ToString();
+                 
+           
                if (radiobtn_crearEnvio_esPaquete.Checked == true) 
                 {
-                
                 bool esDocLegal = chkbox_crearEnvio_esDocLegal.Checked;
                 string calleOrigen = txt_crearEnvio_calleOrigen.Text;
                 string nroPuertaOrigen = txt_crearEnvio_nroOrigen.Text;
                 string paisOrigen = txt_crearEnvio_paisOrigen.Text;
                 string ciudadOrigen = txt_crearEnvio_ciudadOrigen.Text;
                 string codPostalOrigen = txt_crearEnvio_codPostalOrigen.Text;
+              
                }
-                //elSis.AltaEnvioDocumento();
+               numeroEnvio=0;//elSis.AltaEnvioDocumento();
+               lbl_crearEnvio_muestraNroEnvio.Text = "Su numero de envio es:" + numeroEnvio.ToString(); //nroEnvio
+           
+            
             }
 
+        protected void radiobtn_crearEnvio_esPaqueteCheckedChanged(object sender, EventArgs e)
+        {
+
+            PanelPaquete.Visible = true;
             
-            }
-            
+        }
+
+        protected void radiobtn_crearEnvio_esDoc_CheckedChanged(object sender, EventArgs e)
+        {
+            PanelDocumento.Visible = true;
         }
     }
 }

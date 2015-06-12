@@ -232,10 +232,11 @@ namespace Dominio
 
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de documento, 
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
-        public void AltaEnvioDocumento(string pNomRecibio, string pFirma, string pCliente, Direccion pDirOrigen, string pNomDestinatario, 
+        public int AltaEnvioDocumento(string pNomRecibio, string pFirma, string pCliente, Direccion pDirOrigen, string pNomDestinatario, 
                                  Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal)
         {
             Usuario cli = this.BuscarCliente(pCliente);
+            int numeroEnvio = 0;
 
             if (cli != null)
             {
@@ -246,20 +247,21 @@ namespace Dominio
                 this.listaEnvios.Add(env);
 
                 cli.AgregarEnvio(env);
-
+                numeroEnvio = env.NroEnvio;
             }
-         
+            return numeroEnvio;
         } 
 
         /* TODO: agregar controles y manejar exceptions */
 
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de paquetes, 
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
-        public void AltaEnvioPaquete(string pNomRecibio, string pFirma, string pCliente, string pNomDestinatario,
+        public int AltaEnvioPaquete(string pNomRecibio, string pFirma, string pCliente, string pNomDestinatario,
                                  Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
                                  float pLargo, decimal pCostoBaseGr,decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
         {
             Usuario cli = this.BuscarCliente(pCliente);
+            int numeroEnvio = 0;
            
             if (cli != null)
             {
@@ -269,9 +271,10 @@ namespace Dominio
                 if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
                 this.listaEnvios.Add(env);
                 cli.AgregarEnvio(env);
+                numeroEnvio = env.NroEnvio;
 
             }
-
+            return numeroEnvio;
         }
 
         /*Dado un Nro de envio se recorre la lista de envios para buscarlo. Retorna Envio encontrado o null*/
