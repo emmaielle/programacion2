@@ -166,6 +166,15 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_crearEnvio_codPostal;
         
         /// <summary>
+        /// Control lbl_crearEnvio_chooseType.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_crearEnvio_chooseType;
+        
+        /// <summary>
         /// Control radiobtn_crearEnvio_esPaquete.
         /// </summary>
         /// <remarks>

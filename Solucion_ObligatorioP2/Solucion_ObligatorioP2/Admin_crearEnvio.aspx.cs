@@ -73,16 +73,21 @@ namespace Solucion_ObligatorioP2
 
             }
 
-        protected void radiobtn_crearEnvio_esPaqueteCheckedChanged(object sender, EventArgs e)
+        protected void radiobtn_crearEnvio_esPaqueteODocCheckedChanged(object sender, EventArgs e)
         {
+            if (radiobtn_crearEnvio_esDoc.Checked)
+            {
+                PanelDocumento.Visible = true;
 
-            PanelPaquete.Visible = true;
-            
-        }
+                PanelPaquete.Visible = false;
 
-        protected void radiobtn_crearEnvio_esDoc_CheckedChanged(object sender, EventArgs e)
-        {
-            PanelDocumento.Visible = true;
+            }
+            if (radiobtn_crearEnvio_esPaquete.Checked)
+            {
+
+                PanelPaquete.Visible = true;
+                PanelDocumento.Visible = false;
+            }
         }
     }
 }
