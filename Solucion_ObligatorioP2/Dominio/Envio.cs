@@ -11,7 +11,7 @@ namespace Dominio
     {
         #region Atributos
         protected int nroEnvio;
-        protected static int ultNroEnvio; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
+        protected static int ultNroEnvio = 1; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
         protected string nombreRecibio;
         protected string firmaRecibio; // IMAGEN!!!
         protected string nombreDestinatario;
@@ -109,12 +109,91 @@ namespace Dominio
 
         // agregar etapas de rastreo al envío. Es polimórfico para EnvioDocumento, porque Documento necesita corroborar quien 
         // recibe el envio para agregarla (ver metodo en EnvioDocumento)
-        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio) 
+        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio, out string pMensajeError) 
         {
-            EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
-            this.EtapasDelEnvio.Add(etp);
+            string mensajeError = "";
+            bool sePuedeAgregar = false;
+            EtapaEnvio etapaActual = this.ObtenerEtapaActual();
 
-            return true;
+            if (pFechaIngreso >= etapaActual.FechaIngreso)
+            {
+                // como EnOrigen se crea automaticamente con la creación del envío, no se puede utilizar nunca
+                if (pEtapa != EtapaEnvio.Etapas.EnOrigen)
+                {
+                    // revisa secuencialidad
+                    if (pEtapa >= etapaActual.Etapa)
+                    {
+                        // revisa si la etapa actual es igual que la anterior, porque solo voy a permitir esto para la etapa enTransito
+                        if (etapaActual.Etapa == pEtapa)
+                        {
+                            // si la etapa actual es enTransito, se va a poder solo si estan en != oficinas
+                            if (pEtapa == EtapaEnvio.Etapas.EnTransito)
+                            {
+                                // si la oficina es la misma que la anterior no deja ingresar la etapa (esto es para todos menos pEtapa = Entregado)
+                                if (etapaActual.Ubicacion != pUbicacion)
+                                {
+                                    sePuedeAgregar = true;
+                                }
+                                else mensajeError = "La oficina postal no puede ser igual a la etapa anterior excepto para Entregado";
+                            }
+                            else mensajeError = "La etapa de envío no puede ser igual a la anterior a menos que el envío esté en tránsito";
+                        }
+                        // si la anterior y la que se pretende ingresar no son iguales (o sea, la nueva es mayor que la actual)
+                        else
+                        {
+                            // si la etapa actual es Origen o Transito y es != de la nueva
+                            if (etapaActual.Etapa == EtapaEnvio.Etapas.EnOrigen || etapaActual.Etapa == EtapaEnvio.Etapas.EnTransito)
+                            {
+                                // no pasar a Entregado desde una etapa diferente que no sea ParaEntregar
+                                if (pEtapa == EtapaEnvio.Etapas.Entregado)
+                                {
+                                    mensajeError = "Aún no se puede entregar este envío porque se encuentra enOrigen/enTránsito";
+                                }
+                                // si quiero pasar a ParaEntregar, tengo que checkear que la direccion de la oficina final sea
+                                // distinta que donde entró el emvio inicialmente
+                                else if (pEtapa == EtapaEnvio.Etapas.ParaEntregar)
+                                {
+                                    if (pUbicacion != this.DevolverEtapaEnOrigen().Ubicacion)
+                                    {
+                                        sePuedeAgregar = true;
+                                    }
+                                    else mensajeError = "No se puede entregar un envío en la misma oficina que la de origen";
+                                }
+                                else
+                                {
+                                    if (pUbicacion != etapaActual.Ubicacion)
+                                    {
+                                        sePuedeAgregar = true;
+                                    }
+                                    else mensajeError = "La oficina postal no puede ser igual a la etapa anterior excepto para Entregado";
+                                }
+                            }
+                            // si voy a agregar etapa Entregado (estando en ParaEntregar), tiene que ser en la misma oficina
+                            else if (etapaActual.Etapa == EtapaEnvio.Etapas.ParaEntregar)
+                            {
+                                if (etapaActual.Ubicacion == pUbicacion)
+                                {
+                                    sePuedeAgregar = true;
+                                }
+                                else mensajeError = "El envío se debe entregar en la misma oficina donde se categorizó Para Entregar";
+                            }
+                        }
+                    }
+                    else mensajeError = "La etapa seleccionada ya no se puede ingresar para este envio";
+                }
+                else mensajeError = "La etapa seleccionada ya no se puede ingresar para este envio";
+            }
+            else mensajeError = "La fecha ingresada tiene que ser igual o posterior a la ingresada en la etapa previa";
+            
+            if (sePuedeAgregar)
+            {
+                EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
+                this.EtapasDelEnvio.Add(etp);
+                mensajeError = "Se ha agregado la nueva etapa exitosamente!!";
+            }
+
+            pMensajeError = mensajeError;
+            return sePuedeAgregar;
         }
 
         // Busca la EtapaEnvio que representa el ingreso a oficina Postal, y retorna la fecha en que se realizó
@@ -155,7 +234,19 @@ namespace Dominio
 
             return etapaActual;
         }
-        
+
+        // devuelve la etapaEnvio que tiene el enum EnOrigen
+        public EtapaEnvio DevolverEtapaEnOrigen ()
+        {
+            EtapaEnvio enOrigen = null;
+
+            foreach (EtapaEnvio etapa in this.etapasDelEnvio)
+            {
+                if (etapa.Etapa == EtapaEnvio.Etapas.EnOrigen) enOrigen = etapa;
+            }
+            return enOrigen;
+        }
+
         #endregion
 
         #region Implementacion Interfaces

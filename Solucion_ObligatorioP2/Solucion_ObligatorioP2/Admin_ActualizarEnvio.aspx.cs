@@ -24,8 +24,9 @@ namespace Solucion_ObligatorioP2
             }
             else
             {
-                div_actualizarEnv_messageDiv.Visible = false;
+                p_actualizarEnv_messageServer.Visible = false;
                 p_actualizarEnv_messageServer.InnerText = "";
+
             }
 
         }
@@ -51,51 +52,61 @@ namespace Solucion_ObligatorioP2
             if (resultNroEnvio)
             {
                 envioDeseado = elSis.BuscarEnvio(nroEnvio);
-            }
-            else 
-            {   
-                div_actualizarEnv_messageDiv.Visible = true;
-                p_actualizarEnv_messageServer.InnerText = "El número de envío ingresado no existe";
-            }
+           
+                bool exito = false;
 
-            bool exito = false;
-
-            if (envioDeseado != null)
-            {
-                if (resultOfi)
+                if (envioDeseado != null)
                 {
-                    if (resultEtapa)
+                    if (fechaIngreso.ToString() != "01/01/0001 12:00:00 a.m.")
                     {
-                       exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, nombreRecibio);
+                        if (resultOfi) // esto siempre va a dar true porque es de un ddl
+                        {
+                            if (resultEtapa) // esto siempre va a dar true porque es de un ddl
+                            {
+                                string mensajeError = null;
+                                exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, nombreRecibio, out mensajeError);
+                            
+                                if (exito)
+                                {
+                                    p_actualizarEnv_messageServer.Visible = true;
+                                    p_actualizarEnv_messageServer.InnerText = "exito!!";
+                                }
+                                else
+                                {
+                                    p_actualizarEnv_messageServer.Visible = true;
+                                    p_actualizarEnv_messageServer.InnerText = mensajeError;
+                                }
+                            }
+                            else
+                            {
+                                p_actualizarEnv_messageServer.Visible = true;
+                                p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una etapa para el envio";
+                            }
+                        }
+                        else
+                        {
+                            p_actualizarEnv_messageServer.Visible = true;
+                            p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una oficina postal";
+                        }
                     }
                     else
                     {
-                        div_actualizarEnv_messageDiv.Visible = true;
-                        p_actualizarEnv_messageServer.InnerText = "error2";
+                        p_actualizarEnv_messageServer.Visible = true;
+                        p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una fecha";
                     }
                 }
                 else
                 {
-                    div_actualizarEnv_messageDiv.Visible = true;
-                    p_actualizarEnv_messageServer.InnerText = "error3";
+                    p_actualizarEnv_messageServer.Visible = true;
+                    p_actualizarEnv_messageServer.InnerText = "El número de envío ingresado no existe";
                 }
             }
             else
             {
-                div_actualizarEnv_messageDiv.Visible = true;
-                p_actualizarEnv_messageServer.InnerText = "error3";
+                p_actualizarEnv_messageServer.Visible = true;
+                p_actualizarEnv_messageServer.InnerText = "El número de envío debe tener sólo números";
             }
-
-            if (exito)
-            {
-                div_actualizarEnv_messageDiv.Visible = true;
-                p_actualizarEnv_messageServer.InnerText = "exito!!";
-            }
-            else
-            {
-                div_actualizarEnv_messageDiv.Visible = true;
-                p_actualizarEnv_messageServer.InnerText = "El nombre de destinatario no coincide con el nombre de quien lo recibe";
-            }
+          
         }
 
         protected void ddl_actualizarEnv_etapaEnv_SelectedIndexChanged(object sender, EventArgs e)
@@ -115,10 +126,27 @@ namespace Solucion_ObligatorioP2
                 }
             }
 
-            else
+
+        }
+
+        protected void txt_actualizarEnv_nroEnv_TextChanged(object sender, EventArgs e)
+        {
+            div_actualizarEnv_datosEnv.Visible = true;
+
+            int nroEnvio;
+            bool resultNroEnvio = int.TryParse(txt_actualizarEnv_nroEnv.Text, out nroEnvio);
+
+            if (resultNroEnvio)
             {
-                div_actualizarEnv_messageDiv.Visible = true;
-                p_actualizarEnv_messageServer.InnerText = "error";
+                Envio envShowData = elSis.BuscarEnvio(nroEnvio);
+                if (envShowData != null)
+                {
+                    EtapaEnvio etapaActual = envShowData.ObtenerEtapaActual();
+
+                    lbl_actualizarEnv_shortInfoEnv.Text = "Envío " + envShowData.NroEnvio + ": "
+                        + etapaActual.Etapa.ToString() + "; Oficina Nº: " + etapaActual.Ubicacion.NroOficina.ToString();
+                }
+                else lbl_actualizarEnv_shortInfoEnv.Text = "El envio " + nroEnvio + " no existe";
             }
 
         }
