@@ -20,11 +20,6 @@ namespace Solucion_ObligatorioP2
             }
         }
 
-        protected void RadioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void txt_crearEnvio_calleOrigen0_TextChanged(object sender, EventArgs e)
         {
 

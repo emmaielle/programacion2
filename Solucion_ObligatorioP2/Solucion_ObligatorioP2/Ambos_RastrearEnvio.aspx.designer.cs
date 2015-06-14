@@ -13,6 +13,15 @@ namespace Solucion_ObligatorioP2 {
     public partial class Ambos_RastrearEnvio {
         
         /// <summary>
+        /// Control p_rastearEnvio_head.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_rastearEnvio_head;
+        
+        /// <summary>
         /// Control lbl_rastrearEnvio_nroEnvio.
         /// </summary>
         /// <remarks>

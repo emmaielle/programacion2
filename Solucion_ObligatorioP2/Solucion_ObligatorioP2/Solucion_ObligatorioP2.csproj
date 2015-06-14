@@ -69,8 +69,11 @@
     <Content Include="Estilos.css" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
+    <Content Include="scripts\jquery-1.11.3.min.js" />
     <Content Include="Registro_Usuario.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin_ActualizarEnvio.aspx.cs">
