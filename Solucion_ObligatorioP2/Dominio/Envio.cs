@@ -109,7 +109,8 @@ namespace Dominio
 
         // agregar etapas de rastreo al envío. Es polimórfico para EnvioDocumento, porque Documento necesita corroborar quien 
         // recibe el envio para agregarla (ver metodo en EnvioDocumento)
-        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio, out string pMensajeError) 
+        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, 
+                                        string pFirmaRecibio, string pNombreRecibio, out string pMensajeError) 
         {
             string mensajeError = "";
             bool sePuedeAgregar = false;
@@ -188,6 +189,12 @@ namespace Dominio
             if (sePuedeAgregar)
             {
                 EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
+                if (pEtapa == EtapaEnvio.Etapas.Entregado)
+                {
+                    this.nombreRecibio = pNombreRecibio;
+                    this.firmaRecibio = pFirmaRecibio;
+                }
+                
                 this.EtapasDelEnvio.Add(etp);
                 mensajeError = "Se ha agregado la nueva etapa exitosamente!!";
             }

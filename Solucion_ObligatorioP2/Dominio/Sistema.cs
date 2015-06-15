@@ -56,9 +56,12 @@ namespace Dominio
             this.AltaOficina("Buenos Aires", "9 de Julio", "1345,", "Argentina", "2346");
             this.AltaOficina("Berlin", "calle", "A134", "Alemania", "1345");
             this.AltaOficina("Montreal", "Calle", "A231", "Canada", "4321,");
+            
             this.AltaEnvioDocumento("1234567-8", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
                 "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 3, 15), 1, 1.5F, true);
             
+            this.AltaEnvioPaquete("1234567-8", "Jose Rodriguez", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", new DateTime(2015, 3, 15),
+                                1, 12.3F, 13.2F, 10, 12M, 100M, true, 10, "Es una caja"); 
         }
 
         #endregion
@@ -237,16 +240,18 @@ namespace Dominio
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
         public int AltaEnvioPaquete(string pCliente, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino, 
                                     string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso, 
-                                OficinaPostal pOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, 
+                                int pNroOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, 
                                 decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
         {
             Usuario cli = this.BuscarCliente(pCliente);
             int numeroEnvio = 0;
-           
+
+            OficinaPostal oficinaIngreso = this.BuscarOficinaXID(pNroOficinaIngreso);
+
             if (cli != null)
             {
                 Direccion dirDestino = new Direccion(pCalleDestino, pNroPtaDestino, pCPDestino, pCiudDestino, pPaisDestino);
-                EnvioPaquete env = new EnvioPaquete(pNomDestinatario, dirDestino, pFechaIngreso, pOficinaIngreso,
+                EnvioPaquete env = new EnvioPaquete(pNomDestinatario, dirDestino, pFechaIngreso, oficinaIngreso,
                                                     pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg, pDescr);
 
                 if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
@@ -345,11 +350,18 @@ namespace Dominio
             return total;
         }
 
-
-        // ------------------>>>> faltaba <<<-----------
         public List<Envio> EnviosQueSuperanMontoParaCliente(string pDoc, decimal pMonto)
         {
-            return new List<Envio>();
+            List<Envio> listaEnvSuperanMonto = new List<Envio>();
+
+            Usuario clienteDeInteres = this.BuscarCliente(pDoc);
+
+            if (clienteDeInteres != null)
+            {
+                listaEnvSuperanMonto = clienteDeInteres.EnviosQueSuperanMonto(pMonto);
+            }
+
+            return listaEnvSuperanMonto;
         }
 
 

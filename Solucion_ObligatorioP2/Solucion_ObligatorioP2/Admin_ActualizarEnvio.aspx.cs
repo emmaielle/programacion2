@@ -46,6 +46,7 @@ namespace Solucion_ObligatorioP2
             bool resultEtapa = Enum.TryParse<EtapaEnvio.Etapas>(this.ddl_actualizarEnv_etapaEnv.SelectedValue, out etapaIngresada);
 
             string nombreRecibio = txt_actualizarEnv_nomRecibio.Text;
+            string firmaRecibio = "nada por ahora"; // <<<<------ poner la ruta de imagen
 
             Envio envioDeseado = null;
 
@@ -64,7 +65,7 @@ namespace Solucion_ObligatorioP2
                             if (resultEtapa) // esto siempre va a dar true porque es de un ddl
                             {
                                 string mensajeError = null;
-                                exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, nombreRecibio, out mensajeError);
+                                exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, firmaRecibio, nombreRecibio, out mensajeError);
                             
                                 if (exito)
                                 {

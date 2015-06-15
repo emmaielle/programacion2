@@ -17,7 +17,7 @@
 }
 
 #div_formulario_registro, #div_formulario_homeCli, #div_formulario_homeAdmin, #div_formulario_homes, #div_crearEnvio_contenedora, 
-#div_crearAdmin_contenedora, #div_totalFacturado_contenedor, #div_rastrearEnvio_contenedora {
+#div_crearAdmin_contenedora, #div_totalFacturado_contenedor, #div_rastrearEnvio_contenedora, #div_superanMonto_contenedora {
     width:540px;
     margin:auto;
     text-align:center;

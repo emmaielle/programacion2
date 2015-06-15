@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class EnvioPaquete : Envio
+    public class EnvioPaquete : Envio
     {
 
         #region Atributos
