@@ -21,7 +21,6 @@ namespace Dominio
         private DateTime fechaIngreso;
         private Etapas etapa;
         private OficinaPostal ubicacion;
- 
        
         #endregion
 

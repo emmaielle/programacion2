@@ -13,6 +13,33 @@ namespace Solucion_ObligatorioP2 {
     public partial class Ambos_TotalFacturado {
         
         /// <summary>
+        /// Control p_totalFacturado_head.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_totalFacturado_head;
+        
+        /// <summary>
+        /// Control p_totalFacturado_intro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_totalFacturado_intro;
+        
+        /// <summary>
+        /// Control lbl_totalFacturado_nroCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_nroCliente;
+        
+        /// <summary>
         /// Control txt_totalFacturado_nroCliente.
         /// </summary>
         /// <remarks>
@@ -22,6 +49,15 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_totalFacturado_nroCliente;
         
         /// <summary>
+        /// Control lbl_totalFacturado_fechaDesde.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_fechaDesde;
+        
+        /// <summary>
         /// Control calendar_totalFacturado_fechaDesde.
         /// </summary>
         /// <remarks>
@@ -29,6 +65,15 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar calendar_totalFacturado_fechaDesde;
+        
+        /// <summary>
+        /// Control lbl_totalFacturado_fechaHasta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_fechaHasta;
         
         /// <summary>
         /// Control calendar_totalFacturado_fechaHasta.
@@ -47,5 +92,14 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_totalFacturado_ObtenerInfo;
+        
+        /// <summary>
+        /// Control div_totalFacturado_resultados.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_totalFacturado_resultados;
     }
 }

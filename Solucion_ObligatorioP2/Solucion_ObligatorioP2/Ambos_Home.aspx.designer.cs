@@ -10,231 +10,321 @@
 namespace Solucion_ObligatorioP2 {
     
     
-    public partial class Admin_CrearAdmin {
+    public partial class Ambos_Home {
         
         /// <summary>
-        /// Control p_crearAdmin_head.
+        /// Control LabelNombre_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_crearAdmin_head;
+        protected global::System.Web.UI.WebControls.Label LabelNombre_homes;
         
         /// <summary>
-        /// Control lbl_crearAdmin_headtxt.
+        /// Control valid_homes_nom.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_headtxt;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_nom;
         
         /// <summary>
-        /// Control Lbl_CrearAdmin_Doc.
+        /// Control txt_homes_nombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_CrearAdmin_Doc;
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_nombre;
         
         /// <summary>
-        /// Control txt_crearAdmin_doc.
+        /// Control LabelCI_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_doc;
+        protected global::System.Web.UI.WebControls.Label LabelCI_homes;
         
         /// <summary>
-        /// Control lbl_crearAdmin_Nombre.
+        /// Control txt_homes_CI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Nombre;
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_CI;
         
         /// <summary>
-        /// Control txt_crearAdmin_nombre.
+        /// Control LabelPais_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_nombre;
+        protected global::System.Web.UI.WebControls.Label LabelPais_homes;
         
         /// <summary>
-        /// Control lbl_crearAdmin_Apellido.
+        /// Control valid_homes_pais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Apellido;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_pais;
         
         /// <summary>
-        /// Control txt_crearAdmin_apellido.
+        /// Control txt_homes_Pais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_apellido;
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_Pais;
         
         /// <summary>
-        /// Control lbl_crearAdmin_tel.
+        /// Control LabelCP_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_tel;
+        protected global::System.Web.UI.WebControls.Label LabelCP_homes;
         
         /// <summary>
-        /// Control txt_crearAdmin_telefono.
+        /// Control valid_homes_CP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_telefono;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_CP;
         
         /// <summary>
-        /// Control lbl_crearAdmin_pais.
+        /// Control txt_homes_CP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_pais;
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_CP;
         
         /// <summary>
-        /// Control txt_crearAdmin_pais.
+        /// Control LabelNroPt_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_pais;
+        protected global::System.Web.UI.WebControls.Label LabelNroPt_homes;
         
         /// <summary>
-        /// Control lbl_crearAdmin_ciudad.
+        /// Control valid_homes_NroPt.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_ciudad;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_NroPt;
         
         /// <summary>
-        /// Control txt_crearAdmin_ciudad.
+        /// Control txt_nroPt_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_ciudad;
+        protected global::System.Web.UI.WebControls.TextBox txt_nroPt_homes;
         
         /// <summary>
-        /// Control lbl_crearAdmin_CP.
+        /// Control LabelApellido_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_CP;
+        protected global::System.Web.UI.WebControls.Label LabelApellido_homes;
         
         /// <summary>
-        /// Control txt_crearAdmin_cp.
+        /// Control valid_homes_apell.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_cp;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_apell;
         
         /// <summary>
-        /// Control lbl_crearAdmin_calle.
+        /// Control txt_homes_Apellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_calle;
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_Apellido;
         
         /// <summary>
-        /// Control txt_crearAdmin_calle.
+        /// Control LabelTelefono_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_calle;
+        protected global::System.Web.UI.WebControls.Label LabelTelefono_homes;
         
         /// <summary>
-        /// Control lbl_crearAdmin_NroPta.
+        /// Control valid_homes_tel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_NroPta;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_tel;
         
         /// <summary>
-        /// Control txt_crearAdmin_numero.
+        /// Control txt_homes_tel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_numero;
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_tel;
         
         /// <summary>
-        /// Control lbl_crearAdmin_Usr.
+        /// Control LabelCiudad_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Usr;
+        protected global::System.Web.UI.WebControls.Label LabelCiudad_homes;
         
         /// <summary>
-        /// Control txt_crearAdmin_usuario.
+        /// Control valid_homes_ciudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_usuario;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_ciudad;
         
         /// <summary>
-        /// Control lbl_crearAdmin_password.
+        /// Control txt_homes_ciudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_password;
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_ciudad;
         
         /// <summary>
-        /// Control txt_crearAdmin_password.
+        /// Control LabelCalle_homes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_password;
+        protected global::System.Web.UI.WebControls.Label LabelCalle_homes;
         
         /// <summary>
-        /// Control btn_crearAdmin_altaAdmin.
+        /// Control valid_homes_calle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_crearAdmin_altaAdmin;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_calle;
+        
+        /// <summary>
+        /// Control txt_homes_Calle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_Calle;
+        
+        /// <summary>
+        /// Control LabelUsuario_homes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelUsuario_homes;
+        
+        /// <summary>
+        /// Control txt_homes_Usuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_Usuario;
+        
+        /// <summary>
+        /// Control LabelPassword_homes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelPassword_homes;
+        
+        /// <summary>
+        /// Control valid_homes_passwd.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_homes_passwd;
+        
+        /// <summary>
+        /// Control txt_homes_passwd.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_homes_passwd;
+        
+        /// <summary>
+        /// Control p_homes_messageServer.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_homes_messageServer;
+        
+        /// <summary>
+        /// Control valid_summary_registro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary valid_summary_registro;
+        
+        /// <summary>
+        /// Control btn_homes_guardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_homes_guardar;
+        
+        /// <summary>
+        /// Control btn_homes_modificar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_homes_modificar;
     }
 }

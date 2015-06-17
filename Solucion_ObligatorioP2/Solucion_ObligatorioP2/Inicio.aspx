@@ -5,6 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link type="text/css" rel="stylesheet" href="Estilos.css"/>
+    <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+
+        function CheckHideErrorMsg() {
+            if (!$("#txt_password").val()) {
+                $("#p_inicioErr_messageServer").hide();
+            }
+        }
+
+
+    </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
@@ -30,10 +41,12 @@
                     </div>
                     <br />
                     <asp:LinkButton ID="lnk_home_registrarCliente" CssClass="letrasLinks" runat="server" PostBackUrl="~/Registro_Usuario.aspx" >No tienes usuario?</asp:LinkButton>
-                    <div id="div_validationSummary_inicio">
+                    <div id="div_validationSummary_inicio" style="height:40px">
+                        <p id="p_inicioErr_messageServer" runat="server" style="color:red; margin:0px" visible="false" class="letrasLinks">El usuario o contraseña son inválidos</p>
                         <asp:ValidationSummary ID="valid_summary_inicio" runat="server" CssClass="letrasLinks" DisplayMode="List" ForeColor="Red" HeaderText="Debes introducir los campos señalados" ValidationGroup="val_login" />
                     </div>
-                    <div id="div_btnLogin_inicio"><asp:Button ID="btn_login_inicio" runat="server" Text="Iniciar sesión" ValidationGroup="val_login" OnClick="btn_login_inicio_Click" /></div>
+                    <div id="div_btnLogin_inicio">
+                        <asp:Button ID="btn_login_inicio" runat="server" Text="Iniciar sesión" ValidationGroup="val_login" OnClientClick="CheckHideErrorMsg()" OnClick="btn_login_inicio_Click" /></div>
                 </div>
             </div>
 

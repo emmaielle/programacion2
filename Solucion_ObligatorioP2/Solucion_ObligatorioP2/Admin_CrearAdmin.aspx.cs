@@ -10,7 +10,6 @@ namespace Solucion_ObligatorioP2
 {
     public partial class Admin_CrearAdmin : System.Web.UI.Page
     {
-
         Sistema elSis = Sistema.Instancia;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -117,3 +116,4 @@ namespace Solucion_ObligatorioP2
 
         }
     }
+

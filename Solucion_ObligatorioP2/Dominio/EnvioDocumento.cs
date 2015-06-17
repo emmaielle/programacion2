@@ -39,9 +39,9 @@ namespace Dominio
 
         #region Constructor
 
-        public EnvioDocumento(string pNomRecibio, string pFirma, Direccion pDirOrigen, string pNomDestinatario, 
+        public EnvioDocumento(Direccion pDirOrigen, string pNomDestinatario, 
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal) 
-            : base(pNomRecibio, pFirma, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+            : base(pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
             
         {
            if (base.dirDestinatario != pDirOrigen)
@@ -93,25 +93,30 @@ namespace Dominio
 
         // variante de método base AgregarEtapa, que corrobora si el documento es legal tiene que ser recibido (pNomRecibio) por el 
         // propio destinatario (base.NombreDestinatario), y devuelve un bool para éxito o fracaso.
-        public override bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio)
+        public override bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio, out string pMensajeError)
         {
             bool seHace = true;
             bool exito = false;
 
             if (this.esDocLegal)
             {
-                if (pNombreRecibio != base.NombreDestinatario)
+                if (pEtapa == EtapaEnvio.Etapas.Entregado)
                 {
-                    seHace = false;
+                    if (pNombreRecibio != base.NombreDestinatario)
+                    {
+                        seHace = false;
+                    }
                 }
             }
 
-            if (seHace) 
-            { 
-                base.AgregarEtapa(pFechaIngreso, pEtapa, pUbicacion, pNombreRecibio);
-                exito = true;
+            if (seHace)
+            {
+                exito = base.AgregarEtapa(pFechaIngreso, pEtapa, pUbicacion, pNombreRecibio, out pMensajeError);
             }
-
+            else
+            {
+                pMensajeError = "El nombre de destinatario asociado a este envio no coincide con el nombre de quien lo recibe";
+            }
             return exito;
         }
 

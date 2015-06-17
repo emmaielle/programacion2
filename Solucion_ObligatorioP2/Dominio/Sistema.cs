@@ -55,7 +55,9 @@ namespace Dominio
             this.AltaOficina("Montevideo", "Cuareim", "11200,", "Uruguay", "2234");
             this.AltaOficina("Buenos Aires", "9 de Julio", "1345,", "Argentina", "2346");
             this.AltaOficina("Berlin", "calle", "A134", "Alemania", "1345");
-            this.AltaOficina("Montreal", "Calle", "A231", "Canada", "4321,");   
+            this.AltaOficina("Montreal", "Calle", "A231", "Canada", "4321,");
+            this.AltaEnvioDocumento("1234567-8", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
+                "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 3, 15), 1, 1.5F, true);
             
         }
 
@@ -104,36 +106,6 @@ namespace Dominio
                 }
             }
             return aux;
-        }
-
-        // retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados
-        public List<Envio> ListarEnviosEntregados(string pDoc)
-        {
-            List<Envio> envEntregados = null;
-
-            if (this.BuscarCliente (pDoc) != null)  
-            {   
-                Usuario cli = this.BuscarCliente(pDoc);
-                envEntregados = cli.ListarEnviosEntregados();
-            
-            }
-            return envEntregados;
-        }
-
-
-        // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo (en Usuario)    
-        public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
-        {
-            decimal total = 0M;
-
-            Usuario cli = this.BuscarCliente(pDoc);
-
-            if (cli != null)
-            {
-                total = cli.TotalFacturadoEnIntervalo(pFechaInicio, pFechaFinal);
-            }
-
-            return total;
         }
 
         #endregion
@@ -188,7 +160,7 @@ namespace Dominio
         #region Usuario
 
         // busca usuario (ya sea admin o cliente) por su nombre de usuario elegido. Devuelve el usuario o null //
-        public Usuario buscarUsuarioPorUsername(string pUser)
+        public Usuario BuscarUsuarioPorUsername(string pUser)
         {
             Usuario usr = null;
 
@@ -211,7 +183,7 @@ namespace Dominio
         public void ModificarUsuario(string pUsr, string pPass, string pNom, string pApell, string pTel, string pCalle, string pNum,
                                 string pCP, string pCiu, string pPais)
         {
-            Usuario usr = this.buscarUsuarioPorUsername(pUsr);
+            Usuario usr = this.BuscarUsuarioPorUsername(pUsr);
 
             usr.Nombre = pNom;
             usr.Password = pPass;
@@ -232,16 +204,23 @@ namespace Dominio
 
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de documento, 
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
-        public int AltaEnvioDocumento(string pNomRecibio, string pFirma, string pCliente, Direccion pDirOrigen, string pNomDestinatario, 
-                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal)
+        public int AltaEnvioDocumento(string pCliente, string pCalleOrigen, string pNroPtaOrigen, string pCPorigen, string pCiudOrigen, 
+                                    string pPaisOrigen, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino, 
+                                    string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso, 
+                                    int pNroOficinaIngreso, float pPesoKilos, bool pLegal)
         {
             Usuario cli = this.BuscarCliente(pCliente);
             int numeroEnvio = 0;
 
             if (cli != null)
             {
-                EnvioDocumento env = new EnvioDocumento(pNomRecibio, pFirma, pDirOrigen, pNomDestinatario, pDirDestino,
-                                                                pFechaIngreso, pOficinaIngreso, pPesoKilos, pLegal);
+                Direccion dirOrigen = new Direccion(pCalleOrigen, pNroPtaOrigen, pCPorigen, pCiudOrigen, pPaisOrigen);
+                Direccion dirDestino = new Direccion(pCalleDestino, pNroPtaDestino, pCPDestino, pCiudDestino, pPaisDestino);
+
+                OficinaPostal oficinaIngreso = this.BuscarOficinaXID(pNroOficinaIngreso);
+
+                EnvioDocumento env = new EnvioDocumento(dirOrigen, pNomDestinatario, dirDestino,
+                                                       pFechaIngreso, oficinaIngreso, pPesoKilos, pLegal);
 
                 if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
                 this.listaEnvios.Add(env);
@@ -256,16 +235,19 @@ namespace Dominio
 
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de paquetes, 
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
-        public int AltaEnvioPaquete(string pNomRecibio, string pFirma, string pCliente, string pNomDestinatario,
-                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pAlto, float pAncho,
-                                 float pLargo, decimal pCostoBaseGr,decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
+        public int AltaEnvioPaquete(string pCliente, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino, 
+                                    string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso, 
+                                int pOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, 
+                                decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
         {
             Usuario cli = this.BuscarCliente(pCliente);
             int numeroEnvio = 0;
            
             if (cli != null)
             {
-                EnvioPaquete env = new EnvioPaquete(pNomRecibio, pFirma, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso,
+                Direccion dirDestino = new Direccion(pCalleDestino, pNroPtaDestino, pCPDestino, pCiudDestino, pPaisDestino);
+                OficinaPostal oficinaIngreso = this.BuscarOficinaXID(pOficinaIngreso);
+                EnvioPaquete env = new EnvioPaquete(pNomDestinatario, dirDestino, pFechaIngreso, oficinaIngreso,
                                                     pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg, pDescr);
 
                 if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
@@ -334,9 +316,47 @@ namespace Dominio
             return listEnvios;
         }
 
+        // retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados
+        public List<Envio> ListarEnviosEntregados(string pDoc)
+        {
+            List<Envio> envEntregados = null;
+
+            if (this.BuscarCliente(pDoc) != null)
+            {
+                Usuario cli = this.BuscarCliente(pDoc);
+                envEntregados = cli.ListarEnviosEntregados();
+
+            }
+            return envEntregados;
+        }
+
+
+        // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo (en Usuario)    
+        public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
+        {
+            decimal total = 0M;
+
+            Usuario cli = this.BuscarCliente(pDoc);
+
+            if (cli != null)
+            {
+                total = cli.TotalFacturadoEnIntervalo(pFechaInicio, pFechaFinal);
+            }
+
+            return total;
+        }
+
+
+        // ------------------>>>> faltaba <<<-----------
+        public List<Envio> EnviosQueSuperanMontoParaCliente(string pDoc, decimal pMonto)
+        {
+            return new List<Envio>();
+        }
+
+
         // Utiliza el constructor alternativo de EnvioPaquete, que toma solo datos necesarios para calcular el precio final del envio.
         // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioPaquete
-        public decimal simularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, decimal pValorDecl, 
+        public decimal SimularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, decimal pValorDecl, 
                                             bool pSeguro, float pPesoKg)
         {
             EnvioPaquete simulPaquete = new EnvioPaquete(pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg);
@@ -347,7 +367,7 @@ namespace Dominio
 
         // Utiliza el constructor alternativo de EnvioDocumento, que toma solo datos necesarios para calcular el precio final del envio.
         // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioDocumento
-        public decimal simularEnvioDocumento(float pPesoKilos, bool pLegal)
+        public decimal SimularEnvioDocumento(float pPesoKilos, bool pLegal)
         {
             EnvioDocumento simulDoc = new EnvioDocumento(pPesoKilos, pLegal);
             decimal precioSimulado = simulDoc.PrecioFinal;
@@ -410,6 +430,18 @@ namespace Dominio
                 }
             }
             return ofi;
+        }
+
+        public List<int> TraerNrosDeOficinasPostales()
+        {
+            List<int> oficinasRetornadas = new List<int>();
+
+            foreach (OficinaPostal ofi in this.listaOficinasPostales)
+            {
+                oficinasRetornadas.Add(ofi.NroOficina);
+            }
+
+            return oficinasRetornadas;
         }
 
         #endregion

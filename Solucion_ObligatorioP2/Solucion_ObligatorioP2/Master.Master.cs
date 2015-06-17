@@ -27,10 +27,11 @@ namespace Solucion_ObligatorioP2
         protected void link_logout_cliente_Click(object sender, EventArgs e)
         {
             // restaurar la sesion y redireccionar a Inicio
-            Session["esAdmin"] = false;
-            Session["esCliente"] = false;
-            Session["UsuarioLogueado"] = "";
-            Response.Redirect("~/Inicio.aspx");
+            //Session["esAdmin"] = false;
+            //Session["esCliente"] = false;
+            //Session["UsuarioLogueado"] = "";
+            // querystring
+            Response.Redirect("~/Inicio.aspx?logout=1");
         }
 
         private void CargarMenuItems()

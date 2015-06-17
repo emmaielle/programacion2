@@ -19,8 +19,8 @@
       <PdhCountersEnabled>false</PdhCountersEnabled>
       <PdhCountersRate>500</PdhCountersRate>
       <PdhCounters>
-        <PdhCounter>\Disco f&amp;#237;sico(_Total)\Longitud promedio de la cola de disco</PdhCounter>
-        <PdhCounter>\Memoria\P&amp;#225;ginas/s</PdhCounter>
+        <PdhCounter>\Disco f&amp;amp;amp;#237;sico(_Total)\Longitud promedio de la cola de disco</PdhCounter>
+        <PdhCounter>\Memoria\P&amp;amp;amp;#225;ginas/s</PdhCounter>
         <PdhCounter>\Procesador(_Total)\% de tiempo de procesador</PdhCounter>
       </PdhCounters>
     </PdhSettings>
@@ -50,7 +50,7 @@
       <LaunchMethod>Browser</LaunchMethod>
       <LaunchUrl>http://localhost:65495/</LaunchUrl>
       <SiteUrl>http://localhost:65495/</SiteUrl>
-      <LocalPath>C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\Solucion_ObligatorioP2\</LocalPath>
+      <LocalPath>C:\Users\Victoria Armario\Documents\Visual Studio 2012\Projects\programacion2\Solucion_ObligatorioP2\Solucion_ObligatorioP2\</LocalPath>
       <VRoot>
       </VRoot>
       <NetAppHost>IIS</NetAppHost>

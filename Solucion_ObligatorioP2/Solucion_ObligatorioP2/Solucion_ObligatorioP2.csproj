@@ -60,18 +60,20 @@
     <Content Include="Admin_ActualizarEnvio.aspx" />
     <Content Include="Admin_CrearAdmin.aspx" />
     <Content Include="Admin_crearEnvio.aspx" />
-    <Content Include="Admin_home.aspx" />
     <Content Include="Ambos_EnTransito5dias.aspx" />
     <Content Include="Ambos_EnvSuperanMonto.aspx" />
+    <Content Include="Ambos_Home.aspx" />
     <Content Include="Ambos_RastrearEnvio.aspx" />
     <Content Include="Ambos_SimularEnvio.aspx" />
     <Content Include="Ambos_TotalFacturado.aspx" />
-    <Content Include="Cliente_home.aspx" />
     <Content Include="Estilos.css" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
+    <Content Include="scripts\jquery-1.11.3.min.js" />
     <Content Include="Registro_Usuario.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin_ActualizarEnvio.aspx.cs">
@@ -95,13 +97,6 @@
     <Compile Include="Admin_crearEnvio.aspx.designer.cs">
       <DependentUpon>Admin_crearEnvio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin_home.aspx.cs">
-      <DependentUpon>Admin_home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin_home.aspx.designer.cs">
-      <DependentUpon>Admin_home.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Ambos_EnTransito5dias.aspx.cs">
       <DependentUpon>Ambos_EnTransito5dias.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -115,6 +110,13 @@
     </Compile>
     <Compile Include="Ambos_EnvSuperanMonto.aspx.designer.cs">
       <DependentUpon>Ambos_EnvSuperanMonto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Ambos_Home.aspx.cs">
+      <DependentUpon>Ambos_Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Ambos_Home.aspx.designer.cs">
+      <DependentUpon>Ambos_Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ambos_RastrearEnvio.aspx.cs">
       <DependentUpon>Ambos_RastrearEnvio.aspx</DependentUpon>
@@ -136,13 +138,6 @@
     </Compile>
     <Compile Include="Ambos_TotalFacturado.aspx.designer.cs">
       <DependentUpon>Ambos_TotalFacturado.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Cliente_home.aspx.cs">
-      <DependentUpon>Cliente_home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Cliente_home.aspx.designer.cs">
-      <DependentUpon>Cliente_home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
