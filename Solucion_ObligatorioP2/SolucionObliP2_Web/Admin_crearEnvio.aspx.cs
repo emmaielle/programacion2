@@ -56,29 +56,32 @@ namespace Solucion_ObligatorioP2
             int nroOficina;
             bool resultOfi = int.TryParse(ddl_crearEnvio_nroOficina.SelectedValue, out nroOficina);
 
-            int numeroEnvio;
             string userCliente = Session["UsuarioLogueado"].ToString();
+            int numeroEnvio;
 
             if (radiobtn_crearEnvio_esPaquete.Checked == true)
             {
-
-
                 float largo;
                 bool resultLargo = float.TryParse(txt_crearEnvio_largoPaquete.Text, out largo);
+                
                 float ancho;
                 bool resultAncho = float.TryParse(txt_crearEnvio_anchoPaquete.Text, out ancho);
+               
                 float alto;
                 bool resultAlto = float.TryParse(txt_crearEnvio_altoPaquete.Text, out alto);
+               
                 descrip = txt_crearEnvio_DescripPaquete.Text;
-                decimal costoBaseXgramo;
-                bool resultadoCosto = decimal.TryParse(txt_crearEnvio_costoBase.Text, out costoBaseXgramo);
-                decimal valorDec;
-                bool resultadoValorDec = decimal.TryParse(txt_crearEnvio_valorDeclaradoPaquete.Text, out valorDec);
                 tieneSeguro = chkbox_crearEnvio_seguro.Checked;
 
+                decimal costoBaseXgramo;
+                bool resultadoCosto = decimal.TryParse(txt_crearEnvio_costoBase.Text, out costoBaseXgramo);
+                
+                decimal valorDec;
+                bool resultadoValorDec = decimal.TryParse(txt_crearEnvio_valorDeclaradoPaquete.Text, out valorDec);
 
                 numeroEnvio = elSis.AltaEnvioPaquete(userCliente, nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso,
-                    nroOficina, alto, ancho, largo, costoBaseXgramo, valorDec, tieneSeguro, peso, descrip);
+                                nroOficina, alto, ancho, largo, costoBaseXgramo, valorDec, tieneSeguro, peso, descrip);
+                
                 lbl_crearEnvio_muestraNroEnvio.Text = numeroEnvio.ToString();
 
             }
@@ -93,14 +96,12 @@ namespace Solucion_ObligatorioP2
                 codPostalOrigen = txt_crearEnvio_codPostalOrigen.Text;
                 nombreDestinatario = txt_crearEnvio_nomDest.Text;
 
+                numeroEnvio = elSis.AltaEnvioDocumento(userCliente, calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen, 
+                                                    nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso, nroOficina, 
+                                                    peso, esDocLegal);
 
-
-                numeroEnvio = elSis.AltaEnvioDocumento(userCliente, calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen, nombreDestinatario,
-                    calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso, nroOficina, peso, esDocLegal);
                 lbl_crearEnvio_muestraNroEnvio.Text = numeroEnvio.ToString();
             }
-
-
         }
 
         protected void radiobtn_crearEnvio_esPaqueteODocCheckedChanged(object sender, EventArgs e)
@@ -108,12 +109,10 @@ namespace Solucion_ObligatorioP2
             if (radiobtn_crearEnvio_esDoc.Checked)
             {
                 PanelDocumento.Visible = true;
-
                 PanelPaquete.Visible = false;
             }
             if (radiobtn_crearEnvio_esPaquete.Checked)
             {
-
                 PanelPaquete.Visible = true;
                 PanelDocumento.Visible = false;
             }

@@ -22,15 +22,12 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_crearEnv_head;
         
         /// <summary>
-
         /// Control lbl_crearEnvio_fechaIngreso.
-
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-
         protected global::System.Web.UI.WebControls.Label lbl_crearEnvio_fechaIngreso;
         
         /// <summary>
@@ -41,7 +38,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Calendar calendar_crearEnvio;
-
         
         /// <summary>
         /// Control lbl_crearEnvio_peso.

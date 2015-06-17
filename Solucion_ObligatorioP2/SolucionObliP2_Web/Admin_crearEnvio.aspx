@@ -9,7 +9,7 @@
             <div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                  <asp:Label ID="lbl_crearEnvio_fechaIngreso" style="float:left" CssClass="labels" runat="server" Text="Fecha: "></asp:Label>
-                <asp:Calendar ID="calendar_crearEnvio" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="110px" Width="148px" OnSelectionChanged="calendar_crearEnvio_SelectionChanged">
+                <asp:Calendar ID="calendar_crearEnvio" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="110px" Width="148px">
                     <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
                     <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
                     <OtherMonthDayStyle ForeColor="#999999" />
