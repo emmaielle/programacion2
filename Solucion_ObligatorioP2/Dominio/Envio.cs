@@ -202,7 +202,7 @@ namespace Dominio
                     this.nombreRecibio = pNombreRecibio;
                     this.firmaRecibio = pFirmaRecibio;
                 }
-                
+
                 this.EtapasDelEnvio.Add(etp);
                 mensajeError = "Se ha agregado la nueva etapa exitosamente!!";
             }
@@ -267,6 +267,8 @@ namespace Dominio
         #region Implementacion Interfaces
       
         //Metodo que me compara envios por fechas de manera descendente
+        //No es lógico ordenar por fecha de entregado si el envío puede no haberse entregado aún 
+        //(si está para entregar en la oficina final). Por lo tanto, ordénenlos por fecha de ENVIADO de forma ascendente.
         int IComparable<Envio>.CompareTo(Envio env)
         {
             return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaIngreso.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaIngreso);      

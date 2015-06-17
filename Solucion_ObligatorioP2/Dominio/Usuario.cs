@@ -131,7 +131,7 @@ namespace Dominio
 
             foreach (Envio env in enviosCliente)
             {
-                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa || EtapaEnvio.Etapas.ParaEntregar == env.ObtenerEtapaActual().Etapa)
+                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa)
                 {
                     lista.Add(env);
                 }

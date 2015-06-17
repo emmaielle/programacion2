@@ -56,7 +56,6 @@ namespace Dominio
             this.AltaOficina("Buenos Aires", "9 de Julio", "1345,", "Argentina", "2346");
             this.AltaOficina("Berlin", "calle", "A134", "Alemania", "1345");
             this.AltaOficina("Montreal", "Calle", "A231", "Canada", "4321,");
-            
             this.AltaEnvioDocumento("1234567-8", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
                 "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 3, 15), 1, 1.5F, true);
             
@@ -243,17 +242,17 @@ namespace Dominio
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
         public int AltaEnvioPaquete(string pCliente, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino, 
                                     string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso, 
-                                int pNroOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, 
-                                decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
+                                    int pNroOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, 
+                                    decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
         {
             Usuario cli = this.BuscarCliente(pCliente);
             int numeroEnvio = 0;
 
-            OficinaPostal oficinaIngreso = this.BuscarOficinaXID(pNroOficinaIngreso);
-
             if (cli != null)
             {
                 Direccion dirDestino = new Direccion(pCalleDestino, pNroPtaDestino, pCPDestino, pCiudDestino, pPaisDestino);
+                OficinaPostal oficinaIngreso = this.BuscarOficinaXID(pNroOficinaIngreso);
+
                 EnvioPaquete env = new EnvioPaquete(pNomDestinatario, dirDestino, pFechaIngreso, oficinaIngreso,
                                                     pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg, pDescr);
 
@@ -316,7 +315,6 @@ namespace Dominio
             return envEntregados;
         }
 
-
         // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo (en Usuario)    
         public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
         {
@@ -345,7 +343,6 @@ namespace Dominio
 
             return listaEnvSuperanMonto;
         }
-
 
         // Utiliza el constructor alternativo de EnvioPaquete, que toma solo datos necesarios para calcular el precio final del envio.
         // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioPaquete
