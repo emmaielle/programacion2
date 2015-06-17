@@ -56,7 +56,6 @@ namespace Solucion_ObligatorioP2
             int nroOficina;
             bool resultOfi = int.TryParse(ddl_crearEnvio_nroOficina.SelectedValue, out nroOficina);
 
-            string userCliente = Session["UsuarioLogueado"].ToString();
             int numeroEnvio;
 
             if (radiobtn_crearEnvio_esPaquete.Checked == true)
@@ -79,7 +78,7 @@ namespace Solucion_ObligatorioP2
                 decimal valorDec;
                 bool resultadoValorDec = decimal.TryParse(txt_crearEnvio_valorDeclaradoPaquete.Text, out valorDec);
 
-                numeroEnvio = elSis.AltaEnvioPaquete(userCliente, nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso,
+                numeroEnvio = elSis.AltaEnvioPaquete("1234567-8", nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso,
                                 nroOficina, alto, ancho, largo, costoBaseXgramo, valorDec, tieneSeguro, peso, descrip);
                 
                 lbl_crearEnvio_muestraNroEnvio.Text = numeroEnvio.ToString();
@@ -96,7 +95,7 @@ namespace Solucion_ObligatorioP2
                 codPostalOrigen = txt_crearEnvio_codPostalOrigen.Text;
                 nombreDestinatario = txt_crearEnvio_nomDest.Text;
 
-                numeroEnvio = elSis.AltaEnvioDocumento(userCliente, calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen, 
+                numeroEnvio = elSis.AltaEnvioDocumento("1234567-8", calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen, 
                                                     nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso, nroOficina, 
                                                     peso, esDocLegal);
 
