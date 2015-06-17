@@ -113,11 +113,11 @@
             </div>
             <div style="padding-top:15px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_ciudadOrigen" style="float:left" CssClass="labels" runat="server" Text="Ciudad:"></asp:Label>
-                <asp:TextBox ID="txt_crearEnvio_ciudadOrigen" style="width:100px ;float:right; margin-left:6px" runat="server" OnTextChanged="txt_crearEnvio_calleOrigen_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txt_crearEnvio_ciudadOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px;padding-bottom:30px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_codPostalOrigen" style="float:left" CssClass="labels" runat="server" Text="Codigo Postal:"></asp:Label>
-                <asp:TextBox ID="txt_crearEnvio_codPostalOrigen" style="width:100px ;float:right; margin-left:6px" runat="server" OnTextChanged="txt_crearEnvio_calleOrigen_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txt_crearEnvio_codPostalOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div> 
             </div>
