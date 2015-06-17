@@ -154,6 +154,30 @@ namespace Dominio
             }
             return total;
         }
+
+        // arma una lista de todos los envios que se encuentran en estado actual "EnTransito" (de acuerdo con el metodo
+        // ObtenerEtapaActual, en Envio) para el cliente dado, y de ellos, toma aquellos que fueron ingresados hace 
+        // mas de 5 dias en la primer oficinaPostal por el cliente.
+        public List<Envio> EnviosEnTransitoAtrasados()
+        {
+            List<Envio> listaEnvAtrasados = new List<Envio>();
+
+            if (this.enviosCliente != null)
+            {
+                foreach (Envio env in this.enviosCliente)
+                {
+                    if (env.ObtenerEtapaActual().Etapa == EtapaEnvio.Etapas.EnTransito)
+                    {
+                        int diasDesdeIngreso = env.ObtenerDiasDesdeIngreso();
+                        if (diasDesdeIngreso > 5) { listaEnvAtrasados.Add(env); }
+                    }
+                    listaEnvAtrasados.Sort(); //Aun no esta implementado esto.
+                }
+            }
+
+            return listaEnvAtrasados;
+        }
+
         #endregion
     }
 }

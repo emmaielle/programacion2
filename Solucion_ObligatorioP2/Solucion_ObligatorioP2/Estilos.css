@@ -173,7 +173,7 @@
     margin-left:2px;
 }
 
-#p_inicio_iniciarSesion, #p_inicio_rastreo {
+#p_inicio_iniciarSesion, #p_inicio_rastreo, #p_listarEnv_head_superanMonto, #p_listarEnv_head_enTransito5d {
     background-color: #042bc4;
     font-family: Verdana;
     color: white;

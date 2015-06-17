@@ -61,7 +61,10 @@ namespace Dominio
                 "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 3, 15), 1, 1.5F, true);
             
             this.AltaEnvioPaquete("1234567-8", "Jose Rodriguez", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", new DateTime(2015, 3, 15),
-                                1, 12.3F, 13.2F, 10, 12M, 100M, true, 10, "Es una caja"); 
+                                1, 12.3F, 13.2F, 10, 12M, 100M, true, 10, "Es una caja");
+
+            this.AltaEnvioPaquete("1234567-8", "Ariel Arrosa", "Mercedes", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 2, 10),
+                                3, 10.3F, 3.2F, 7, 10M, 15M, false, 6, "Es un paquete"); 
         }
 
         #endregion
@@ -297,27 +300,6 @@ namespace Dominio
                 listaEtapas = envioEncontrado.EtapasDelEnvio;
             }
             return listaEtapas;
-        }
-        // arma una lista de todos los envios que se encuentran en estado actual "EnTransito" (de acuerdo con el metodo
-        // ObtenerEstadoActual, en Envio), y de ellos, toma aquellos que fueron ingresados hace mas de 5 dias en
-        // la primer oficinaPostal por el cliente.
-        public List<Envio> EnviosEnTransitoAtrasados()
-        {
-            List<Envio> listEnvios = null;
-
-            if (this.listaEnvios != null)
-            {
-                foreach (Envio env in this.listaEnvios)
-                {
-                    if (env.ObtenerEtapaActual().Etapa == EtapaEnvio.Etapas.EnTransito)
-                    {
-                        int diasDesdeIngreso = env.ObtenerDiasDesdeIngreso();
-                        if (diasDesdeIngreso > 5) { listEnvios.Add(env); }
-                    }
-                    listEnvios.Sort(); //Aun no esta implementado esto.
-                }
-            }
-            return listEnvios;
         }
 
         // retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados

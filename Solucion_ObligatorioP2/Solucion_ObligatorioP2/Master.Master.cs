@@ -62,13 +62,9 @@ namespace Solucion_ObligatorioP2
             envio.ChildItems.Add(ttlFact);
             ttlFact.NavigateUrl = "~/Ambos_TotalFacturado.aspx";
 
-            MenuItem envMAYmonto = new MenuItem("Envíos que superan monto dado");
-            envio.ChildItems.Add(envMAYmonto);
-            envMAYmonto.NavigateUrl = "~/Ambos_EnvSuperanMonto.aspx";
-
-            MenuItem transit5 = new MenuItem("En tránsito por más de cinco días");
-            envio.ChildItems.Add(transit5);
-            transit5.NavigateUrl = "~/Ambos_EnTransito5dias.aspx";
+            MenuItem listadoEnvios = new MenuItem("Listado de envios");
+            envio.ChildItems.Add(listadoEnvios);
+            listadoEnvios.NavigateUrl = "~/Ambos_ListarEnvios.aspx";
 
             MenuItem crearAdmin = new MenuItem("Crear administrador");
             menuItems.Add(crearAdmin);

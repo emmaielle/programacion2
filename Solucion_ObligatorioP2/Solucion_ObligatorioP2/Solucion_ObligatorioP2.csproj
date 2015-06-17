@@ -60,8 +60,7 @@
     <Content Include="Admin_ActualizarEnvio.aspx" />
     <Content Include="Admin_CrearAdmin.aspx" />
     <Content Include="Admin_crearEnvio.aspx" />
-    <Content Include="Ambos_EnTransito5dias.aspx" />
-    <Content Include="Ambos_EnvSuperanMonto.aspx" />
+    <Content Include="Ambos_ListarEnvios.aspx" />
     <Content Include="Ambos_Home.aspx" />
     <Content Include="Ambos_RastrearEnvio.aspx" />
     <Content Include="Ambos_SimularEnvio.aspx" />
@@ -97,19 +96,12 @@
     <Compile Include="Admin_crearEnvio.aspx.designer.cs">
       <DependentUpon>Admin_crearEnvio.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Ambos_EnTransito5dias.aspx.cs">
-      <DependentUpon>Ambos_EnTransito5dias.aspx</DependentUpon>
+    <Compile Include="Ambos_ListarEnvios.aspx.cs">
+      <DependentUpon>Ambos_ListarEnvios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Ambos_EnTransito5dias.aspx.designer.cs">
-      <DependentUpon>Ambos_EnTransito5dias.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ambos_EnvSuperanMonto.aspx.cs">
-      <DependentUpon>Ambos_EnvSuperanMonto.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ambos_EnvSuperanMonto.aspx.designer.cs">
-      <DependentUpon>Ambos_EnvSuperanMonto.aspx</DependentUpon>
+    <Compile Include="Ambos_ListarEnvios.aspx.designer.cs">
+      <DependentUpon>Ambos_ListarEnvios.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ambos_Home.aspx.cs">
       <DependentUpon>Ambos_Home.aspx</DependentUpon>

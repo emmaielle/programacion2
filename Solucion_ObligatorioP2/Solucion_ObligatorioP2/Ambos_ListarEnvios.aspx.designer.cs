@@ -112,6 +112,69 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Button btn_superanMonto_listar;
         
         /// <summary>
+        /// Control div_listarEnvios_enTransito5dias_elegirCli.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_listarEnvios_enTransito5dias_elegirCli;
+        
+        /// <summary>
+        /// Control lbl_listarEnv_EnTrans5dias_username.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_listarEnv_EnTrans5dias_username;
+        
+        /// <summary>
+        /// Control valid_listarEnvios_EnTrans5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_listarEnvios_EnTrans5;
+        
+        /// <summary>
+        /// Control txt_listarEnvios_enTransito5_username.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_listarEnvios_enTransito5_username;
+        
+        /// <summary>
+        /// Control p1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p1;
+        
+        /// <summary>
+        /// Control valid_listarEnv_summary.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary valid_listarEnv_summary;
+        
+        /// <summary>
+        /// Control btn_listarEnvTransito5d.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_listarEnvTransito5d;
+        
+        /// <summary>
         /// Control div_superanMonto_gridresult.
         /// </summary>
         /// <remarks>
@@ -121,13 +184,22 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_superanMonto_gridresult;
         
         /// <summary>
-        /// Control lbl_superanMonto_envDocs.
+        /// Control div_grv_envDocumento.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_superanMonto_envDocs;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_grv_envDocumento;
+        
+        /// <summary>
+        /// Control p_listarEnvio_headerResult.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_listarEnvio_headerResult;
         
         /// <summary>
         /// Control grid_superanMonto_enviosDoc.
@@ -137,6 +209,15 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView grid_superanMonto_enviosDoc;
+        
+        /// <summary>
+        /// Control div_grv_envPaquete.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_grv_envPaquete;
         
         /// <summary>
         /// Control lbl_superanMonto_envPaqs.

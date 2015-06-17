@@ -19,6 +19,7 @@ namespace Dominio
         protected List<EtapaEnvio> etapasDelEnvio;
         protected decimal precioFinal;
         private float peso; // para paquetes se guarda en Kg, para documentos en Gramos (pero en ambos se ingresa en Kg).
+        private DateTime fechaIngreso;
 
         #endregion
         
@@ -70,7 +71,13 @@ namespace Dominio
             get { return peso; }
             set { peso = value; }
         }
-        
+
+        public DateTime FechaIngreso
+        {
+            get { return fechaIngreso; }
+            set { fechaIngreso = value; }
+        }
+
         #endregion
 
         #region Constructor
@@ -91,6 +98,7 @@ namespace Dominio
            
             // agrego esa etapa en la lista de etapas recorridas de este envío
             this.EtapasDelEnvio.Add(unaEtapa);
+            this.FechaIngreso = this.etapasDelEnvio[0].FechaIngreso;
 
         }
 
