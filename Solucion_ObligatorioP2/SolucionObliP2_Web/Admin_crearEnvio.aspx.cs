@@ -31,17 +31,11 @@ namespace Solucion_ObligatorioP2
             
         }
 
-        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btn_crearEnvio_crearEnvio_Click(object sender, EventArgs e)
         {
-
-
             float peso;
             bool resultado = float.TryParse(txt_crearEnvio_peso.Text, out peso);
+
             string nombre = txt_crearEnvio_nomDest.Text;
             string calle = txt_crearEnvio_calle.Text;
             string nroPuerta = txt_crearEnvio_numPuerta.Text;
@@ -58,14 +52,15 @@ namespace Solucion_ObligatorioP2
             string codPostalOrigen;
             string nombreDestinatario = txt_crearEnvio_nomDest.Text;
             DateTime fechaIngreso = calendar_crearEnvio.SelectedDate;
+
             int nroOficina;
             bool resultOfi = int.TryParse(ddl_crearEnvio_nroOficina.SelectedValue, out nroOficina);
+
             int numeroEnvio;
-           
+            string userCliente = Session["UsuarioLogueado"].ToString();
 
-            string cliente = Session["UsuarioLogueado"].ToString(); /*ask! */
-
-            if (radiobtn_crearEnvio_esPaquete.Checked == true) {
+            if (radiobtn_crearEnvio_esPaquete.Checked == true)
+            {
 
 
                 float largo;
@@ -82,31 +77,31 @@ namespace Solucion_ObligatorioP2
                 tieneSeguro = chkbox_crearEnvio_seguro.Checked;
 
 
-                numeroEnvio = elSis.AltaEnvioPaquete(cliente, nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso,
+                numeroEnvio = elSis.AltaEnvioPaquete(userCliente, nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso,
                     nroOficina, alto, ancho, largo, costoBaseXgramo, valorDec, tieneSeguro, peso, descrip);
                 lbl_crearEnvio_muestraNroEnvio.Text = numeroEnvio.ToString();
-                
+
             }
 
-            if (radiobtn_crearEnvio_esDoc.Checked == true) 
+            if (radiobtn_crearEnvio_esDoc.Checked == true)
             {
-               esDocLegal = chkbox_crearEnvio_esDocLegal.Checked;
-               calleOrigen = txt_crearEnvio_calleOrigen.Text;
-               nroPuertaOrigen = txt_crearEnvio_nroOrigen.Text;
-               paisOrigen = txt_crearEnvio_paisOrigen.Text;
-               ciudadOrigen = txt_crearEnvio_ciudadOrigen.Text;
-               codPostalOrigen = txt_crearEnvio_codPostalOrigen.Text;
-               nombreDestinatario = txt_crearEnvio_nomDest.Text;
+                esDocLegal = chkbox_crearEnvio_esDocLegal.Checked;
+                calleOrigen = txt_crearEnvio_calleOrigen.Text;
+                nroPuertaOrigen = txt_crearEnvio_nroOrigen.Text;
+                paisOrigen = txt_crearEnvio_paisOrigen.Text;
+                ciudadOrigen = txt_crearEnvio_ciudadOrigen.Text;
+                codPostalOrigen = txt_crearEnvio_codPostalOrigen.Text;
+                nombreDestinatario = txt_crearEnvio_nomDest.Text;
 
 
-               
-               numeroEnvio = elSis.AltaEnvioDocumento(cliente, calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen, nombreDestinatario,
-                   calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso, nroOficina, peso, esDocLegal);
-                         lbl_crearEnvio_muestraNroEnvio.Text = numeroEnvio.ToString();
+
+                numeroEnvio = elSis.AltaEnvioDocumento(userCliente, calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen, nombreDestinatario,
+                    calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso, nroOficina, peso, esDocLegal);
+                lbl_crearEnvio_muestraNroEnvio.Text = numeroEnvio.ToString();
             }
-   
 
-            }
+
+        }
 
         protected void radiobtn_crearEnvio_esPaqueteODocCheckedChanged(object sender, EventArgs e)
         {
@@ -123,28 +118,6 @@ namespace Solucion_ObligatorioP2
                 PanelDocumento.Visible = false;
             }
         }
-
-
-        //protected void ddl_crearEnvio_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    EtapaEnvio.Etapas etapaIngresada;
-        //    etapaIngresada = EtapaEnvio.Etapas.EnOrigen;
-
-        //    ddl_crearEnvio_etapa.Enabled = false;
-                
-        //}
-
-        protected void txt_crearEnvio_calleOrigen_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void calendar_crearEnvio_SelectionChanged(object sender, EventArgs e)
-        {
-
-        }
-
-       
     
     }
 

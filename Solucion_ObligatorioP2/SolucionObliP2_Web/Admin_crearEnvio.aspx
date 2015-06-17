@@ -94,22 +94,22 @@
 
         <asp:Panel ID="PanelDocumento" CssClass="cajitas" style="margin:10px; margin-top:30px; padding:10px; padding-left:120px; padding-right:120px;  width:260px; clear:both"  runat="server" Visible="False">
             <div style="padding-top:15px; clear:both">
-                <asp:CheckBox ID="chkbox_crearEnvio_esDocLegal" style="float:left" CssClass="labels" runat="server" OnCheckedChanged="CheckBox1_CheckedChanged" Text="Es documento legal" />
+                <asp:CheckBox ID="chkbox_crearEnvio_esDocLegal" style="float:left" CssClass="labels" runat="server" Text="Es documento legal" />
             </div>
             <div style="padding-top:15px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_datosDirOri" style="margin:auto; vertical-align:central; color:blue" CssClass="labels" runat="server" Text=" Datos de direccion de origen:"></asp:Label>
             </div>
            <div style="padding-top:15px; clear:both">
                <asp:Label ID="lbl_crearEnvio_calleOrigen" style="float:left" CssClass="labels" runat="server" Text="Calle:"></asp:Label>
-               <asp:TextBox ID="txt_crearEnvio_calleOrigen" style="width:100px ;float:right; margin-left:6px" runat="server" OnTextChanged="txt_crearEnvio_calleOrigen_TextChanged"></asp:TextBox>
+               <asp:TextBox ID="txt_crearEnvio_calleOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_numOrigen" style="float:left" CssClass="labels" runat="server" Text="Numero:"></asp:Label>
-                <asp:TextBox ID="txt_crearEnvio_nroOrigen" style="width:100px ;float:right; margin-left:6px" runat="server" OnTextChanged="txt_crearEnvio_calleOrigen_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txt_crearEnvio_nroOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_paisOrigen" style="float:left" CssClass="labels" runat="server" Text="Pais:"></asp:Label>
-                <asp:TextBox ID="txt_crearEnvio_paisOrigen" style="width:100px ;float:right; margin-left:6px" runat="server" OnTextChanged="txt_crearEnvio_calleOrigen_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txt_crearEnvio_paisOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_ciudadOrigen" style="float:left" CssClass="labels" runat="server" Text="Ciudad:"></asp:Label>
