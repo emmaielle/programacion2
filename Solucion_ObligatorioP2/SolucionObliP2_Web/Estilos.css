@@ -17,7 +17,7 @@
 }
 
 #div_formulario_registro, #div_formulario_homeCli, #div_formulario_homeAdmin, #div_formulario_homes, #div_crearEnvio_contenedora, 
-#div_crearAdmin_contenedora, #div_totalFacturado_contenedor, #div_rastrearEnvio_contenedora, #div_superanMonto_contenedora {
+#div_crearAdmin_contenedora, #div_totalFacturado_contenedor, #div_rastrearEnvio_contenedora {
 
     width:540px;
     margin:auto;
@@ -174,7 +174,7 @@
     margin-left:2px;
 }
 
-#p_inicio_iniciarSesion, #p_inicio_rastreo, #p_listarEnv_head_superanMonto, #p_listarEnv_head_enTransito5d {
+#p_inicio_iniciarSesion, #p_inicio_rastreo, #p_listarEnv_head_superanMonto, #p_listarEnv_head_enTransito5d, #p_listarEnv_head_paraEntregar {
     background-color: #042bc4;
     font-family: Verdana;
     color: white;

@@ -24,12 +24,12 @@ namespace Solucion_ObligatorioP2
                 {
                     div_superanMonto_elegirCliente.Visible = true;
                     div_listarEnvios_SoloAdmin_transito5d.Visible = true;
+                    div_listarEnvios_paraEntregar_elegirCliente.Visible = true;
                 }
                 else if ((bool)Session["esCliente"] == true)
                 {
-                    div_listarEnvios_Ambos_superaMonto.Style.Add("clear", "both");
-                    div_listarEnvios_Ambos_superaMonto.Style.Remove("float");
-                    div_listarEnvios_Ambos_superaMonto.Style.Remove("width");
+                    div_superanMonto_contenedora.Style.Add("width", "541px");
+                    div_listarEnvios_Ambos_envParaEntregar.Style.Add("float", "right");
                 }
             }
 
@@ -47,8 +47,8 @@ namespace Solucion_ObligatorioP2
             
             if (result)
             {
-                List<Envio> enviosSolicitados = this.BuscarEnviosSolicitados();
-                this.CargarEnviosSolicitados(enviosSolicitados, "Lista de envios cuyo precio supera " + 
+                List<Envio> enviosSolicitados = this.BuscarEnviosQueSuperanMonto();
+                this.CargarEnviosSolicitados(enviosSolicitados, "Lista de envíos cuyo precio supera " + 
                                             txt_superanMonto_monto.Text + " pesos");
             }
             else
@@ -58,9 +58,26 @@ namespace Solucion_ObligatorioP2
             }
         }
 
-        protected List<Envio> BuscarEnviosSolicitados()
+        protected void btn_listarEnvios_paraEntregar_listar_Click(object sender, EventArgs e)
         {
-            Usuario cliente = ObtenerCliente(txt_superanMonto_usrName);
+            List<Envio> listaEnviosParaEntregar = new List<Envio>();
+            listaEnviosParaEntregar = this.BuscarEnviosParaEntregar();
+
+            this.CargarEnviosSolicitados(listaEnviosParaEntregar, "Lista de envíos para entregar o entregados, ordenados por decha de ingreso a estado 'ParaEntregar'");
+        }
+
+        protected void btn_listaeEnvTransito5_Click(object sender, EventArgs e)
+        {
+            List<Envio> listaEnviosEnTransitoAtrasados = new List<Envio>();
+            listaEnviosEnTransitoAtrasados = elSis.EnviosEnTransitoAtrasados();
+
+            this.CargarEnviosSolicitados(listaEnviosEnTransitoAtrasados, "Lista de envíos en tránsito por más de cinco días");
+
+        }
+
+        protected List<Envio> BuscarEnviosQueSuperanMonto()
+        {
+            Usuario cliente = this.ObtenerCliente(txt_superanMonto_usrName);
 
             // ya hice el TryParse antes de esto
             decimal monto = decimal.Parse(txt_superanMonto_monto.Text);
@@ -79,7 +96,17 @@ namespace Solucion_ObligatorioP2
             return enviosQueSuperanMonto;
         }
 
-        private void CargarEnviosSolicitados(List<Envio> pEnviosSolicitados, string pHeader)
+        protected List<Envio> BuscarEnviosParaEntregar()
+        {
+            Usuario cliente = this.ObtenerCliente(txt_listarEnv_paraEntregar_usrName);
+
+            List<Envio> listaEnviosParaEntregaroEntregados = new List<Envio>();
+            listaEnviosParaEntregaroEntregados = cliente.ListarEnviosEntregados();
+
+            return listaEnviosParaEntregaroEntregados;
+        }
+
+        protected void CargarEnviosSolicitados(List<Envio> pEnviosSolicitados, string pHeader)
         {
             List<Envio> nuevaListaEnvios = new List<Envio>();
 
@@ -103,16 +130,6 @@ namespace Solucion_ObligatorioP2
             grid_listarEnvios_env.DataBind();
         }
 
-        protected void btn_listaeEnvTransito5_Click(object sender, EventArgs e)
-        {
-            List<Envio> listaEnviosEnTransitoAtrasados = new List<Envio>();
-            listaEnviosEnTransitoAtrasados = elSis.EnviosEnTransitoAtrasados();
-
-            CargarEnviosSolicitados(listaEnviosEnTransitoAtrasados, "Lista de envios en tránsito por más de cinco dias");
-
-        }
-
-
         protected Usuario ObtenerCliente(TextBox pControl_txtbox)
         {
             Usuario cliente = null;
@@ -125,5 +142,7 @@ namespace Solucion_ObligatorioP2
 
             return cliente;
         }
+
+
     }
 }

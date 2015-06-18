@@ -96,6 +96,11 @@ namespace Dominio
             get { return this.GetType().ToString().Split(new char[] { '.' })[1]; }
         }
 
+        public DateTime FechaIngresoParaEntregar
+        {
+
+        }
+
         #endregion
 
         #region Constructor

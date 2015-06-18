@@ -13,6 +13,15 @@ namespace Solucion_ObligatorioP2 {
     public partial class Ambos_EnvSuperanMonto {
         
         /// <summary>
+        /// Control div_superanMonto_contenedora.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_superanMonto_contenedora;
+        
+        /// <summary>
         /// Control p_superanMonto_head.
         /// </summary>
         /// <remarks>
@@ -119,6 +128,78 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_superanMonto_listar;
+        
+        /// <summary>
+        /// Control div_listarEnvios_Ambos_envParaEntregar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_listarEnvios_Ambos_envParaEntregar;
+        
+        /// <summary>
+        /// Control div_listarEnvios_paraEntregar_elegirCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_listarEnvios_paraEntregar_elegirCliente;
+        
+        /// <summary>
+        /// Control Label1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// Control valid_listarEnvios_paraEntregar_emptyUsr.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_listarEnvios_paraEntregar_emptyUsr;
+        
+        /// <summary>
+        /// Control txt_listarEnv_paraEntregar_usrName.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_listarEnv_paraEntregar_usrName;
+        
+        /// <summary>
+        /// Control p1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p1;
+        
+        /// <summary>
+        /// Control valid_listarEnv_paraEntregar_empty.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary valid_listarEnv_paraEntregar_empty;
+        
+        /// <summary>
+        /// Control btn_listarEnvios_paraEntregar_listar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_listarEnvios_paraEntregar_listar;
         
         /// <summary>
         /// Control div_listarEnvios_SoloAdmin_transito5d.

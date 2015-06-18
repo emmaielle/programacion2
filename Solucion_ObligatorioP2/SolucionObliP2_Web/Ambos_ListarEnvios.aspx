@@ -2,12 +2,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="div_superanMonto_contenedora" style="padding-bottom:40px" class="labels">
+    <div id="div_superanMonto_contenedora" runat="server" style=" width:780px; margin:auto; text-align:center; padding-bottom:40px" class="labels">
         <p id="p_superanMonto_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Listado de envios</p>
         
         <div style="clear:both">
             <div id="div_listarEnvios_Ambos_superaMonto" runat="server" class="cajitas" style="padding-bottom:20px; width:240px; float:left">
-                <p id="p_listarEnv_head_superanMonto">Envios cuyo precio supera un monto dado</p>
+                <p id="p_listarEnv_head_superanMonto">Envíos cuyo precio supera un monto dado</p>
                 <div id="div_superanMonto_elegirCliente" runat="server" Visible="false" style="clear:both; padding-top:15px">
                     <asp:Label ID="lbl_superanMonto_usuario" style="float:left" runat="server" Text="Username cliente: "></asp:Label>
                     <asp:RequiredFieldValidator style="float:left" ID="valid_superanMonto_emptyUsr" runat="server" Text="*" ControlToValidate="txt_superanMonto_usrName" ValidationGroup="emptyField" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -23,13 +23,33 @@
                     <asp:ValidationSummary ID="valid_superanMonto_empty" runat="server" ValidationGroup="emptyField" ForeColor="Red" HeaderText="Los campos indicados son requeridos" />
                 </div>
                 <div style="clear:both; margin:auto; vertical-align:central; padding-top:10px">
-                    <asp:Button ID="btn_superanMonto_listar" runat="server" Text="Calcular" ValidationGroup="emptyField" OnClick="btn_superanMonto_listar_Click" />
+                    <asp:Button ID="btn_superanMonto_listar" runat="server" Text="Obtener envíos" ValidationGroup="emptyField" OnClick="btn_superanMonto_listar_Click" />
                 </div>
             </div>
-            <div id="div_listarEnvios_SoloAdmin_transito5d" runat="server" visible="false" class="cajitas" style="padding-bottom:126px;  width:240px; float:right">
-                <p id="p_listarEnv_head_enTransito5d">Envios en tránsito con más de 5 días de enviados</p>
+            
+            <div id="div_listarEnvios_Ambos_envParaEntregar" runat="server" class="cajitas" style="padding-bottom:55px; margin-left:5px;  width:240px; float:left">
+                <p id="p_listarEnv_head_paraEntregar">Envíos para entregar o ya entregados</p>
+                
+                <div id="div_listarEnvios_paraEntregar_elegirCliente" runat="server" Visible="false" style="clear:both; padding-top:15px">
+                    <asp:Label ID="Label1" style="float:left" runat="server" Text="Username cliente: "></asp:Label>
+                    <asp:RequiredFieldValidator style="float:left" ID="valid_listarEnvios_paraEntregar_emptyUsr" runat="server" Text="*" ControlToValidate="txt_listarEnv_paraEntregar_usrName" ValidationGroup="emptyField_paraEntregar" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <asp:TextBox ID="txt_listarEnv_paraEntregar_usrName" style="width:100px; float:right; margin-left:5px" runat="server"></asp:TextBox>
+                </div>
+
+                <div id="div1" style="height:25px; clear:both; padding-top:10px">
+                    <p id="p1" runat="server" style="color:red; margin:0px" visible="false" class="letrasLinks"></p>
+                    <asp:ValidationSummary ID="valid_listarEnv_paraEntregar_empty" runat="server" ValidationGroup="emptyField_paraEntregar" ForeColor="Red" HeaderText="Los campos indicados son requeridos" />
+                </div>
+
                 <div style="clear:both; margin:auto; vertical-align:central; padding-top:10px">
-                    <asp:Button ID="btn_listarEnvTransito5d" runat="server" Text="Obtener envios" ValidationGroup="emptyField_5dias" OnClick="btn_listaeEnvTransito5_Click" />
+                    <asp:Button ID="btn_listarEnvios_paraEntregar_listar" runat="server" Text="Obtener envíos" ValidationGroup="emptyField_paraEntregar" OnClick="btn_listarEnvios_paraEntregar_listar_Click" />
+                </div>
+            </div>
+
+            <div id="div_listarEnvios_SoloAdmin_transito5d" runat="server" visible="false" class="cajitas" style="padding-bottom:126px; margin-left:5px; width:200px; float:left">
+                <p id="p_listarEnv_head_enTransito5d">Envíos en tránsito con más de 5 días de enviados</p>
+                <div style="clear:both; margin:auto; vertical-align:central; padding-top:10px">
+                    <asp:Button ID="btn_listarEnvTransito5d" runat="server" Text="Obtener envíos" ValidationGroup="emptyField_5dias" OnClick="btn_listaeEnvTransito5_Click" />
                 </div>
             </div>
         </div>
