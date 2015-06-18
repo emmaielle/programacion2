@@ -14,22 +14,29 @@ namespace Solucion_ObligatorioP2
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["UsuarioLogueado"].ToString() == "")
-            //{
-            //    Response.Redirect("~/Inicio.aspx");
-            //}
-            //else
-            //{
-            //    if ((bool)Session["esAdmin"] == true)
-            //    {
+            if (Session["UsuarioLogueado"].ToString() == "")
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+            else
+            {
+                if ((bool)Session["esAdmin"] == true)
+                {
                     div_superanMonto_elegirCliente.Visible = true;
-                    div_listarEnvios_enTransito5dias_elegirCli.Visible = true;
-            //    }
-            //}
+                    div_listarEnvios_SoloAdmin_transito5d.Visible = true;
+                }
+                else if ((bool)Session["esCliente"] == true)
+                {
+                    div_listarEnvios_Ambos_superaMonto.Style.Add("clear", "both");
+                    div_listarEnvios_Ambos_superaMonto.Style.Remove("float");
+                    div_listarEnvios_Ambos_superaMonto.Style.Remove("width");
+                }
+            }
 
             if (this.IsPostBack)
             {
                 p_superanMonto_messageServer.Visible = false;
+                p_listarEnvios_noSeEncontro.Visible = false;
             }
         }
 
@@ -74,63 +81,32 @@ namespace Solucion_ObligatorioP2
 
         private void CargarEnviosSolicitados(List<Envio> pEnviosSolicitados, string pHeader)
         {
-            List<EnvioDocumento> nuevaListaEnviosDoc = new List<EnvioDocumento>();
-            List<EnvioPaquete> nuevaListaEnviosPaquete = new List<EnvioPaquete>();
             List<Envio> nuevaListaEnvios = new List<Envio>();
 
-            //foreach (Envio env in pEnviosSolicitados)
-            //{
-            //    if (env.GetType() == typeof(EnvioDocumento))
-            //    {
-            //        EnvioDocumento envDoc = env as EnvioDocumento;
-            //        nuevaListaEnviosDoc.Add(envDoc);
-            //    }
-            //    else if (env.GetType() == typeof(EnvioPaquete))
-            //    {
-            //        EnvioPaquete envPaq = env as EnvioPaquete;
-            //        nuevaListaEnviosPaquete.Add(envPaq);
-            //    }
-            //}
-
-            foreach (Envio env in pEnviosSolicitados)
+            if (pEnviosSolicitados.Count != 0)
             {
-                nuevaListaEnvios.Add(env);
-            }
+                div_grv_envios.Visible = true;
 
-            if (nuevaListaEnvios.Count != 0)
+                foreach (Envio env in pEnviosSolicitados)
+                {
+                    nuevaListaEnvios.Add(env);
+                }
+            }
+            else
             {
-                div_grv_envDocumento.Visible = true;
+                div_grv_envios.Visible = false;
+                p_listarEnvios_noSeEncontro.Visible = true;
             }
-            else div_grv_envDocumento.Visible = false;
-
-            //if (nuevaListaEnviosDoc.Count != 0)
-            //{
-            //    div_grv_envDocumento.Visible = true;
-            //}
-            //else div_grv_envDocumento.Visible = false;
-
-            //if (nuevaListaEnviosPaquete.Count != 0)
-            //{
-            //    div_grv_envPaquete.Visible = true;
-            //}
-            //else div_grv_envPaquete.Visible = false;
 
             p_listarEnvio_headerResult.InnerText = pHeader;
-            grid_superanMonto_enviosDoc.DataSource = nuevaListaEnvios;
-            grid_superanMonto_enviosDoc.DataBind();
-
-            //grid_superanMonto_enviosPaquete.DataSource = nuevaListaEnviosPaquete;
-            //grid_superanMonto_enviosPaquete.DataBind();
-
-
+            grid_listarEnvios_env.DataSource = nuevaListaEnvios;
+            grid_listarEnvios_env.DataBind();
         }
 
         protected void btn_listaeEnvTransito5_Click(object sender, EventArgs e)
         {
-            Usuario cliente = ObtenerCliente(txt_listarEnvios_enTransito5_username);
-            
             List<Envio> listaEnviosEnTransitoAtrasados = new List<Envio>();
-            listaEnviosEnTransitoAtrasados = cliente.EnviosEnTransitoAtrasados();
+            listaEnviosEnTransitoAtrasados = elSis.EnviosEnTransitoAtrasados();
 
             CargarEnviosSolicitados(listaEnviosEnTransitoAtrasados, "Lista de envios en tránsito por más de cinco dias");
 

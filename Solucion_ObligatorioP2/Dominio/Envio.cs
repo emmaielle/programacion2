@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Dominio
 {
-    public abstract class Envio :IComparable <Envio>, IComparer<Envio>
+    public abstract class Envio :IComparable <Envio>
     {
         #region Atributos
         protected int nroEnvio;
@@ -76,6 +76,24 @@ namespace Dominio
         {
             get { return fechaIngreso; }
             set { fechaIngreso = value; }
+        }
+
+        // propiedad hecha para gridview de listado de envios
+        public EtapaEnvio.Etapas Etapa
+        {
+            get { return this.ObtenerEtapaActual().Etapa; }
+        }
+
+        // propiedad hecha para gridview de envios atrasados5dias && para IComparable que ordena segun esto
+        public string DocCliente
+        {
+            get { return Sistema.Instancia.BuscarClienteParaUnEnvio(this); }
+        }
+
+        // para que devuelva en el gridview de envios el tipo de envio que es (pasado a string y despues de "Dominio.")
+        public string TipoEnvio
+        {
+            get { return this.GetType().ToString().Split(new char[] { '.' })[1]; }
         }
 
         #endregion
@@ -264,21 +282,42 @@ namespace Dominio
 
         #endregion
 
-        #region Implementacion Interfaces
+        #region Implementacion IComparable
       
         //Metodo que me compara envios por fechas de manera descendente
         //No es lógico ordenar por fecha de entregado si el envío puede no haberse entregado aún 
         //(si está para entregar en la oficina final). Por lo tanto, ordénenlos por fecha de ENVIADO de forma ascendente.
         int IComparable<Envio>.CompareTo(Envio env)
         {
-            return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaIngreso.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaIngreso);      
+            int retorno = 0;
+
+            Envio otro = env as Envio;
+
+            if (otro != null)
+            {
+                // obtengo la etapa actual de los envios porque no se si el envio esta
+                // "ParaEntregar" o "Entregado", ya que me sirven ambos. En el primer caso, tomo la ultima etapaDeEnvio, y en el 2do caso
+                // tomo la penultima etapa.
+
+                EtapaEnvio.Etapas etapaEnv1 = env.ObtenerEtapaActual().Etapa;
+                EtapaEnvio.Etapas etapaOtroEnv2 = env.ObtenerEtapaActual().Etapa;
+                int intRestarDeEnv1;
+                int intRestarDeOtroEnv2;
+
+                if (etapaEnv1 == EtapaEnvio.Etapas.ParaEntregar) intRestarDeEnv1 = 1;
+                else intRestarDeEnv1 = 2;
+
+                if (etapaOtroEnv2 == EtapaEnvio.Etapas.ParaEntregar) intRestarDeOtroEnv2 = 1;
+                else intRestarDeOtroEnv2 = 2;
+
+                // busco la ultima etapa del envio ("[XX.Count-1]") y busco la fecha de esa etapa, para compararla con la del otro envio
+                retorno = env.EtapasDelEnvio[env.EtapasDelEnvio.Count - intRestarDeOtroEnv2].FechaIngreso.
+                        CompareTo(this.EtapasDelEnvio[this.EtapasDelEnvio.Count - intRestarDeEnv1].FechaIngreso);                                         
+            }
+
+            return retorno;
         }
 
-        //Me falta implementar este para el metodo listar envios en transito y con demora de 5 dias. Ordeno por fecha y por doc del cliente
-        int IComparer<Envio>.Compare(Envio x, Envio y)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
     }
 

@@ -48,22 +48,34 @@ namespace Dominio
 
         void CargarDatosIniciales()
         {
-            this.AltaAdministrador("admin1", "admin", "Administrador", "Administrador", "123456-7", "25005050", "Somewhere st.", "0", "11034", "Montevideo", "Uruguay");
-            this.AltaCliente("cliente1", "cliente", "ElCliente", "ApellidoCliente", "1234567-8", "101010101", "Some St.", "123", "90210", "Miami", "USA");
-            this.AltaCliente("cliente2", "cliente", "Jesus", "Livestrong", "2939486-5", "294759200", "", "298", "AA5783", "Montevideo", "Uruguay");
+            this.AltaAdministrador("admin1", "admin", "Administrador", "Administrador", "44893217", "25005050", "Somewhere st.", "0", "11034", "Montevideo", "Uruguay");
+            this.AltaCliente("cliente1", "cliente", "Pablo", "Cadbury", "41954388", "101010101", "Some St.", "123", "90210", "Miami", "USA");
+            this.AltaCliente("cliente2", "cliente", "Marcela", "Snickers", "29394865", "294759200", "", "298", "AA5783", "Montevideo", "Uruguay");
+            this.AltaCliente("cliente3", "cliente", "Ruben", "KitKat", "43329672", "101010101", "Some St.", "123", "90210", "Miami", "USA");
             this.AltaOficina("Miami", "Ocean Drive", "J134,", "Estados Unidos", "1234");
             this.AltaOficina("Montevideo", "Cuareim", "11200,", "Uruguay", "2234");
             this.AltaOficina("Buenos Aires", "9 de Julio", "1345,", "Argentina", "2346");
             this.AltaOficina("Berlin", "calle", "A134", "Alemania", "1345");
             this.AltaOficina("Montreal", "Calle", "A231", "Canada", "4321,");
-            this.AltaEnvioDocumento("1234567-8", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
-                "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 3, 15), 1, 1.5F, true);
+
+            this.AltaEnvioDocumento("43329672", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
+                "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 5, 12), 1, 1.5F, true);
             
-            this.AltaEnvioPaquete("1234567-8", "Jose Rodriguez", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", new DateTime(2015, 3, 15),
+            this.AltaEnvioDocumento("29394865", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
+                "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 5, 12), 1, 1.5F, true);
+            
+            this.AltaEnvioPaquete("41954388", "Jose Rodriguez", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", new DateTime(2015, 3, 15),
                                 1, 12.3F, 13.2F, 10, 12M, 100M, true, 10, "Es una caja");
 
-            this.AltaEnvioPaquete("1234567-8", "Ariel Arrosa", "Mercedes", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 2, 10),
-                                3, 10.3F, 3.2F, 7, 10M, 15M, false, 6, "Es un paquete"); 
+            this.AltaEnvioPaquete("41954388", "Ariel Arrosa", "Mercedes", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 2, 10),
+                                3, 10.3F, 3.2F, 7, 10M, 15M, false, 6, "Es un paquete");
+
+            // datos agregados para consulta de envios en transito ingresados hace mas de 5 dias
+            string result;
+            this.listaEnvios[0].AgregarEtapa(new DateTime(2015, 6, 10), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[1], "", "", out result);
+            this.listaEnvios[1].AgregarEtapa(new DateTime(2015, 6, 1), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[2], "", "", out result);
+            this.listaEnvios[2].AgregarEtapa(new DateTime(2015, 6, 6), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[4], "", "", out result);
+            this.listaEnvios[3].AgregarEtapa(new DateTime(2015, 6, 8), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[0], "", "", out result);
         }
 
         #endregion
@@ -315,6 +327,38 @@ namespace Dominio
             return envEntregados;
         }
 
+        // arma una lista de todos los envios enTrasito y que fueron ingresados hace mas de 5 dias para todos los clientes, 
+        // esto lo hace llamando al metodo del mismo nombre en Usuario
+        public List<Envio> EnviosEnTransitoAtrasados()
+        {
+            List<Envio> listaEnvAtrasados = new List<Envio>();
+
+            if (this.listaClientes != null)
+            {
+                foreach (Usuario cli in this.listaClientes)
+                {
+                    List<Envio> listaClienteAtrasados = new List<Envio>();
+                    listaClienteAtrasados = cli.EnviosEnTransitoAtrasados();
+
+                    if (listaClienteAtrasados != null)
+                    {
+                        foreach (Envio env in listaClienteAtrasados)
+                        {
+                            listaEnvAtrasados.Add(env);
+                        }
+                    }
+                }
+            }
+            Comparer_FechaIngresoASCdocDESC fchASCdocDESC = new Comparer_FechaIngresoASCdocDESC();
+
+            if (listaEnvAtrasados != null)
+            {
+                listaEnvAtrasados.Sort(fchASCdocDESC);
+            }
+
+            return listaEnvAtrasados;
+        }
+
         // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo (en Usuario)    
         public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
         {
@@ -363,6 +407,30 @@ namespace Dominio
             decimal precioSimulado = simulDoc.PrecioFinal;
 
             return precioSimulado;
+        }
+
+        public string BuscarClienteParaUnEnvio(Envio pEnvio) // <<<<<---------
+        {
+            string idCliente = "";
+
+            if (this.listaClientes != null)
+            {
+                foreach (Usuario cli in this.listaClientes)
+                {
+                    if (cli.EnviosCliente != null)
+                    {
+                        foreach (Envio env in cli.EnviosCliente)
+                        {
+
+                            if (env.NroEnvio == pEnvio.NroEnvio)
+                            {
+                                idCliente = cli.Documento;
+                            }
+                        }
+                    }
+                }
+            }
+            return idCliente;
         }
 
         #endregion
