@@ -26,7 +26,14 @@ namespace Solucion_ObligatorioP2
                     Session.Abandon();
                 }
             }
-            else p_inicioErr_messageServer.Visible = false;
+            else
+            {
+                lbl_error_grv.Visible = false;
+                p_inicioErr_messageServer.Visible = false;
+                this.gv_inicio_rastreo.DataSource = null;
+                this.gv_inicio_rastreo.DataBind();
+                p_inicioRastreo_nroEnv.Visible = false;
+            }
 
         }
 
@@ -72,9 +79,41 @@ namespace Solucion_ObligatorioP2
 
         protected void btn_home_seguirEnvio_Click(object sender, EventArgs e)
         {
-            pnl_rastreo_USR.Visible = true;
+            cargarDatosRastreo();
         }
 
+        private void cargarDatosRastreo()
+        {
+            /*Tengo que usar el TryParse para convertir el string que saco del textbox a un 
+             int, que es lo que me pide el metodo para recibir*/
 
+            int numero;
+            bool result = Int32.TryParse(txt_home_nroEnvio.Text, out numero);
+
+            List<EtapaEnvio> listaEnvRastreado = new List<EtapaEnvio>();
+
+            if (result)
+            {
+                listaEnvRastreado = elSis.RastrearEnvio(numero);
+
+                if (listaEnvRastreado.Count != 0)
+                {
+                    p_inicioRastreo_nroEnv.Visible = true;
+                    p_inicioRastreo_nroEnv.InnerText = "Envío número " + numero + ": ";
+                    this.gv_inicio_rastreo.DataSource = listaEnvRastreado;
+                    this.gv_inicio_rastreo.DataBind();
+                }
+                else
+                {
+                    lbl_error_grv.Visible = true;
+                    lbl_error_grv.Text = "El envio seleccionado no existe";
+                }
+            }
+            else
+            {
+                lbl_error_grv.Visible = true;
+                lbl_error_grv.Text = "El envio ingresado debe ser un número";
+            }
+        }
     }
 }

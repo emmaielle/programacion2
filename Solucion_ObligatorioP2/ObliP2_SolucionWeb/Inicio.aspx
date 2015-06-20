@@ -56,22 +56,64 @@
                     <p id="p_inicio_rastreo">Rastreo de envíos</p>
                     <div id="div_nroEnvio">
                         <asp:Label ID="lbl_home_nroEnvio" runat="server" Text="Código de envío "></asp:Label>
+                        <asp:RequiredFieldValidator ID="valid_inicio_Rastreo_blank" runat="server" ControlToValidate="txt_home_nroEnvio" ValidationGroup="empy_env" CssClass="labels" ForeColor="Red"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="txt_home_nroEnvio" runat="server"></asp:TextBox>
                     </div>
                     <div id="div_btnHome_seguirEnvio">
-                        <asp:Button ID="btn_home_seguirEnvio" runat="server" Text="Rastrear envío" OnClick="btn_home_seguirEnvio_Click" />
+                        <asp:Button ID="btn_home_seguirEnvio" runat="server" Text="Rastrear envío" OnClick="btn_home_seguirEnvio_Click" ValidationGroup="empy_env" />
                     </div>
-                    <asp:Panel ID="pnl_rastreo_USR" style="margin-top: 15px;clear:both;" runat="server" Visible="False">
-                        <asp:Label ID="Label1" runat="server" Text="Poner algo aca"></asp:Label>
-
-                    </asp:Panel>
-
+                    <div id="div_error_rastreo" style="margin-top: 15px; height:68px; clear:both;" runat="server">
+                        <asp:ValidationSummary ID="valid_inicio_rastreo" runat="server" CssClass="labels" ForeColor="Red" HeaderText="Debe ingresar un número de envio" ValidationGroup="empy_env" />
+                        <asp:Label ID="lbl_error_grv" Visible="False" CssClass="letrasLinks" style="color:red" runat="server" Text="Poner algo aca" ForeColor="Red"></asp:Label>
+                    </div>
                 </div>
             </div>
-
-        </div>
-        <div id="div_messageSuccess">
-            <p id="p_Inicio_messageServer" runat="server" style="color:red; text-align:center; clear:both" class="letrasLinks"></p>
+            <div id="div_messageSuccess">
+                <p id="p_Inicio_messageServer" runat="server" style="color:red; text-align:center; clear:both" class="letrasLinks"></p>
+            </div>
+            <div style="margin:auto; clear:both; vertical-align:central">
+                <p id="p_inicioRastreo_nroEnv" visible="false" runat="server" style="padding-top:5px;padding-bottom:5px;; clear:both;color:white; background-color:blue" class="labels"></p>
+                <asp:GridView ID="gv_inicio_rastreo" style="margin:auto; vertical-align:central" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="16px" Width="168px" CssClass="labels">
+                    <Columns>
+                        <asp:BoundField DataField="Etapa" HeaderText="Estado" />
+                        <asp:BoundField DataField="FechaIngreso" HeaderText="Fecha" />
+                        <asp:TemplateField HeaderText="Oficina">
+                            <ItemTemplate>
+                                <%# Eval("Ubicacion.NroOficina") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Calle">
+                        <ItemTemplate>
+                            <%# Eval("Ubicacion.DireccionOfiPostal.Calle") %>
+                        </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Puerta">
+                            <ItemTemplate>
+                                <%# Eval("Ubicacion.DireccionOfiPostal.Numero") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Ciudad">
+                            <ItemTemplate>
+                                <%# Eval("Ubicacion.DireccionOfiPostal.Ciudad") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Pais">
+                            <ItemTemplate>
+                                <%# Eval("Ubicacion.DireccionOfiPostal.Pais") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                    <RowStyle ForeColor="#000066" />
+                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                </asp:GridView>
+            </div>
         </div>
     </form>
 </body>

@@ -14,35 +14,54 @@ namespace Solucion_ObligatorioP2
         Sistema elSis = Sistema.Instancia;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //No controlo porque esto pueden hacerlo tanto clientes como admins
-        }
-
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void cargarDatosRastreo() {
-
-            /*Tengo que usar el TryParse para convertir el string que saco del textbox a un 
-             int, que es lo que me pide el metodo para recibirs*/
-            string nroEnvio = txt_rastrearEnvio_nroEnvio.Text;
-            int numero;
-            bool result = Int32.TryParse(nroEnvio, out numero);
-            elSis.RastrearEnvio(numero);
-            this.gvRastreo.DataSource = elSis.RastrearEnvio(numero);
-            this.gvRastreo.DataBind();
-        }
-
-        //Para que me sirve esto? Boton de GridView?
-        protected void gvRastreo_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            //Pendiente validaciones
+            if (Session["UsuarioLogueado"].ToString() == "")
+            {
+                Response.Redirect("~/Inicio.aspx");
             }
 
+            if (this.IsPostBack)
+            {
+                p_rastrearEnvio_error.Visible = false;
+                p_rastrearEnvio_error.InnerText = "";
+                this.gvRastreo.DataSource = null;
+                this.gvRastreo.DataBind();
+            }
+        }
+
+        private void cargarDatosRastreo() 
+        {
+            /*Tengo que usar el TryParse para convertir el string que saco del textbox a un 
+             int, que es lo que me pide el metodo para recibir*/
+
+            int numero;
+            bool result = Int32.TryParse(txt_rastrearEnvio_nroEnvio.Text, out numero);
+
+            List<EtapaEnvio> listaEnvRastreado = new List<EtapaEnvio>();
+
+            if (result)
+            {
+                listaEnvRastreado = elSis.RastrearEnvio(numero);
+
+                if (listaEnvRastreado.Count != 0)
+                {
+                    this.gvRastreo.DataSource = listaEnvRastreado;
+                    this.gvRastreo.DataBind();
+                }
+                else
+                {
+                    p_rastrearEnvio_error.Visible = true;
+                    p_rastrearEnvio_error.InnerText = "El envio seleccionado no existe";
+                }
+            }
+            else
+            {
+                p_rastrearEnvio_error.Visible = true;
+                p_rastrearEnvio_error.InnerText = "El envio ingresado debe ser un número";
+            }
+        }
 
         protected void btn_rastrearEnvio_rastrear_Click(object sender, EventArgs e)
         {
-            
             this.cargarDatosRastreo();
         }
     }

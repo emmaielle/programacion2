@@ -31,6 +31,15 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_rastrearEnvio_nroEnvio;
         
         /// <summary>
+        /// Control valid_rastrearEnvio_nro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_rastrearEnvio_nro;
+        
+        /// <summary>
         /// Control txt_rastrearEnvio_nroEnvio.
         /// </summary>
         /// <remarks>
@@ -38,6 +47,24 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txt_rastrearEnvio_nroEnvio;
+        
+        /// <summary>
+        /// Control p_rastrearEnvio_error.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_rastrearEnvio_error;
+        
+        /// <summary>
+        /// Control valid_summ_rastrearEnvio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ValidationSummary valid_summ_rastrearEnvio;
         
         /// <summary>
         /// Control btn_rastrearEnvio_rastrear.
