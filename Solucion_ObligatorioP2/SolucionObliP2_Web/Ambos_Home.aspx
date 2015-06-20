@@ -52,6 +52,11 @@
                     <asp:RequiredFieldValidator ID="valid_homes_calle" style="float:left" runat="server" ControlToValidate="txt_homes_Calle" ValidationGroup="valid_homes_blank" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
                     <asp:TextBox Enabled="false" ID="txt_homes_Calle" style="float:right" CssClass="txt_fields_registro" runat="server"></asp:TextBox>
                 </div>
+                <div style="margin-bottom:4px;  clear:both">
+                    <asp:Label ID="LabelMail_homes" style="float:left" CssClass="labels" runat="server" Text="Mail " AssociatedControlID="txt_homes_Mail"></asp:Label>
+                    <asp:RequiredFieldValidator ID="valid_homes_mail" style="float:left" runat="server" ControlToValidate="txt_homes_Mail" ValidationGroup="valid_homes_blank" ForeColor="Red" SetFocusOnError="True">*</asp:RequiredFieldValidator>
+                    <asp:TextBox Enabled="false" ID="txt_homes_Mail" style="float:right" CssClass="txt_fields_registro" runat="server"></asp:TextBox>
+                </div>
             </div>
             <div style="clear:both">
             </div>

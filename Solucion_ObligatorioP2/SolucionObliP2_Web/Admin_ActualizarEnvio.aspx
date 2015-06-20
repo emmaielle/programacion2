@@ -28,6 +28,9 @@
                 <asp:RequiredFieldValidator ID="valid_actualizarEnv_NameRecibio" style="float:left" runat="server" ControlToValidate="txt_actualizarEnv_nomRecibio" ValidationGroup="valids_ActualEnvio_blank" ForeColor="Red" Text="*"></asp:RequiredFieldValidator>
                 <asp:TextBox ID="txt_actualizarEnv_nomRecibio" style="float:left; margin-left:5px" CssClass="labels" runat="server"></asp:TextBox>
             </div>
+            <div id="div_actualizarEnv_firmaRecibio" runat="server" visible="false" style="clear:both; padding-top:15px">
+                <asp:FileUpload ID="fileup_actualizarEnvio_firma" style="float:left; margin-left:5px" runat="server" />
+            </div>
             <div style="padding-top:15px">
                 <div style="margin-top:25px; margin-bottom:5px; clear:both">
                     <asp:Label ID="lbl_actlualizarEnv_fechaIng" style="margin:auto" CssClass="labels" runat="server" Text="Fecha de Ingreso: "></asp:Label>

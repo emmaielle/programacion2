@@ -175,13 +175,13 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_listarEnv_paraEntregar_usrName;
         
         /// <summary>
-        /// Control p1.
+        /// Control p_paraEntregar_messageServer.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_paraEntregar_messageServer;
         
         /// <summary>
         /// Control valid_listarEnv_paraEntregar_empty.

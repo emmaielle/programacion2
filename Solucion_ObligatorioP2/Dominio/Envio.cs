@@ -20,7 +20,8 @@ namespace Dominio
         protected decimal precioFinal;
         private float peso; // para paquetes se guarda en Kg, para documentos en Gramos (pero en ambos se ingresa en Kg).
         private DateTime fechaIngreso;
-
+        private string fechaIngresoParaEntregar;
+        
         #endregion
         
         #region Properties
@@ -96,9 +97,11 @@ namespace Dominio
             get { return this.GetType().ToString().Split(new char[] { '.' })[1]; }
         }
 
-        public DateTime FechaIngresoParaEntregar
+        // property que esta hecha para las gridview de listar envios tambien, para visualizar el orden de la fecha de ingreso al estado 
+        // paraEntregar. Tiene un atributo asociado. Lo transformo a string para poder dejar campo vacio si no llego a este estado (en vez del minimo de datetime)
+        public string FechaIngresoParaEntregar
         {
-
+            get { return fechaIngresoParaEntregar; }
         }
 
         #endregion
@@ -226,6 +229,11 @@ namespace Dominio
                     this.firmaRecibio = pFirmaRecibio;
                 }
 
+                if (pEtapa == EtapaEnvio.Etapas.ParaEntregar)
+                {
+                    this.fechaIngresoParaEntregar = pFechaIngreso.ToString();
+                }
+
                 this.EtapasDelEnvio.Add(etp);
                 mensajeError = "Se ha agregado la nueva etapa exitosamente!!";
             }
@@ -316,8 +324,8 @@ namespace Dominio
                 else intRestarDeOtroEnv2 = 2;
 
                 // busco la ultima etapa del envio ("[XX.Count-1]") y busco la fecha de esa etapa, para compararla con la del otro envio
-                retorno = env.EtapasDelEnvio[env.EtapasDelEnvio.Count - intRestarDeOtroEnv2].FechaIngreso.
-                        CompareTo(this.EtapasDelEnvio[this.EtapasDelEnvio.Count - intRestarDeEnv1].FechaIngreso);                                         
+                retorno = this.EtapasDelEnvio[this.EtapasDelEnvio.Count - intRestarDeEnv1].FechaIngreso.
+                        CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - intRestarDeOtroEnv2].FechaIngreso);                                        
             }
 
             return retorno;

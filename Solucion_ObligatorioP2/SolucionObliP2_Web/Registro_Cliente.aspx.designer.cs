@@ -40,15 +40,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label LabelNombre_registro;
         
         /// <summary>
-        /// Control valid_registro_nom.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_nom;
-        
-        /// <summary>
         /// Control txt_registro_nombre.
         /// </summary>
         /// <remarks>
@@ -65,15 +56,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelCI_registro;
-        
-        /// <summary>
-        /// Control valid_registro_CI.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_CI;
         
         /// <summary>
         /// Control txt_registro_CI.
@@ -94,15 +76,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label LabelPais_registro;
         
         /// <summary>
-        /// Control valid_registro_pais.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_pais;
-        
-        /// <summary>
         /// Control txt_registro_Pais.
         /// </summary>
         /// <remarks>
@@ -119,15 +92,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelCP_registro;
-        
-        /// <summary>
-        /// Control valid_registro_CP.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_CP;
         
         /// <summary>
         /// Control txt_registro_CP.
@@ -148,15 +112,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label LabelNroPt_registro;
         
         /// <summary>
-        /// Control valid_registro_NroPt.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_NroPt;
-        
-        /// <summary>
         /// Control txt_nroPt_registro.
         /// </summary>
         /// <remarks>
@@ -173,15 +128,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelApellido_registro;
-        
-        /// <summary>
-        /// Control valid_registro_apell.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_apell;
         
         /// <summary>
         /// Control txt_registro_Apellido.
@@ -202,15 +148,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label LabelTelefono_registro;
         
         /// <summary>
-        /// Control valid_registro_tel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_tel;
-        
-        /// <summary>
         /// Control txt_registro_tel.
         /// </summary>
         /// <remarks>
@@ -227,15 +164,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelCiudad_registro;
-        
-        /// <summary>
-        /// Control valid_registro_ciudad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_ciudad;
         
         /// <summary>
         /// Control txt_registro_ciudad.
@@ -256,15 +184,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label LabelCalle_registro;
         
         /// <summary>
-        /// Control valid_registro_calle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_calle;
-        
-        /// <summary>
         /// Control txt_registro_Calle.
         /// </summary>
         /// <remarks>
@@ -274,6 +193,24 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_registro_Calle;
         
         /// <summary>
+        /// Control LabelMail_registro.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelMail_registro;
+        
+        /// <summary>
+        /// Control txt_registro_mail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_registro_mail;
+        
+        /// <summary>
         /// Control LabelUsuario_registro.
         /// </summary>
         /// <remarks>
@@ -281,15 +218,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LabelUsuario_registro;
-        
-        /// <summary>
-        /// Control valid_registro_usr.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_usr;
         
         /// <summary>
         /// Control txt_registro_Usuario.
@@ -310,15 +238,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label LabelPassword_registro;
         
         /// <summary>
-        /// Control valid_registro_passwd.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_registro_passwd;
-        
-        /// <summary>
         /// Control txt_registro_passwd.
         /// </summary>
         /// <remarks>
@@ -328,22 +247,13 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_registro_passwd;
         
         /// <summary>
-        /// Control p_registro_messageServer.
+        /// Control p_registro_message.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_registro_messageServer;
-        
-        /// <summary>
-        /// Control valid_summary_registro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary valid_summary_registro;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_registro_message;
         
         /// <summary>
         /// Control btn_registro_registrar.

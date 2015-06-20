@@ -139,6 +139,24 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_actualizarEnv_nomRecibio;
         
         /// <summary>
+        /// Control div_actualizarEnv_firmaRecibio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_firmaRecibio;
+        
+        /// <summary>
+        /// Control fileup_actualizarEnvio_firma.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fileup_actualizarEnvio_firma;
+        
+        /// <summary>
         /// Control lbl_actlualizarEnv_fechaIng.
         /// </summary>
         /// <remarks>

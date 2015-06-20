@@ -38,19 +38,26 @@ namespace Solucion_ObligatorioP2
             string codPostal = txt_homes_CP.Text;
             string ciudUsr = txt_homes_ciudad.Text;
             string paisUsr = txt_homes_Pais.Text;
+            string mail = txt_homes_Mail.Text;
 
-            if (passWd != "" && nmbre != "" && apellido != "" && telefn != "" && calleUsr != "" && nroPuerta != "" && codPostal != "" && ciudUsr != "" &&
-                paisUsr != "")
+            if (!string.IsNullOrEmpty(passWd) && !string.IsNullOrEmpty(nmbre) && !string.IsNullOrEmpty(apellido) && 
+                !string.IsNullOrEmpty(telefn) && !string.IsNullOrEmpty(calleUsr) && !string.IsNullOrEmpty(nroPuerta) 
+                && !string.IsNullOrEmpty(codPostal) && !string.IsNullOrEmpty(ciudUsr) && !string.IsNullOrEmpty(paisUsr) &&
+                !string.IsNullOrEmpty(mail))
             {
                 if (elSis.ChequearEsSoloNumero(telefn))
                 {
-                    if (elSis.ChequearEsSoloNumero(nroPuerta))
+                    if (elSis.EsMail(mail))
                     {
-                        deshabilitarTxtBox();
-                        elSis.ModificarUsuario(usrNm, passWd, nmbre, apellido, telefn, calleUsr, nroPuerta, codPostal, ciudUsr, paisUsr);
-                        cargarCliente();
+                        if (elSis.ChequearEsSoloNumero(nroPuerta))
+                        {
+                            deshabilitarTxtBox();
+                            elSis.ModificarUsuario(usrNm, passWd, nmbre, apellido, telefn, calleUsr, nroPuerta, codPostal, ciudUsr, paisUsr, mail);
+                            cargarCliente();
+                        }
+                        else p_homes_messageServer.InnerText = "El número de puerta debe contener solo números";
                     }
-                    else p_homes_messageServer.InnerText = "El número de puerta debe contener solo números";
+                    else p_homes_messageServer.InnerText = "El mail debe tener el formato adecuado";
                 }
                 else p_homes_messageServer.InnerText = "El teléfono sólo puede contener números";
             }
@@ -76,6 +83,7 @@ namespace Solucion_ObligatorioP2
             txt_homes_tel.Text = usuario.Telefono;
             txt_homes_Usuario.Text = usuario.User;
             txt_nroPt_homes.Text = usuario.DireccionUsuario.Numero.ToString();
+            txt_homes_Mail.Text = usuario.Mail;
 
             txt_homes_passwd.Attributes.Add("Value", usuario.Password);
         }
@@ -91,6 +99,7 @@ namespace Solucion_ObligatorioP2
             txt_homes_passwd.Enabled = false;
             txt_homes_tel.Enabled = false;
             txt_nroPt_homes.Enabled = false;
+            txt_homes_Mail.Enabled = false;
 
             btn_homes_modificar.Visible = true;
             btn_homes_guardar.Visible = false;
@@ -108,6 +117,7 @@ namespace Solucion_ObligatorioP2
             txt_homes_passwd.Enabled = true;
             txt_homes_tel.Enabled = true;
             txt_nroPt_homes.Enabled = true;
+            txt_homes_Mail.Enabled = true;
 
             btn_homes_guardar.Visible = true;
             btn_homes_modificar.Visible = false;

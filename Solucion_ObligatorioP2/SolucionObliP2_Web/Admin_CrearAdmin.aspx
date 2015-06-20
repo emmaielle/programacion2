@@ -54,6 +54,10 @@
                 <asp:Label ID="lbl_crearAdmin_password" style="float:left" runat="server" Text="Password:"></asp:Label>
                 <asp:TextBox TextMode="Password" style="width:100px; float:right" ID="txt_crearAdmin_password" runat="server"></asp:TextBox>
             </div>
+            <div style="padding-top:10px; clear:both">
+                <asp:Label ID="lbl_crearAdmin_mail" style="float:left"  runat="server" Text="Mail:"></asp:Label>
+                <asp:TextBox ID="txt_crearAdmin_mail" style="width:100px; float:right" runat="server"></asp:TextBox>
+            </div>
         </div>
         <div id="div_crearAdmin_errorMessages" style="height:30px">
 

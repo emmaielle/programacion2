@@ -46,7 +46,16 @@ namespace Solucion_ObligatorioP2
             bool resultEtapa = Enum.TryParse<EtapaEnvio.Etapas>(this.ddl_actualizarEnv_etapaEnv.SelectedValue, out etapaIngresada);
 
             string nombreRecibio = txt_actualizarEnv_nomRecibio.Text;
-            string firmaRecibio = "nada por ahora"; // <<<<------ poner la ruta de imagen
+            string firmaRecibio = "";
+            string path = "";
+            string nomArchivo = "";
+
+            if (this.fileup_actualizarEnvio_firma.HasFile)
+            {
+                firmaRecibio = fileup_actualizarEnvio_firma.FileName;
+                path = HttpRuntime.AppDomainAppPath + "/fotosFirmas/";
+                nomArchivo = nroEnvio.ToString() + firmaRecibio.Substring(firmaRecibio.LastIndexOf(".")); 
+            }
 
             Envio envioDeseado = null;
 
@@ -65,8 +74,9 @@ namespace Solucion_ObligatorioP2
                             if (resultEtapa) // esto siempre va a dar true porque es de un ddl
                             {
                                 string mensajeError = null;
-                                exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, firmaRecibio, nombreRecibio, out mensajeError);
-                            
+                                exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, nomArchivo, nombreRecibio, out mensajeError);
+                                this.fileup_actualizarEnvio_firma.SaveAs(path + nomArchivo);
+
                                 if (exito)
                                 {
                                     p_actualizarEnv_messageServer.Visible = true;
@@ -120,10 +130,12 @@ namespace Solucion_ObligatorioP2
                 if (etapaIngresada == EtapaEnvio.Etapas.Entregado)
                 {
                     div_actualizarEnv_nomRecibio.Visible = true;
+                    div_actualizarEnv_firmaRecibio.Visible = true;
                 }
                 else
                 {
                     div_actualizarEnv_nomRecibio.Visible = false;
+                    div_actualizarEnv_firmaRecibio.Visible = false;
                 }
             }
 

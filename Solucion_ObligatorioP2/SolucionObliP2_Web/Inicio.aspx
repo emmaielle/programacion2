@@ -40,7 +40,7 @@
 
                     </div>
                     <br />
-                    <asp:LinkButton ID="lnk_home_registrarCliente" CssClass="letrasLinks" runat="server" PostBackUrl="~/Registro_Usuario.aspx" >No tienes usuario?</asp:LinkButton>
+                    <asp:LinkButton ID="lnk_home_registrarCliente" CssClass="letrasLinks" runat="server" PostBackUrl="~/Registro_Cliente.aspx" >No tienes usuario?</asp:LinkButton>
                     <div id="div_validationSummary_inicio" style="height:40px">
                         <p id="p_inicioErr_messageServer" runat="server" style="color:red; margin:0px" visible="false" class="letrasLinks">El usuario o contraseña son inválidos</p>
                         <asp:ValidationSummary ID="valid_summary_inicio" runat="server" CssClass="letrasLinks" DisplayMode="List" ForeColor="Red" HeaderText="Debes introducir los campos señalados" ValidationGroup="val_login" />

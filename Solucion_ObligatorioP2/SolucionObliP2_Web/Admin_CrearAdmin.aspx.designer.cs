@@ -229,6 +229,24 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_password;
         
         /// <summary>
+        /// Control lbl_crearAdmin_mail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_mail;
+        
+        /// <summary>
+        /// Control txt_crearAdmin_mail.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_mail;
+        
+        /// <summary>
         /// Control btn_crearAdmin_altaAdmin.
         /// </summary>
         /// <remarks>

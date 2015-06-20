@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace Dominio
 {
-    public class  Sistema
+    public class Sistema
     {
         #region Singleton
 
@@ -27,7 +27,7 @@ namespace Dominio
             }
         }
 
-        private Sistema() 
+        private Sistema()
         {
             CargarDatosIniciales();
         }
@@ -48,10 +48,10 @@ namespace Dominio
 
         void CargarDatosIniciales()
         {
-            this.AltaAdministrador("admin1", "admin", "Administrador", "Administrador", "44893217", "25005050", "Somewhere st.", "0", "11034", "Montevideo", "Uruguay");
-            this.AltaCliente("cliente1", "cliente", "Ceiling", "Cat", "41954388", "101010101", "Some St.", "123", "90210", "Miami", "USA");
-            this.AltaCliente("cliente2", "cliente", "Marcela", "Snickers", "29394865", "294759200", "", "298", "AA5783", "Montevideo", "Uruguay");
-            this.AltaCliente("cliente3", "cliente", "Ruben", "KitKat", "43329672", "101010101", "Some St.", "123", "90210", "Miami", "USA");
+            this.AltaAdministrador("admin1", "admin", "Administrador", "Administrador", "44893217", "25005050", "Somewhere st.", "0", "11034", "Montevideo", "Uruguay", "algo@gmail.com");
+            this.AltaCliente("cliente1", "cliente", "Ceiling", "Cat", "41954388", "101010101", "Some St.", "123", "90210", "Miami", "USA", "this@sth.com");
+            this.AltaCliente("cliente2", "cliente", "Marcela", "Snickers", "29394865", "294759200", "", "298", "AA5783", "Montevideo", "Uruguay", "cli@gmail.com");
+            this.AltaCliente("cliente3", "cliente", "Ruben", "KitKat", "43329672", "101010101", "Some St.", "123", "90210", "Miami", "USA", "something@sth.com.uy");
             this.AltaOficina("Miami", "Ocean Drive", "J134,", "Estados Unidos", "1234");
             this.AltaOficina("Montevideo", "Cuareim", "11200,", "Uruguay", "2234");
             this.AltaOficina("Buenos Aires", "9 de Julio", "1345,", "Argentina", "2346");
@@ -76,7 +76,7 @@ namespace Dominio
             this.AltaEnvioPaquete("41954388", "Neko MrMuffin", "San Martin", "3384", "11700", "Montevideo", "Uruguay", new DateTime(2015, 1, 3),
                                 3, 10.3F, 3.2F, 7, 10M, 15M, false, 8, "Es una caja con comida de gatos, catnip y un rascador");
 
-            // datos agregados para consulta de envios en transito ingresados hace mas de 5 dias
+            // datos agregados para consulta de envios en transito ingresados hace mas de 5 dias y para consulta de envios paraEntregar
             string result;
             this.listaEnvios[0].AgregarEtapa(new DateTime(2015, 6, 10), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[1], "", "", out result);
             this.listaEnvios[1].AgregarEtapa(new DateTime(2015, 6, 1), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[2], "", "", out result);
@@ -84,6 +84,7 @@ namespace Dominio
             this.listaEnvios[3].AgregarEtapa(new DateTime(2015, 6, 8), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[0], "", "", out result);
             this.listaEnvios[4].AgregarEtapa(new DateTime(2015, 5, 9), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[1], "", "", out result);
             this.listaEnvios[4].AgregarEtapa(new DateTime(2015, 6, 11), EtapaEnvio.Etapas.ParaEntregar, this.listaOficinasPostales[0], "", "", out result);
+            this.listaEnvios[4].AgregarEtapa(new DateTime(2015, 6, 11), EtapaEnvio.Etapas.Entregado, this.listaOficinasPostales[0], "21234.png", "Mateo Benitez", out result);
             this.listaEnvios[5].AgregarEtapa(new DateTime(2015, 3, 12), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[2], "", "", out result);
             this.listaEnvios[5].AgregarEtapa(new DateTime(2015, 5, 15), EtapaEnvio.Etapas.ParaEntregar, this.listaOficinasPostales[1], "", "", out result);
 
@@ -97,8 +98,8 @@ namespace Dominio
 
         // Recibe datos para crear un cliente, crea el cliente y su dirección, lo agrega a la lista de usuarios y de clientes y devuelve el 
         // cliente nuevo o el ya existente
-        public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pDoc, string pTel, string pCalle, string pNum, 
-                                string pCP, string pCiu, string pPais)  
+        public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pDoc, string pTel, string pCalle, string pNum,
+                                string pCP, string pCiu, string pPais, string pMail)
         {
             Usuario encontro = BuscarCliente(pDoc);
             Usuario cli = null;
@@ -106,8 +107,8 @@ namespace Dominio
             if (encontro == null)
             {
                 Direccion dir = new Direccion(pCalle, pNum, pCP, pCiu, pPais);
-                cli = new Usuario(pUsr, pPass, pNom, pApell, pDoc, pTel, dir, false);
-                
+                cli = new Usuario(pUsr, pPass, pNom, pApell, pDoc, pTel, dir, false, pMail);
+
                 if (this.listaClientes == null) this.listaClientes = new List<Usuario>();
                 this.listaClientes.Add(cli);
                 if (this.listaUsuarios == null) this.listaUsuarios = new List<Usuario>();
@@ -116,11 +117,11 @@ namespace Dominio
             else cli = encontro;
 
             return cli;
-            
+
         }
 
         /*Dado una cedula, se recorre la lista de clientes para buscarlo. Retorna cliente encontrado o null*/
-        public Usuario BuscarCliente (string pCi) 
+        public Usuario BuscarCliente(string pCi)
         {
             Usuario aux = null;
             if (this.listaClientes != null)
@@ -144,16 +145,16 @@ namespace Dominio
 
         // Recibe datos para crear un Admin, crea el admin y lo agrega a la lista de usuarios y de admins. Devuelve el admin nuevo o 
         // el ya existente
-        public Usuario AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono, 
-            string pCalle, string pNum, string pCP, string pCiu, string pPais)
+        public Usuario AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono,
+            string pCalle, string pNum, string pCP, string pCiu, string pPais, string pMail)
         {
             Usuario encontro = BuscarAdmin(pDoc);
             Usuario admin = null;
 
             if (encontro == null)
             {
-                Direccion dir = new Direccion(pCalle, pNum,pCP,pCiu,pPais);
-                admin = new Usuario(pUsr, pPass, pNombre, pApellido, pDoc, pTelefono, dir, true);
+                Direccion dir = new Direccion(pCalle, pNum, pCP, pCiu, pPais);
+                admin = new Usuario(pUsr, pPass, pNombre, pApellido, pDoc, pTelefono, dir, true, pMail);
 
                 if (this.listaAdmins == null) this.listaAdmins = new List<Usuario>();
                 this.listaAdmins.Add(admin);
@@ -166,7 +167,7 @@ namespace Dominio
         }
 
         /*Dado un documento, se recorre la lista de admins para buscarlo. Retorna admin encontrado o null*/
-        public Usuario BuscarAdmin(string pDocumento) 
+        public Usuario BuscarAdmin(string pDocumento)
         {
             Usuario aux = null;
 
@@ -209,7 +210,7 @@ namespace Dominio
         // toma parametros que corresponden a las propiedades de todos los atributos del usuario (inclusive su direccion) para modificar
         // alguno de ellos o todos
         public void ModificarUsuario(string pUsr, string pPass, string pNom, string pApell, string pTel, string pCalle, string pNum,
-                                string pCP, string pCiu, string pPais)
+                                string pCP, string pCiu, string pPais, string pMail)
         {
             Usuario usr = this.BuscarUsuarioPorUsername(pUsr);
 
@@ -222,6 +223,7 @@ namespace Dominio
             usr.DireccionUsuario.CodPostal = pCP;
             usr.DireccionUsuario.Ciudad = pCiu;
             usr.DireccionUsuario.Pais = pPais;
+            usr.Mail = pMail;
         }
 
         #endregion
@@ -232,9 +234,9 @@ namespace Dominio
 
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de documento, 
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
-        public int AltaEnvioDocumento(string pCliente, string pCalleOrigen, string pNroPtaOrigen, string pCPorigen, string pCiudOrigen, 
-                                    string pPaisOrigen, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino, 
-                                    string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso, 
+        public int AltaEnvioDocumento(string pCliente, string pCalleOrigen, string pNroPtaOrigen, string pCPorigen, string pCiudOrigen,
+                                    string pPaisOrigen, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino,
+                                    string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso,
                                     int pNroOficinaIngreso, float pPesoKilos, bool pLegal)
         {
             Usuario cli = this.BuscarCliente(pCliente);
@@ -257,15 +259,15 @@ namespace Dominio
                 numeroEnvio = env.NroEnvio;
             }
             return numeroEnvio;
-        } 
+        }
 
         /* TODO: agregar controles y manejar exceptions */
 
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de paquetes, 
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
-        public int AltaEnvioPaquete(string pCliente, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino, 
-                                    string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso, 
-                                    int pNroOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, 
+        public int AltaEnvioPaquete(string pCliente, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino,
+                                    string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso,
+                                    int pNroOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr,
                                     decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
         {
             Usuario cli = this.BuscarCliente(pCliente);
@@ -401,7 +403,7 @@ namespace Dominio
 
         // Utiliza el constructor alternativo de EnvioPaquete, que toma solo datos necesarios para calcular el precio final del envio.
         // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioPaquete
-        public decimal SimularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, decimal pValorDecl, 
+        public decimal SimularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, decimal pValorDecl,
                                             bool pSeguro, float pPesoKg)
         {
             EnvioPaquete simulPaquete = new EnvioPaquete(pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg);
@@ -519,22 +521,23 @@ namespace Dominio
 
         public bool ChequearEsSoloNumero(string pString)
         {
-            int nroDelString;
-            bool resultado = int.TryParse(pString, out nroDelString);
+            double nroDelString;
+            bool resultado = double.TryParse(pString, out nroDelString);
 
             return resultado;
         }
 
-        public bool ChequearEsFormatoCedula(string pString)
-        {
-            string regEx = @"\d{7}-\d";
-            var match = Regex.Match(pString, regEx);
 
-            return match.Success;
+        public bool EsMail(string pMail)
+        {
+            bool resultado;
+            resultado = Regex.IsMatch(pMail, @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$", RegexOptions.IgnoreCase);
+
+            return resultado;
         }
 
         #endregion
     }
 
-    }
+}
 

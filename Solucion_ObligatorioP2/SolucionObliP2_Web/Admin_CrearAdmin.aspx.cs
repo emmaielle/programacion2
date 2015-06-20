@@ -50,10 +50,13 @@ namespace Solucion_ObligatorioP2
             string codPostal = txt_crearAdmin_cp.Text;
             string ciudUsr = txt_crearAdmin_ciudad.Text;
             string paisUsr = txt_crearAdmin_pais.Text;
+            string mail = txt_crearAdmin_mail.Text;
 
             //Chequeos
-             if (passWd != "" && nmbre != "" && apellido != "" && telefn != "" && calleUsr != "" && nroPuerta != "" && codPostal != "" && ciudUsr != "" &&
-                paisUsr != "")
+             if (!String.IsNullOrEmpty(passWd) && !String.IsNullOrEmpty(nmbre) && !String.IsNullOrEmpty(apellido) && 
+                 !String.IsNullOrEmpty(telefn) && !String.IsNullOrEmpty(calleUsr) && !String.IsNullOrEmpty(nroPuerta) && 
+                 !String.IsNullOrEmpty(codPostal) && !String.IsNullOrEmpty(ciudUsr) && !String.IsNullOrEmpty(paisUsr) && 
+                 !String.IsNullOrEmpty(mail))
             {
                 if (elSis.ChequearEsSoloNumero(telefn))
                 {
@@ -61,7 +64,7 @@ namespace Solucion_ObligatorioP2
                     {
                         deshabilitarTxtBox();
                         elSis.AltaAdministrador(usrNm,passWd,documento,nmbre,
-                            apellido, telefn, calleUsr,nroPuerta,codPostal,ciudUsr, paisUsr);
+                            apellido, telefn, calleUsr,nroPuerta,codPostal,ciudUsr, paisUsr, mail);
                        
                     }
                 }

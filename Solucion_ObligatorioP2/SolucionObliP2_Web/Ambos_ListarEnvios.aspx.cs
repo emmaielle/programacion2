@@ -63,7 +63,7 @@ namespace Solucion_ObligatorioP2
             List<Envio> listaEnviosParaEntregar = new List<Envio>();
             listaEnviosParaEntregar = this.BuscarEnviosParaEntregar();
 
-            this.CargarEnviosSolicitados(listaEnviosParaEntregar, "Lista de envíos para entregar o entregados, ordenados por decha de ingreso a estado 'ParaEntregar'");
+            this.CargarEnviosSolicitados(listaEnviosParaEntregar, "Lista de envíos para entregar o entregados, ordenados por decha de ingreso a estado 'ParaEntregar' de forma ASCENDENTE");
         }
 
         protected void btn_listaeEnvTransito5_Click(object sender, EventArgs e)
@@ -101,7 +101,11 @@ namespace Solucion_ObligatorioP2
             Usuario cliente = this.ObtenerCliente(txt_listarEnv_paraEntregar_usrName);
 
             List<Envio> listaEnviosParaEntregaroEntregados = new List<Envio>();
-            listaEnviosParaEntregaroEntregados = cliente.ListarEnviosEntregados();
+            
+            if (cliente != null)
+            {
+                listaEnviosParaEntregaroEntregados = cliente.ListarEnviosEntregados();
+            }
 
             return listaEnviosParaEntregaroEntregados;
         }
@@ -110,7 +114,7 @@ namespace Solucion_ObligatorioP2
         {
             List<Envio> nuevaListaEnvios = new List<Envio>();
 
-            if (pEnviosSolicitados.Count != 0)
+            if (pEnviosSolicitados.Count != 0 && pEnviosSolicitados != null)
             {
                 div_grv_envios.Visible = true;
 
@@ -136,10 +140,16 @@ namespace Solucion_ObligatorioP2
 
             if ((bool)Session["esCliente"] == true)
             {
-                cliente = this.elSis.BuscarUsuarioPorUsername(Session["UsuarioLogueado"].ToString());
+                cliente = this.elSis.BuscarCliente(Session["UsuarioLogueado"].ToString());
             }
-            else cliente = this.elSis.BuscarUsuarioPorUsername(pControl_txtbox.Text);
-
+            else
+            {
+                if (!string.IsNullOrEmpty(pControl_txtbox.Text))
+                {
+                    cliente = this.elSis.BuscarCliente(pControl_txtbox.Text);
+                }
+                
+            }
             return cliente;
         }
 

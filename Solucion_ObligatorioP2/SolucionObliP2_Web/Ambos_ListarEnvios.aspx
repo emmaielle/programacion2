@@ -9,14 +9,14 @@
             <div id="div_listarEnvios_Ambos_superaMonto" runat="server" class="cajitas" style="padding-bottom:20px; width:240px; float:left">
                 <p id="p_listarEnv_head_superanMonto">Envíos cuyo precio supera un monto dado</p>
                 <div id="div_superanMonto_elegirCliente" runat="server" Visible="false" style="clear:both; padding-top:15px">
-                    <asp:Label ID="lbl_superanMonto_usuario" style="float:left" runat="server" Text="Username cliente: "></asp:Label>
+                    <asp:Label ID="lbl_superanMonto_usuario" style="float:left" runat="server" Text="Documento cliente: "></asp:Label>
                     <asp:RequiredFieldValidator style="float:left" ID="valid_superanMonto_emptyUsr" runat="server" Text="*" ControlToValidate="txt_superanMonto_usrName" ValidationGroup="emptyField" ForeColor="Red"></asp:RequiredFieldValidator>
-                    <asp:TextBox ID="txt_superanMonto_usrName" style="width:100px; float:right; margin-left:5px" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_superanMonto_usrName" style="width:90px; float:right; margin-left:5px" runat="server"></asp:TextBox>
                 </div>
                 <div style="width:236px; margin:auto; vertical-align:central; clear:both; padding-top:15px">
                     <asp:Label ID="lbl_superanMonto_monto" runat="server" style="float:left" Text="Ingresar monto: "></asp:Label>
                     <asp:RequiredFieldValidator style="float:left" ID="valid_superanMonto_emptyMonto" runat="server" ValidationGroup="emptyField" Text="*" ControlToValidate="txt_superanMonto_monto" ForeColor="Red"></asp:RequiredFieldValidator>
-                    <asp:TextBox ID="txt_superanMonto_monto" style="width:100px; float:right; margin-left:5px" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_superanMonto_monto" style="width:90px; float:right; margin-left:5px" runat="server"></asp:TextBox>
                 </div>
                 <div id="div_superanMonto_errorMesages" style="height:25px; clear:both; padding-top:10px">
                     <p id="p_superanMonto_messageServer" runat="server" style="color:red; margin:0px" visible="false" class="letrasLinks"></p>
@@ -31,13 +31,13 @@
                 <p id="p_listarEnv_head_paraEntregar">Envíos para entregar o ya entregados</p>
                 
                 <div id="div_listarEnvios_paraEntregar_elegirCliente" runat="server" Visible="false" style="clear:both; padding-top:15px">
-                    <asp:Label ID="Label1" style="float:left" runat="server" Text="Username cliente: "></asp:Label>
+                    <asp:Label ID="Label1" style="float:left" runat="server" Text="Documento cliente: "></asp:Label>
                     <asp:RequiredFieldValidator style="float:left" ID="valid_listarEnvios_paraEntregar_emptyUsr" runat="server" Text="*" ControlToValidate="txt_listarEnv_paraEntregar_usrName" ValidationGroup="emptyField_paraEntregar" ForeColor="Red"></asp:RequiredFieldValidator>
-                    <asp:TextBox ID="txt_listarEnv_paraEntregar_usrName" style="width:100px; float:right; margin-left:5px" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txt_listarEnv_paraEntregar_usrName" style="width:90px; float:right; margin-left:5px" runat="server"></asp:TextBox>
                 </div>
 
                 <div id="div1" style="height:25px; clear:both; padding-top:10px">
-                    <p id="p1" runat="server" style="color:red; margin:0px" visible="false" class="letrasLinks"></p>
+                    <p id="p_paraEntregar_messageServer" runat="server" style="color:red; margin:0px" visible="false" class="letrasLinks"></p>
                     <asp:ValidationSummary ID="valid_listarEnv_paraEntregar_empty" runat="server" ValidationGroup="emptyField_paraEntregar" ForeColor="Red" HeaderText="Los campos indicados son requeridos" />
                 </div>
 
@@ -70,8 +70,10 @@
                         <asp:BoundField DataField="Peso" HeaderText="Peso (Kg)" />
                         <asp:BoundField DataField="PrecioFinal" HeaderText="Precio ($U)" />
                         <asp:BoundField DataField="NombreRecibio" HeaderText="Recibio" />
-                        <asp:BoundField DataField="FirmaRecibio" HeaderText="Firma Recibio" />
+                        <asp:ImageField DataImageUrlField="FirmaRecibio" DataImageUrlFormatString="./fotosFirmas/{0}" HeaderText="Firma Recibio">
+                        </asp:ImageField>
                         <asp:BoundField DataField="Etapa" HeaderText="Etapa" />
+                        <asp:BoundField DataField="FechaIngresoParaEntregar" HeaderText="Para entregar desde:" />
                     </Columns>
                     <FooterStyle BackColor="White" ForeColor="#000066" />
                     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />

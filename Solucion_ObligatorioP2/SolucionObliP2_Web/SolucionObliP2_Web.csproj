@@ -66,10 +66,14 @@
     <Content Include="Ambos_SimularEnvio.aspx" />
     <Content Include="Ambos_TotalFacturado.aspx" />
     <Content Include="Estilos.css" />
+    <Content Include="fotosFirmas\12345.png" />
+    <Content Include="fotosFirmas\21234.png" />
+    <Content Include="fotosFirmas\3456.png" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
     <Content Include="scripts\jquery-1.11.3.min.js" />
-    <Content Include="Registro_Usuario.aspx" />
+    <Content Include="Registro_Cliente.aspx" />
+    <Content Include="scripts\registro_cliente.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -149,12 +153,12 @@
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registro_Usuario.aspx.cs">
-      <DependentUpon>Registro_Usuario.aspx</DependentUpon>
+    <Compile Include="Registro_Cliente.aspx.cs">
+      <DependentUpon>Registro_Cliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Registro_Usuario.aspx.designer.cs">
-      <DependentUpon>Registro_Usuario.aspx</DependentUpon>
+    <Compile Include="Registro_Cliente.aspx.designer.cs">
+      <DependentUpon>Registro_Cliente.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
