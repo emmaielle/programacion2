@@ -1,7 +1,0 @@
-C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\SolucionObliP2_Web\obj\Debug\SolucionObliP2_Web.csprojResolveAssemblyReference.cache
-C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\SolucionObliP2_Web\bin\SolucionObliP2_Web.dll
-C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\SolucionObliP2_Web\bin\SolucionObliP2_Web.pdb
-C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\SolucionObliP2_Web\bin\Dominio.dll
-C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\SolucionObliP2_Web\bin\Dominio.pdb
-C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\SolucionObliP2_Web\obj\Debug\SolucionObliP2_Web.dll
-C:\Users\Usuario\Documents\Visual Studio 2012\Projects\Solucion_ObligatorioP2\SolucionObliP2_Web\obj\Debug\SolucionObliP2_Web.pdb

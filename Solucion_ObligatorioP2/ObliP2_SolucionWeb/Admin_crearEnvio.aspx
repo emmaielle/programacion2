@@ -20,6 +20,10 @@
                     <WeekendDayStyle BackColor="#CCCCFF" />
                 </asp:Calendar>   
             </div>
+             <div style="padding-top:10px; clear:both">
+                <asp:Label ID="lbl_crearEnvio_idCliente" style="float:left" CssClass="labels" runat="server" Text="Id Cliente: "></asp:Label>
+                <asp:TextBox ID="txt_crearEnvio_idCliente" style="width:100px;float:right; margin-left:6px" runat="server" Text="I"></asp:TextBox>
+            </div>
             <div style="padding-top:10px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_peso" style="float:left" CssClass="labels" runat="server" Text="Peso: "></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_peso" style="width:100px;float:right; margin-left:6px" runat="server"></asp:TextBox>

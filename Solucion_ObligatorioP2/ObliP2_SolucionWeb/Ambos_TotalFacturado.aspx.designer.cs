@@ -10,204 +10,242 @@
 namespace Solucion_ObligatorioP2 {
     
     
-    public partial class Admin_ActualizarEnvio {
+    public partial class Ambos_TotalFacturado {
         
         /// <summary>
-        /// Control p_actualidarEnv_head.
+        /// 
+        /// Control p_crearAdmin_head.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_actualidarEnv_head;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_crearAdmin_head;
         
         /// <summary>
-        /// Control lbl_actualizarEnv_nroEnv.
+        /// Control lbl_crearAdmin_headtxt.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_nroEnv;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_headtxt;
         
         /// <summary>
-        /// Control valid_actualizarEnv_nroEnv.
+        /// Control Lbl_CrearAdmin_Doc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_actualizarEnv_nroEnv;
+        protected global::System.Web.UI.WebControls.Label Lbl_CrearAdmin_Doc;
         
         /// <summary>
-        /// Control txt_actualizarEnv_nroEnv.
+        /// Control txt_crearAdmin_doc.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_actualizarEnv_nroEnv;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_totalFacturado_head;
         
         /// <summary>
-        /// Control lbl_actualizarEnv_oficina.
+
+        /// Control lbl_crearAdmin_Nombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_oficina;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Nombre;
         
         /// <summary>
-        /// Control ddl_actualizarEnv_Oficinas.
+        /// Control txt_crearAdmin_nombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_actualizarEnv_Oficinas;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_totalFacturado_intro;
         
         /// <summary>
-        /// Control div_actualizarEnv_datosEnv.
+
+        /// Control lbl_crearAdmin_Apellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_datosEnv;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Apellido;
         
         /// <summary>
-        /// Control lbl_actualizarEnv_shortInfoEnv.
+        /// Control txt_crearAdmin_apellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_shortInfoEnv;
+        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_nroCliente;
         
         /// <summary>
-        /// Control lbl_actualizarEnv_etapaEnv.
+
+        /// Control lbl_crearAdmin_tel.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_etapaEnv;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_tel;
         
         /// <summary>
-        /// Control ddl_actualizarEnv_etapaEnv.
+        /// Control txt_crearAdmin_telefono.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_actualizarEnv_etapaEnv;
+        protected global::System.Web.UI.WebControls.TextBox txt_totalFacturado_nroCliente;
         
         /// <summary>
-        /// Control div_actualizarEnv_nomRecibio.
+
+        /// Control lbl_crearAdmin_pais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_nomRecibio;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_pais;
         
         /// <summary>
-        /// Control lbl_actualizarEnv_nomRecibio.
+        /// Control txt_crearAdmin_pais.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_nomRecibio;
+        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_fechaDesde;
         
         /// <summary>
-        /// Control valid_actualizarEnv_NameRecibio.
+
+        /// Control lbl_crearAdmin_ciudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_actualizarEnv_NameRecibio;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_ciudad;
         
         /// <summary>
-        /// Control txt_actualizarEnv_nomRecibio.
+        /// Control txt_crearAdmin_ciudad.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_actualizarEnv_nomRecibio;
+        protected global::System.Web.UI.WebControls.Calendar calendar_totalFacturado_fechaDesde;
         
         /// <summary>
-        /// Control div_actualizarEnv_firmaRecibio.
+
+        /// Control lbl_crearAdmin_CP.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_firmaRecibio;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_CP;
         
         /// <summary>
-        /// Control fileup_actualizarEnvio_firma.
+        /// Control txt_crearAdmin_cp.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fileup_actualizarEnvio_firma;
+        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_fechaHasta;
         
         /// <summary>
-        /// Control lbl_actlualizarEnv_fechaIng.
+
+        /// Control lbl_crearAdmin_calle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_actlualizarEnv_fechaIng;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_calle;
         
         /// <summary>
-        /// Control calendar_actualizarEnv_fchIngreso.
+        /// Control txt_crearAdmin_calle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar calendar_actualizarEnv_fchIngreso;
+        protected global::System.Web.UI.WebControls.Calendar calendar_totalFacturado_fechaHasta;
         
         /// <summary>
-        /// Control div_actualizarEnv_messageDiv.
+
+        /// Control lbl_crearAdmin_NroPta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_messageDiv;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_NroPta;
         
         /// <summary>
-        /// Control ValidationSummary1.
+        /// Control txt_crearAdmin_numero.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+        protected global::System.Web.UI.WebControls.Button btn_totalFacturado_ObtenerInfo;
         
         /// <summary>
-        /// Control p_actualizarEnv_messageServer.
+
+        /// Control lbl_crearAdmin_Usr.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_actualizarEnv_messageServer;
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Usr;
         
         /// <summary>
-        /// Control btn_actualizarEnv_AgregarEtapa.
+        /// Control txt_crearAdmin_usuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_actualizarEnv_AgregarEtapa;
+
+        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_usuario;
+        
+        /// <summary>
+        /// Control lbl_crearAdmin_password.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_password;
+        
+        /// <summary>
+        /// Control txt_crearAdmin_password.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_password;
+        
+        /// <summary>
+        /// Control btn_crearAdmin_altaAdmin.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_crearAdmin_altaAdmin;
     }
 }

@@ -20,12 +20,21 @@
         <div style="clear:both; margin-top:20px">
         </div>
 
-        <asp:GridView ID="gvRastreo" runat="server" DataKeyNames="Codigo" AutoGenerateColumns="False" OnRowCommand="gvRastreo_RowCommand">
+        <asp:GridView ID="gvRastreo" runat="server" AutoGenerateColumns="False" OnRowCommand="gvRastreo_RowCommand" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="16px">
     <Columns>
-        <asp:BoundField DataField="Fecha" HeaderText="Fecha" />
-        <asp:BoundField DataField="Estado" HeaderText="Estado" />
-        <asp:BoundField DataField="Oficina Postal" HeaderText="Oficina Postal" />
+        <asp:BoundField DataField="fechaIngreso" HeaderText="Fecha" />
+        <asp:BoundField DataField="etapa" HeaderText="Estado" />
+        <asp:BoundField DataField="ubicacion" HeaderText="Oficina Postal" />
     </Columns>
+            <FooterStyle BackColor="White" ForeColor="#000066" />
+            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+            <RowStyle ForeColor="#000066" />
+            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#00547E" />
             </asp:GridView>
     </div>
 </asp:Content>

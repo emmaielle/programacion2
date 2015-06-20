@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolucionObliP2_Web", "SolucionObliP2_Web\SolucionObliP2_Web.csproj", "{8D9AAA62-5602-425A-86D8-5ED775C7A3F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObliP2_SolucionWeb", "ObliP2_SolucionWeb\ObliP2_SolucionWeb.csproj", "{8A0C9F61-6F57-42CA-8A37-CD2759EE4C7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,12 +13,14 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74F911B5-AC2A-4F9A-AB44-515C1E7AD06D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8D9AAA62-5602-425A-86D8-5ED775C7A3F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8D9AAA62-5602-425A-86D8-5ED775C7A3F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8D9AAA62-5602-425A-86D8-5ED775C7A3F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8D9AAA62-5602-425A-86D8-5ED775C7A3F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A0C9F61-6F57-42CA-8A37-CD2759EE4C7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A0C9F61-6F57-42CA-8A37-CD2759EE4C7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A0C9F61-6F57-42CA-8A37-CD2759EE4C7C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8A0C9F61-6F57-42CA-8A37-CD2759EE4C7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A0C9F61-6F57-42CA-8A37-CD2759EE4C7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

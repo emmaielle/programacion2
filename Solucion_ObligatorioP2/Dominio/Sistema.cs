@@ -48,10 +48,13 @@ namespace Dominio
 
         void CargarDatosIniciales()
         {
+
             this.AltaAdministrador("admin1", "admin", "Administrador", "Administrador", "44893217", "25005050", "Somewhere st.", "0", "11034", "Montevideo", "Uruguay", "algo@gmail.com");
             this.AltaCliente("cliente1", "cliente", "Ceiling", "Cat", "41954388", "101010101", "Some St.", "123", "90210", "Miami", "USA", "this@sth.com");
             this.AltaCliente("cliente2", "cliente", "Marcela", "Snickers", "29394865", "294759200", "", "298", "AA5783", "Montevideo", "Uruguay", "cli@gmail.com");
             this.AltaCliente("cliente3", "cliente", "Ruben", "KitKat", "43329672", "101010101", "Some St.", "123", "90210", "Miami", "USA", "something@sth.com.uy");
+            this.AltaCliente("emmaielle", "emmaielle", "Emme", "Elle", "44899895", "196435", "Secret st.", "333", "11700", "Montevideo", "Uruguay", "emm@sth.com");
+            this.AltaCliente("magaxine", "magaxine", "Victoria", "Armario", "43838933", "099308375", "AvItalia", "4780", "11500", "Montevideo", "Uruguay", "mail@mail.com");
             this.AltaOficina("Miami", "Ocean Drive", "J134,", "Estados Unidos", "1234");
             this.AltaOficina("Montevideo", "Cuareim", "11200,", "Uruguay", "2234");
             this.AltaOficina("Buenos Aires", "9 de Julio", "1345,", "Argentina", "2346");
@@ -76,6 +79,7 @@ namespace Dominio
             this.AltaEnvioPaquete("41954388", "Neko MrMuffin", "San Martin", "3384", "11700", "Montevideo", "Uruguay", new DateTime(2015, 1, 3),
                                 3, 10.3F, 3.2F, 7, 10M, 15M, false, 8, "Es una caja con comida de gatos, catnip y un rascador");
 
+            //Actualizo envio
             // datos agregados para consulta de envios en transito ingresados hace mas de 5 dias y para consulta de envios paraEntregar
             string result;
             this.listaEnvios[0].AgregarEtapa(new DateTime(2015, 6, 10), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[1], "", "", out result);
@@ -87,7 +91,6 @@ namespace Dominio
             this.listaEnvios[4].AgregarEtapa(new DateTime(2015, 6, 11), EtapaEnvio.Etapas.Entregado, this.listaOficinasPostales[0], "21234.png", "Mateo Benitez", out result);
             this.listaEnvios[5].AgregarEtapa(new DateTime(2015, 3, 12), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[2], "", "", out result);
             this.listaEnvios[5].AgregarEtapa(new DateTime(2015, 5, 15), EtapaEnvio.Etapas.ParaEntregar, this.listaOficinasPostales[1], "", "", out result);
-
         }
 
         #endregion

@@ -136,6 +136,7 @@ namespace Solucion_ObligatorioP2
                 {
                     div_actualizarEnv_nomRecibio.Visible = false;
                     div_actualizarEnv_firmaRecibio.Visible = false;
+
                 }
             }
 

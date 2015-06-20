@@ -270,6 +270,7 @@ namespace Dominio
             DateTime ultimaFecha = DateTime.MinValue;
             EtapaEnvio etapaActual = null;
 
+            if (this.etapasDelEnvio != null && this.etapasDelEnvio.Count>0) //vic
             foreach (EtapaEnvio etp in this.etapasDelEnvio)
             {
                 if (etp.FechaIngreso > ultimaFecha)

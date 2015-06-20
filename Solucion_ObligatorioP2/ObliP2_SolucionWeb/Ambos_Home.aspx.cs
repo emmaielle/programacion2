@@ -84,7 +84,6 @@ namespace Solucion_ObligatorioP2
             txt_homes_Usuario.Text = usuario.User;
             txt_nroPt_homes.Text = usuario.DireccionUsuario.Numero.ToString();
             txt_homes_Mail.Text = usuario.Mail;
-
             txt_homes_passwd.Attributes.Add("Value", usuario.Password);
         }
 

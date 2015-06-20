@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8D9AAA62-5602-425A-86D8-5ED775C7A3F8}</ProjectGuid>
+    <ProjectGuid>{8A0C9F61-6F57-42CA-8A37-CD2759EE4C7C}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SolucionObliP2_Web</RootNamespace>
-    <AssemblyName>SolucionObliP2_Web</AssemblyName>
+    <RootNamespace>ObliP2_SolucionWeb</RootNamespace>
+    <AssemblyName>ObliP2_SolucionWeb</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -66,17 +66,11 @@
     <Content Include="Ambos_SimularEnvio.aspx" />
     <Content Include="Ambos_TotalFacturado.aspx" />
     <Content Include="Estilos.css" />
-    <Content Include="fotosFirmas\12345.png" />
-    <Content Include="fotosFirmas\21234.png" />
-    <Content Include="fotosFirmas\3456.png" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
-    <Content Include="scripts\jquery-1.11.3.min.js" />
+    <Content Include="ObliP2_SolucionWeb.csproj.user" />
     <Content Include="Registro_Cliente.aspx" />
-    <Content Include="scripts\registro_cliente.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin_ActualizarEnvio.aspx.cs">
@@ -191,7 +185,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:51718/</IISUrl>
+          <IISUrl>http://localhost:55662/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -46,9 +46,8 @@
             </div>
             <div style="padding-top:15px; clear:both">
                 <asp:Button ID="btn_totalFacturado_ObtenerInfo" runat="server" OnClick="btn_totalFacturado_ObtenerInfo_Click" Text="Obtener" />
-            </div>
-            <div id="div_totalFacturado_resultados" class="cajitas" runat="server" visible="false">
-
+                <asp:Label ID="lbl_totalFacturado_msjTotal" runat="server" Text="Total facturado por dicho cliente:"></asp:Label>
+                <asp:Label ID="lbl_totalFacturado_total" runat="server" Text="Label"></asp:Label>
             </div>
         </div>
     </div>

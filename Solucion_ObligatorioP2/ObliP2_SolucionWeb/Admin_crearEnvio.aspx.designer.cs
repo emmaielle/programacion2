@@ -40,6 +40,25 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Calendar calendar_crearEnvio;
         
         /// <summary>
+
+        /// Control lbl_crearEnvio_idCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_crearEnvio_idCliente;
+        
+        /// <summary>
+        /// Control txt_crearEnvio_idCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txt_crearEnvio_idCliente;
+        
+        /// <summary>
         /// Control lbl_crearEnvio_peso.
         /// </summary>
         /// <remarks>

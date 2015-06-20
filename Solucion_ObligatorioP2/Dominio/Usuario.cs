@@ -160,13 +160,20 @@ namespace Dominio
         public decimal TotalFacturadoEnIntervalo(DateTime pFechaInicio, DateTime pFechaFinal)
         {
             decimal total = 0M;
-            foreach (Envio env in enviosCliente)
+
+            if (enviosCliente != null && enviosCliente.Count > 0)
             {
-                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa && env.ObtenerEtapaActual().FechaIngreso >= pFechaInicio
-                    && env.ObtenerEtapaActual().FechaIngreso <= pFechaFinal)
+                foreach (Envio env in enviosCliente)
                 {
-                    total = total + env.PrecioFinal;
-                }        
+                    EtapaEnvio etapaActual = env.ObtenerEtapaActual();
+                    if (etapaActual.Etapa == EtapaEnvio.Etapas.Entregado && 
+                        etapaActual.FechaIngreso >= pFechaInicio &&  etapaActual.FechaIngreso <=pFechaFinal)
+                       
+                    {
+                        total = total + env.PrecioFinal;
+                    }
+                }
+               
             }
             return total;
         }

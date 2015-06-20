@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // La información general sobre un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie los valores de estos atributos para modificar la información
 // asociada a un ensamblado.
-[assembly: AssemblyTitle("SolucionObliP2_Web")]
+[assembly: AssemblyTitle("ObliP2_SolucionWeb")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("SolucionObliP2_Web")]
+[assembly: AssemblyProduct("ObliP2_SolucionWeb")]
 [assembly: AssemblyCopyright("Copyright © Microsoft 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // El siguiente GUID sirve como ID de la biblioteca de tipos si este proyecto se expone a COM.
-[assembly: Guid("c95a94fd-9e45-4c3c-acc9-cfb6a1538892")]
+[assembly: Guid("1feda719-8b8b-4190-b25b-3dea89b73cb4")]
 
 // La información de versión de un ensamblado consta de los siguientes cuatro valores:
 //
