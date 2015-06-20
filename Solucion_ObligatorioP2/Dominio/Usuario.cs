@@ -19,6 +19,7 @@ namespace Dominio
         private Direccion direccionUsuario;
         private bool esAdmin;
         private List<Envio> enviosCliente;
+        private string mail;
 
         #endregion
 
@@ -78,12 +79,18 @@ namespace Dominio
             set { enviosCliente = value; }
         }
 
+        public string Mail
+        {
+            get { return mail; }
+            set { mail = value; }
+        }
+
         #endregion
 
         #region Constructor
 
         public Usuario(string pUser, string pPassword, string pNombre, string pApellido, string pDocumento,
-            string pTelefono, Direccion pDireccion, bool esAdmin)
+            string pTelefono, Direccion pDireccion, bool esAdmin, string pMail)
         {
             this.user = pUser;
             this.documento = pDocumento;
@@ -93,6 +100,7 @@ namespace Dominio
             this.telefono = pTelefono;
             this.direccionUsuario = pDireccion;
             this.esAdmin = esAdmin;
+            this.mail = pMail;
         }
 
         #endregion
@@ -133,12 +141,15 @@ namespace Dominio
         {
             List<Envio> lista = new List<Envio>();
 
-            foreach (Envio env in enviosCliente)
+            if (this.enviosCliente != null)
             {
-                if (EtapaEnvio.Etapas.ParaEntregar == env.ObtenerEtapaActual().Etapa || EtapaEnvio.Etapas.Entregado ==
-                    env.ObtenerEtapaActual().Etapa)
+                foreach (Envio env in enviosCliente)
                 {
-                    lista.Add(env);
+                    if (EtapaEnvio.Etapas.ParaEntregar == env.ObtenerEtapaActual().Etapa || EtapaEnvio.Etapas.Entregado ==
+                        env.ObtenerEtapaActual().Etapa)
+                    {
+                        lista.Add(env);
+                    }
                 }
             }
             lista.Sort(); 
