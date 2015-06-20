@@ -17,9 +17,6 @@
         <div style="clear:both; margin-top:10px">
             <asp:Button ID="btn_rastrearEnvio_rastrear" runat="server" OnClientClick="return validarTxt();" OnClick="btn_rastrearEnvio_rastrear_Click" Text="Rastrear" />
         </div>
-
-
-
         <div style="clear:both; margin-top:20px">
         </div>
 

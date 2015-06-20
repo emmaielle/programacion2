@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Ambos_Home.aspx.cs" Inherits="Solucion_ObligatorioP2.Ambos_Home" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="~/Ambos_Home.aspx.cs" Inherits="Solucion_ObligatorioP2.Ambos_Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="scripts/Ambos_home.js"></script>
