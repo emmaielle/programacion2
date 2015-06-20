@@ -104,11 +104,14 @@ namespace Dominio
         {
             List<Envio> lista = new List<Envio>();
 
-            foreach (Envio env in enviosCliente)
+            if (this.enviosCliente != null)
             {
-                if (env.PrecioFinal > pMonto)
+                foreach (Envio env in enviosCliente)
                 {
-                    lista.Add(env); 
+                    if (env.PrecioFinal > pMonto)
+                    {
+                        lista.Add(env);
+                    }
                 }
             }
 
@@ -123,7 +126,8 @@ namespace Dominio
             enviosCliente.Add(pEnvio);
         }
 
-        /*Lista todos los envios del cliente que fueron entregados O ESTAN EN ULTIMA OFICINA POSTAL for fecha de entregado
+        /*Lista todos los envios del cliente que estan PARA ENTREGAR (o sea que ya estan "enviados") o ya fueron 
+         * ENTREGADOS por fecha de entregado (pero siempre por fecha de ingreso a etapa "ParaEntregar"!)
          * en forma descendente*/
         public List<Envio> ListarEnviosEntregados()
         {
@@ -131,7 +135,8 @@ namespace Dominio
 
             foreach (Envio env in enviosCliente)
             {
-                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa)
+                if (EtapaEnvio.Etapas.ParaEntregar == env.ObtenerEtapaActual().Etapa || EtapaEnvio.Etapas.Entregado ==
+                    env.ObtenerEtapaActual().Etapa)
                 {
                     lista.Add(env);
                 }
@@ -144,16 +149,46 @@ namespace Dominio
         public decimal TotalFacturadoEnIntervalo(DateTime pFechaInicio, DateTime pFechaFinal)
         {
             decimal total = 0M;
-            foreach (Envio env in enviosCliente)
+
+            if (enviosCliente != null && enviosCliente.Count > 0)
             {
-                if (EtapaEnvio.Etapas.Entregado == env.ObtenerEtapaActual().Etapa && env.ObtenerEtapaActual().FechaIngreso >= pFechaInicio
-                    && env.ObtenerEtapaActual().FechaIngreso <= pFechaFinal)
+                foreach (Envio env in enviosCliente)
                 {
-                    total = total + env.PrecioFinal;
-                }        
+                    EtapaEnvio etapaActual = env.ObtenerEtapaActual();
+                    if (etapaActual.Etapa == EtapaEnvio.Etapas.Entregado && 
+                        etapaActual.FechaIngreso >= pFechaInicio &&  etapaActual.FechaIngreso <=pFechaFinal)
+                       
+                    {
+                        total = total + env.PrecioFinal;
+                    }
+                }
+               
             }
             return total;
         }
+
+        // arma una lista de todos los envios que se encuentran en estado actual "EnTransito" (de acuerdo con el metodo
+        // ObtenerEtapaActual, en Envio) para el cliente, y de ellos, toma aquellos que fueron ingresados hace 
+        // mas de 5 dias en la primer oficinaPostal por el cliente.
+        public List<Envio> EnviosEnTransitoAtrasados()
+        {
+            List<Envio> listaEnvAtrasados = new List<Envio>();
+
+            if (this.enviosCliente != null)
+            {
+                foreach (Envio env in this.enviosCliente)
+                {
+                    if (env.ObtenerEtapaActual().Etapa == EtapaEnvio.Etapas.EnTransito)
+                    {
+                        int diasDesdeIngreso = env.ObtenerDiasDesdeIngreso();
+                        if (diasDesdeIngreso > 5) { listaEnvAtrasados.Add(env); }
+                    }
+                }
+            }
+
+            return listaEnvAtrasados;
+        }
+
         #endregion
     }
 }

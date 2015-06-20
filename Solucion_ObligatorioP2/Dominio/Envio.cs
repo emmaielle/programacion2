@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Dominio
 {
-    public abstract class Envio :IComparable <Envio>, IComparer<Envio>
+    public abstract class Envio :IComparable <Envio>
     {
         #region Atributos
         protected int nroEnvio;
@@ -19,6 +19,7 @@ namespace Dominio
         protected List<EtapaEnvio> etapasDelEnvio;
         protected decimal precioFinal;
         private float peso; // para paquetes se guarda en Kg, para documentos en Gramos (pero en ambos se ingresa en Kg).
+        private DateTime fechaIngreso;
 
         #endregion
         
@@ -70,7 +71,36 @@ namespace Dominio
             get { return peso; }
             set { peso = value; }
         }
-        
+
+        public DateTime FechaIngreso
+        {
+            get { return fechaIngreso; }
+            set { fechaIngreso = value; }
+        }
+
+        // propiedad hecha para gridview de listado de envios
+        public EtapaEnvio.Etapas Etapa
+        {
+            get { return this.ObtenerEtapaActual().Etapa; }
+        }
+
+        // propiedad hecha para gridview de envios atrasados5dias && para IComparable que ordena segun esto
+        public string DocCliente
+        {
+            get { return Sistema.Instancia.BuscarClienteParaUnEnvio(this); }
+        }
+
+        // para que devuelva en el gridview de envios el tipo de envio que es (pasado a string y despues de "Dominio.")
+        public string TipoEnvio
+        {
+            get { return this.GetType().ToString().Split(new char[] { '.' })[1]; }
+        }
+
+        //public DateTime FechaIngresoParaEntregar
+        //{
+
+        //}
+
         #endregion
 
         #region Constructor
@@ -91,6 +121,7 @@ namespace Dominio
            
             // agrego esa etapa en la lista de etapas recorridas de este envío
             this.EtapasDelEnvio.Add(unaEtapa);
+            this.FechaIngreso = this.etapasDelEnvio[0].FechaIngreso;
 
         }
 
@@ -109,7 +140,8 @@ namespace Dominio
 
         // agregar etapas de rastreo al envío. Es polimórfico para EnvioDocumento, porque Documento necesita corroborar quien 
         // recibe el envio para agregarla (ver metodo en EnvioDocumento)
-        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, string pNombreRecibio, out string pMensajeError) 
+        public virtual bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, 
+                                        string pFirmaRecibio, string pNombreRecibio, out string pMensajeError) 
         {
             string mensajeError = "";
             bool sePuedeAgregar = false;
@@ -188,6 +220,12 @@ namespace Dominio
             if (sePuedeAgregar)
             {
                 EtapaEnvio etp = new EtapaEnvio(pFechaIngreso, pEtapa, pUbicacion);
+                if (pEtapa == EtapaEnvio.Etapas.Entregado)
+                {
+                    this.nombreRecibio = pNombreRecibio;
+                    this.firmaRecibio = pFirmaRecibio;
+                }
+
                 this.EtapasDelEnvio.Add(etp);
                 mensajeError = "Se ha agregado la nueva etapa exitosamente!!";
             }
@@ -224,6 +262,7 @@ namespace Dominio
             DateTime ultimaFecha = DateTime.MinValue;
             EtapaEnvio etapaActual = null;
 
+            if (this.etapasDelEnvio != null && this.etapasDelEnvio.Count>0) //vic
             foreach (EtapaEnvio etp in this.etapasDelEnvio)
             {
                 if (etp.FechaIngreso > ultimaFecha)
@@ -249,21 +288,42 @@ namespace Dominio
 
         #endregion
 
-        #region Implementacion Interfaces
+        #region Implementacion IComparable
       
         //Metodo que me compara envios por fechas de manera descendente
         //No es lógico ordenar por fecha de entregado si el envío puede no haberse entregado aún 
         //(si está para entregar en la oficina final). Por lo tanto, ordénenlos por fecha de ENVIADO de forma ascendente.
         int IComparable<Envio>.CompareTo(Envio env)
         {
-            return this.EtapasDelEnvio[this.EtapasDelEnvio.Count - 1].FechaIngreso.CompareTo(env.EtapasDelEnvio[env.EtapasDelEnvio.Count - 1].FechaIngreso);      
+            int retorno = 0;
+
+            Envio otro = env as Envio;
+
+            if (otro != null)
+            {
+                // obtengo la etapa actual de los envios porque no se si el envio esta
+                // "ParaEntregar" o "Entregado", ya que me sirven ambos. En el primer caso, tomo la ultima etapaDeEnvio, y en el 2do caso
+                // tomo la penultima etapa.
+
+                EtapaEnvio.Etapas etapaEnv1 = env.ObtenerEtapaActual().Etapa;
+                EtapaEnvio.Etapas etapaOtroEnv2 = env.ObtenerEtapaActual().Etapa;
+                int intRestarDeEnv1;
+                int intRestarDeOtroEnv2;
+
+                if (etapaEnv1 == EtapaEnvio.Etapas.ParaEntregar) intRestarDeEnv1 = 1;
+                else intRestarDeEnv1 = 2;
+
+                if (etapaOtroEnv2 == EtapaEnvio.Etapas.ParaEntregar) intRestarDeOtroEnv2 = 1;
+                else intRestarDeOtroEnv2 = 2;
+
+                // busco la ultima etapa del envio ("[XX.Count-1]") y busco la fecha de esa etapa, para compararla con la del otro envio
+                retorno = env.EtapasDelEnvio[env.EtapasDelEnvio.Count - intRestarDeOtroEnv2].FechaIngreso.
+                        CompareTo(this.EtapasDelEnvio[this.EtapasDelEnvio.Count - intRestarDeEnv1].FechaIngreso);                                         
+            }
+
+            return retorno;
         }
 
-        //Me falta implementar este para el metodo listar envios en transito y con demora de 5 dias. Ordeno por fecha y por doc del cliente
-        int IComparer<Envio>.Compare(Envio x, Envio y)
-        {
-            throw new NotImplementedException();
-        }
         #endregion
     }
 
