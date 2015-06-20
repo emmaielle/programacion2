@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Ambos_RastrearEnvio.aspx.cs" Inherits="Solucion_ObligatorioP2.Ambos_RastrearEnvio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="scripts/rastrearEnvio.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_rastrearEnvio_contenedora" class="labels">
@@ -7,15 +9,13 @@
         <p id="p_rastearEnvio_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Rastreo de envios</p>
         <div style="clear:both">
             <asp:Label ID="lbl_rastrearEnvio_nroEnvio" runat="server" Text="Ingrese numero de envio:"></asp:Label>
-            <asp:RequiredFieldValidator ID="valid_rastrearEnvio_nro" runat="server" CssClass="labels" ControlToValidate="txt_rastrearEnvio_nroEnvio" ForeColor="Red" ValidationGroup="empty_env"></asp:RequiredFieldValidator>
             <asp:TextBox ID="txt_rastrearEnvio_nroEnvio" style="margin-left:5px" runat="server"></asp:TextBox>
         </div>
         <div id="div_rastrearEnvio_maessagesError" style="clear:both; margin-top:10px; height:30px">
-            <p id="p_rastrearEnvio_error" runat="server" style="color:red" visible="false" class="letrasLinks"></p>
-            <asp:ValidationSummary ID="valid_summ_rastrearEnvio" ForeColor="red" runat="server" CssClass="labels" ValidationGroup="empty_env" HeaderText="Debe ingresar un número de envio" />
+            <p id="p_rastrearEnvio_error" runat="server" style="color:red" class="letrasLinks"></p>
         </div>
         <div style="clear:both; margin-top:10px">
-            <asp:Button ID="btn_rastrearEnvio_rastrear" runat="server" OnClick="btn_rastrearEnvio_rastrear_Click" Text="Rastrear" ValidationGroup="empty_env" />
+            <asp:Button ID="btn_rastrearEnvio_rastrear" runat="server" OnClientClick="return validarTxt();" OnClick="btn_rastrearEnvio_rastrear_Click" Text="Rastrear" />
         </div>
 
 

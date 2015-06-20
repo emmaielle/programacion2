@@ -73,7 +73,7 @@
             </div>
             <div style="margin:auto; clear:both; vertical-align:central">
                 <p id="p_inicioRastreo_nroEnv" visible="false" runat="server" style="padding-top:5px;padding-bottom:5px;; clear:both;color:white; background-color:blue" class="labels"></p>
-                <asp:GridView ID="gv_inicio_rastreo" style="margin:auto; vertical-align:central" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="16px" Width="168px" CssClass="labels">
+                <asp:GridView ID="gv_inicio_rastreo" style="margin:auto; vertical-align:central" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="16px" Width="722px" CssClass="labels">
                     <Columns>
                         <asp:BoundField DataField="Etapa" HeaderText="Estado" />
                         <asp:BoundField DataField="FechaIngreso" HeaderText="Fecha" />

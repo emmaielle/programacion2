@@ -129,9 +129,13 @@ namespace Dominio
         /*Agrega un envio a la lista de envios que tiene el cliente */
         public void AgregarEnvio(Envio pEnvio)
         {
-            if (enviosCliente == null)
-            { enviosCliente = new List<Envio>(); }
-            enviosCliente.Add(pEnvio);
+            // me aseguro que no sea admin, que no puede tener envios
+            if (this.esAdmin == false)
+            {
+                if (enviosCliente == null)
+                { enviosCliente = new List<Envio>(); }
+                enviosCliente.Add(pEnvio);
+            }
         }
 
         /*Lista todos los envios del cliente que estan PARA ENTREGAR (o sea que ya estan "enviados") o ya fueron 

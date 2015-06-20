@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Ambos_Home.aspx.cs" Inherits="Solucion_ObligatorioP2.Ambos_Home" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+    <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="scripts/Ambos_home.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_formulario_homes" style="margin-bottom:10px;">
@@ -83,7 +84,7 @@
         </div>
     </div>
     <div style="clear:both; margin:auto; text-align:center">
-        <asp:Button ID="btn_homes_guardar" runat="server" Text="Guardar" Visible="false" OnClick="btn_homes_guardar_Click" ValidationGroup="valid_homes_blank" />
+        <asp:Button ID="btn_homes_guardar" runat="server" Text="Guardar" Visible="false" OnClientClick="return validMail();" OnClick="btn_homes_guardar_Click" ValidationGroup="valid_homes_blank" />
         <asp:Button ID="btn_homes_modificar" style="" runat="server" Text="Modificar Datos" OnClick="btn_homes_modificar_Click" />
     </div>
 </asp:Content>

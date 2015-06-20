@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Dominio.Utilidades;
 
 namespace Solucion_ObligatorioP2
 {
@@ -45,11 +46,11 @@ namespace Solucion_ObligatorioP2
                 && !string.IsNullOrEmpty(codPostal) && !string.IsNullOrEmpty(ciudUsr) && !string.IsNullOrEmpty(paisUsr) &&
                 !string.IsNullOrEmpty(mail))
             {
-                if (elSis.ChequearEsSoloNumero(telefn))
+                if (Utilidades.ChequearEsSoloNumero(telefn))
                 {
-                    if (elSis.EsMail(mail))
+                    if (Utilidades.EsMail(mail))
                     {
-                        if (elSis.ChequearEsSoloNumero(nroPuerta))
+                        if (Utilidades.ChequearEsSoloNumero(nroPuerta))
                         {
                             deshabilitarTxtBox();
                             elSis.ModificarUsuario(usrNm, passWd, nmbre, apellido, telefn, calleUsr, nroPuerta, codPostal, ciudUsr, paisUsr, mail);

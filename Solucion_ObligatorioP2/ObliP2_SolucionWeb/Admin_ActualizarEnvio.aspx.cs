@@ -14,19 +14,23 @@ namespace Solucion_ObligatorioP2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UsuarioLogueado"].ToString() == "")
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
+
             if (!this.IsPostBack)
             {
-                ddl_actualizarEnv_Oficinas.DataSource = elSis.TraerNrosDeOficinasPostales();
-                ddl_actualizarEnv_Oficinas.DataBind();
+                this.ddl_actualizarEnv_Oficinas.DataSource = elSis.TraerNrosDeOficinasPostales();
+                this.ddl_actualizarEnv_Oficinas.DataBind();
 
-                ddl_actualizarEnv_etapaEnv.DataSource = Enum.GetNames(EtapaEnvio.Etapas.EnOrigen.GetType());
-                ddl_actualizarEnv_etapaEnv.DataBind();
+                this.ddl_actualizarEnv_etapaEnv.DataSource = Enum.GetNames(EtapaEnvio.Etapas.EnOrigen.GetType());
+                this.ddl_actualizarEnv_etapaEnv.DataBind();
             }
             else
             {
-                p_actualizarEnv_messageServer.Visible = false;
-                p_actualizarEnv_messageServer.InnerText = "";
-
+                this.p_actualizarEnv_messageServer.Visible = false;
+                this.p_actualizarEnv_messageServer.InnerText = "";
             }
 
         }
@@ -34,25 +38,25 @@ namespace Solucion_ObligatorioP2
         protected void btn_actualizarEnv_AgregarEtapa_Click(object sender, EventArgs e)
         {
             int nroEnvio;
-            bool resultNroEnvio = int.TryParse(txt_actualizarEnv_nroEnv.Text, out nroEnvio);
+            bool resultNroEnvio = int.TryParse(this.txt_actualizarEnv_nroEnv.Text, out nroEnvio);
 
-            DateTime fechaIngreso = calendar_actualizarEnv_fchIngreso.SelectedDate;
+            DateTime fechaIngreso = this.calendar_actualizarEnv_fchIngreso.SelectedDate;
             
             int nroOficina;
-            bool resultOfi = int.TryParse(ddl_actualizarEnv_Oficinas.SelectedValue, out nroOficina);
+            bool resultOfi = int.TryParse(this.ddl_actualizarEnv_Oficinas.SelectedValue, out nroOficina);
             OficinaPostal oficinaEntrante = elSis.BuscarOficinaXID(nroOficina);
 
             EtapaEnvio.Etapas etapaIngresada; 
             bool resultEtapa = Enum.TryParse<EtapaEnvio.Etapas>(this.ddl_actualizarEnv_etapaEnv.SelectedValue, out etapaIngresada);
 
-            string nombreRecibio = txt_actualizarEnv_nomRecibio.Text;
+            string nombreRecibio = this.txt_actualizarEnv_nomRecibio.Text;
             string firmaRecibio = "";
             string path = "";
             string nomArchivo = "";
 
             if (this.fileup_actualizarEnvio_firma.HasFile)
             {
-                firmaRecibio = fileup_actualizarEnvio_firma.FileName;
+                firmaRecibio = this.fileup_actualizarEnvio_firma.FileName;
                 path = HttpRuntime.AppDomainAppPath + "/fotosFirmas/";
                 nomArchivo = nroEnvio.ToString() + firmaRecibio.Substring(firmaRecibio.LastIndexOf(".")); 
             }
@@ -79,43 +83,43 @@ namespace Solucion_ObligatorioP2
 
                                 if (exito)
                                 {
-                                    p_actualizarEnv_messageServer.Visible = true;
-                                    p_actualizarEnv_messageServer.InnerText = "exito!!";
+                                    this.p_actualizarEnv_messageServer.Visible = true;
+                                    this.p_actualizarEnv_messageServer.InnerText = "exito!!";
                                 }
                                 else
                                 {
-                                    p_actualizarEnv_messageServer.Visible = true;
-                                    p_actualizarEnv_messageServer.InnerText = mensajeError;
+                                    this.p_actualizarEnv_messageServer.Visible = true;
+                                    this.p_actualizarEnv_messageServer.InnerText = mensajeError;
                                 }
                             }
                             else
                             {
-                                p_actualizarEnv_messageServer.Visible = true;
-                                p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una etapa para el envio";
+                                this.p_actualizarEnv_messageServer.Visible = true;
+                                this.p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una etapa para el envio";
                             }
                         }
                         else
                         {
-                            p_actualizarEnv_messageServer.Visible = true;
-                            p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una oficina postal";
+                            this.p_actualizarEnv_messageServer.Visible = true;
+                            this.p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una oficina postal";
                         }
                     }
                     else
                     {
-                        p_actualizarEnv_messageServer.Visible = true;
-                        p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una fecha";
+                        this.p_actualizarEnv_messageServer.Visible = true;
+                        this.p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una fecha";
                     }
                 }
                 else
                 {
-                    p_actualizarEnv_messageServer.Visible = true;
-                    p_actualizarEnv_messageServer.InnerText = "El número de envío ingresado no existe";
+                    this.p_actualizarEnv_messageServer.Visible = true;
+                    this.p_actualizarEnv_messageServer.InnerText = "El número de envío ingresado no existe";
                 }
             }
             else
             {
-                p_actualizarEnv_messageServer.Visible = true;
-                p_actualizarEnv_messageServer.InnerText = "El número de envío debe tener sólo números";
+                this.p_actualizarEnv_messageServer.Visible = true;
+                this.p_actualizarEnv_messageServer.InnerText = "El número de envío debe tener sólo números";
             }
           
         }
@@ -129,13 +133,13 @@ namespace Solucion_ObligatorioP2
             {
                 if (etapaIngresada == EtapaEnvio.Etapas.Entregado)
                 {
-                    div_actualizarEnv_nomRecibio.Visible = true;
-                    div_actualizarEnv_firmaRecibio.Visible = true;
+                    this.div_actualizarEnv_nomRecibio.Visible = true;
+                    this.div_actualizarEnv_firmaRecibio.Visible = true;
                 }
                 else
                 {
-                    div_actualizarEnv_nomRecibio.Visible = false;
-                    div_actualizarEnv_firmaRecibio.Visible = false;
+                    this.div_actualizarEnv_nomRecibio.Visible = false;
+                    this.div_actualizarEnv_firmaRecibio.Visible = false;
 
                 }
             }
@@ -145,10 +149,10 @@ namespace Solucion_ObligatorioP2
 
         protected void txt_actualizarEnv_nroEnv_TextChanged(object sender, EventArgs e)
         {
-            div_actualizarEnv_datosEnv.Visible = true;
+            this.div_actualizarEnv_datosEnv.Visible = true;
 
             int nroEnvio;
-            bool resultNroEnvio = int.TryParse(txt_actualizarEnv_nroEnv.Text, out nroEnvio);
+            bool resultNroEnvio = int.TryParse(this.txt_actualizarEnv_nroEnv.Text, out nroEnvio);
 
             if (resultNroEnvio)
             {
@@ -157,10 +161,10 @@ namespace Solucion_ObligatorioP2
                 {
                     EtapaEnvio etapaActual = envShowData.ObtenerEtapaActual();
 
-                    lbl_actualizarEnv_shortInfoEnv.Text = "Envío " + envShowData.NroEnvio + ": "
+                    this.lbl_actualizarEnv_shortInfoEnv.Text = "Envío " + envShowData.NroEnvio + ": "
                         + etapaActual.Etapa.ToString() + "; Oficina Nº: " + etapaActual.Ubicacion.NroOficina.ToString();
                 }
-                else lbl_actualizarEnv_shortInfoEnv.Text = "El envio " + nroEnvio + " no existe";
+                else this.lbl_actualizarEnv_shortInfoEnv.Text = "El envio " + nroEnvio + " no existe";
             }
 
         }

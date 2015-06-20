@@ -16,7 +16,7 @@ namespace Solucion_ObligatorioP2
         {
             if (Request.QueryString["message"] == "true")
             {
-                p_Inicio_messageServer.InnerText = "Usted se ha ingresado como cliente de forma exitosa";
+                this.p_Inicio_messageServer.InnerText = "Usted se ha ingresado como cliente de forma exitosa";
             }
 
             if (!this.IsPostBack)
@@ -28,11 +28,11 @@ namespace Solucion_ObligatorioP2
             }
             else
             {
-                lbl_error_grv.Visible = false;
-                p_inicioErr_messageServer.Visible = false;
+                this.lbl_error_grv.Visible = false;
+                this.p_inicioErr_messageServer.Visible = false;
                 this.gv_inicio_rastreo.DataSource = null;
                 this.gv_inicio_rastreo.DataBind();
-                p_inicioRastreo_nroEnv.Visible = false;
+                this.p_inicioRastreo_nroEnv.Visible = false;
             }
 
         }
@@ -40,15 +40,15 @@ namespace Solucion_ObligatorioP2
         protected void btn_login_inicio_Click(object sender, EventArgs e)
         {
            bool mensajeErr = false;
-           if (txt_password.Text != "" && txt_username_login.Text != "")
+           if (this.txt_password.Text != "" && this.txt_username_login.Text != "")
            {
-               Usuario elUsr = elSis.BuscarUsuarioPorUsername(txt_username_login.Text);
+               Usuario elUsr = elSis.BuscarUsuarioPorUsername(this.txt_username_login.Text);
 
                if (elUsr != null)
                {
                    if (elUsr.EsAdmin == true)
                    {
-                       if (txt_password.Text == elUsr.Password)
+                       if (this.txt_password.Text == elUsr.Password)
                        {
                            Session["esAdmin"] = true;
                            Session["UsuarioLogueado"] = elUsr.User;
@@ -58,7 +58,7 @@ namespace Solucion_ObligatorioP2
                    }
                    else
                    {
-                       if (txt_password.Text == elUsr.Password)
+                       if (this.txt_password.Text == elUsr.Password)
                        {
                            Session["esCliente"] = true;
                            Session["UsuarioLogueado"] = elUsr.User;
@@ -71,7 +71,7 @@ namespace Solucion_ObligatorioP2
 
                if (mensajeErr)
                {
-                   p_inicioErr_messageServer.Visible = true;
+                   this.p_inicioErr_messageServer.Visible = true;
                }
            }
 
@@ -88,7 +88,7 @@ namespace Solucion_ObligatorioP2
              int, que es lo que me pide el metodo para recibir*/
 
             int numero;
-            bool result = Int32.TryParse(txt_home_nroEnvio.Text, out numero);
+            bool result = Int32.TryParse(this.txt_home_nroEnvio.Text, out numero);
 
             List<EtapaEnvio> listaEnvRastreado = new List<EtapaEnvio>();
 
@@ -98,21 +98,21 @@ namespace Solucion_ObligatorioP2
 
                 if (listaEnvRastreado.Count != 0)
                 {
-                    p_inicioRastreo_nroEnv.Visible = true;
-                    p_inicioRastreo_nroEnv.InnerText = "Envío número " + numero + ": ";
+                    this.p_inicioRastreo_nroEnv.Visible = true;
+                    this.p_inicioRastreo_nroEnv.InnerText = "Envío número " + numero + ": ";
                     this.gv_inicio_rastreo.DataSource = listaEnvRastreado;
                     this.gv_inicio_rastreo.DataBind();
                 }
                 else
                 {
-                    lbl_error_grv.Visible = true;
-                    lbl_error_grv.Text = "El envio seleccionado no existe";
+                    this.lbl_error_grv.Visible = true;
+                    this.lbl_error_grv.Text = "El envio seleccionado no existe";
                 }
             }
             else
             {
-                lbl_error_grv.Visible = true;
-                lbl_error_grv.Text = "El envio ingresado debe ser un número";
+                this.lbl_error_grv.Visible = true;
+                this.lbl_error_grv.Text = "El envio ingresado debe ser un número";
             }
         }
     }

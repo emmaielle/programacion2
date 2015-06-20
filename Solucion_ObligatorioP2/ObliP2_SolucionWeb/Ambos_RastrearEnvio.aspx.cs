@@ -21,7 +21,6 @@ namespace Solucion_ObligatorioP2
 
             if (this.IsPostBack)
             {
-                p_rastrearEnvio_error.Visible = false;
                 p_rastrearEnvio_error.InnerText = "";
                 this.gvRastreo.DataSource = null;
                 this.gvRastreo.DataBind();

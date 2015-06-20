@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Dominio.Utilidades;
 
 namespace Solucion_ObligatorioP2
 {
@@ -19,7 +20,6 @@ namespace Solucion_ObligatorioP2
                 Response.Redirect("~/Inicio.aspx");
             }
 
-           
         }
 
         protected void TextBoxNombre_TextChanged(object sender, EventArgs e)
@@ -39,36 +39,36 @@ namespace Solucion_ObligatorioP2
 
         protected void btn_crearAdmin_altaAdmin_Click(object sender, EventArgs e)
         {
-            string usrNm = txt_crearAdmin_usuario.Text;
-            string passWd = txt_crearAdmin_password.Text;
-            string documento = txt_crearAdmin_doc.Text;
-            string nmbre = txt_crearAdmin_nombre.Text;
-            string apellido = txt_crearAdmin_apellido.Text;
-            string telefn = txt_crearAdmin_telefono.Text;
-            string calleUsr = txt_crearAdmin_calle.Text;
-            string nroPuerta = txt_crearAdmin_numero.Text;
-            string codPostal = txt_crearAdmin_cp.Text;
-            string ciudUsr = txt_crearAdmin_ciudad.Text;
-            string paisUsr = txt_crearAdmin_pais.Text;
-            string mail = txt_crearAdmin_mail.Text;
+            string usrNm = this.txt_crearAdmin_usuario.Text;
+            string passWd = this.txt_crearAdmin_password.Text;
+            string documento = this.txt_crearAdmin_doc.Text;
+            string nmbre = this.txt_crearAdmin_nombre.Text;
+            string apellido = this.txt_crearAdmin_apellido.Text;
+            string telefn = this.txt_crearAdmin_telefono.Text;
+            string calleUsr = this.txt_crearAdmin_calle.Text;
+            string nroPuerta = this.txt_crearAdmin_numero.Text;
+            string codPostal = this.txt_crearAdmin_cp.Text;
+            string ciudUsr = this.txt_crearAdmin_ciudad.Text;
+            string paisUsr = this.txt_crearAdmin_pais.Text;
+            string mail = this.txt_crearAdmin_mail.Text;
 
             //Chequeos
-             if (!String.IsNullOrEmpty(passWd) && !String.IsNullOrEmpty(nmbre) && !String.IsNullOrEmpty(apellido) && 
-                 !String.IsNullOrEmpty(telefn) && !String.IsNullOrEmpty(calleUsr) && !String.IsNullOrEmpty(nroPuerta) && 
-                 !String.IsNullOrEmpty(codPostal) && !String.IsNullOrEmpty(ciudUsr) && !String.IsNullOrEmpty(paisUsr) && 
-                 !String.IsNullOrEmpty(mail))
+            if (!String.IsNullOrEmpty(passWd) && !String.IsNullOrEmpty(nmbre) && !String.IsNullOrEmpty(apellido) &&
+                !String.IsNullOrEmpty(telefn) && !String.IsNullOrEmpty(calleUsr) && !String.IsNullOrEmpty(nroPuerta) &&
+                !String.IsNullOrEmpty(codPostal) && !String.IsNullOrEmpty(ciudUsr) && !String.IsNullOrEmpty(paisUsr) &&
+                !String.IsNullOrEmpty(mail))
             {
-                if (elSis.ChequearEsSoloNumero(telefn))
+                if (Utilidades.ChequearEsSoloNumero(telefn))
                 {
-                    if (elSis.ChequearEsSoloNumero(nroPuerta))
+                    if (Utilidades.ChequearEsSoloNumero(nroPuerta))
                     {
                         deshabilitarTxtBox();
-                        elSis.AltaAdministrador(usrNm,passWd,documento,nmbre,
-                            apellido, telefn, calleUsr,nroPuerta,codPostal,ciudUsr, paisUsr, mail);
-                       
+                        elSis.AltaAdministrador(usrNm, passWd, documento, nmbre,
+                            apellido, telefn, calleUsr, nroPuerta, codPostal, ciudUsr, paisUsr, mail);
+
                     }
                 }
-             }
+            }
             //        else p_CrearAdmin_messageServer.InnerText = "El número de puerta debe contener solo números";
             //    }
             //    else p_CrearAdmin_messageServer.InnerText = "El teléfono sólo puede contener números";
@@ -77,46 +77,46 @@ namespace Solucion_ObligatorioP2
 
         protected void deshabilitarTxtBox()
         {
-            txt_crearAdmin_usuario.Enabled = false;
-            txt_crearAdmin_password.Enabled = false;
-            txt_crearAdmin_doc.Enabled = false;
-            txt_crearAdmin_nombre.Enabled = false;
-            txt_crearAdmin_apellido.Enabled = false;
-            txt_crearAdmin_telefono.Enabled = false;
-            txt_crearAdmin_calle.Enabled = false;
-            txt_crearAdmin_numero.Enabled = false;
-            txt_crearAdmin_cp.Enabled = false;
-            txt_crearAdmin_ciudad.Enabled = false;
-            txt_crearAdmin_pais.Enabled = false;
+            this.txt_crearAdmin_usuario.Enabled = false;
+            this.txt_crearAdmin_password.Enabled = false;
+            this.txt_crearAdmin_doc.Enabled = false;
+            this.txt_crearAdmin_nombre.Enabled = false;
+            this.txt_crearAdmin_apellido.Enabled = false;
+            this.txt_crearAdmin_telefono.Enabled = false;
+            this.txt_crearAdmin_calle.Enabled = false;
+            this.txt_crearAdmin_numero.Enabled = false;
+            this.txt_crearAdmin_cp.Enabled = false;
+            this.txt_crearAdmin_ciudad.Enabled = false;
+            this.txt_crearAdmin_pais.Enabled = false;
 
             btn_crearAdmin_altaAdmin.Visible = true;
-           
+
         }
 
         protected void habilitarTxtBox()
         {
 
-            txt_crearAdmin_usuario.Enabled = true;
-            txt_crearAdmin_password.Enabled = true;
-            txt_crearAdmin_doc.Enabled = true;
-            txt_crearAdmin_nombre.Enabled = true;
-            txt_crearAdmin_apellido.Enabled = true;
-            txt_crearAdmin_telefono.Enabled = true;
-            txt_crearAdmin_calle.Enabled = true;
-            txt_crearAdmin_numero.Enabled = true;
-            txt_crearAdmin_cp.Enabled = true;
-            txt_crearAdmin_ciudad.Enabled = true;
-            txt_crearAdmin_pais.Enabled = true;
+            this.txt_crearAdmin_usuario.Enabled = true;
+            this.txt_crearAdmin_password.Enabled = true;
+            this.txt_crearAdmin_doc.Enabled = true;
+            this.txt_crearAdmin_nombre.Enabled = true;
+            this.txt_crearAdmin_apellido.Enabled = true;
+            this.txt_crearAdmin_telefono.Enabled = true;
+            this.txt_crearAdmin_calle.Enabled = true;
+            this.txt_crearAdmin_numero.Enabled = true;
+            this.txt_crearAdmin_cp.Enabled = true;
+            this.txt_crearAdmin_ciudad.Enabled = true;
+            this.txt_crearAdmin_pais.Enabled = true;
 
 
             btn_crearAdmin_altaAdmin.Visible = true;
 
-          
+
 
         }
 
-    
 
-        }
+
     }
+}
 

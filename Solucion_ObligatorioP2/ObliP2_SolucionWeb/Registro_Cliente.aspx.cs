@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Dominio.Utilidades;
 
 namespace Solucion_ObligatorioP2
 {
@@ -47,15 +48,15 @@ namespace Solucion_ObligatorioP2
                 && !string.IsNullOrWhiteSpace(CP) && !string.IsNullOrWhiteSpace(calle) && !string.IsNullOrWhiteSpace(nroPuerta)
                 && !string.IsNullOrWhiteSpace(usuario) && !string.IsNullOrWhiteSpace(password) && !string.IsNullOrWhiteSpace(mail))
             {
-                bool resultNroPta = elSis.ChequearEsSoloNumero(nroPuerta);
-                bool resultTel = elSis.ChequearEsSoloNumero(telefono);
-                bool resultCI = elSis.ChequearEsSoloNumero(ci);
+                bool resultNroPta = Utilidades.ChequearEsSoloNumero(nroPuerta);
+                bool resultTel = Utilidades.ChequearEsSoloNumero(telefono);
+                bool resultCI = Utilidades.ChequearEsSoloNumero(ci);
 
                 bool lenPass = false;
                 if (password.Length >= 6) lenPass = true;
                 p_registro_message.InnerText = "";
 
-                bool esMail = elSis.EsMail(mail);
+                bool esMail = Utilidades.EsMail(mail);
 
                 if (resultNroPta)
                 {

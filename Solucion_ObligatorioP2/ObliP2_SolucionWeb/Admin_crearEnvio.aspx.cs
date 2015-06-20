@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Dominio.Utilidades;
 
 namespace Solucion_ObligatorioP2
 {
@@ -21,11 +22,11 @@ namespace Solucion_ObligatorioP2
 
             if (!this.IsPostBack)
             {
-                ddl_crearEnvio_nroOficina.DataSource = elSis.TraerNrosDeOficinasPostales();
-                ddl_crearEnvio_nroOficina.DataBind();
-                ddl_crearEnvio_etapa.DataSource =  Enum.GetNames(EtapaEnvio.Etapas.EnOrigen.GetType());
-                ddl_crearEnvio_etapa.DataBind();
-                ddl_crearEnvio_etapa.Enabled = false;
+                this.ddl_crearEnvio_nroOficina.DataSource = elSis.TraerNrosDeOficinasPostales();
+                this.ddl_crearEnvio_nroOficina.DataBind();
+                this.ddl_crearEnvio_etapa.DataSource =  Enum.GetNames(EtapaEnvio.Etapas.EnOrigen.GetType());
+                this.ddl_crearEnvio_etapa.DataBind();
+                this.ddl_crearEnvio_etapa.Enabled = false;
             }
         }
 
@@ -33,14 +34,14 @@ namespace Solucion_ObligatorioP2
         {
 /*<<<<<<< HEAD
             float peso;
-            bool resultado = float.TryParse(txt_crearEnvio_peso.Text, out peso);
+            bool resultado = float.TryParse(this.txt_crearEnvio_peso.Text, out peso);
 
-            string nombre = txt_crearEnvio_nomDest.Text;
-            string calle = txt_crearEnvio_calle.Text;
-            string nroPuerta = txt_crearEnvio_numPuerta.Text;
-            string pais = txt_crearEnvio_pais.Text;
-            string ciudad = txt_crearEnvio_ciudad.Text;
-            string codPostal = txt_crearEnvio_codPostal.Text;
+            string nombre = this.txt_crearEnvio_nomDest.Text;
+            string calle = this.txt_crearEnvio_calle.Text;
+            string nroPuerta = this.txt_crearEnvio_numPuerta.Text;
+            string pais = this.txt_crearEnvio_pais.Text;
+            string ciudad = this.txt_crearEnvio_ciudad.Text;
+            string codPostal = this.txt_crearEnvio_codPostal.Text;
             string descrip;
             bool tieneSeguro;
             bool esDocLegal;
@@ -49,33 +50,33 @@ namespace Solucion_ObligatorioP2
             string paisOrigen;
             string ciudadOrigen;
             string codPostalOrigen;
-            string nombreDestinatario = txt_crearEnvio_nomDest.Text;
+            string nombreDestinatario = this.txt_crearEnvio_nomDest.Text;
             DateTime fechaIngreso = calendar_crearEnvio.SelectedDate;
 
             int nroOficina;
-            bool resultOfi = int.TryParse(ddl_crearEnvio_nroOficina.SelectedValue, out nroOficina);
+            bool resultOfi = int.TryParse(this.ddl_crearEnvio_nroOficina.SelectedValue, out nroOficina);
 
             int numeroEnvio;
 
             if (radiobtn_crearEnvio_esPaquete.Checked == true)
             {
                 float largo;
-                bool resultLargo = float.TryParse(txt_crearEnvio_largoPaquete.Text, out largo);
+                bool resultLargo = float.TryParse(this.txt_crearEnvio_largoPaquete.Text, out largo);
                 
                 float ancho;
-                bool resultAncho = float.TryParse(txt_crearEnvio_anchoPaquete.Text, out ancho);
+                bool resultAncho = float.TryParse(this.txt_crearEnvio_anchoPaquete.Text, out ancho);
                
                 float alto;
-                bool resultAlto = float.TryParse(txt_crearEnvio_altoPaquete.Text, out alto);
+                bool resultAlto = float.TryParse(this.txt_crearEnvio_altoPaquete.Text, out alto);
                
-                descrip = txt_crearEnvio_DescripPaquete.Text;
+                descrip = this.txt_crearEnvio_DescripPaquete.Text;
                 tieneSeguro = chkbox_crearEnvio_seguro.Checked;
 
                 decimal costoBaseXgramo;
-                bool resultadoCosto = decimal.TryParse(txt_crearEnvio_costoBase.Text, out costoBaseXgramo);
+                bool resultadoCosto = decimal.TryParse(this.txt_crearEnvio_costoBase.Text, out costoBaseXgramo);
                 
                 decimal valorDec;
-                bool resultadoValorDec = decimal.TryParse(txt_crearEnvio_valorDeclaradoPaquete.Text, out valorDec);
+                bool resultadoValorDec = decimal.TryParse(this.txt_crearEnvio_valorDeclaradoPaquete.Text, out valorDec);
 
                 numeroEnvio = elSis.AltaEnvioPaquete("1234567-8", nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso,
                                 nroOficina, alto, ancho, largo, costoBaseXgramo, valorDec, tieneSeguro, peso, descrip);
@@ -87,12 +88,12 @@ namespace Solucion_ObligatorioP2
             if (radiobtn_crearEnvio_esDoc.Checked == true)
             {
                 esDocLegal = chkbox_crearEnvio_esDocLegal.Checked;
-                calleOrigen = txt_crearEnvio_calleOrigen.Text;
-                nroPuertaOrigen = txt_crearEnvio_nroOrigen.Text;
-                paisOrigen = txt_crearEnvio_paisOrigen.Text;
-                ciudadOrigen = txt_crearEnvio_ciudadOrigen.Text;
-                codPostalOrigen = txt_crearEnvio_codPostalOrigen.Text;
-                nombreDestinatario = txt_crearEnvio_nomDest.Text;
+                calleOrigen = this.txt_crearEnvio_calleOrigen.Text;
+                nroPuertaOrigen = this.txt_crearEnvio_nroOrigen.Text;
+                paisOrigen = this.txt_crearEnvio_paisOrigen.Text;
+                ciudadOrigen = this.txt_crearEnvio_ciudadOrigen.Text;
+                codPostalOrigen = this.txt_crearEnvio_codPostalOrigen.Text;
+                nombreDestinatario = this.txt_crearEnvio_nomDest.Text;
 
                 numeroEnvio = elSis.AltaEnvioDocumento("1234567-8", calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen, 
                                                     nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso, nroOficina, 
@@ -121,7 +122,7 @@ namespace Solucion_ObligatorioP2
 }*/
 //=======
 
-            string pesoEnv = txt_crearEnvio_peso.Text;
+            string pesoEnv = this.txt_crearEnvio_peso.Text;
             if (pesoEnv == null || pesoEnv == "")
             {
                 //ex
@@ -137,48 +138,48 @@ namespace Solucion_ObligatorioP2
 
            
             
-            string idCliente = txt_crearEnvio_idCliente.Text;
+            string idCliente = this.txt_crearEnvio_idCliente.Text;
             if (idCliente == null || idCliente == "") {
                 //exception
             }
-            string nombre = txt_crearEnvio_nomDest.Text;
+            string nombre = this.txt_crearEnvio_nomDest.Text;
             if (nombre == null || nombre == "")
             {
             //exception
             }
-            string calle = txt_crearEnvio_calle.Text;
+            string calle = this.txt_crearEnvio_calle.Text;
             if (calle == null ||calle =="")
             {
             //exception
             }
-            string nroPuerta = txt_crearEnvio_numPuerta.Text;
+            string nroPuerta = this.txt_crearEnvio_numPuerta.Text;
             if (nroPuerta == null || nroPuerta == "")
             {
                 //exception
                
             }
-                if (!elSis.ChequearEsSoloNumero(nroPuerta)) 
+                if (!Utilidades.ChequearEsSoloNumero(nroPuerta)) 
                 {
                 //ex
                 }
 
 
-            string pais = txt_crearEnvio_pais.Text;
+            string pais = this.txt_crearEnvio_pais.Text;
             if (pais == null || pais != "") 
             {
                 //exception
             }
-            string ciudad = txt_crearEnvio_ciudad.Text;
+            string ciudad = this.txt_crearEnvio_ciudad.Text;
                 if (ciudad == null || ciudad ==  "")
                 {
                     //exception
                 }
-            string codPostal = txt_crearEnvio_codPostal.Text;
+            string codPostal = this.txt_crearEnvio_codPostal.Text;
                 if (codPostal == null || codPostal == "") 
                 {
                 //exception
                 }
-            string descrip = txt_crearEnvio_DescripPaquete.Text;
+            string descrip = this.txt_crearEnvio_DescripPaquete.Text;
                 if (descrip == null || descrip == "") 
                 {
                 //exception
@@ -187,33 +188,33 @@ namespace Solucion_ObligatorioP2
             bool tieneSeguro;
             bool esDocLegal;
 
-            string calleOrigen = txt_crearEnvio_calleOrigen.Text;
+            string calleOrigen = this.txt_crearEnvio_calleOrigen.Text;
                 if (calleOrigen == null || calleOrigen == "")
                 {
                 //exception
                 }
-            string nroPuertaOrigen = txt_crearEnvio_nroOrigen.Text;
+            string nroPuertaOrigen = this.txt_crearEnvio_nroOrigen.Text;
                 if (nroPuertaOrigen == null || nroPuertaOrigen == "")
                 {
                 //ex
                 }
-            string paisOrigen = txt_crearEnvio_paisOrigen.Text;
+            string paisOrigen = this.txt_crearEnvio_paisOrigen.Text;
                 if (paisOrigen == null || paisOrigen == "")
                 {
                 //ex
                 }
-            string ciudadOrigen = txt_crearEnvio_ciudadOrigen.Text;
+            string ciudadOrigen = this.txt_crearEnvio_ciudadOrigen.Text;
                 if (ciudadOrigen == null || ciudadOrigen == "")
                 {
                 //ex
                 }
 
-            string codPostalOrigen = txt_crearEnvio_codPostalOrigen.Text;;
+            string codPostalOrigen = this.txt_crearEnvio_codPostalOrigen.Text;;
                 if (codPostalOrigen == null || codPostalOrigen == "")
                 {
                 //ex
                 }
-            string nombreDestinatario = txt_crearEnvio_nomDest.Text;
+            string nombreDestinatario = this.txt_crearEnvio_nomDest.Text;
                 if (nombreDestinatario == null || nombreDestinatario == "")
                 {
                 //ex
@@ -224,17 +225,17 @@ namespace Solucion_ObligatorioP2
             //ex
             }
 
-           if (ddl_crearEnvio_nroOficina.SelectedValue == null) {
+           if (this.ddl_crearEnvio_nroOficina.SelectedValue == null) {
            //ex
            }
             int nroOficina;
-            bool resultOfi = Int32.TryParse(ddl_crearEnvio_nroOficina.SelectedValue, out nroOficina);
+            bool resultOfi = Int32.TryParse(this.ddl_crearEnvio_nroOficina.SelectedValue, out nroOficina);
 
             int numeroEnvio;
 
             if (radiobtn_crearEnvio_esPaquete.Checked == true)
             {
-                string largoEnv = txt_crearEnvio_largoPaquete.Text;
+                string largoEnv = this.txt_crearEnvio_largoPaquete.Text;
                     if (largoEnv == null || largoEnv == "")
                     {
                         //ex
@@ -245,7 +246,7 @@ namespace Solucion_ObligatorioP2
                         //ex
                         }
                                      
-                string anchoEnv = txt_crearEnvio_anchoPaquete.Text;
+                string anchoEnv = this.txt_crearEnvio_anchoPaquete.Text;
                     if (anchoEnv == null || anchoEnv == "")
                     {
                         //ex
@@ -256,7 +257,7 @@ namespace Solucion_ObligatorioP2
                         //ex
                         }
 
-                string altoEnv = txt_crearEnvio_altoPaquete.Text;
+                string altoEnv = this.txt_crearEnvio_altoPaquete.Text;
                 if (altoEnv == null || altoEnv == "")
                 {
                 //env
@@ -265,7 +266,7 @@ namespace Solucion_ObligatorioP2
                 bool resultAlto = float.TryParse(altoEnv, out alto);
 
 
-                descrip = txt_crearEnvio_DescripPaquete.Text;
+                descrip = this.txt_crearEnvio_DescripPaquete.Text;
                 if (descrip == null || descrip == "")
                 {
                 //ex
@@ -273,7 +274,7 @@ namespace Solucion_ObligatorioP2
 
                 tieneSeguro = chkbox_crearEnvio_seguro.Checked;
 
-                string costoBaseXgramoEnv = txt_crearEnvio_costoBase.Text;
+                string costoBaseXgramoEnv = this.txt_crearEnvio_costoBase.Text;
                     if (costoBaseXgramoEnv == null || costoBaseXgramoEnv == "")
                     {
                     //ex
@@ -281,7 +282,7 @@ namespace Solucion_ObligatorioP2
                 decimal costoBaseXgramo;
                 bool resultadoCosto = decimal.TryParse(costoBaseXgramoEnv, out costoBaseXgramo);
 
-                string valorDecEnv = txt_crearEnvio_valorDeclaradoPaquete.Text;
+                string valorDecEnv = this.txt_crearEnvio_valorDeclaradoPaquete.Text;
                     if(valorDecEnv == null || valorDecEnv == "")
                     {
                     //ex
@@ -303,17 +304,17 @@ namespace Solucion_ObligatorioP2
                     if (radiobtn_crearEnvio_esDoc.Checked == true)
                     {
                         esDocLegal = chkbox_crearEnvio_esDocLegal.Checked;
-                        calleOrigen = txt_crearEnvio_calleOrigen.Text;
-                        nroPuertaOrigen = txt_crearEnvio_nroOrigen.Text;
-                        paisOrigen = txt_crearEnvio_paisOrigen.Text;
-                        ciudadOrigen = txt_crearEnvio_ciudadOrigen.Text;
-                        codPostalOrigen = txt_crearEnvio_codPostalOrigen.Text;
-                        nombreDestinatario = txt_crearEnvio_nomDest.Text;
+                        calleOrigen = this.txt_crearEnvio_calleOrigen.Text;
+                        nroPuertaOrigen = this.txt_crearEnvio_nroOrigen.Text;
+                        paisOrigen = this.txt_crearEnvio_paisOrigen.Text;
+                        ciudadOrigen = this.txt_crearEnvio_ciudadOrigen.Text;
+                        codPostalOrigen = this.txt_crearEnvio_codPostalOrigen.Text;
+                        nombreDestinatario = this.txt_crearEnvio_nomDest.Text;
 
                         if (calleOrigen != "" && nroPuertaOrigen != "" && paisOrigen != "" && ciudadOrigen != ""
                                         && codPostalOrigen != "")
                         {
-                            if (elSis.ChequearEsSoloNumero(nroPuertaOrigen))
+                            if (Utilidades.ChequearEsSoloNumero(nroPuertaOrigen))
                             {
 
                                 numeroEnvio = elSis.AltaEnvioDocumento(idCliente, calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen,
