@@ -19,7 +19,6 @@ namespace Solucion_ObligatorioP2
             {
                 Response.Redirect("~/Inicio.aspx");
             }
-
         }
 
         protected void TextBoxNombre_TextChanged(object sender, EventArgs e)
@@ -69,6 +68,7 @@ namespace Solucion_ObligatorioP2
                     }
                 }
             }
+
             //        else p_CrearAdmin_messageServer.InnerText = "El número de puerta debe contener solo números";
             //    }
             //    else p_CrearAdmin_messageServer.InnerText = "El teléfono sólo puede contener números";
@@ -90,7 +90,6 @@ namespace Solucion_ObligatorioP2
             this.txt_crearAdmin_pais.Enabled = false;
 
             btn_crearAdmin_altaAdmin.Visible = true;
-
         }
 
         protected void habilitarTxtBox()
@@ -108,15 +107,9 @@ namespace Solucion_ObligatorioP2
             this.txt_crearAdmin_ciudad.Enabled = true;
             this.txt_crearAdmin_pais.Enabled = true;
 
-
             btn_crearAdmin_altaAdmin.Visible = true;
-
-
-
         }
-
-
-
     }
 }
+
 

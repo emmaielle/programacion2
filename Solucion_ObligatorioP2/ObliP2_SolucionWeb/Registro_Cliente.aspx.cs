@@ -96,6 +96,5 @@ namespace Solucion_ObligatorioP2
             else p_registro_message.InnerText = "Todos los campos son necesarios";
         }
 
-
     }
 }
