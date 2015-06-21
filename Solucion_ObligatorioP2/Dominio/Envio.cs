@@ -13,7 +13,7 @@ namespace Dominio
         protected int nroEnvio;
         protected static int ultNroEnvio = 1; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
         protected string nombreRecibio;
-        protected string firmaRecibio; // IMAGEN!!!
+        protected string firmaRecibio; 
         protected string nombreDestinatario;
         protected Direccion dirDestinatario;
         protected List<EtapaEnvio> etapasDelEnvio;
