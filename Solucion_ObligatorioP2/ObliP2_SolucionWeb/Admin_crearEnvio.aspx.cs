@@ -24,10 +24,8 @@ namespace Solucion_ObligatorioP2
             {
                 this.ddl_crearEnvio_nroOficina.DataSource = elSis.TraerNrosDeOficinasPostales();
                 this.ddl_crearEnvio_nroOficina.DataBind();
-                this.ddl_crearEnvio_etapa.DataSource = Enum.GetNames(EtapaEnvio.Etapas.EnOrigen.GetType());
-                this.ddl_crearEnvio_etapa.DataBind();
-                this.ddl_crearEnvio_etapa.Enabled = false;
             }
+            else lbl_crearEnvio_muestraNroEnvio.Text = "";
         }
 
         protected void btn_crearEnvio_crearEnvio_Click(object sender, EventArgs e)
@@ -35,14 +33,14 @@ namespace Solucion_ObligatorioP2
             string pesoEnv = this.txt_crearEnvio_peso.Text;
             if (pesoEnv == null || pesoEnv == "")
             {
-                throw new Exception("Peso vacio");
+                p_crearEnvio_errores.InnerText = "Peso vacio";
             }
 
             float peso;
             bool resultado = float.TryParse(pesoEnv, out peso);
             if (!resultado)
             {
-                throw new Exception("No pude convertir");
+                p_crearEnvio_errores.InnerText = "El peso no es un número";
             }
 
             string idCliente = this.txt_crearEnvio_idCliente.Text;
@@ -89,7 +87,6 @@ namespace Solucion_ObligatorioP2
             }
 
             bool tieneSeguro;
-            //
             bool esDocLegal;
 
             //string calleOrigen = this.txt_crearEnvio_calleOrigen.Text;
@@ -210,7 +207,7 @@ namespace Solucion_ObligatorioP2
                 numeroEnvio = elSis.AltaEnvioPaquete(idCliente, nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso,
                                 nroOficina, alto, ancho, largo, costoBaseXgramo, valorDec, tieneSeguro, peso, descrip);
 
-                this.lbl_crearEnvio_muestraNroEnvio.Text = numeroEnvio.ToString();
+                this.lbl_crearEnvio_muestraNroEnvio.Text = "El número de su envío es: #" + numeroEnvio.ToString();
 
             }
 

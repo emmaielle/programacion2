@@ -6,10 +6,11 @@
         <p id="p_crearEnv_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Creacion de envio</p>
         <div class="cajitas" style="margin:10px; padding-bottom:60px; padding-left:120px; padding-right:120px; width:260px; clear:both">  
               
-            <div>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 <asp:Label ID="lbl_crearEnvio_fechaIngreso" style="float:left" CssClass="labels" runat="server" Text="Fecha: "></asp:Label>
-                <asp:Calendar ID="calendar_crearEnvio" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="110px" Width="148px">
+            <div style="margin-bottom:10px">
+                <div style="margin-bottom:8px">
+                    <asp:Label ID="lbl_crearEnvio_fechaIngreso" style="clear:both" CssClass="labels" runat="server" Text="Fecha: "></asp:Label>
+                </div>
+                <asp:Calendar ID="calendar_crearEnvio" style="clear:both; vertical-align:central; margin:auto" runat="server" BackColor="White" BorderColor="#3366CC" BorderWidth="1px" CellPadding="1" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="171px" Width="189px">
                     <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
                     <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
                     <OtherMonthDayStyle ForeColor="#999999" />
@@ -22,10 +23,11 @@
             </div>
              <div style="padding-top:10px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_idCliente" style="float:left" CssClass="labels" runat="server" Text="Id Cliente: "></asp:Label>
-                <asp:TextBox ID="txt_crearEnvio_idCliente" style="width:100px;float:right; margin-left:6px" runat="server" Text="I"></asp:TextBox>
+                <asp:TextBox ID="txt_crearEnvio_idCliente" style="width:100px;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_peso" style="float:left" CssClass="labels" runat="server" Text="Peso: "></asp:Label>
+                <%-- el peso se ingresa en kg para todos los envios y para docs se guarda transformado a gramos --%>
+                <asp:Label ID="lbl_crearEnvio_peso" style="float:left" CssClass="labels" runat="server" Text="Peso (Kg): "></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_peso" style="width:100px;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
@@ -65,15 +67,15 @@
         <asp:Panel ID="PanelPaquete" runat="server" CssClass="cajitas" style="margin:10px; margin-top:30px; padding:10px; padding-left:120px; padding-right:120px;  width:260px; clear:both" Visible="False">
 
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_largoPaquete" style="float:left" CssClass="labels" runat="server" Text="Largo:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_largoPaquete" style="float:left" CssClass="labels" runat="server" Text="Largo (cm):"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_largoPaquete" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_anchoPaquete" style="float:left" CssClass="labels" runat="server" Text="Ancho:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_anchoPaquete" style="float:left" CssClass="labels" runat="server" Text="Ancho (cm):"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_anchoPaquete" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_altoPaquete1" style="float:left" CssClass="labels" runat="server" Text="Alto:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_altoPaquete1" style="float:left" CssClass="labels" runat="server" Text="Alto (cm):"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_altoPaquete" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
@@ -82,7 +84,7 @@
             </div>
             
             <div style="padding-top:15px; clear:both">
-                 <asp:Label ID="lbl_crearEnvio_costoBaseXGramo" style="float:left" CssClass="labels" runat="server" Text=" Costo base /gramo:"></asp:Label>
+                 <asp:Label ID="lbl_crearEnvio_costoBaseXGramo" style="float:left" CssClass="labels" runat="server" Text=" Costo base/gr (U$S):"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_costoBase" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
 
@@ -127,23 +129,20 @@
             </div>
         </asp:Panel>
         <div style="padding-top:15px; clear:both">
-            <asp:Panel ID="Panel1" runat="server">
-                Ingrese etapa y nro. de oficina:
-                <br />
-                <br />
-                <asp:DropDownList ID="ddl_crearEnvio_etapa" runat="server">
+            <div style="clear:both; width:250px; margin:auto;vertical-align:central" class="labels">
+                <asp:Label ID="lbl_crearEnvio_nroOffice" style="float:left" runat="server" Text="Ingrese número de oficina:"></asp:Label>
+                <asp:DropDownList ID="ddl_crearEnvio_nroOficina" style="float:right" runat="server">
                 </asp:DropDownList>
-                <asp:DropDownList ID="ddl_crearEnvio_nroOficina" runat="server">
-                </asp:DropDownList>
-            </asp:Panel>
-            <br />
-            <asp:Button ID="btn_crearEnvio_crearEnvio" CssClass="labels" runat="server" OnClick="btn_crearEnvio_crearEnvio_Click" Text="Crear Envio" />
-            <br />
-            <br />
-                <asp:Label ID="lbl_crearEnvio_nroEnvio0" style="float:left;color:blue" CssClass="labels" runat="server" Text="Número de envio generado: "></asp:Label>
-        </div>
-        <div style="padding-top:15px; clear:both">
-            <asp:Label ID="lbl_crearEnvio_muestraNroEnvio" CssClass="labels" runat="server" Text="Label"></asp:Label>
+            </div>
+            <div style="clear:both">
+                <asp:Button ID="btn_crearEnvio_crearEnvio" style="margin-top:20px;clear:both" CssClass="labels" runat="server" OnClick="btn_crearEnvio_crearEnvio_Click" Text="Crear Envio" />
+            </div>
+            <div>
+                <p runat="server" id="p_crearEnvio_errores" style="color:red;font-family:Verdana"></p>
+            </div>
+            <div style="padding-top:15px; margin-bottom:20px; clear:both">
+                <asp:Label ID="lbl_crearEnvio_muestraNroEnvio" style="color:blue" CssClass="labels" runat="server"></asp:Label>
+            </div>
         </div>
    </div>
 </asp:Content>
