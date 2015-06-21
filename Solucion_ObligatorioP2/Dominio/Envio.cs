@@ -18,9 +18,12 @@ namespace Dominio
         protected Direccion dirDestinatario;
         protected List<EtapaEnvio> etapasDelEnvio;
         protected decimal precioFinal;
-        private float peso; // para paquetes se guarda en Kg, para documentos en Gramos (pero en ambos se ingresa en Kg).
-        private DateTime fechaIngreso;
-        private string fechaIngresoParaEntregar;
+        protected float peso; // para paquetes se guarda en Kg, para documentos en Gramos (pero en ambos se ingresa en Kg).
+
+        /// esto queda bien aca??? <---- todavia no lo puse en astah!!
+        protected DateTime fechaIngreso;
+        protected string fechaIngresoParaEntregar;
+        /// ---
         
         #endregion
         
@@ -88,7 +91,7 @@ namespace Dominio
         // propiedad hecha para gridview de envios atrasados5dias && para IComparable que ordena segun esto
         public string DocCliente
         {
-            get { return Sistema.Instancia.BuscarClienteParaUnEnvio(this); }
+            get { return Sistema.Instancia.BuscarClienteParaUnEnvio(this.NroEnvio); }
         }
 
         // para que devuelva en el gridview de envios el tipo de envio que es (pasado a string y despues de "Dominio.")
@@ -103,6 +106,23 @@ namespace Dominio
         {
             get { return fechaIngresoParaEntregar; }
         }
+
+        // propiedad para las gridview. Porque siempre quierpo mostrar el peso en KG, aun para los documentos
+        public float PesoEnKG
+        {
+            get
+            {
+                if (this.GetType() == typeof(EnvioDocumento))
+                {
+                    return this.peso / 1000;
+                }
+                else
+                {
+                    return this.peso;
+                }
+            }
+        }
+
 
         #endregion
 
@@ -270,12 +290,15 @@ namespace Dominio
             DateTime ultimaFecha = DateTime.MinValue;
             EtapaEnvio etapaActual = null;
 
-            if (this.etapasDelEnvio != null && this.etapasDelEnvio.Count>0) //vic
-            foreach (EtapaEnvio etp in this.etapasDelEnvio)
+            if (this.etapasDelEnvio != null && this.etapasDelEnvio.Count > 0)
             {
-                if (etp.FechaIngreso > ultimaFecha)
+                foreach (EtapaEnvio etp in this.etapasDelEnvio)
                 {
-                    etapaActual = etp;
+                    if (etp.FechaIngreso >= ultimaFecha)
+                    {
+                        etapaActual = etp;
+                        ultimaFecha = etapaActual.FechaIngreso;
+                    }
                 }
             }
 

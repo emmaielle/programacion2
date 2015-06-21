@@ -20,7 +20,7 @@
                     <asp:TextBox ID="txt_superanMonto_monto" style="width:90px; float:right; margin-left:5px" runat="server"></asp:TextBox>
                 </div>
                 <div id="div_superanMonto_errorMesages" style="height:25px; clear:both; padding-top:10px">
-                    <p id="p_superanMonto_messageServer" runat="server" style="color:red; margin:0px" class="letrasLinks"></p>
+                    <asp:Label ID="lbl_superanMonto_messageServer" runat="server" style="color:red; margin:0px" class="letrasLinks"></asp:Label>
                 </div>
                 <div style="clear:both; margin:auto; vertical-align:central; padding-top:10px">
                     <asp:Button ID="btn_superanMonto_listar" runat="server" Text="Obtener envíos" OnClientClick="return validarNros();" ValidationGroup="emptyField" OnClick="btn_superanMonto_listar_Click" />
@@ -36,7 +36,7 @@
                 </div>
 
                 <div id="div1" style="height:35px; clear:both; padding-top:10px">
-                    <p id="p_paraEntregar_messageServer" runat="server" style="color:red; margin:0px" class="letrasLinks"></p>
+                    <asp:Label ID="lbl_paraEntregar_messageServer" runat="server" style="color:red; margin:0px" class="letrasLinks"></asp:Label>
                 </div>
 
                 <div style="clear:both; margin:auto; vertical-align:central; padding-top:10px">
@@ -65,7 +65,7 @@
                         <asp:BoundField DataField="FechaIngreso" HeaderText="Fecha Ingreso" />
                         <asp:BoundField DataField="DocCliente" HeaderText="Doc Cliente" />
                         <asp:BoundField DataField="NombreDestinatario" HeaderText="Destinatario" />
-                        <asp:BoundField DataField="Peso" HeaderText="Peso (Kg)" />
+                        <asp:BoundField DataField="PesoEnKG" HeaderText="Peso (Kg)" />
                         <asp:BoundField DataField="PrecioFinal" HeaderText="Precio (U$S)" />
                         <asp:BoundField DataField="NombreRecibio" HeaderText="Recibio" />
                         <asp:ImageField DataImageUrlField="FirmaRecibio" DataImageUrlFormatString="./fotosFirmas/{0}" HeaderText="Firma Recibio">

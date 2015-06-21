@@ -76,22 +76,22 @@ namespace Solucion_ObligatorioP2
                         {
                             if (resultEtapa) // esto siempre va a dar true porque es de un ddl
                             {
-                                string mensajeError = null;
-                                exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, nomArchivo, nombreRecibio, out mensajeError);
-                                
-                                if (path != "")
+                                if ((etapaIngresada == EtapaEnvio.Etapas.Entregado && path != "") || etapaIngresada != EtapaEnvio.Etapas.Entregado)
                                 {
                                     this.fileup_actualizarEnvio_firma.SaveAs(path + nomArchivo);
-                                }
+                                    string mensajeError = null;
+                                    exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, nomArchivo, nombreRecibio, out mensajeError);
 
-                                if (exito)
-                                {
-                                    this.p_actualizarEnv_message.InnerText = "exito!!";
+                                    if (exito)
+                                    {
+                                        this.p_actualizarEnv_message.InnerText = "exito!!";
+                                    }
+                                    else
+                                    {
+                                        this.p_actualizarEnv_message.InnerText = mensajeError;
+                                    }
                                 }
-                                else
-                                {
-                                    this.p_actualizarEnv_message.InnerText = mensajeError;
-                                }
+                                else this.p_actualizarEnv_message.InnerText = "Debe ingresar un archivo";
                             }
                             else this.p_actualizarEnv_message.InnerText = "Debe seleccionar una etapa para el envio";
                         }

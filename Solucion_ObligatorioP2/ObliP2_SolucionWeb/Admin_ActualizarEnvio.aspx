@@ -30,7 +30,8 @@
                 <asp:TextBox ID="txt_actualizarEnv_nomRecibio" style="float:left; margin-left:5px" CssClass="labels" runat="server"></asp:TextBox>
             </div>
             <div id="div_actualizarEnv_firmaRecibio" runat="server" visible="false" style="clear:both; padding-top:15px">
-                <asp:FileUpload ID="fileup_actualizarEnvio_firma" style="float:left; margin-left:5px" runat="server" />
+                <asp:Label ID="lbl_actualizarEnv_firma" CssClass="labels" style="float:left" runat="server" Text="Firma: " AssociatedControlID="fileup_actualizarEnvio_firma"></asp:Label>
+                <asp:FileUpload ID="fileup_actualizarEnvio_firma" style="float:left; margin-left:7px" runat="server" />
             </div>
             <div style="padding-top:15px">
                 <div style="margin-top:25px; margin-bottom:5px; clear:both">

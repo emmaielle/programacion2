@@ -130,6 +130,15 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_firmaRecibio;
         
         /// <summary>
+        /// Control lbl_actualizarEnv_firma.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_firma;
+        
+        /// <summary>
         /// Control fileup_actualizarEnvio_firma.
         /// </summary>
         /// <remarks>

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Dominio;
+using Dominio.Utilidades;
 
 namespace Solucion_ObligatorioP2
 {
@@ -35,10 +36,12 @@ namespace Solucion_ObligatorioP2
 
             if (this.IsPostBack)
             {
-                this.p_superanMonto_messageServer.InnerText = "";
+                this.lbl_superanMonto_messageServer.Text = "";
                 this.p_listarEnvios_noSeEncontro.Visible = false;
             }
         }
+
+        #region botones_click
 
         protected void btn_superanMonto_listar_Click(object sender, EventArgs e)
         {
@@ -47,75 +50,95 @@ namespace Solucion_ObligatorioP2
 
             if (result)
             {
-                List<Envio> enviosSolicitados = this.BuscarEnviosQueSuperanMonto();
+                bool existeCliente;
+                List<Envio> enviosSolicitados = this.BuscarEnviosQueSuperanMonto(out existeCliente);
                 this.CargarEnviosSolicitados(enviosSolicitados, "Lista de envíos cuyo precio supera " +
-                                            this.txt_superanMonto_monto.Text + " pesos");
+                                            this.txt_superanMonto_monto.Text + " pesos", existeCliente);
             }
             else
             {
-                this.p_superanMonto_messageServer.InnerText = "El monto debe ser un decimal";
+                this.lbl_superanMonto_messageServer.Text = "El monto debe ser un decimal";
             }
         }
+
 
         protected void btn_listarEnvios_paraEntregar_listar_Click(object sender, EventArgs e)
         {
             List<Envio> listaEnviosParaEntregar = new List<Envio>();
-            listaEnviosParaEntregar = this.BuscarEnviosParaEntregar();
 
-            this.CargarEnviosSolicitados(listaEnviosParaEntregar, "Lista de envíos para entregar o entregados, ordenados por decha de ingreso a estado 'ParaEntregar' de forma ASCENDENTE");
+            bool existeElCliente;
+            listaEnviosParaEntregar = this.BuscarEnviosParaEntregar(out existeElCliente);
+
+            this.CargarEnviosSolicitados(listaEnviosParaEntregar, "Lista de envíos para entregar o entregados, ordenados por decha de ingreso a estado 'ParaEntregar' de forma ASCENDENTE", existeElCliente);
         }
+
 
         protected void btn_listaeEnvTransito5_Click(object sender, EventArgs e)
         {
             List<Envio> listaEnviosEnTransitoAtrasados = new List<Envio>();
             listaEnviosEnTransitoAtrasados = elSis.EnviosEnTransitoAtrasados();
 
-            this.CargarEnviosSolicitados(listaEnviosEnTransitoAtrasados, "Lista de envíos en tránsito por más de cinco días");
+            this.CargarEnviosSolicitados(listaEnviosEnTransitoAtrasados, "Lista de envíos en tránsito por más de cinco días", true);
 
         }
 
-        protected List<Envio> BuscarEnviosQueSuperanMonto()
+        #endregion
+
+        protected List<Envio> BuscarEnviosQueSuperanMonto(out bool pExisteElCliente)
         {
-            Usuario cliente = this.ObtenerCliente(this.txt_superanMonto_usrName);
+            // que el textbox este llenado solo con números ya esta controlado en ObtenerCliente()
+            Usuario cliente = this.ObtenerCliente(this.txt_superanMonto_usrName, lbl_superanMonto_messageServer);
 
             // ya hice el TryParse antes de esto
             decimal monto = decimal.Parse(this.txt_superanMonto_monto.Text);
+            
             List<Envio> enviosQueSuperanMonto = new List<Envio>();
 
             if (cliente != null)
             {
                 enviosQueSuperanMonto = elSis.EnviosQueSuperanMontoParaCliente(cliente.Documento, monto);
+                pExisteElCliente = true;
             }
             else
             {
-                this.p_superanMonto_messageServer.InnerText = "El usuario ingresado no existe";
+                pExisteElCliente = false;
+                this.lbl_superanMonto_messageServer.Text = "El cliente ingresado no existe";
             }
 
             return enviosQueSuperanMonto;
         }
 
-        protected List<Envio> BuscarEnviosParaEntregar()
+        protected List<Envio> BuscarEnviosParaEntregar(out bool pExisteElCliente)
         {
-            Usuario cliente = this.ObtenerCliente(this.txt_listarEnv_paraEntregar_usrName);
+            // que el textbox este llenado solo con números ya esta controlado en ObtenerCliente()
+            Usuario cliente = this.ObtenerCliente(this.txt_listarEnv_paraEntregar_usrName, lbl_paraEntregar_messageServer);
 
             List<Envio> listaEnviosParaEntregaroEntregados = new List<Envio>();
 
             if (cliente != null)
             {
                 listaEnviosParaEntregaroEntregados = cliente.ListarEnviosEntregados();
+                pExisteElCliente = true;
+            }
+            else
+            {
+                this.lbl_paraEntregar_messageServer.Text = "El cliente ingresado no existe";
+                pExisteElCliente = false;
             }
 
             return listaEnviosParaEntregaroEntregados;
         }
 
-        protected void CargarEnviosSolicitados(List<Envio> pEnviosSolicitados, string pHeader)
+        // le paso un parametro para saber si existe el cliente, porque si no existe, el problema no es
+        // que no hay envios para ese cliente
+        protected void CargarEnviosSolicitados(List<Envio> pEnviosSolicitados, string pHeader, bool pExisteCli)
         {
             List<Envio> nuevaListaEnvios = new List<Envio>();
 
             if (pEnviosSolicitados.Count != 0 && pEnviosSolicitados != null)
             {
                 this.div_grv_envios.Visible = true;
-
+                
                 foreach (Envio env in pEnviosSolicitados)
                 {
                     nuevaListaEnvios.Add(env);
@@ -124,7 +147,11 @@ namespace Solucion_ObligatorioP2
             else
             {
                 this.div_grv_envios.Visible = false;
-                this.p_listarEnvios_noSeEncontro.Visible = true;
+                
+                if (pExisteCli)
+                {
+                    this.p_listarEnvios_noSeEncontro.Visible = true;
+                }
             }
 
             this.p_listarEnvio_headerResult.InnerText = pHeader;
@@ -132,7 +159,10 @@ namespace Solucion_ObligatorioP2
             this.grid_listarEnvios_env.DataBind();
         }
 
-        protected Usuario ObtenerCliente(TextBox pControl_txtbox)
+
+        // este metodo es comun para dos consultas; muestro mensajes aca, pasando el parametro de donde lo 
+        // voy a mostrar
+        protected Usuario ObtenerCliente(TextBox pControl_txtbox, Label pControlMensaje)
         {
             Usuario cliente = null;
 
@@ -144,8 +174,13 @@ namespace Solucion_ObligatorioP2
             {
                 if (!string.IsNullOrEmpty(pControl_txtbox.Text))
                 {
-                    cliente = this.elSis.BuscarCliente(pControl_txtbox.Text);
+                    if (Utilidades.ChequearEsSoloNumero(pControl_txtbox.Text))
+                    {
+                        cliente = this.elSis.BuscarCliente(pControl_txtbox.Text);
+                    }
+                    else pControlMensaje.Text = "El documento debe contener sólo números";
                 }
+                else pControlMensaje.Text = "Debes ingresar un documento de cliente";
 
             }
             return cliente;

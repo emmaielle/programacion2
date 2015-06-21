@@ -82,12 +82,22 @@ namespace Dominio
         // precioFinal = costoBase/gr X pesoGramos + 5% si es documento legal
         public override decimal CalcularPrecioFinal()
         {
-            decimal final = EnvioDocumento.CostoBasePorGramo * Convert.ToDecimal(base.Peso); // <-- ver si es la mejor forma de convertirlo <--
+            decimal pesoDecimal;
+            bool d = decimal.TryParse(base.peso.ToString(), out pesoDecimal);
+
+            decimal final;
             
-            if (this.EsDocLegal)
+            if (d)
             {
-                final += final * 0.05M;
+                final = EnvioDocumento.CostoBasePorGramo * pesoDecimal;
+
+                if (this.EsDocLegal)
+                {
+                    final += final * 0.05M;
+                }
             }
+            else final = 0M;
+
             return final;
             
         }

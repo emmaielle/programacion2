@@ -17,48 +17,48 @@
         <div style="clear:both; margin-top:10px">
             <asp:Button ID="btn_rastrearEnvio_rastrear" runat="server" OnClientClick="return validarTxt();" OnClick="btn_rastrearEnvio_rastrear_Click" Text="Rastrear" />
         </div>
-        <div style="clear:both; margin-top:20px">
-        </div>
-
-        <asp:GridView ID="gvRastreo" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="16px">
-            <Columns>
-                <asp:BoundField DataField="etapa" HeaderText="Estado" />
-                <asp:BoundField DataField="fechaIngreso" HeaderText="Fecha" />
-                <asp:TemplateField HeaderText="Nro Oficina">
-                    <ItemTemplate>
-                        <%# Eval("Ubicacion.NroOficina") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Calle">
-                <ItemTemplate>
-                    <%# Eval("Ubicacion.DireccionOfiPostal.Calle") %>
-                </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Nro puerta">
-                    <ItemTemplate>
-                        <%# Eval("Ubicacion.DireccionOfiPostal.Numero") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Ciudad">
-                    <ItemTemplate>
-                        <%# Eval("Ubicacion.DireccionOfiPostal.Ciudad") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Pais">
-                    <ItemTemplate>
-                        <%# Eval("Ubicacion.DireccionOfiPostal.Pais") %>
-                    </ItemTemplate>
-                </asp:TemplateField>
-            </Columns>
-            <FooterStyle BackColor="White" ForeColor="#000066" />
-            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
-            <RowStyle ForeColor="#000066" />
-            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#F1F1F1" />
-            <SortedAscendingHeaderStyle BackColor="#007DBB" />
-            <SortedDescendingCellStyle BackColor="#CAC9C9" />
-            <SortedDescendingHeaderStyle BackColor="#00547E" />
-            </asp:GridView>
     </div>
+    <div class="labels" style="clear:both; vertical-align:central; margin-top:50px; height: 132px; margin-left: auto; margin-right: auto; margin-bottom: auto;">
+
+            <asp:GridView ID="gvRastreo" style="text-align:center; margin:auto;vertical-align:central" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" Height="25px" Width="742px">
+                <Columns>
+                    <asp:BoundField DataField="etapa" HeaderText="Estado" />
+                    <asp:BoundField DataField="fechaIngreso" HeaderText="Fecha" />
+                    <asp:TemplateField HeaderText="Oficina">
+                        <ItemTemplate>
+                            <%# Eval("Ubicacion.NroOficina") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Calle">
+                    <ItemTemplate>
+                        <%# Eval("Ubicacion.DireccionOfiPostal.Calle") %>
+                    </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Nro puerta">
+                        <ItemTemplate>
+                            <%# Eval("Ubicacion.DireccionOfiPostal.Numero") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Ciudad">
+                        <ItemTemplate>
+                            <%# Eval("Ubicacion.DireccionOfiPostal.Ciudad") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Pais">
+                        <ItemTemplate>
+                            <%# Eval("Ubicacion.DireccionOfiPostal.Pais") %>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+                </Columns>
+                <FooterStyle BackColor="White" ForeColor="#000066" />
+                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
+                <RowStyle ForeColor="#000066" />
+                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                </asp:GridView>
+            </div>
 </asp:Content>

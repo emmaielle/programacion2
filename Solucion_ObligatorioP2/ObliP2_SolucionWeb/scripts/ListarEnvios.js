@@ -1,7 +1,7 @@
 ﻿function validarNros() {
     docCli = $("#ContentPlaceHolder1_txt_superanMonto_usrName").val();
     monto = $("#ContentPlaceHolder1_txt_superanMonto_monto").val();
-    summary = $("#ContentPlaceHolder1_p_superanMonto_messageServer");
+    summary = $("#ContentPlaceHolder1_lbl_superanMonto_messageServer");
 
     retorno = false;
 
@@ -23,7 +23,7 @@
 
 function validarCli_nro() {
     docCli = $("#ContentPlaceHolder1_txt_listarEnv_paraEntregar_usrName").val();
-    summary = $("#ContentPlaceHolder1_p_paraEntregar_messageServer");
+    summary = $("#ContentPlaceHolder1_lbl_paraEntregar_messageServer");
 
     retorno = false;
 
