@@ -9,7 +9,7 @@
 
     retorno = false;
 
-    if ($(":text").val() != "" && $(":password").val() != ""){
+    if ($(":text").val().trim() != "" && $(":password").val().trim() != ""){
         if (isNaN(doc)) {
             mensajes.text("El documento debe ser un número");
         }

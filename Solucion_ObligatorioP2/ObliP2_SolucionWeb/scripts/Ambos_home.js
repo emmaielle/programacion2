@@ -8,7 +8,7 @@
 
     retorno = false;
 
-    if (mail != "" && nroPuerta != "" && telefono != "") {
+    if ($(":text").val().trim() != "" && $(":password").val().trim() != "") {
         if (!exp.test(mail)) {
             valid_summary.show();
             valid_summary.text("El mail no tiene el formato correcto");

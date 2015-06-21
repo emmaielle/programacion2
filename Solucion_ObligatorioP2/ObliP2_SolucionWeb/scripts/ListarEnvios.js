@@ -5,7 +5,7 @@
 
     retorno = false;
 
-    if (docCli != "" && monto != "") {
+    if (docCli.trim() != "" && monto.trim() != "") {
         if (isNaN(docCli)) {
             summary.text("El documento debe ser un número");
         }
@@ -27,7 +27,7 @@ function validarCli_nro() {
 
     retorno = false;
 
-    if (docCli != "") {
+    if (docCli.trim() != "") {
         if (isNaN(docCli)) {
             summary.text("El documento debe ser un número");
         }

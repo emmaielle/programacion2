@@ -5,7 +5,7 @@
     retorno = false;
     errorMsj.text("");
 
-    if (valTxtbox != "") {
+    if (valTxtbox.trim() != "") {
         if (isNaN(valTxtbox)) {
             errorMsj.text("El envío debe ser un número");
         }
