@@ -33,6 +33,7 @@ namespace Solucion_ObligatorioP2
             string pesoEnv = this.txt_crearEnvio_peso.Text;
             if (pesoEnv == null || pesoEnv == "")
             {
+                // mensajes tipo como aca <<-------- !
                 p_crearEnvio_errores.InnerText = "Peso vacio";
             }
 

@@ -14,6 +14,19 @@
             }
         }
 
+        function validarNroEnvio() {
+            retorno = false;
+
+            if ($("#txt_home_nroEnvio").val() != "") {
+                if (isNaN($("#txt_home_nroEnvio").val())) {
+                    $("#lbl_error_grv").text("El código debe contener sólo números");
+                }
+                else retorno = true;
+            }
+            else $("#lbl_error_grv").text("Ingresa un número de envío");
+
+            return retorno;
+        }
 
     </script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -56,15 +69,13 @@
                     <p id="p_inicio_rastreo">Rastreo de envíos</p>
                     <div id="div_nroEnvio">
                         <asp:Label ID="lbl_home_nroEnvio" runat="server" Text="Código de envío "></asp:Label>
-                        <asp:RequiredFieldValidator ID="valid_inicio_Rastreo_blank" runat="server" ControlToValidate="txt_home_nroEnvio" ValidationGroup="empy_env" CssClass="labels" ForeColor="Red"></asp:RequiredFieldValidator>
                         <asp:TextBox ID="txt_home_nroEnvio" runat="server"></asp:TextBox>
                     </div>
                     <div id="div_btnHome_seguirEnvio">
-                        <asp:Button ID="btn_home_seguirEnvio" runat="server" Text="Rastrear envío" OnClick="btn_home_seguirEnvio_Click" ValidationGroup="empy_env" />
+                        <asp:Button ID="btn_home_seguirEnvio" runat="server" Text="Rastrear envío" OnClientClick="return validarNroEnvio();" OnClick="btn_home_seguirEnvio_Click" />
                     </div>
                     <div id="div_error_rastreo" style="margin-top: 15px; height:68px; clear:both;" runat="server">
-                        <asp:ValidationSummary ID="valid_inicio_rastreo" runat="server" CssClass="labels" ForeColor="Red" HeaderText="Debe ingresar un número de envio" ValidationGroup="empy_env" />
-                        <asp:Label ID="lbl_error_grv" Visible="False" CssClass="letrasLinks" style="color:red" runat="server" Text="Poner algo aca" ForeColor="Red"></asp:Label>
+                        <asp:Label ID="lbl_error_grv" CssClass="letrasLinks" style="color:red" runat="server" ForeColor="Red"></asp:Label>
                     </div>
                 </div>
             </div>

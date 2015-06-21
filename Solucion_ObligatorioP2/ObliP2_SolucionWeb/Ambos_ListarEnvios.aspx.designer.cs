@@ -58,15 +58,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_superanMonto_usuario;
         
         /// <summary>
-        /// Control valid_superanMonto_emptyUsr.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_superanMonto_emptyUsr;
-        
-        /// <summary>
         /// Control txt_superanMonto_usrName.
         /// </summary>
         /// <remarks>
@@ -85,15 +76,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_superanMonto_monto;
         
         /// <summary>
-        /// Control valid_superanMonto_emptyMonto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_superanMonto_emptyMonto;
-        
-        /// <summary>
         /// Control txt_superanMonto_monto.
         /// </summary>
         /// <remarks>
@@ -110,15 +92,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_superanMonto_messageServer;
-        
-        /// <summary>
-        /// Control valid_superanMonto_empty.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary valid_superanMonto_empty;
         
         /// <summary>
         /// Control btn_superanMonto_listar.
@@ -157,15 +130,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// Control valid_listarEnvios_paraEntregar_emptyUsr.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_listarEnvios_paraEntregar_emptyUsr;
-        
-        /// <summary>
         /// Control txt_listarEnv_paraEntregar_usrName.
         /// </summary>
         /// <remarks>
@@ -182,15 +146,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_paraEntregar_messageServer;
-        
-        /// <summary>
-        /// Control valid_listarEnv_paraEntregar_empty.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary valid_listarEnv_paraEntregar_empty;
         
         /// <summary>
         /// Control btn_listarEnvios_paraEntregar_listar.

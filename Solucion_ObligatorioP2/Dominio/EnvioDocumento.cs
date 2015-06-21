@@ -35,6 +35,7 @@ namespace Dominio
             set { dirOrigen = value; }
         }
 
+
         #endregion
 
         #region Constructor

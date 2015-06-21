@@ -29,8 +29,7 @@ namespace Solucion_ObligatorioP2
             }
             else
             {
-                this.p_actualizarEnv_messageServer.Visible = false;
-                this.p_actualizarEnv_messageServer.InnerText = "";
+                this.p_actualizarEnv_message.InnerText = "";
             }
 
         }
@@ -79,49 +78,30 @@ namespace Solucion_ObligatorioP2
                             {
                                 string mensajeError = null;
                                 exito = envioDeseado.AgregarEtapa(fechaIngreso, etapaIngresada, oficinaEntrante, nomArchivo, nombreRecibio, out mensajeError);
-                                this.fileup_actualizarEnvio_firma.SaveAs(path + nomArchivo);
+                                
+                                if (path != "")
+                                {
+                                    this.fileup_actualizarEnvio_firma.SaveAs(path + nomArchivo);
+                                }
 
                                 if (exito)
                                 {
-                                    this.p_actualizarEnv_messageServer.Visible = true;
-                                    this.p_actualizarEnv_messageServer.InnerText = "exito!!";
+                                    this.p_actualizarEnv_message.InnerText = "exito!!";
                                 }
                                 else
                                 {
-                                    this.p_actualizarEnv_messageServer.Visible = true;
-                                    this.p_actualizarEnv_messageServer.InnerText = mensajeError;
+                                    this.p_actualizarEnv_message.InnerText = mensajeError;
                                 }
                             }
-                            else
-                            {
-                                this.p_actualizarEnv_messageServer.Visible = true;
-                                this.p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una etapa para el envio";
-                            }
+                            else this.p_actualizarEnv_message.InnerText = "Debe seleccionar una etapa para el envio";
                         }
-                        else
-                        {
-                            this.p_actualizarEnv_messageServer.Visible = true;
-                            this.p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una oficina postal";
-                        }
+                        else this.p_actualizarEnv_message.InnerText = "Debe seleccionar una oficina postal";
                     }
-                    else
-                    {
-                        this.p_actualizarEnv_messageServer.Visible = true;
-                        this.p_actualizarEnv_messageServer.InnerText = "Debe seleccionar una fecha";
-                    }
+                    else this.p_actualizarEnv_message.InnerText = "Debe seleccionar una fecha";
                 }
-                else
-                {
-                    this.p_actualizarEnv_messageServer.Visible = true;
-                    this.p_actualizarEnv_messageServer.InnerText = "El número de envío ingresado no existe";
-                }
+                else this.p_actualizarEnv_message.InnerText = "El número de envío ingresado no existe";
             }
-            else
-            {
-                this.p_actualizarEnv_messageServer.Visible = true;
-                this.p_actualizarEnv_messageServer.InnerText = "El número de envío debe tener sólo números";
-            }
-          
+            else this.p_actualizarEnv_message.InnerText = "El número de envío debe tener sólo números";
         }
 
         protected void ddl_actualizarEnv_etapaEnv_SelectedIndexChanged(object sender, EventArgs e)
@@ -143,8 +123,6 @@ namespace Solucion_ObligatorioP2
 
                 }
             }
-
-
         }
 
         protected void txt_actualizarEnv_nroEnv_TextChanged(object sender, EventArgs e)

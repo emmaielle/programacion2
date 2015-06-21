@@ -1,5 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Admin_ActualizarEnvio.aspx.cs" Inherits="Solucion_ObligatorioP2.Admin_ActualizarEnvio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="scripts/ActualizarEnvio.js"></script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_actualizarEnv_contenedora">
@@ -8,7 +11,6 @@
             <div>
                 <div style="float:left">
                     <asp:Label ID="lbl_actualizarEnv_nroEnv" runat="server" style="float:left" CssClass="labels" Text="Número envío: "></asp:Label>
-                    <asp:RequiredFieldValidator CssClass="labels" ID="valid_actualizarEnv_nroEnv" runat="server" ControlToValidate="txt_actualizarEnv_nroEnv" ValidationGroup="valids_ActualEnvio_blank" ForeColor="Red" Text="*"></asp:RequiredFieldValidator>
                     <asp:TextBox ID="txt_actualizarEnv_nroEnv" style="float:right; margin-left:5px; width:80px" runat="server" OnTextChanged="txt_actualizarEnv_nroEnv_TextChanged" AutoPostBack="True"></asp:TextBox>
                 </div>
                 <div style="float:right">    
@@ -25,7 +27,6 @@
             </div>
             <div id="div_actualizarEnv_nomRecibio" runat="server" visible="false" style="clear:both; padding-top:15px">
                 <asp:Label ID="lbl_actualizarEnv_nomRecibio" style="float:left" CssClass="labels" runat="server" Text="Recibido por: "></asp:Label>
-                <asp:RequiredFieldValidator ID="valid_actualizarEnv_NameRecibio" style="float:left" runat="server" ControlToValidate="txt_actualizarEnv_nomRecibio" ValidationGroup="valids_ActualEnvio_blank" ForeColor="Red" Text="*"></asp:RequiredFieldValidator>
                 <asp:TextBox ID="txt_actualizarEnv_nomRecibio" style="float:left; margin-left:5px" CssClass="labels" runat="server"></asp:TextBox>
             </div>
             <div id="div_actualizarEnv_firmaRecibio" runat="server" visible="false" style="clear:both; padding-top:15px">
@@ -48,12 +49,11 @@
                     </asp:Calendar>
                 </div>
             </div>
-            <div id ="div_actualizarEnv_messageDiv" style="clear:both" runat="server">
-                <asp:ValidationSummary CssClass="labels" ID="ValidationSummary1" runat="server" ValidationGroup="valids_ActualEnvio_blank" HeaderText="Los campos marcados son necesarios" ForeColor="Red" />
-                <p id="p_actualizarEnv_messageServer" runat="server" visible="false" style="color:red; text-align:center; clear:both" class="letrasLinks"></p>
-            </div>
+            <div id ="div_actualizarEnv_messageDiv" style="height:30px; clear:both">
+                <p id="p_actualizarEnv_message" runat="server" style="color:red; text-align:center; clear:both" class="letrasLinks"></p>
+                </div>
             <div style="clear:both; margin-top:30px">
-                <asp:Button ID="btn_actualizarEnv_AgregarEtapa" runat="server" Text="Agregar Etapa" OnClick="btn_actualizarEnv_AgregarEtapa_Click" ValidationGroup="valids_ActualEnvio_blank" />
+                <asp:Button ID="btn_actualizarEnv_AgregarEtapa" runat="server" Text="Agregar Etapa" OnClientClick="return validarCampos();" OnClick="btn_actualizarEnv_AgregarEtapa_Click"/>
             </div>
         </div>
     </div>

@@ -19,21 +19,10 @@ namespace Solucion_ObligatorioP2
             {
                 Response.Redirect("~/Inicio.aspx");
             }
-        }
-
-        protected void TextBoxNombre_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TextBoxDocumento_TextChanged(object sender, EventArgs e)
-        {
-
+            if (this.IsPostBack)
+            {
+                p_crearAdmin_mensajes.InnerText = "";
+            }
         }
 
         protected void btn_crearAdmin_altaAdmin_Click(object sender, EventArgs e)
@@ -61,53 +50,35 @@ namespace Solucion_ObligatorioP2
                 {
                     if (Utilidades.ChequearEsSoloNumero(nroPuerta))
                     {
-                        deshabilitarTxtBox();
-                        elSis.AltaAdministrador(usrNm, passWd, documento, nmbre,
-                            apellido, telefn, calleUsr, nroPuerta, codPostal, ciudUsr, paisUsr, mail);
+                        if (Utilidades.ChequearEsSoloNumero(documento))
+                        {
+                            if (Utilidades.EsMail(mail))
+                            {
+                                if (!elSis.MailYaUsado(mail, ""))
+                                {
+                                    if (elSis.BuscarAdmin(documento) == null)
+                                    {
+                                        if (elSis.BuscarUsuarioPorUsername(usrNm) == null)
+                                        {
+                                            elSis.AltaAdministrador(usrNm, passWd, documento, nmbre,
+                                                apellido, telefn, calleUsr, nroPuerta, codPostal, ciudUsr, paisUsr, mail);
 
+                                            this.p_crearAdmin_mensajes.InnerText = "El administrador " + usrNm + " ha sido creado";
+                                        }
+                                        else this.p_crearAdmin_mensajes.InnerText = "El usuario ingresado ya fue utilizado";
+                                    }
+                                    else this.p_crearAdmin_mensajes.InnerText = "El documento ingresado ya existe";
+                                }
+                                else this.p_crearAdmin_mensajes.InnerText = "El mail ingresado ya existe";
+                            }
+                            else this.p_crearAdmin_mensajes.InnerText = "El mail debe estar en el formato adecuado";
+                        }
+                        else this.p_crearAdmin_mensajes.InnerText = "El documento sólo debe contener números";
                     }
+                    else this.p_crearAdmin_mensajes.InnerText = "El número de puerta sólo debe contener números";
                 }
+                else this.p_crearAdmin_mensajes.InnerText = "El teléfono sólo debe contener números";
             }
-
-            //        else p_CrearAdmin_messageServer.InnerText = "El número de puerta debe contener solo números";
-            //    }
-            //    else p_CrearAdmin_messageServer.InnerText = "El teléfono sólo puede contener números";
-            //}
-        }
-
-        protected void deshabilitarTxtBox()
-        {
-            this.txt_crearAdmin_usuario.Enabled = false;
-            this.txt_crearAdmin_password.Enabled = false;
-            this.txt_crearAdmin_doc.Enabled = false;
-            this.txt_crearAdmin_nombre.Enabled = false;
-            this.txt_crearAdmin_apellido.Enabled = false;
-            this.txt_crearAdmin_telefono.Enabled = false;
-            this.txt_crearAdmin_calle.Enabled = false;
-            this.txt_crearAdmin_numero.Enabled = false;
-            this.txt_crearAdmin_cp.Enabled = false;
-            this.txt_crearAdmin_ciudad.Enabled = false;
-            this.txt_crearAdmin_pais.Enabled = false;
-
-            btn_crearAdmin_altaAdmin.Visible = true;
-        }
-
-        protected void habilitarTxtBox()
-        {
-
-            this.txt_crearAdmin_usuario.Enabled = true;
-            this.txt_crearAdmin_password.Enabled = true;
-            this.txt_crearAdmin_doc.Enabled = true;
-            this.txt_crearAdmin_nombre.Enabled = true;
-            this.txt_crearAdmin_apellido.Enabled = true;
-            this.txt_crearAdmin_telefono.Enabled = true;
-            this.txt_crearAdmin_calle.Enabled = true;
-            this.txt_crearAdmin_numero.Enabled = true;
-            this.txt_crearAdmin_cp.Enabled = true;
-            this.txt_crearAdmin_ciudad.Enabled = true;
-            this.txt_crearAdmin_pais.Enabled = true;
-
-            btn_crearAdmin_altaAdmin.Visible = true;
         }
     }
 }

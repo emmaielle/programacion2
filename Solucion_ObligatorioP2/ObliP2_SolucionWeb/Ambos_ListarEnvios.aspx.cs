@@ -35,7 +35,7 @@ namespace Solucion_ObligatorioP2
 
             if (this.IsPostBack)
             {
-                this.p_superanMonto_messageServer.Visible = false;
+                this.p_superanMonto_messageServer.InnerText = "";
                 this.p_listarEnvios_noSeEncontro.Visible = false;
             }
         }
@@ -53,7 +53,6 @@ namespace Solucion_ObligatorioP2
             }
             else
             {
-                this.p_superanMonto_messageServer.Visible = true;
                 this.p_superanMonto_messageServer.InnerText = "El monto debe ser un decimal";
             }
         }
@@ -89,7 +88,6 @@ namespace Solucion_ObligatorioP2
             }
             else
             {
-                this.p_superanMonto_messageServer.Visible = true;
                 this.p_superanMonto_messageServer.InnerText = "El usuario ingresado no existe";
             }
 

@@ -45,8 +45,8 @@ namespace Solucion_ObligatorioP2
             string mailAnterior = usr.Mail;
             bool mailUsado = elSis.MailYaUsado(mail, mailAnterior);
 
-            if (!string.IsNullOrEmpty(passWd) && !string.IsNullOrEmpty(nmbre) && !string.IsNullOrEmpty(apellido) && 
-                !string.IsNullOrEmpty(telefn) && !string.IsNullOrEmpty(calleUsr) && !string.IsNullOrEmpty(nroPuerta) 
+            if (!string.IsNullOrEmpty(passWd) && !string.IsNullOrEmpty(nmbre) && !string.IsNullOrEmpty(apellido) &&
+                !string.IsNullOrEmpty(telefn) && !string.IsNullOrEmpty(calleUsr) && !string.IsNullOrEmpty(nroPuerta)
                 && !string.IsNullOrEmpty(codPostal) && !string.IsNullOrEmpty(ciudUsr) && !string.IsNullOrEmpty(paisUsr) &&
                 !string.IsNullOrEmpty(mail))
             {
@@ -70,6 +70,7 @@ namespace Solucion_ObligatorioP2
                 }
                 else this.p_homes_messageServer.InnerText = "El teléfono sólo puede contener números";
             }
+            else this.p_homes_messageServer.InnerText = "Todos los campos deben ser completados";
         }
 
         protected void btn_homes_modificar_Click(object sender, EventArgs e)
@@ -115,7 +116,6 @@ namespace Solucion_ObligatorioP2
 
         protected void habilitarTxtBox()
         {
-
             this.txt_homes_Apellido.Enabled = true;
             this.txt_homes_Calle.Enabled = true;
             this.txt_homes_ciudad.Enabled = true;

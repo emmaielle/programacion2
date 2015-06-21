@@ -121,15 +121,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_home_nroEnvio;
         
         /// <summary>
-        /// Control valid_inicio_Rastreo_blank.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_inicio_Rastreo_blank;
-        
-        /// <summary>
         /// Control txt_home_nroEnvio.
         /// </summary>
         /// <remarks>
@@ -155,15 +146,6 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_error_rastreo;
-        
-        /// <summary>
-        /// Control valid_inicio_rastreo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary valid_inicio_rastreo;
         
         /// <summary>
         /// Control lbl_error_grv.

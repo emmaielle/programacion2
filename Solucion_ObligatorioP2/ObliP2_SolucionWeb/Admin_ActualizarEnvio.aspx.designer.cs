@@ -31,15 +31,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_nroEnv;
         
         /// <summary>
-        /// Control valid_actualizarEnv_nroEnv.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_actualizarEnv_nroEnv;
-        
-        /// <summary>
         /// Control txt_actualizarEnv_nroEnv.
         /// </summary>
         /// <remarks>
@@ -121,15 +112,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_actualizarEnv_nomRecibio;
         
         /// <summary>
-        /// Control valid_actualizarEnv_NameRecibio.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator valid_actualizarEnv_NameRecibio;
-        
-        /// <summary>
         /// Control txt_actualizarEnv_nomRecibio.
         /// </summary>
         /// <remarks>
@@ -139,7 +121,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_actualizarEnv_nomRecibio;
         
         /// <summary>
-
         /// Control div_actualizarEnv_firmaRecibio.
         /// </summary>
         /// <remarks>
@@ -158,7 +139,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.FileUpload fileup_actualizarEnvio_firma;
         
         /// <summary>
-
         /// Control lbl_actlualizarEnv_fechaIng.
         /// </summary>
         /// <remarks>
@@ -177,31 +157,13 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Calendar calendar_actualizarEnv_fchIngreso;
         
         /// <summary>
-        /// Control div_actualizarEnv_messageDiv.
+        /// Control p_actualizarEnv_message.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_actualizarEnv_messageDiv;
-        
-        /// <summary>
-        /// Control ValidationSummary1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
-        
-        /// <summary>
-        /// Control p_actualizarEnv_messageServer.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_actualizarEnv_messageServer;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_actualizarEnv_message;
         
         /// <summary>
         /// Control btn_actualizarEnv_AgregarEtapa.
