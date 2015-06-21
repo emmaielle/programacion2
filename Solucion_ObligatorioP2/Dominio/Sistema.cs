@@ -228,6 +228,29 @@ namespace Dominio
             usr.Mail = pMail;
         }
 
+        public bool MailYaUsado(string pMail, string pMailAnterior)
+        {
+            bool retorno = false;
+
+            if (this.listaUsuarios != null)
+            {
+                int i = 0;
+                while (retorno == false && i < this.listaUsuarios.Count)
+                {
+                    if (this.listaUsuarios[i].Mail.ToLower() == pMail.ToLower())
+                    {
+                        if (this.listaUsuarios[i].Mail.ToLower() != pMailAnterior.ToLower())
+                        {
+                            retorno = true;
+                        }
+                    }
+                    i++;
+                }
+            }
+
+            return retorno;
+        }
+
         #endregion
 
         #region Envios

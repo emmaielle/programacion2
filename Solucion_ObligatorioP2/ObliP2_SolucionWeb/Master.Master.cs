@@ -17,11 +17,9 @@ namespace Solucion_ObligatorioP2
             if (!this.IsPostBack)
             {
                 string usr = Session["UsuarioLogueado"].ToString();
-                p_bienvenidoNombreCliente.InnerHtml = "Bienvenido " + usr;
-
+                this.p_bienvenidoNombreCliente.InnerHtml = "Bienvenido " + usr;
                 CargarMenuItems();
             }
-
         }
 
         protected void link_logout_cliente_Click(object sender, EventArgs e)
@@ -72,12 +70,6 @@ namespace Solucion_ObligatorioP2
                 envio.ChildItems.Remove(actualizar);
             }
         }
-
-        protected void Menu1_MenuItemClick(object sender, MenuEventArgs e)
-        {
-
-        }
-
 
     }
 }

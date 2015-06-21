@@ -21,7 +21,7 @@ namespace Solucion_ObligatorioP2
 
             if (this.IsPostBack)
             {
-                p_rastrearEnvio_error.InnerText = "";
+                this.p_rastrearEnvio_error.InnerText = "";
                 this.gvRastreo.DataSource = null;
                 this.gvRastreo.DataBind();
             }
@@ -33,7 +33,7 @@ namespace Solucion_ObligatorioP2
              int, que es lo que me pide el metodo para recibir*/
 
             int numero;
-            bool result = Int32.TryParse(txt_rastrearEnvio_nroEnvio.Text, out numero);
+            bool result = Int32.TryParse(this.txt_rastrearEnvio_nroEnvio.Text, out numero);
 
             List<EtapaEnvio> listaEnvRastreado = new List<EtapaEnvio>();
 
@@ -48,14 +48,14 @@ namespace Solucion_ObligatorioP2
                 }
                 else
                 {
-                    p_rastrearEnvio_error.Visible = true;
-                    p_rastrearEnvio_error.InnerText = "El envio seleccionado no existe";
+                    this.p_rastrearEnvio_error.Visible = true;
+                    this.p_rastrearEnvio_error.InnerText = "El envio seleccionado no existe";
                 }
             }
             else
             {
-                p_rastrearEnvio_error.Visible = true;
-                p_rastrearEnvio_error.InnerText = "El envio ingresado debe ser un número";
+                this.p_rastrearEnvio_error.Visible = true;
+                this.p_rastrearEnvio_error.InnerText = "El envio ingresado debe ser un número";
             }
         }
 

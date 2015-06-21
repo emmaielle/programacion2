@@ -17,9 +17,8 @@ namespace Solucion_ObligatorioP2
         {
             if (this.IsPostBack)
             {
-                p_registro_message.InnerText = "";
+                this.p_registro_message.InnerText = "";
             }
-
         }
         
         protected void link_registro_volver_Click(object sender, EventArgs e)
@@ -29,19 +28,18 @@ namespace Solucion_ObligatorioP2
 
         protected void btn_registro_registrar_Click1(object sender, EventArgs e)
         {
-            string ci = txt_registro_CI.Text;
-            string nombre = txt_registro_nombre.Text;
-            string apellido = txt_registro_Apellido.Text;
-            string telefono = txt_registro_tel.Text;
-            string pais = txt_registro_Pais.Text;
-            string ciudad = txt_registro_ciudad.Text;
-            string CP = txt_registro_CP.Text;
-            string calle = txt_registro_Calle.Text;
-            string nroPuerta = txt_nroPt_registro.Text;
-            string usuario = txt_registro_Usuario.Text;
-            string password = txt_registro_passwd.Text;
-            string mail = txt_registro_mail.Text;
-
+            string ci = this.txt_registro_CI.Text;
+            string nombre = this.txt_registro_nombre.Text;
+            string apellido = this.txt_registro_Apellido.Text;
+            string telefono = this.txt_registro_tel.Text;
+            string pais = this.txt_registro_Pais.Text;
+            string ciudad = this.txt_registro_ciudad.Text;
+            string CP = this.txt_registro_CP.Text;
+            string calle = this.txt_registro_Calle.Text;
+            string nroPuerta = this.txt_nroPt_registro.Text;
+            string usuario = this.txt_registro_Usuario.Text;
+            string password = this.txt_registro_passwd.Text;
+            string mail = this.txt_registro_mail.Text;
 
             if (!string.IsNullOrWhiteSpace(ci) && !string.IsNullOrWhiteSpace(nombre) && !string.IsNullOrWhiteSpace(apellido)
                 && !string.IsNullOrWhiteSpace(telefono) && !string.IsNullOrWhiteSpace(pais) && !string.IsNullOrWhiteSpace(ciudad)
@@ -54,7 +52,7 @@ namespace Solucion_ObligatorioP2
 
                 bool lenPass = false;
                 if (password.Length >= 6) lenPass = true;
-                p_registro_message.InnerText = "";
+                this.p_registro_message.InnerText = "";
 
                 bool esMail = Utilidades.EsMail(mail);
 
@@ -66,34 +64,40 @@ namespace Solucion_ObligatorioP2
                         {
                             if (esMail)
                             {
-                                if (lenPass)
+                                bool mailUsado = elSis.MailYaUsado(mail, "");
+
+                                if (!mailUsado)
                                 {
-                                    Usuario cliUsr = elSis.BuscarUsuarioPorUsername(usuario);
-
-                                    if (cliUsr == null)
+                                    if (lenPass)
                                     {
-                                        Usuario cli = elSis.BuscarCliente(txt_registro_CI.Text);
+                                        Usuario cliUsr = elSis.BuscarUsuarioPorUsername(usuario);
 
-                                        if (cli == null)
+                                        if (cliUsr == null)
                                         {
-                                            elSis.AltaCliente(usuario, password, nombre, apellido, ci, telefono, calle, nroPuerta, CP, ciudad, pais, mail);
-                                            Response.Redirect("~/Inicio.aspx?message=true");
+                                            Usuario cli = elSis.BuscarCliente(this.txt_registro_CI.Text);
+
+                                            if (cli == null)
+                                            {
+                                                elSis.AltaCliente(usuario, password, nombre, apellido, ci, telefono, calle, nroPuerta, CP, ciudad, pais, mail);
+                                                Response.Redirect("~/Inicio.aspx?message=true");
+                                            }
+                                            else this.p_registro_message.InnerText = "Ya existe un cliente con la cédula de identidad ingresada";
                                         }
-                                        else p_registro_message.InnerText = "Ya existe un cliente con la cédula de identidad ingresada";
+                                        else this.p_registro_message.InnerText = "El username elegido ya existe";
                                     }
-                                    else p_registro_message.InnerText = "El username elegido ya existe";
+                                    else this.p_registro_message.InnerText = "El password debe tener 6 o más caracteres";
                                 }
-                                else p_registro_message.InnerText = "El password debe tener 6 o más caracteres";
+                                else this.p_registro_message.InnerText = "El mail ingresado ya está registrado";
                             }
-                            else p_registro_message.InnerText = "El mail debe estar en el formato correcto";
+                            else this.p_registro_message.InnerText = "El mail debe estar en el formato correcto";
                         }
-                        else p_registro_message.InnerText = "El teléfono sólo puede contener números";
+                        else this.p_registro_message.InnerText = "El teléfono sólo puede contener números";
                     }
-                    else p_registro_message.InnerText = "El documento solo puede contener numeros";
+                    else this.p_registro_message.InnerText = "El documento solo puede contener numeros";
                 }
-                else p_registro_message.InnerText = "El número de puerta tiene que contener solo números";
+                else this.p_registro_message.InnerText = "El número de puerta tiene que contener solo números";
             }
-            else p_registro_message.InnerText = "Todos los campos son necesarios";
+            else this.p_registro_message.InnerText = "Todos los campos son necesarios";
         }
 
     }

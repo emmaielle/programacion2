@@ -16,7 +16,7 @@ namespace Solucion_ObligatorioP2
         {
             if (Request.QueryString["message"] == "true")
             {
-                this.p_Inicio_messageServer.InnerText = "Usted se ha ingresado como cliente de forma exitosa";
+                this.p_Inicio_messageServer.InnerText = "Usted se ha registrado como cliente de forma exitosa";
             }
 
             if (!this.IsPostBack)
