@@ -42,7 +42,7 @@
                 </div>
             </div>
             <div id="div_totalFacturado_ErrorMessages" style="margin-top:20px; height:30px; clear:both">
-
+                <p runat="server" id="p_totalFacturado_errores" style="color:red;font-family:Verdana"></p>
             </div>
             <div style="padding-top:15px; clear:both">
                 <asp:Button ID="btn_totalFacturado_ObtenerInfo" runat="server" OnClick="btn_totalFacturado_ObtenerInfo_Click" Text="Obtener" />
