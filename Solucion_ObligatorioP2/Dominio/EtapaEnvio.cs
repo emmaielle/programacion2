@@ -57,9 +57,5 @@ namespace Dominio
 
         #endregion
 
-        #region Comportamiento
-
-
-        #endregion
     }
 }

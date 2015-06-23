@@ -111,11 +111,18 @@ namespace Dominio
             float pesoUsado = CalcularPesoVolumetrico();
             if (base.Peso > pesoUsado) pesoUsado = base.Peso;
 
-            //decimal test;
-            //bool d = decimal.TryParse(pesoUsado.ToString(), out test);
-            decimal precioFinal = this.CostoBasePorGramo * 1000 * Convert.ToDecimal(pesoUsado);
+            decimal pesoUsadoDecimal;
+            bool d = decimal.TryParse(pesoUsado.ToString(), out pesoUsadoDecimal);
+            decimal precioFinal;
 
-            if (this.TieneSeguro) precioFinal = precioFinal + (this.ValorDeclarado * 0.01M);
+            if (d)
+            {
+                precioFinal = this.CostoBasePorGramo * 1000 * pesoUsadoDecimal;
+
+                if (this.TieneSeguro) precioFinal = precioFinal + (this.ValorDeclarado * 0.01M);
+            }
+            else precioFinal = 0M;
+
             return precioFinal;
         }
 

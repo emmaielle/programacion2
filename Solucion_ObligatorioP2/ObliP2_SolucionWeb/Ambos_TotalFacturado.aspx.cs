@@ -13,20 +13,34 @@ namespace Solucion_ObligatorioP2
         Sistema elSis = Sistema.Instancia;
         protected void Page_Load(object sender, EventArgs e)
         {
-            //No necesito controlar quien es ya que ambos pueden hacer esto, no?
-        }
-
-        protected void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
+            if (Session["UsuarioLogueado"].ToString() == "")
+            {
+                Response.Redirect("~/Inicio.aspx");
+            }
         }
 
         protected void btn_totalFacturado_ObtenerInfo_Click(object sender, EventArgs e)
         {
-            string nroCliente = txt_totalFacturado_nroCliente.Text;
-            DateTime fechaDesde = calendar_totalFacturado_fechaDesde.SelectedDate;
-            DateTime fechaHasta = calendar_totalFacturado_fechaHasta.SelectedDate;
+            string nroCliente = this.txt_totalFacturado_nroCliente.Text;
+                if (nroCliente == null || nroCliente == "")
+                {
+                    p_totalFacturado_errores.InnerText = "Debe ingresar un nro de cliente";
+                }
 
+            DateTime fechaDesde = this.calendar_totalFacturado_fechaDesde.SelectedDate;
+
+                if (fechaDesde == null) 
+                 {
+                 p_totalFacturado_errores.InnerText = "Debe seleccionar fecha de Inicio";
+
+                 }
+            DateTime fechaHasta = this.calendar_totalFacturado_fechaHasta.SelectedDate;
+
+            
+                if (fechaDesde == null) 
+                 {
+                 p_totalFacturado_errores.InnerText = "Debe seleccionar fecha de fin";
+                 }
 
             elSis.TotalFacturadoAClientePorIntervalo(nroCliente, fechaDesde, fechaHasta);
         }

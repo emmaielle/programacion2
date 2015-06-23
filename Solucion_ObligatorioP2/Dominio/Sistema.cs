@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 
 namespace Dominio
@@ -68,16 +67,16 @@ namespace Dominio
                 "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 5, 12), 1, 1.5F, true);
             // 2
             this.AltaEnvioPaquete("41954388", "Jose Rodriguez", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", new DateTime(2015, 3, 15),
-                                1, 12.3F, 13.2F, 10, 12M, 100M, true, 10, "Es una caja");
+                                1, 12.3F, 13.2F, 40F, 12M, 100M, true, 1F, "Es una caja");
             // 3
             this.AltaEnvioPaquete("41954388", "Ariel Arrosa", "Mercedes", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 2, 10),
-                                3, 10.3F, 3.2F, 7, 10M, 15M, false, 6, "Es un paquete");
+                                3, 10.3F, 3.2F, 7F, 10, 15M, false, 6F, "Es un paquete");
             // 4
             this.AltaEnvioPaquete("41954388", "Mateo Benitez", "Paraguay", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 1, 3),
-                                3, 10.3F, 3.2F, 7, 10M, 15M, false, 6, "Es un paquete");
+                                3, 10.3F, 3.2F, 7F, 10M, 15M, false, 6F, "Es un paquete");
             // 5
             this.AltaEnvioPaquete("41954388", "Neko MrMuffin", "San Martin", "3384", "11700", "Montevideo", "Uruguay", new DateTime(2015, 1, 3),
-                                3, 10.3F, 3.2F, 7, 10M, 15M, false, 8, "Es una caja con comida de gatos, catnip y un rascador");
+                                3, 10.3F, 3.2F, 7F, 10M, 15M, false, 8F, "Es una caja con comida de gatos, catnip y un rascador");
 
             //Actualizo envio
             // datos agregados para consulta de envios en transito ingresados hace mas de 5 dias y para consulta de envios paraEntregar
@@ -89,7 +88,7 @@ namespace Dominio
             this.listaEnvios[4].AgregarEtapa(new DateTime(2015, 5, 9), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[1], "", "", out result);
             this.listaEnvios[4].AgregarEtapa(new DateTime(2015, 6, 11), EtapaEnvio.Etapas.ParaEntregar, this.listaOficinasPostales[0], "", "", out result);
             this.listaEnvios[4].AgregarEtapa(new DateTime(2015, 6, 11), EtapaEnvio.Etapas.Entregado, this.listaOficinasPostales[0], "21234.png", "Mateo Benitez", out result);
-            this.listaEnvios[5].AgregarEtapa(new DateTime(2015, 3, 12), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[2], "", "", out result);
+            this.listaEnvios[5].AgregarEtapa(new DateTime(2015, 3, 12), EtapaEnvio.Etapas.EnTransito, this.listaOficinasPostales[3], "", "", out result);
             this.listaEnvios[5].AgregarEtapa(new DateTime(2015, 5, 15), EtapaEnvio.Etapas.ParaEntregar, this.listaOficinasPostales[1], "", "", out result);
         }
 
@@ -227,6 +226,29 @@ namespace Dominio
             usr.DireccionUsuario.Ciudad = pCiu;
             usr.DireccionUsuario.Pais = pPais;
             usr.Mail = pMail;
+        }
+
+        public bool MailYaUsado(string pMail, string pMailAnterior)
+        {
+            bool retorno = false;
+
+            if (this.listaUsuarios != null)
+            {
+                int i = 0;
+                while (retorno == false && i < this.listaUsuarios.Count)
+                {
+                    if (this.listaUsuarios[i].Mail.ToLower() == pMail.ToLower())
+                    {
+                        if (this.listaUsuarios[i].Mail.ToLower() != pMailAnterior.ToLower())
+                        {
+                            retorno = true;
+                        }
+                    }
+                    i++;
+                }
+            }
+
+            return retorno;
         }
 
         #endregion
@@ -425,9 +447,11 @@ namespace Dominio
             return precioSimulado;
         }
 
-        public string BuscarClienteParaUnEnvio(Envio pEnvio) // <<<<<---------
+        public string BuscarClienteParaUnEnvio(int pNroEnvio) // <<<<<---------
         {
             string idCliente = "";
+
+            Envio pEnvio = this.BuscarEnvio(pNroEnvio);
 
             if (this.listaClientes != null)
             {
@@ -516,27 +540,6 @@ namespace Dominio
             }
 
             return oficinasRetornadas;
-        }
-
-        #endregion
-
-        #region Validaciones
-
-        public bool ChequearEsSoloNumero(string pString)
-        {
-            double nroDelString;
-            bool resultado = double.TryParse(pString, out nroDelString);
-
-            return resultado;
-        }
-
-
-        public bool EsMail(string pMail)
-        {
-            bool resultado;
-            resultado = Regex.IsMatch(pMail, @"^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$", RegexOptions.IgnoreCase);
-
-            return resultado;
         }
 
         #endregion

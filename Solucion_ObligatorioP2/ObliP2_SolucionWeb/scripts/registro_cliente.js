@@ -11,7 +11,7 @@ function validarNumerosyRangos() {
 
     retorno = false;
 
-    if ($(":text").val() != "" && $(":password").val() !="") {
+    if ($(":text").val().trim() != "" && $(":password").val().trim() !="") {
         if (isNaN(ci)) {
             p_mensaje.text("El documento debe tener sólo números");
         }

@@ -247,6 +247,15 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_mail;
         
         /// <summary>
+        /// Control p_crearAdmin_mensajes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_crearAdmin_mensajes;
+        
+        /// <summary>
         /// Control btn_crearAdmin_altaAdmin.
         /// </summary>
         /// <remarks>

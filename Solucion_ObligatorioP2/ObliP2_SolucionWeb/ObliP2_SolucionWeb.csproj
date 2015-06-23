@@ -68,8 +68,15 @@
     <Content Include="Estilos.css" />
     <Content Include="Global.asax" />
     <Content Include="Inicio.aspx" />
+    <Content Include="scripts\ActualizarEnvio.js" />
+    <Content Include="scripts\Ambos_home.js" />
+    <Content Include="scripts\crearAdmin.js" />
+    <Content Include="scripts\jquery-1.11.3.min.js" />
     <Content Include="ObliP2_SolucionWeb.csproj.user" />
     <Content Include="Registro_Cliente.aspx" />
+    <Content Include="scripts\ListarEnvios.js" />
+    <Content Include="scripts\rastrearEnvio.js" />
+    <Content Include="scripts\registro_cliente.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +177,7 @@
       <Name>Dominio</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

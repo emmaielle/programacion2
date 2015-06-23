@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Admin_CrearAdmin.aspx.cs" Inherits="Solucion_ObligatorioP2.Admin_CrearAdmin" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-
+    <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="scripts/crearAdmin.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_crearAdmin_contenedora" class="labels">
@@ -12,11 +12,11 @@
         <div class="cajitas" style="margin:10px; padding-bottom:40px; padding-left:140px; padding-right:140px; width:220px; clear:both">
             <div style="clear:both">
                 <asp:Label ID="Lbl_CrearAdmin_Doc" style="float:left" runat="server" Text="Documento: "></asp:Label>
-                <asp:TextBox ID="txt_crearAdmin_doc" style="width:100px; float:right" runat="server" OnTextChanged="TextBoxDocumento_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txt_crearAdmin_doc" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
                 <asp:Label ID="lbl_crearAdmin_Nombre" runat="server" style="float:left" Text="Nombre:"></asp:Label>
-                <asp:TextBox ID="txt_crearAdmin_nombre"  style="width:100px;float:right" runat="server" OnTextChanged="TextBoxNombre_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txt_crearAdmin_nombre"  style="width:100px;float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
                 <asp:Label ID="lbl_crearAdmin_Apellido" style="float:left" runat="server" Text="Apellido:"></asp:Label>
@@ -28,7 +28,7 @@
             </div>
             <div style="padding-top:10px; clear:both">
                 <asp:Label ID="lbl_crearAdmin_pais" style="float:left" runat="server" Text="Pais: "></asp:Label>
-                <asp:TextBox ID="txt_crearAdmin_pais" style="width:100px; float:right" runat="server" OnTextChanged="TextBox1_TextChanged"></asp:TextBox>
+                <asp:TextBox ID="txt_crearAdmin_pais" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
                 <asp:Label ID="lbl_crearAdmin_ciudad" style="float:left" runat="server" Text="Ciudad: "></asp:Label>
@@ -60,10 +60,10 @@
             </div>
         </div>
         <div id="div_crearAdmin_errorMessages" style="height:30px">
-
+            <p id="p_crearAdmin_mensajes" style="color:red" runat="server"></p>
         </div>
-        <div style="padding-top:10px; margin:auto; vertical-align:central; clear:both">
-            <asp:Button ID="btn_crearAdmin_altaAdmin" runat="server" OnClick="btn_crearAdmin_altaAdmin_Click" Text="Crear Administrador" />
+        <div style="padding-top:10px; padding-bottom:10px; margin:auto; vertical-align:central; clear:both">
+            <asp:Button ID="btn_crearAdmin_altaAdmin" runat="server" OnClientClick="return validarCampos();" OnClick="btn_crearAdmin_altaAdmin_Click" Text="Crear Administrador" />
         </div>
     </div>
 

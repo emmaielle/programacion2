@@ -14,7 +14,7 @@
     <form id="form1" runat="server">
     <div>
         <div style="float:left">
-            <asp:Menu ID="Menu_master"  runat="server" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Large" ForeColor="#000099" Orientation="Horizontal" StaticSubMenuIndent="10px" OnMenuItemClick="Menu1_MenuItemClick" BorderColor="#66CCFF" BorderStyle="Dashed" BorderWidth="2px" CssClass="labels" Height="25px">
+            <asp:Menu ID="Menu_master"  runat="server" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="Large" ForeColor="#000099" Orientation="Horizontal" StaticSubMenuIndent="10px" BorderColor="#66CCFF" BorderStyle="Dashed" BorderWidth="2px" CssClass="labels" Height="25px">
                 <DynamicHoverStyle BackColor="#99CCFF" ForeColor="White" />
                 <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
                 <DynamicMenuStyle BackColor="#99CCFF" />
