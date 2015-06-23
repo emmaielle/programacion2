@@ -71,6 +71,7 @@
     <Content Include="scripts\ActualizarEnvio.js" />
     <Content Include="scripts\Ambos_home.js" />
     <Content Include="scripts\crearAdmin.js" />
+    <Content Include="scripts\crearEnvio.js" />
     <Content Include="scripts\jquery-1.11.3.min.js" />
     <Content Include="ObliP2_SolucionWeb.csproj.user" />
     <Content Include="Registro_Cliente.aspx" />

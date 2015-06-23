@@ -7,11 +7,14 @@
         <p id="p_totalFacturado_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Calcular total facturado</p>
         
         <div style="margin:10px; margin-top:20px; padding-bottom:15px; padding-left:80px; padding-right:80px; clear:both">
-            <p id="p_totalFacturado_intro" runat="server">Ingrese el numero de cliente para saber su total facturado entre dos fechas</p>
+            
+            <div id="div_totalFacturado_hidden4Cliente" visible="false" runat="server">
+                <p id="p_totalFacturado_intro" runat="server">Ingrese el numero de cliente para saber su total facturado entre dos fechas</p>
 
-            <div style="clear:both; padding-top:10px">
-                <asp:Label ID="lbl_totalFacturado_nroCliente" style="vertical-align:central; margin:auto" runat="server" Text="Nro Cliente:"></asp:Label>
-                <asp:TextBox ID="txt_totalFacturado_nroCliente" style="vertical-align:central; margin:auto; width:100px; margin-left:5px" runat="server"></asp:TextBox>
+                <div style="clear:both; padding-top:10px">
+                    <asp:Label ID="lbl_totalFacturado_nroCliente" style="vertical-align:central; margin:auto" runat="server" Text="Nro Cliente:"></asp:Label>
+                    <asp:TextBox ID="txt_totalFacturado_nroCliente" style="vertical-align:central; margin:auto; width:100px; margin-left:5px" runat="server"></asp:TextBox>
+                </div>
             </div>
             <div style="clear:both; padding-top:20px">
                 <div style="float:left">

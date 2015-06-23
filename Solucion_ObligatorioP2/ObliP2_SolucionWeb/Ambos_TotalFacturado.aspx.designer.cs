@@ -22,6 +22,15 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_totalFacturado_head;
         
         /// <summary>
+        /// Control div_totalFacturado_hidden4Cliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_totalFacturado_hidden4Cliente;
+        
+        /// <summary>
         /// Control p_totalFacturado_intro.
         /// </summary>
         /// <remarks>

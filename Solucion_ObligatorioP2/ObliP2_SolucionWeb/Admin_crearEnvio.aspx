@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Admin_crearEnvio.aspx.cs" Inherits="Solucion_ObligatorioP2.Admin_crearEnvio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+   <%-- <script type="text/javascript" src="scripts/crearEnvio.js"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_crearEnvio_contenedora">
@@ -135,10 +137,10 @@
                 </asp:DropDownList>
             </div>
             <div style="clear:both">
-                <asp:Button ID="btn_crearEnvio_crearEnvio" style="margin-top:20px;clear:both" CssClass="labels" runat="server" OnClick="btn_crearEnvio_crearEnvio_Click" Text="Crear Envio" />
+                <asp:Button ID="btn_crearEnvio_crearEnvio" style="margin-top:20px;clear:both" CssClass="labels" runat="server" OnClientClick="return validaciones();" OnClick="btn_crearEnvio_crearEnvio_Click" Text="Crear Envio" />
             </div>
             <div>
-                <p runat="server" id="p_crearEnvio_errores" style="color:red;font-family:Verdana"></p>
+                <p runat="server" id="p_crearEnvio_errores" class="letrasLinks" style="color:red;font-family:Verdana"></p>
             </div>
             <div style="padding-top:15px; margin-bottom:20px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_muestraNroEnvio" style="color:blue" CssClass="labels" runat="server"></asp:Label>

@@ -17,12 +17,35 @@ namespace Solucion_ObligatorioP2
             {
                 Response.Redirect("~/Inicio.aspx");
             }
+            else
+            {
+                if ((bool)Session["esAdmin"] == true)
+                {
+                    this.div_totalFacturado_hidden4Cliente.Visible = true;
+                }
+            }
         }
 
         protected void btn_totalFacturado_ObtenerInfo_Click(object sender, EventArgs e)
         {
-            string nroCliente = this.txt_totalFacturado_nroCliente.Text;
-                if (nroCliente == null || nroCliente == "")
+            string nroCliente;
+
+            // chequeo si es admin o usuario par determinar el numero de documento del cliente en cada caso
+
+            if ((bool)Session["esAdmin"] == true)
+            {
+                nroCliente = this.txt_totalFacturado_nroCliente.Text;
+            }
+            else
+            {
+                string username = Session["UsuarioLogueado"].ToString();
+                nroCliente = elSis.BuscarUsuarioPorUsername(username).Documento;
+            }
+
+            // los if/else tienen que estar anidados, porque fijate que si la condicion no se cumple, igual le 
+            // decis que llame a la funcion de calcular el total, lo unico que tambien te va a mostrar el msj que le digas
+            
+            if (nroCliente != null || nroCliente == "")
                 {
                     p_totalFacturado_errores.InnerText = "Debe ingresar un nro de cliente";
                 }
