@@ -33,58 +33,57 @@ namespace Solucion_ObligatorioP2
             string pesoEnv = this.txt_crearEnvio_peso.Text;
             if (pesoEnv == null || pesoEnv == "")
             {
-                // mensajes tipo como aca <<-------- !
-                p_crearEnvio_errores.InnerText = "Peso vacio";
+                p_crearEnvio_errores.InnerText = "Debe ingresar el peso del envío";
             }
 
             float peso;
             bool resultado = float.TryParse(pesoEnv, out peso);
             if (!resultado)
             {
-                p_crearEnvio_errores.InnerText = "El peso no es un número";
+                p_crearEnvio_errores.InnerText = "El peso debe ser un número";
             }
 
             string idCliente = this.txt_crearEnvio_idCliente.Text;
             if (idCliente == null || idCliente == "")
             {
-                throw new Exception("Cliente vacio");
+                p_crearEnvio_errores.InnerText = "Debe ingresar un Id de cliente";
             }
             string nombre = this.txt_crearEnvio_nomDest.Text;
             if (nombre == null || nombre == "")
             {
-                throw new Exception("Nombre vacio");
+                p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del cliente";
             }
             string calle = this.txt_crearEnvio_calle.Text;
             if (calle == null || calle == "")
             {
-                throw new Exception("Calle vacio");
+                p_crearEnvio_errores.InnerText = "Debe ingresar la calle de destino";
             }
             string nroPuerta = this.txt_crearEnvio_numPuerta.Text;
             if (nroPuerta == null || nroPuerta == "")
             {
-                throw new Exception("nroPuerta vacio");
+                p_crearEnvio_errores.InnerText = "Debe ingresar el nro de puerta de destino";
 
             }
             if (!Utilidades.ChequearEsSoloNumero(nroPuerta))
             {
-                throw new Exception("No Pude convertir");
+                p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
             }
 
 
             string pais = this.txt_crearEnvio_pais.Text;
             if (pais == null || pais == "")
             {
-                throw new Exception("Pais vacio");
+                p_crearEnvio_errores.InnerText = "Debe ingresar el país de destino";
             }
             string ciudad = this.txt_crearEnvio_ciudad.Text;
             if (ciudad == null || ciudad == "")
             {
-                throw new Exception("Ciudad vacio");
+                p_crearEnvio_errores.InnerText = "Debe ingresar la ciudad de destino";
             }
             string codPostal = this.txt_crearEnvio_codPostal.Text;
             if (codPostal == null || codPostal == "")
             {
-                throw new Exception("codPostal vacio");
+                p_crearEnvio_errores.InnerText = "Debe ingresar el código postal de destino";
             }
 
             bool tieneSeguro;
@@ -120,18 +119,18 @@ namespace Solucion_ObligatorioP2
             string nombreDestinatario = this.txt_crearEnvio_nomDest.Text;
             if (nombreDestinatario == null || nombreDestinatario == "")
             {
-                throw new Exception("Nombre destinatario vacio");
+                p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del destinatario";
             }
 
             DateTime fechaIngreso = this.calendar_crearEnvio.SelectedDate;
             if (fechaIngreso == null)
             {
-                throw new Exception("Debe especificar una fecha de ingreso");
+                p_crearEnvio_errores.InnerText = "Debe especificar una fecha de ingreso";
             }
 
             if (this.ddl_crearEnvio_nroOficina.SelectedValue == null)
             {
-                //ex
+                //
             }
             int nroOficina;
             bool resultOfi = Int32.TryParse(this.ddl_crearEnvio_nroOficina.SelectedValue, out nroOficina);
@@ -143,44 +142,44 @@ namespace Solucion_ObligatorioP2
                 string largoEnv = this.txt_crearEnvio_largoPaquete.Text;
                 if (largoEnv == null || largoEnv == "")
                 {
-                    throw new Exception("Largo vacio");
+                    p_crearEnvio_errores.InnerText = "Debe especificar el largo del paquete";
                 }
                 float largo;
                 bool resultLargo = float.TryParse(largoEnv, out largo);
                 if (resultLargo == false)
                 {
-                    throw new Exception("No se pudo convertir");
+                    p_crearEnvio_errores.InnerText = "El largo especificado no es un número";
                 }
 
                 string anchoEnv = this.txt_crearEnvio_anchoPaquete.Text;
                 if (anchoEnv == null || anchoEnv == "")
                 {
-                    throw new Exception("Ancho vacio");
+                    p_crearEnvio_errores.InnerText = "Debe especificar el ancho del paquete";
                 }
                 float ancho;
                 bool resultAncho = float.TryParse(anchoEnv, out ancho);
                 if (!resultAncho)
                 {
-                    throw new Exception("No se pudo convertir");
+                    p_crearEnvio_errores.InnerText = "El ancho especificado no es un numero";
                 }
 
                 string altoEnv = this.txt_crearEnvio_altoPaquete.Text;
                 if (altoEnv == null || altoEnv == "")
                 {
-                    throw new Exception("Alto vacio");
+                    p_crearEnvio_errores.InnerText = "Debe especificar el alto del paquete";
                 }
                 float alto;
                 bool resultAlto = float.TryParse(altoEnv, out alto);
                 if (!resultAlto)
                 {
-                    throw new Exception("No se pudo convertir");
+                    p_crearEnvio_errores.InnerText = "El alto especificado no es un número";
                 }
 
 
                 string descrip = this.txt_crearEnvio_DescripPaquete.Text;
                 if (descrip == null || descrip == "")
                 {
-                    throw new Exception("Descripcion vacio");
+                    p_crearEnvio_errores.InnerText = "Debe especificar una descripción del paquete";
                 }
 
                 tieneSeguro = this.chkbox_crearEnvio_seguro.Checked;
@@ -188,7 +187,7 @@ namespace Solucion_ObligatorioP2
                 string costoBaseXgramoEnv = this.txt_crearEnvio_costoBase.Text;
                 if (costoBaseXgramoEnv == null || costoBaseXgramoEnv == "")
                 {
-                    throw new Exception("Costo vacio");
+                    p_crearEnvio_errores.InnerText = "Costo vacio";
                 }
                 decimal costoBaseXgramo;
                 bool resultadoCosto = decimal.TryParse(costoBaseXgramoEnv, out costoBaseXgramo);
@@ -196,13 +195,13 @@ namespace Solucion_ObligatorioP2
                 string valorDecEnv = this.txt_crearEnvio_valorDeclaradoPaquete.Text;
                 if (valorDecEnv == null || valorDecEnv == "")
                 {
-                    throw new Exception("Valor declarado vacio");
+                    p_crearEnvio_errores.InnerText = "Debe especificar el valor declarado del paquete";
                 }
                 decimal valorDec;
                 bool resultadoValorDec = decimal.TryParse(valorDecEnv, out valorDec);
                 if (!resultadoValorDec)
                 {
-                    throw new Exception("No pude convertir valor");
+                    p_crearEnvio_errores.InnerText = "El valor declarado especificado no es un numero";
                 }
 
                 numeroEnvio = elSis.AltaEnvioPaquete(idCliente, nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso,
@@ -219,38 +218,41 @@ namespace Solucion_ObligatorioP2
                 
                 if (calleOrigen == null || calleOrigen == "")
                 {
-                    throw new Exception("Calle  Origen vacio");
+                    p_crearEnvio_errores.InnerText = "Debe especificar la calle de origen";
                 }
                 
                 string nroPuertaOrigen = this.txt_crearEnvio_nroOrigen.Text;
                 
                 if (nroPuertaOrigen == null || nroPuertaOrigen == "")
+                
                 {
-                    if (!Utilidades.ChequearEsSoloNumero(nroPuertaOrigen))
-                    {
-                        throw new Exception("Nro Puerta Origen vacio");
-                    }
+                    p_crearEnvio_errores.InnerText = "Debe especificar el nro de puerta de origen";
+                }
+
+                if (!Utilidades.ChequearEsSoloNumero(nroPuertaOrigen))
+                {
+                    p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
                 }
                 
                 string paisOrigen = this.txt_crearEnvio_paisOrigen.Text;
                 
                 if (paisOrigen == null || paisOrigen == "")
                 {
-                    throw new Exception("Pais Origen vacio");
+                    p_crearEnvio_errores.InnerText = "Debe espeficar el pais de origen";
                 }
 
                 string ciudadOrigen = this.txt_crearEnvio_ciudadOrigen.Text;
 
                 if (ciudadOrigen == null || ciudadOrigen == "")
                 {
-                    throw new Exception("Ciudad Origen vacio");
+                    p_crearEnvio_errores.InnerText = "Debe especificar la ciudad de origen";
                 }
 
                 string codPostalOrigen = this.txt_crearEnvio_codPostalOrigen.Text;
 
                 if (codPostalOrigen == null || codPostalOrigen == "")
                 {
-                    throw new Exception("Cod Postal Origen  vacio");
+                    p_crearEnvio_errores.InnerText = "Debe especificar el codigo postal de origen";
                 }
 
                 numeroEnvio = elSis.AltaEnvioDocumento(idCliente, calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen,

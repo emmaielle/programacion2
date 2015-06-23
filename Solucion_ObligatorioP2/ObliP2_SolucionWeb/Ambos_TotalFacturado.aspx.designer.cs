@@ -13,35 +13,7 @@ namespace Solucion_ObligatorioP2 {
     public partial class Ambos_TotalFacturado {
         
         /// <summary>
-        /// 
-        /// Control p_crearAdmin_head.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_crearAdmin_head;
-        
-        /// <summary>
-        /// Control lbl_crearAdmin_headtxt.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_headtxt;
-        
-        /// <summary>
-        /// Control Lbl_CrearAdmin_Doc.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_CrearAdmin_Doc;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_doc.
+        /// Control p_totalFacturado_head.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -50,17 +22,7 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_totalFacturado_head;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_Nombre.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Nombre;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_nombre.
+        /// Control p_totalFacturado_intro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -69,17 +31,7 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_totalFacturado_intro;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_Apellido.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Apellido;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_apellido.
+        /// Control lbl_totalFacturado_nroCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -88,17 +40,7 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_nroCliente;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_tel.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_tel;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_telefono.
+        /// Control txt_totalFacturado_nroCliente.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -107,17 +49,7 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_totalFacturado_nroCliente;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_pais.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_pais;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_pais.
+        /// Control lbl_totalFacturado_fechaDesde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -126,17 +58,7 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_fechaDesde;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_ciudad.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_ciudad;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_ciudad.
+        /// Control calendar_totalFacturado_fechaDesde.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -145,17 +67,7 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Calendar calendar_totalFacturado_fechaDesde;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_CP.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_CP;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_cp.
+        /// Control lbl_totalFacturado_fechaHasta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -164,17 +76,7 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_fechaHasta;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_calle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_calle;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_calle.
+        /// Control calendar_totalFacturado_fechaHasta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -183,17 +85,16 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Calendar calendar_totalFacturado_fechaHasta;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_NroPta.
+        /// Control p_totalFacturado_errores.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_NroPta;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl p_totalFacturado_errores;
         
         /// <summary>
-        /// Control txt_crearAdmin_numero.
+        /// Control btn_totalFacturado_ObtenerInfo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
@@ -202,50 +103,21 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.Button btn_totalFacturado_ObtenerInfo;
         
         /// <summary>
-
-        /// Control lbl_crearAdmin_Usr.
+        /// Control lbl_totalFacturado_msjTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_Usr;
+        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_msjTotal;
         
         /// <summary>
-        /// Control txt_crearAdmin_usuario.
+        /// Control lbl_totalFacturado_total.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_usuario;
-        
-        /// <summary>
-        /// Control lbl_crearAdmin_password.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearAdmin_password;
-        
-        /// <summary>
-        /// Control txt_crearAdmin_password.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearAdmin_password;
-        
-        /// <summary>
-        /// Control btn_crearAdmin_altaAdmin.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_crearAdmin_altaAdmin;
+        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_total;
     }
 }
