@@ -148,24 +148,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_simularEnvio_valorDeclaradoPaquete;
         
         /// <summary>
-        /// Control lbl_simularEnvio_costoBaseXGramo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_simularEnvio_costoBaseXGramo;
-        
-        /// <summary>
-        /// Control txt_simularEnvio_costoBase.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_simularEnvio_costoBase;
-        
-        /// <summary>
         /// Control chkbox_simularEnvio_seguro.
         /// </summary>
         /// <remarks>
