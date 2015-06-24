@@ -84,7 +84,7 @@ namespace Solucion_ObligatorioP2
 
                                     if (exito)
                                     {
-                                        this.p_actualizarEnv_message.InnerText = "exito!!";
+                                        this.p_actualizarEnv_message.InnerText = "Exito!!";
                                     }
                                     else
                                     {

@@ -35,7 +35,6 @@ namespace Solucion_ObligatorioP2
             int numero;
             bool result = Int32.TryParse(this.txt_rastrearEnvio_nroEnvio.Text, out numero);
 
-
             List<EtapaEnvio> listaEnvRastreado = new List<EtapaEnvio>();
 
             if (result)
