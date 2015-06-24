@@ -107,52 +107,49 @@ namespace Solucion_ObligatorioP2
             {
 
                 if (resultadoPeso)
-                {
-                    if (idCliente != "")
+               
+                    if (!String.IsNullOrEmpty(idCliente))
                     {
-                        if (nombre != "")
+                        if (!String.IsNullOrEmpty(nombre))
                         {
-                            if (calle != "")
+                            if (!String.IsNullOrEmpty(calle))
                             {
-                                if (nroPuerta != "")
+                                if (!String.IsNullOrEmpty(nroPuerta))
                                 {
                                     if (Utilidades.ChequearEsSoloNumero(nroPuerta))
                                     {
 
-                                        if (pais != "")
+                                        if (!String.IsNullOrEmpty(pais))
                                         {
 
-                                            if (ciudad != "")
+                                            if (!String.IsNullOrEmpty(ciudad))
                                             {
-                                                if (codPostal != "")
+                                                if (!String.IsNullOrEmpty(codPostal))
                                                 {
-                                                    if (nombreDestinatario != "")
-                                                    {
-
-                                                        if (nombreDestinatario != "")
+                                                    if (!String.IsNullOrEmpty(nombreDestinatario))
                                                         {
                                                             if (fechaIngreso != DateTime.MinValue)
                                                             {
                                                                 if (this.radiobtn_crearEnvio_esPaquete.Checked == true)
                                                                 {
 
-                                                                    if (largoEnv != "")
+                                                                    if (!String.IsNullOrEmpty(largoEnv))
                                                                     {
                                                                         if (resultLargo == true)
                                                                         {
-                                                                            if (anchoEnv != "")
+                                                                            if (!String.IsNullOrEmpty(anchoEnv))
                                                                             {
                                                                                 if (resultAncho)
                                                                                 {
-                                                                                    if (altoEnv != "")
+                                                                                    if (!String.IsNullOrEmpty(altoEnv))
                                                                                     {
-                                                                                        if (descrip != "")
+                                                                                        if (!String.IsNullOrEmpty(descrip))
                                                                                         {
                                                                                             if (resultAlto)
                                                                                             {
-                                                                                                if (costoBaseXgramoEnv != "")
+                                                                                                if (!String.IsNullOrEmpty(costoBaseXgramoEnv))
                                                                                                 {
-                                                                                                    if (valorDecEnv != "")
+                                                                                                    if (!String.IsNullOrEmpty(valorDecEnv))
                                                                                                     {
                                                                                                         if (resultadoValorDec)
                                                                                                         {
@@ -186,70 +183,64 @@ namespace Solucion_ObligatorioP2
                                                                 }
                                                                 else if (this.radiobtn_crearEnvio_esDoc.Checked == true)
                                                                 {
-                                                                    if (calleOrigen != "")
+                                                                    if (!String.IsNullOrEmpty(calleOrigen))
                                                                     {
-                                                                        if (nroPuertaOrigen != "")
+                                                                        if (!String.IsNullOrEmpty(nroPuertaOrigen))
                                                                         {
                                                                             if (Utilidades.ChequearEsSoloNumero(nroPuertaOrigen))
                                                                             {
 
-                                                                                if (paisOrigen != "")
+                                                                                if (!String.IsNullOrEmpty(paisOrigen))
                                                                                 {
-                                                                                    if (ciudadOrigen != "")
+                                                                                    if (!String.IsNullOrEmpty(ciudadOrigen))
                                                                                     {
-                                                                                        if (codPostalOrigen != "")
+                                                                                        if (!String.IsNullOrEmpty(codPostalOrigen))
                                                                                         {
                                                                                             numeroEnvio = elSis.AltaEnvioDocumento(idCliente, calleOrigen, nroPuertaOrigen, codPostalOrigen, ciudadOrigen, paisOrigen,
                                                                                             nombreDestinatario, calle, nroPuerta, codPostal, ciudad, pais, fechaIngreso, nroOficina,
                                                                                             peso, esDocLegal);
                                                                                             this.lbl_crearEnvio_muestraNroEnvio.Text = numeroEnvio.ToString();
                                                                                         }
-                                                                                        
+                                                                                         else p_crearEnvio_errores.InnerText = "Debe especificar el codigo postal de origen";
                                                                                     }
-                                                                                    else p_crearEnvio_errores.InnerText = "Debe especificar el codigo postal de origen";
-                                                                                }
-                                                                                else p_crearEnvio_errores.InnerText = "Debe especificar la ciudad de origen"; 
-                                                                            }
-                                                                            else p_crearEnvio_errores.InnerText = "Debe especificar el pais de origen";
+                                                                                   else p_crearEnvio_errores.InnerText = "Debe especificar la ciudad de origen";
+                                                                                }  
+                                                                                else p_crearEnvio_errores.InnerText = "Debe especificar el pais de origen";
+                                                                            } 
+                                                                           
+                                                                           else p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
                                                                         }
-                                                                        else p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
+                                                                        else p_crearEnvio_errores.InnerText = "Debe especificar el nro de puerta de origen";
                                                                     }
-                                                                    else p_crearEnvio_errores.InnerText = "Debe especificar el nro de puerta de origen";
+                                                                    else p_crearEnvio_errores.InnerText = "Debe especificar la calle de origen";
                                                                 }
-                                                                else p_crearEnvio_errores.InnerText = "Debe especificar la calle de origen";
-
+                                                                 else p_crearEnvio_errores.InnerText = "Debe especificar una fecha de ingreso";
                                                             }
-                                                            else p_crearEnvio_errores.InnerText = "Debe especificar una fecha de ingreso";
-
-                                                        }
-                                                        else p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del destinatario";
-
+                                                             else p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del destinatario";
                                                     }
-                                                    else p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del destinatario";
+                                                    else p_crearEnvio_errores.InnerText = "Debe ingresar el código postal de destino";
                                                 }
-                                                else p_crearEnvio_errores.InnerText = "Debe ingresar el código postal de destino";
+                                                 else p_crearEnvio_errores.InnerText = "Debe ingresar la ciudad de destino"; 
                                             }
-                                            else p_crearEnvio_errores.InnerText = "Debe ingresar la ciudad de destino"; 
+                                              else p_crearEnvio_errores.InnerText = "Debe ingresar el país de destino";
+                                           
                                         }
-                                        else p_crearEnvio_errores.InnerText = "Debe ingresar el país de destino";
+                                         else p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
                                     }
-                                    else p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
-
+                                  else p_crearEnvio_errores.InnerText = "Debe ingresar el nro de puerta de destino";
                                 }
-                                else p_crearEnvio_errores.InnerText = "Debe ingresar el nro de puerta de destino";
+                                else p_crearEnvio_errores.InnerText = "Debe ingresar la calle de destino";
                             }
-                            else p_crearEnvio_errores.InnerText = "Debe ingresar la calle de destino";
+                            else p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del cliente";
                         }
-                        else p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del cliente";
+                        else p_crearEnvio_errores.InnerText = "Debe ingresar un Id de cliente";
+                    } 
+                    else p_crearEnvio_errores.InnerText = "El peso debe ser un número";
                     }
-                    else p_crearEnvio_errores.InnerText = "Debe ingresar un Id de cliente";
-                    }
-                else p_crearEnvio_errores.InnerText = "El peso debe ser un número";
+                 else p_crearEnvio_errores.InnerText = "Debe ingresar el peso del envio";
                 }
-            else p_crearEnvio_errores.InnerText = "Debe ingresar el peso del envio";
-        }
-
-
+    
+        
 
 
         protected void radiobtn_crearEnvio_esPaqueteODocCheckedChanged(object sender, EventArgs e)
