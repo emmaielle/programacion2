@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_actualizarEnv_contenedora">
-        <p id="p_actualidarEnv_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Actualizacion de envios</p>
+        <p id="p_actualidarEnv_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Actualización de envíos</p>
         <div style="margin-top:40px">
             <div>
                 <div style="float:left">
@@ -22,7 +22,7 @@
                 <asp:Label ID="lbl_actualizarEnv_shortInfoEnv" CssClass="letrasLinks" runat="server" Text=""></asp:Label>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_actualizarEnv_etapaEnv" runat="server" style="float:left" CssClass="labels" Text="Ingrese la nueva etapa de envio: "></asp:Label>
+                <asp:Label ID="lbl_actualizarEnv_etapaEnv" runat="server" style="float:left" CssClass="labels" Text="Ingrese la nueva etapa de envío: "></asp:Label>
                 <asp:DropDownList ID="ddl_actualizarEnv_etapaEnv" style="margin-left:5px; float:left" CssClass="labels" runat="server" OnSelectedIndexChanged="ddl_actualizarEnv_etapaEnv_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
             </div>
             <div id="div_actualizarEnv_nomRecibio" runat="server" visible="false" style="clear:both; padding-top:15px">

@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_superanMonto_contenedora" runat="server" style=" width:780px; margin:auto; text-align:center; padding-bottom:40px" class="labels">
-        <p id="p_superanMonto_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Listado de envios</p>
+        <p id="p_superanMonto_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Listado de envíos</p>
         
         <div style="clear:both">
             <div id="div_listarEnvios_Ambos_superaMonto" runat="server" class="cajitas" style="padding-bottom:20px; width:240px; float:left">

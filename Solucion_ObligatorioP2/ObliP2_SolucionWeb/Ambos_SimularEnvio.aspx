@@ -35,10 +35,6 @@
                 <asp:Label ID="lbl_simularEnvio_valorDeclarado" style="float:left" CssClass="labels" runat="server" Text=" Valor Declarado:"></asp:Label>
                 <asp:TextBox ID="txt_simularEnvio_valorDeclaradoPaquete" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
-            <div style="padding-top:15px; clear:both">
-                 <asp:Label ID="lbl_simularEnvio_costoBaseXGramo" style="float:left" CssClass="labels" runat="server" Text=" Costo base/gr (U$S):"></asp:Label>
-                <asp:TextBox ID="txt_simularEnvio_costoBase" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
-            </div>
             <div style="padding-top:20px; padding-bottom:30px; clear:both">
                 <asp:CheckBox ID="chkbox_simularEnvio_seguro" style="float:left" CssClass="labels" runat="server" Text="Tiene seguro" />
             </div>
@@ -52,10 +48,11 @@
         </asp:Panel>
         <div style="padding-left:120px; margin:auto; vertical-align:central; padding-right:120px; padding-top:20px;  width:260px">
             <div>
-                <asp:Button ID="btn_simular" style="margin:auto; vertical-align:central" CssClass="labels" runat="server" Text="Simular envío" <%--OnClientClick="return validaciones();"--%> OnClick="btn_simular_Click" />
+                <asp:Button ID="btn_simular" style="margin:auto; vertical-align:central" CssClass="labels" runat="server" Text="Simular envío" OnClick="btn_simular_Click" /> <%--OnClientClick="return validaciones();"--%> 
             </div>
             <div id="div_simularEnvio_result" style="clear:both; margin:auto; vertical-align:central; margin-top:15px; margin-bottom:15px" runat="server">
-                <p id="p_simularEnvio_errores" runat="server"></p>
+                <asp:Label ID="lbl_simularEnvio_muestraResultado" runat="server" Text=""></asp:Label>
+                <p id="p_simularEnvio_errores" runat="server" class="letrasLinks" style="color:red;font-family:Verdana"></p>
             </div>
         </div>
     </div>

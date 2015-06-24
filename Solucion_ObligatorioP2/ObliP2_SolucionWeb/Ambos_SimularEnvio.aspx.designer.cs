@@ -148,58 +148,71 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_simularEnvio_valorDeclaradoPaquete;
         
         /// <summary>
-        /// Control lbl_simularEnvio_costoBaseXGramo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_simularEnvio_costoBaseXGramo;
-        
-        /// <summary>
-        /// Control txt_simularEnvio_costoBase.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_simularEnvio_costoBase;
-        
-        /// <summary>
         /// Control chkbox_simularEnvio_seguro.
+
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+
         protected global::System.Web.UI.WebControls.CheckBox chkbox_simularEnvio_seguro;
         
         /// <summary>
         /// Control simular_PanelDocumento.
+
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+
         protected global::System.Web.UI.WebControls.Panel simular_PanelDocumento;
         
         /// <summary>
         /// Control chkbox_simularEnvio_esDocLegal.
+
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+
         protected global::System.Web.UI.WebControls.CheckBox chkbox_simularEnvio_esDocLegal;
         
         /// <summary>
-        /// Control div_simularEnvio_result.
+        /// Control btn_simular.
+
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
+
+        protected global::System.Web.UI.WebControls.Button btn_simular;
+        
+        /// <summary>
+        /// Control div_simularEnvio_result.
+
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_simularEnvio_result;
+        
+        /// <summary>
+        /// Control lbl_simularEnvio_muestraResultado.
+
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+
+        protected global::System.Web.UI.WebControls.Label lbl_simularEnvio_muestraResultado;
+
         
         /// <summary>
         /// Control p_simularEnvio_errores.

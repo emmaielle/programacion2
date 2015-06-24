@@ -23,11 +23,11 @@
                 <asp:TextBox ID="txt_crearAdmin_apellido" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
-                <asp:Label ID="lbl_crearAdmin_tel" style="float:left" runat="server" Text="Telefono: "></asp:Label>
+                <asp:Label ID="lbl_crearAdmin_tel" style="float:left" runat="server" Text="Teléfono: "></asp:Label>
                 <asp:TextBox ID="txt_crearAdmin_telefono" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
-                <asp:Label ID="lbl_crearAdmin_pais" style="float:left" runat="server" Text="Pais: "></asp:Label>
+                <asp:Label ID="lbl_crearAdmin_pais" style="float:left" runat="server" Text="País: "></asp:Label>
                 <asp:TextBox ID="txt_crearAdmin_pais" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
@@ -35,7 +35,7 @@
                 <asp:TextBox ID="txt_crearAdmin_ciudad" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
-                <asp:Label ID="lbl_crearAdmin_CP" style="float:left" runat="server" Text="Codigo Postal: "></asp:Label>
+                <asp:Label ID="lbl_crearAdmin_CP" style="float:left" runat="server" Text="Código Postal: "></asp:Label>
                 <asp:TextBox ID="txt_crearAdmin_cp" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
@@ -43,7 +43,7 @@
                 <asp:TextBox ID="txt_crearAdmin_calle" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both"> 
-                <asp:Label ID="lbl_crearAdmin_NroPta" runat="server" style="float:left" Text="Numero Puerta: "></asp:Label>
+                <asp:Label ID="lbl_crearAdmin_NroPta" runat="server" style="float:left" Text="Número Puerta: "></asp:Label>
                 <asp:TextBox ID="txt_crearAdmin_numero" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both"> 
@@ -55,7 +55,7 @@
                 <asp:TextBox TextMode="Password" style="width:100px; float:right" ID="txt_crearAdmin_password" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
-                <asp:Label ID="lbl_crearAdmin_mail" style="float:left"  runat="server" Text="Mail:"></asp:Label>
+                <asp:Label ID="lbl_crearAdmin_mail" style="float:left"  runat="server" Text="E-Mail:"></asp:Label>
                 <asp:TextBox ID="txt_crearAdmin_mail" style="width:100px; float:right" runat="server"></asp:TextBox>
             </div>
         </div>

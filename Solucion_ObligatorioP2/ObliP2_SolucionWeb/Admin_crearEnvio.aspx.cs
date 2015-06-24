@@ -149,7 +149,6 @@ namespace Solucion_ObligatorioP2
                                                                     {
                                                                         if (Utilidades.ChequearEsSoloNumero(nroPuertaOrigen))
                                                                         {
-
                                                                             if (!String.IsNullOrEmpty(paisOrigen))
                                                                             {
                                                                                 if (!String.IsNullOrEmpty(ciudadOrigen))
