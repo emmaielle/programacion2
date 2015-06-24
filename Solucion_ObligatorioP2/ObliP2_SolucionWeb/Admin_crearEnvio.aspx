@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Admin_crearEnvio.aspx.cs" Inherits="Solucion_ObligatorioP2.Admin_crearEnvio" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
-   <%-- <script type="text/javascript" src="scripts/crearEnvio.js"></script>--%>
+    <script type="text/javascript" src="scripts/crearEnvio.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_crearEnvio_contenedora">
@@ -127,8 +127,7 @@
                 <asp:Label ID="lbl_crearEnvio_codPostalOrigen" style="float:left" CssClass="labels" runat="server" Text="Codigo Postal:"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_codPostalOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
-            <div> 
-            </div>
+
         </asp:Panel>
         <div style="padding-top:15px; clear:both">
             <div style="clear:both; width:250px; margin:auto;vertical-align:central" class="labels">

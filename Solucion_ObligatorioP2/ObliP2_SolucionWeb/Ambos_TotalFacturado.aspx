@@ -1,5 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="Ambos_TotalFacturado.aspx.cs" Inherits="Solucion_ObligatorioP2.Ambos_TotalFacturado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="scripts/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+        function validar() {
+            retorno = false;
+
+            idCli = $("#ContentPlaceHolder1_txt_totalFacturado_nroCliente");
+            p_error_msj = $("#ContentPlaceHolder1_p_totalFacturado_errores");
+
+            if (idCli.length) {
+                if (idCli.val().trim() != "") {
+                    if (isNaN(idCli)) {
+                        p_error_msj.text("El número de cliente especificado no es un número");
+                    }
+                    else retorno = true;
+                }
+                else p_error_msj.text("Debe ingresar un número de cliente");
+            }
+            else retorno = true;
+
+            return retorno;
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -48,7 +71,7 @@
                 <p runat="server" id="p_totalFacturado_errores" style="color:red;font-family:Verdana"></p>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Button ID="btn_totalFacturado_ObtenerInfo" runat="server" OnClick="btn_totalFacturado_ObtenerInfo_Click" Text="Obtener" />
+                <asp:Button ID="btn_totalFacturado_ObtenerInfo" runat="server" OnClientClick="return validar(); " OnClick="btn_totalFacturado_ObtenerInfo_Click" Text="Obtener" />
                 <asp:Label ID="lbl_totalFacturado_msjTotal" runat="server" Text="Total facturado por dicho cliente:"></asp:Label>
                 <asp:Label ID="lbl_totalFacturado_total" runat="server" Text="Label"></asp:Label>
             </div>

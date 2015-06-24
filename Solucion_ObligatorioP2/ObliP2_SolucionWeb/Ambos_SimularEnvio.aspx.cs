@@ -15,6 +15,31 @@ namespace Solucion_ObligatorioP2
             {
                 Response.Redirect("~/Inicio.aspx");
             }
+
+            if (this.IsPostBack)
+            {
+                p_simularEnvio_errores.InnerText = "";
+            }
+        }
+
+        protected void radiobtn_simularEnvio_esPaqueteODocCheckedChanged(object sender, EventArgs e)
+        {
+            if (this.radiobtn_simularEnvio_esDoc.Checked)
+            {
+                this.simular_PanelDocumento.Visible = true;
+                this.simular_PanelPaquete.Visible = false;
+            }
+
+            if (this.radiobtn_simularEnvio_esPaquete.Checked)
+            {
+                this.simular_PanelPaquete.Visible = true;
+                this.simular_PanelDocumento.Visible = false;
+            }
+        }
+
+        protected void btn_simular_Click(object sender, EventArgs e)
+        {
+            p_simularEnvio_errores.InnerText = "Algoooo Error";
         }
     }
 }
