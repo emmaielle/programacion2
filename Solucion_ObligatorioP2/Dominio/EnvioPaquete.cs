@@ -14,7 +14,7 @@ namespace Dominio
         private float alto;
         private float ancho;
         private float largo;
-        private decimal costoBasePorGramo;
+        private static decimal costoBasePorGramo = 30M;
         private decimal valorDeclarado;
         private bool tieneSeguro;
         private string descripcion;
@@ -66,7 +66,7 @@ namespace Dominio
 
         // constructor convencional
         public EnvioPaquete(string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, 
-                            OficinaPostal pOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGramo, decimal pValorDeclarado, 
+                            OficinaPostal pOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pValorDeclarado, 
                             bool pSeguro, float pPesoKilos, string pDescripcion)
             : base(pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
@@ -74,7 +74,6 @@ namespace Dominio
             this.Alto = pAlto;
             this.Ancho = pAncho;
             this.Largo = pLargo;
-            this.costoBasePorGramo = pCostoBaseGramo;
             this.ValorDeclarado = pValorDeclarado;
             this.TieneSeguro = pSeguro;
             base.Peso = pPesoKilos;         
@@ -85,13 +84,12 @@ namespace Dominio
         }
 
         // constructor para simulacion de envioPaquete
-        public EnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGramo, decimal pValorDeclarado,
+        public EnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pValorDeclarado,
                             bool pSeguro, float pPesoKilos) 
         {
             this.Alto = pAlto;
             this.Ancho = pAncho;
             this.Largo = pLargo;
-            this.costoBasePorGramo = pCostoBaseGramo;
             this.ValorDeclarado = pValorDeclarado;
             this.TieneSeguro = pSeguro;
             base.Peso = pPesoKilos;

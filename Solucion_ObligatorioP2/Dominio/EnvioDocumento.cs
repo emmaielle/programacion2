@@ -10,7 +10,7 @@ namespace Dominio
     {
         #region Atributos
 
-        private static decimal costoBasePorGramo = 100M;
+        private static decimal costoBasePorGramo = 20M;
         private bool esDocLegal;
         private Direccion dirOrigen;
 

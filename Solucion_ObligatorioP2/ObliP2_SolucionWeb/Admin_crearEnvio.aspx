@@ -86,11 +86,6 @@
             </div>
             
             <div style="padding-top:15px; clear:both">
-                 <asp:Label ID="lbl_crearEnvio_costoBaseXGramo" style="float:left" CssClass="labels" runat="server" Text=" Costo base/gr (U$S):"></asp:Label>
-                <asp:TextBox ID="txt_crearEnvio_costoBase" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
-            </div>
-
-            <div style="padding-top:15px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_valorDeclarado" style="float:left" CssClass="labels" runat="server" Text=" Valor Declarado:"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_valorDeclaradoPaquete" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
@@ -136,7 +131,7 @@
                 </asp:DropDownList>
             </div>
             <div style="clear:both">
-                <asp:Button ID="btn_crearEnvio_crearEnvio" style="margin-top:20px;clear:both" CssClass="labels" runat="server" OnClientClick="return validaciones();" OnClick="btn_crearEnvio_crearEnvio_Click" Text="Crear Envio" />
+                <asp:Button ID="btn_crearEnvio_crearEnvio" style="margin-top:20px;clear:both" CssClass="labels" runat="server" OnClick="btn_crearEnvio_crearEnvio_Click" Text="Crear Envio" />
             </div>
             <div>
                 <p runat="server" id="p_crearEnvio_errores" class="letrasLinks" style="color:red;font-family:Verdana"></p>

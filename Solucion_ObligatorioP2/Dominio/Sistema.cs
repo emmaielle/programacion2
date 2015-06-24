@@ -67,16 +67,16 @@ namespace Dominio
                 "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 5, 12), 1, 1.5F, true);
             // 2
             this.AltaEnvioPaquete("41954388", "Jose Rodriguez", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", new DateTime(2015, 3, 15),
-                                1, 12.3F, 13.2F, 40F, 12M, 100M, true, 1F, "Es una caja");
+                                1, 12.3F, 13.2F, 40F, 12M, true, 1F, "Es una caja");
             // 3
             this.AltaEnvioPaquete("41954388", "Ariel Arrosa", "Mercedes", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 2, 10),
-                                3, 10.3F, 3.2F, 7F, 10, 15M, false, 6F, "Es un paquete");
+                                3, 10.3F, 3.2F, 7F, 10, false, 6F, "Es un paquete");
             // 4
             this.AltaEnvioPaquete("41954388", "Mateo Benitez", "Paraguay", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 1, 3),
-                                3, 10.3F, 3.2F, 7F, 10M, 15M, false, 6F, "Es un paquete");
+                                3, 10.3F, 3.2F, 7F, 10M, false, 6F, "Es un paquete");
             // 5
             this.AltaEnvioPaquete("41954388", "Neko MrMuffin", "San Martin", "3384", "11700", "Montevideo", "Uruguay", new DateTime(2015, 1, 3),
-                                3, 10.3F, 3.2F, 7F, 10M, 15M, false, 8F, "Es una caja con comida de gatos, catnip y un rascador");
+                                3, 10.3F, 3.2F, 7F, 10M, false, 8F, "Es una caja con comida de gatos, catnip y un rascador");
 
             //Actualizo envio
             // datos agregados para consulta de envios en transito ingresados hace mas de 5 dias y para consulta de envios paraEntregar
@@ -292,7 +292,7 @@ namespace Dominio
          * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
         public int AltaEnvioPaquete(string pCliente, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino,
                                     string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso,
-                                    int pNroOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr,
+                                    int pNroOficinaIngreso, float pAlto, float pAncho, float pLargo,
                                     decimal pValorDecl, bool pSeguro, float pPesoKg, string pDescr)
         {
             Usuario cli = this.BuscarCliente(pCliente);
@@ -304,7 +304,7 @@ namespace Dominio
                 OficinaPostal oficinaIngreso = this.BuscarOficinaXID(pNroOficinaIngreso);
 
                 EnvioPaquete env = new EnvioPaquete(pNomDestinatario, dirDestino, pFechaIngreso, oficinaIngreso,
-                                                    pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg, pDescr);
+                                                    pAlto, pAncho, pLargo, pValorDecl, pSeguro, pPesoKg, pDescr);
 
                 if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
                 this.listaEnvios.Add(env);
@@ -428,10 +428,10 @@ namespace Dominio
 
         // Utiliza el constructor alternativo de EnvioPaquete, que toma solo datos necesarios para calcular el precio final del envio.
         // Crea el objeto para devolver un decimal que corresponde al PrecioFinal del EnvioPaquete
-        public decimal SimularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pCostoBaseGr, decimal pValorDecl,
+        public decimal SimularEnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pValorDecl,
                                             bool pSeguro, float pPesoKg)
         {
-            EnvioPaquete simulPaquete = new EnvioPaquete(pAlto, pAncho, pLargo, pCostoBaseGr, pValorDecl, pSeguro, pPesoKg);
+            EnvioPaquete simulPaquete = new EnvioPaquete(pAlto, pAncho, pLargo, pValorDecl, pSeguro, pPesoKg);
             decimal precioSimulado = simulPaquete.PrecioFinal;
 
             return precioSimulado;

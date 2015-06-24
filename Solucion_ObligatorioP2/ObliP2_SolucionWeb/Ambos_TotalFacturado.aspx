@@ -10,7 +10,7 @@
 
             if (idCli.length) {
                 if (idCli.val().trim() != "") {
-                    if (isNaN(idCli)) {
+                    if (isNaN(idCli.val())) {
                         p_error_msj.text("El número de cliente especificado no es un número");
                     }
                     else retorno = true;
@@ -67,13 +67,16 @@
                     </asp:Calendar>
                 </div>
             </div>
-            <div id="div_totalFacturado_ErrorMessages" style="margin-top:20px; height:30px; clear:both">
+            <div id="div_totalFacturado_ErrorMessages" style="padding-top:10px; height:35px; clear:both">
                 <p runat="server" id="p_totalFacturado_errores" style="color:red;font-family:Verdana"></p>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Button ID="btn_totalFacturado_ObtenerInfo" runat="server" OnClientClick="return validar(); " OnClick="btn_totalFacturado_ObtenerInfo_Click" Text="Obtener" />
-                <asp:Label ID="lbl_totalFacturado_msjTotal" runat="server" Text="Total facturado por dicho cliente:"></asp:Label>
-                <asp:Label ID="lbl_totalFacturado_total" runat="server" Text="Label"></asp:Label>
+                <div style="clear:both">
+                    <asp:Button ID="btn_totalFacturado_ObtenerInfo" style="clear:both" runat="server" OnClientClick ="return validar();" OnClick="btn_totalFacturado_ObtenerInfo_Click" Text="Obtener" />
+                </div>
+                <div style="clear:both; padding-top:15px">
+                    <asp:Label ID="lbl_totalFacturado_msjTotal" style="color:blue" runat="server"></asp:Label>
+                </div>
             </div>
         </div>
     </div>
