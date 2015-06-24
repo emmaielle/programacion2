@@ -50,22 +50,44 @@ namespace Solucion_ObligatorioP2
                     p_totalFacturado_errores.InnerText = "Debe ingresar un nro de cliente";
                 }
 
-            DateTime fechaDesde = this.calendar_totalFacturado_fechaDesde.SelectedDate;
+            // chequeo si es admin o usuario par determinar el numero de documento del cliente en cada caso
 
-                if (fechaDesde == null) 
-                 {
-                    p_totalFacturado_errores.InnerText = "Debe seleccionar fecha de Inicio";
-                 }
+            if ((bool)Session["esAdmin"] == true)
+            {
+                nroCliente = this.txt_totalFacturado_nroCliente.Text;
+            }
+            else
+            {
+                string username = Session["UsuarioLogueado"].ToString();
+                nroCliente = elSis.BuscarUsuarioPorUsername(username).Documento;
+            }
 
-            DateTime fechaHasta = this.calendar_totalFacturado_fechaHasta.SelectedDate;
-
+            // los if/else tienen que estar anidados, porque fijate que si la condicion no se cumple, igual le 
+            // decis que llame a la funcion de calcular el total, lo unico que tambien te va a mostrar el msj que le digas
             
-                if (fechaDesde == null) 
-                 {
-                    p_totalFacturado_errores.InnerText = "Debe seleccionar fecha de fin";
-                 }
+             DateTime fechaDesde = this.calendar_totalFacturado_fechaDesde.SelectedDate;
+             DateTime fechaHasta = this.calendar_totalFacturado_fechaHasta.SelectedDate;
 
-            elSis.TotalFacturadoAClientePorIntervalo(nroCliente, fechaDesde, fechaHasta);
+            if (nroCliente != "")
+                {
+                   if (fechaDesde != DateTime.MinValue)
+                        {
+                            if (fechaHasta != DateTime.MinValue)
+                           {
+                                decimal total = elSis.TotalFacturadoAClientePorIntervalo(nroCliente, fechaDesde, fechaHasta);
+                                lbl_totalFacturado_total.Text = total.ToString(); ;
+                           }
+                            else p_totalFacturado_errores.InnerText = "Debe seleccionar fecha de fin";
+                         }
+                    else p_totalFacturado_errores.InnerText = "Debe seleccionar fecha de inicio";
+                 }   
+            else p_totalFacturado_errores.InnerText = "Debe especificar un nro de cliente";
+       
         }
+       
+            
+       }
+
     }
-}
+  
+

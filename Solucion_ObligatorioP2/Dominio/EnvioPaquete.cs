@@ -14,7 +14,7 @@ namespace Dominio
         private float alto;
         private float ancho;
         private float largo;
-        private decimal costoBasePorGramo;
+        private decimal costoBasePorGramo = 30M;
         private decimal valorDeclarado;
         private bool tieneSeguro;
         private string descripcion;
