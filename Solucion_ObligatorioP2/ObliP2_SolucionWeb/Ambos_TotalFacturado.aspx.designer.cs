@@ -119,14 +119,5 @@ namespace Solucion_ObligatorioP2 {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_msjTotal;
-        
-        /// <summary>
-        /// Control lbl_totalFacturado_total.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_totalFacturado_total;
     }
 }

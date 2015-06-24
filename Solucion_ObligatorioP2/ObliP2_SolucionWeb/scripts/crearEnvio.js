@@ -14,7 +14,6 @@
     largoPaq = $("#ContentPlaceHolder1_txt_crearEnvio_largoPaquete").val();
     anchoPaq = $("#ContentPlaceHolder1_txt_crearEnvio_anchoPaquete").val();
     altoPaq = $("#ContentPlaceHolder1_txt_crearEnvio_altoPaquete").val();
-    costoBasePaq = $("#ContentPlaceHolder1_txt_crearEnvio_costoBase").val();
     valDeclPaq = $("#ContentPlaceHolder1_txt_crearEnvio_valorDeclaradoPaquete").val();
     dscPaq = $("#ContentPlaceHolder1_txt_crearEnvio_DescripPaquete").val();
 
@@ -39,15 +38,12 @@
             p_errores.text("El número de puerta de destino debe estar formado unicamente por números");
         }
 
-        if ($("#ContentPlaceHolder1_radiobtn_crearEnvio_esPaquete").is(':checked')) {
+        else if ($("#ContentPlaceHolder1_radiobtn_crearEnvio_esPaquete").is(':checked')) {
 
-            if (largoPaq != "" && anchoPaq != "" && altoPaq != "" && costoBasePaq != "" && valDeclPaq != "" && dscPaq != "") {
+            if (largoPaq != "" && anchoPaq != "" && altoPaq != "" && valDeclPaq != "" && dscPaq != "") {
 
                 if (isNaN(largoPaq) || isNaN(anchoPaq) || isNaN(altoPaq)) {
                     p_errores.text("Las dimensiones del paquete deben ser números");
-                }
-                else if (isNaN(costoBasePaq)) {
-                    p_errores.text("El costo base del pauete debe ser un número");
                 }
                 else if (isNaN(valDeclPaq)) {
                     p_errores.text("El valor declarado del paquete debe ser un número");
@@ -58,7 +54,7 @@
             else p_errores.text("Es necesario completar todos los datos del paquete");
         }
 
-        if ($("#ContentPlaceHolder1_radiobtn_crearEnvio_esDoc").is(':checked')) {
+        else if ($("#ContentPlaceHolder1_radiobtn_crearEnvio_esDoc").is(':checked')) {
 
             if (calleOri != "" && nroPuertaOriDoc != "" && paisOri != "" && ciuOri != "" && cpOri != "") {
 
