@@ -301,24 +301,6 @@ namespace Solucion_ObligatorioP2 {
         protected global::System.Web.UI.WebControls.TextBox txt_crearEnvio_DescripPaquete;
         
         /// <summary>
-        /// Control lbl_crearEnvio_costoBaseXGramo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_crearEnvio_costoBaseXGramo;
-        
-        /// <summary>
-        /// Control txt_crearEnvio_costoBase.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt_crearEnvio_costoBase;
-        
-        /// <summary>
         /// Control lbl_crearEnvio_valorDeclarado.
         /// </summary>
         /// <remarks>
