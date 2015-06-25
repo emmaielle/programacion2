@@ -66,7 +66,7 @@
             <asp:RadioButton ID="radiobtn_crearEnvio_esPaquete" CssClass="labels" style="float:right" runat="server" OnCheckedChanged="radiobtn_crearEnvio_esPaqueteODocCheckedChanged" Text="Paquete" GroupName="tipoEnvio" AutoPostBack="True" />
             <asp:RadioButton ID="radiobtn_crearEnvio_esDoc" CssClass="labels" style="float:right; margin-left:10px" runat="server" OnCheckedChanged="radiobtn_crearEnvio_esPaqueteODocCheckedChanged" Text="Documento" GroupName="tipoEnvio" AutoPostBack="True" />
         </div>
-        <asp:Panel ID="PanelPaquete" runat="server" CssClass="cajitas" style="margin:10px; margin-top:30px; padding:10px; padding-left:120px; padding-right:120px;  width:260px; clear:both" Visible="False">
+        <asp:Panel ID="PanelPaquete" runat="server" CssClass="cajitas" style="margin:10px; margin-top:30px; padding:10px; padding-left:116px; padding-right:116px;  width:268px; clear:both" Visible="False">
 
             <div style="padding-top:15px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_largoPaquete" style="float:left" CssClass="labels" runat="server" Text="Largo (cm):"></asp:Label>
