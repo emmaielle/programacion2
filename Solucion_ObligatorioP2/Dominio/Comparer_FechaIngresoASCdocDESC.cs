@@ -23,8 +23,8 @@ namespace Dominio
                 if (resultado == 0)
                 {
                     // no necesito verificar que no sea null, ni que sea un nro porque ya lo hice
-                    int docUno = int.Parse(uno.DocCliente);
-                    int docOtro = int.Parse(otro.DocCliente);
+                    int docUno = int.Parse(uno.Remitente.Documento);
+                    int docOtro = int.Parse(otro.Remitente.Documento);
 
                     resultado = docOtro - docUno;
                 }

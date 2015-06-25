@@ -274,13 +274,12 @@ namespace Dominio
 
                 OficinaPostal oficinaIngreso = this.BuscarOficinaXID(pNroOficinaIngreso);
 
-                EnvioDocumento env = new EnvioDocumento(dirOrigen, pNomDestinatario, dirDestino,
+                EnvioDocumento env = new EnvioDocumento(cli, dirOrigen, pNomDestinatario, dirDestino,
                                                        pFechaIngreso, oficinaIngreso, pPesoKilos, pLegal);
 
                 if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
                 this.listaEnvios.Add(env);
 
-                cli.AgregarEnvio(env);
                 numeroEnvio = env.NroEnvio;
             }
             return numeroEnvio;
@@ -303,12 +302,12 @@ namespace Dominio
                 Direccion dirDestino = new Direccion(pCalleDestino, pNroPtaDestino, pCPDestino, pCiudDestino, pPaisDestino);
                 OficinaPostal oficinaIngreso = this.BuscarOficinaXID(pNroOficinaIngreso);
 
-                EnvioPaquete env = new EnvioPaquete(pNomDestinatario, dirDestino, pFechaIngreso, oficinaIngreso,
+                EnvioPaquete env = new EnvioPaquete(cli, pNomDestinatario, dirDestino, pFechaIngreso, oficinaIngreso,
                                                     pAlto, pAncho, pLargo, pValorDecl, pSeguro, pPesoKg, pDescr);
 
                 if (this.listaEnvios == null) { this.listaEnvios = new List<Envio>(); }
                 this.listaEnvios.Add(env);
-                cli.AgregarEnvio(env);
+
                 numeroEnvio = env.NroEnvio;
 
             }
@@ -351,39 +350,45 @@ namespace Dominio
             return listaEtapas;
         }
 
-        // retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados
+        /* retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados, ordenado
+         * por fecha de entregado (pero siempre por fecha de ingreso a etapa "ParaEntregar"!)
+         * en forma descendente*/
         public List<Envio> ListarEnviosEntregados(string pDoc)
         {
-            List<Envio> envEntregados = null;
+            List<Envio> envEntregados = new List<Envio>();
 
-            if (this.BuscarCliente(pDoc) != null)
+            if (this.listaEnvios != null)
             {
-                Usuario cli = this.BuscarCliente(pDoc);
-                envEntregados = cli.ListarEnviosEntregados();
-
+                foreach (Envio env in this.listaEnvios)
+                {
+                    if (env.Remitente.Documento == pDoc)
+                    {
+                        if (env.EnvioEntregado())
+                        {
+                            envEntregados.Add(env);
+                        }
+                    }
+                    
+                }
             }
+            envEntregados.Sort();
+
             return envEntregados;
         }
 
-        // arma una lista de todos los envios enTrasito y que fueron ingresados hace mas de 5 dias para todos los clientes, 
-        // esto lo hace llamando al metodo del mismo nombre en Usuario
+        // arma una lista de todos los envios enTrasito y que fueron ingresados hace mas de 5 dias, 
+        // esto lo hace llamando al metodo EnvioEnTransitoAtrasado en Envio, que devuelve un bool
         public List<Envio> EnviosEnTransitoAtrasados()
         {
             List<Envio> listaEnvAtrasados = new List<Envio>();
 
-            if (this.listaClientes != null)
+            if (this.listaEnvios != null)
             {
-                foreach (Usuario cli in this.listaClientes)
+                foreach (Envio env in this.listaEnvios)
                 {
-                    List<Envio> listaClienteAtrasados = new List<Envio>();
-                    listaClienteAtrasados = cli.EnviosEnTransitoAtrasados();
-
-                    if (listaClienteAtrasados != null)
+                    if (env.EnvioEnTransitoAtrasado())
                     {
-                        foreach (Envio env in listaClienteAtrasados)
-                        {
-                            listaEnvAtrasados.Add(env);
-                        }
+                        listaEnvAtrasados.Add(env);
                     }
                 }
             }
@@ -397,18 +402,23 @@ namespace Dominio
             return listaEnvAtrasados;
         }
 
-        // Busca al cliente y si lo encuentra, le pide que le devuelva el decimal resultante del método TotalFacturadoEnIntervalo (en Usuario)    
+        // Busca para todos los envios, si pertenecen al remitente indicado por pDoc, y si lo hacen, consulta el total facturado por cada
+        // uno, para ir sumandolo. Devuelve la suma que va acumulando (dentro del metodo que llama en envio, se verifica que sean envios
+        // entregados y entre las fechas indicadas)
         public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
         {
             decimal total = 0M;
 
-            Usuario cli = this.BuscarCliente(pDoc);
-
-            if (cli != null)
+            if (this.listaEnvios != null)
             {
-                total = cli.TotalFacturadoEnIntervalo(pFechaInicio, pFechaFinal);
+                foreach (Envio env in this.listaEnvios)
+                {
+                    if (env.Remitente.Documento == pDoc)
+                    {
+                        total += env.TotalFacturado(pFechaInicio, pFechaFinal);
+                    }
+                }
             }
-
             return total;
         }
 
@@ -416,11 +426,18 @@ namespace Dominio
         {
             List<Envio> listaEnvSuperanMonto = new List<Envio>();
 
-            Usuario clienteDeInteres = this.BuscarCliente(pDoc);
-
-            if (clienteDeInteres != null)
+            if (this.listaEnvios != null)
             {
-                listaEnvSuperanMonto = clienteDeInteres.EnviosQueSuperanMonto(pMonto);
+                foreach (Envio env in this.listaEnvios)
+                {
+                    if (env.Remitente.Documento == pDoc)
+                    {
+                        if (env.SuperaMonto(pMonto))
+                        {
+                            listaEnvSuperanMonto.Add(env);
+                        }
+                    }
+                }
             }
 
             return listaEnvSuperanMonto;
@@ -445,32 +462,6 @@ namespace Dominio
             decimal precioSimulado = simulDoc.PrecioFinal;
 
             return precioSimulado;
-        }
-
-        public string BuscarClienteParaUnEnvio(int pNroEnvio) // <<<<<---------
-        {
-            string idCliente = "";
-
-            Envio pEnvio = this.BuscarEnvio(pNroEnvio);
-
-            if (this.listaClientes != null)
-            {
-                foreach (Usuario cli in this.listaClientes)
-                {
-                    if (cli.EnviosCliente != null)
-                    {
-                        foreach (Envio env in cli.EnviosCliente)
-                        {
-
-                            if (env.NroEnvio == pEnvio.NroEnvio)
-                            {
-                                idCliente = cli.Documento;
-                            }
-                        }
-                    }
-                }
-            }
-            return idCliente;
         }
 
         #endregion

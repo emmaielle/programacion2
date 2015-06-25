@@ -18,7 +18,6 @@ namespace Dominio
         private string telefono;
         private Direccion direccionUsuario;
         private bool esAdmin;
-        private List<Envio> enviosCliente;
         private string mail;
 
         #endregion
@@ -73,12 +72,6 @@ namespace Dominio
             set { direccionUsuario = value; }
         }
 
-        public List<Envio> EnviosCliente
-        {
-            get { return enviosCliente; }
-            set { enviosCliente = value; }
-        }
-
         public string Mail
         {
             get { return mail; }
@@ -105,106 +98,6 @@ namespace Dominio
 
         #endregion
 
-        #region Comportamiento
-
-        /*Return lista de envios que superen el monto ingresado */
-        public List<Envio> EnviosQueSuperanMonto(decimal pMonto)
-        {
-            List<Envio> lista = new List<Envio>();
-
-            if (this.enviosCliente != null)
-            {
-                foreach (Envio env in enviosCliente)
-                {
-                    if (env.PrecioFinal > pMonto)
-                    {
-                        lista.Add(env);
-                    }
-                }
-            }
-
-            return lista;
-        }
-
-        /*Agrega un envio a la lista de envios que tiene el cliente */
-        public void AgregarEnvio(Envio pEnvio)
-        {
-            // me aseguro que no sea admin, que no puede tener envios
-            if (this.esAdmin == false)
-            {
-                if (enviosCliente == null)
-                { enviosCliente = new List<Envio>(); }
-                enviosCliente.Add(pEnvio);
-            }
-        }
-
-        /*Lista todos los envios del cliente que estan PARA ENTREGAR (o sea que ya estan "enviados") o ya fueron 
-         * ENTREGADOS por fecha de entregado (pero siempre por fecha de ingreso a etapa "ParaEntregar"!)
-         * en forma descendente*/
-        public List<Envio> ListarEnviosEntregados()
-        {
-            List<Envio> lista = new List<Envio>();
-
-            if (this.enviosCliente != null)
-            {
-                foreach (Envio env in enviosCliente)
-                {
-                    if (EtapaEnvio.Etapas.ParaEntregar == env.ObtenerEtapaActual().Etapa || EtapaEnvio.Etapas.Entregado ==
-                        env.ObtenerEtapaActual().Etapa)
-                    {
-                        lista.Add(env);
-                    }
-                }
-            }
-            lista.Sort(); 
-            return lista;
-        }
-
-        /*Devuelve el total facturado de ese cliente dado un intervalo*/
-        public decimal TotalFacturadoEnIntervalo(DateTime pFechaInicio, DateTime pFechaFinal)
-        {
-            decimal total = 0M;
-
-            if (enviosCliente != null && enviosCliente.Count > 0)
-            {
-                foreach (Envio env in enviosCliente)
-                {
-                    EtapaEnvio etapaActual = env.ObtenerEtapaActual();
-                    if (etapaActual.Etapa == EtapaEnvio.Etapas.Entregado && 
-                        etapaActual.FechaIngreso >= pFechaInicio &&  etapaActual.FechaIngreso <=pFechaFinal)
-                       
-                    {
-                        total = total + env.PrecioFinal;
-                    }
-                }
-               
-            }
-            return total;
-        }
-
-        // arma una lista de todos los envios que se encuentran en estado actual "EnTransito" (de acuerdo con el metodo
-        // ObtenerEtapaActual, en Envio) para el cliente, y de ellos, toma aquellos que fueron ingresados hace 
-        // mas de 5 dias en la primer oficinaPostal por el cliente.
-        public List<Envio> EnviosEnTransitoAtrasados()
-        {
-            List<Envio> listaEnvAtrasados = new List<Envio>();
-
-            if (this.enviosCliente != null)
-            {
-                foreach (Envio env in this.enviosCliente)
-                {
-                    if (env.ObtenerEtapaActual().Etapa == EtapaEnvio.Etapas.EnTransito)
-                    {
-                        int diasDesdeIngreso = env.ObtenerDiasDesdeIngreso();
-                        if (diasDesdeIngreso > 5) { listaEnvAtrasados.Add(env); }
-                    }
-                }
-            }
-
-            return listaEnvAtrasados;
-        }
-
-        #endregion
     }
 }
 

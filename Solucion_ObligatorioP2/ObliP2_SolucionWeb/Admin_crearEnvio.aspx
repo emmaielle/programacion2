@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_crearEnvio_contenedora">
-        <p id="p_crearEnv_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Creacion de envio</p>
+        <p id="p_crearEnv_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Creacion de envío</p>
         <div class="cajitas" style="margin:10px; padding-bottom:60px; padding-left:120px; padding-right:120px; width:260px; clear:both">  
               
             <div style="margin-bottom:10px">
@@ -37,7 +37,7 @@
                 <asp:TextBox ID="txt_crearEnvio_nomDest" style="width:100px; float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_direcDestinatario" style="color:blue; margin:auto; vertical-align:central" CssClass="labels" runat="server" Text="Datos de destino:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_direcDestinatario" style="color:blue; margin:auto; vertical-align:central" CssClass="labels" runat="server" Text="Datos de dirección de destino:"></asp:Label>
             </div>
             <div style="padding-top:10px; clear:both">
                 <asp:Label ID="lbl_crearEnvio_calle" CssClass="labels" runat="server" style="float:left" Text="Calle: "></asp:Label>
@@ -48,7 +48,7 @@
                 <asp:TextBox ID="txt_crearEnvio_numPuerta" style="width:100px ;float:right;margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_pais" style="float:left" CssClass="labels" runat="server" Text="Pais:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_pais" style="float:left" CssClass="labels" runat="server" Text="País:"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_pais" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
@@ -56,13 +56,13 @@
                 <asp:TextBox ID="txt_crearEnvio_ciudad" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:10px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_codigoPostal" style="float:left" CssClass="labels" runat="server" Text="Codigo Postal:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_codigoPostal" style="float:left" CssClass="labels" runat="server" Text="Código Postal:"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_codPostal" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
 
         </div>
         <div style="padding-top:15px; padding-bottom:15px; clear:both; margin:auto; vertical-align:central; padding-left:110px; padding-right:110px; width:280px">
-            <asp:Label ID="lbl_crearEnvio_chooseType" runat="server" CssClass="labels" style="float:left" Text="Tipo de envio: "></asp:Label>
+            <asp:Label ID="lbl_crearEnvio_chooseType" runat="server" CssClass="labels" style="float:left" Text="Tipo de envío: "></asp:Label>
             <asp:RadioButton ID="radiobtn_crearEnvio_esPaquete" CssClass="labels" style="float:right" runat="server" OnCheckedChanged="radiobtn_crearEnvio_esPaqueteODocCheckedChanged" Text="Paquete" GroupName="tipoEnvio" AutoPostBack="True" />
             <asp:RadioButton ID="radiobtn_crearEnvio_esDoc" CssClass="labels" style="float:right; margin-left:10px" runat="server" OnCheckedChanged="radiobtn_crearEnvio_esPaqueteODocCheckedChanged" Text="Documento" GroupName="tipoEnvio" AutoPostBack="True" />
         </div>
@@ -81,7 +81,7 @@
                 <asp:TextBox ID="txt_crearEnvio_altoPaquete" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_descripcion" style="float:left" CssClass="labels" runat="server" Text="Descripcion:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_descripcion" style="float:left" CssClass="labels" runat="server" Text="Descripción:"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_DescripPaquete" TextMode="MultiLine" Rows="3" style="width:150px; resize:none; float:right; margin-left:4px" runat="server"></asp:TextBox>
             </div>
             
@@ -100,18 +100,18 @@
                 <asp:CheckBox ID="chkbox_crearEnvio_esDocLegal" style="float:left" CssClass="labels" runat="server" Text="Es documento legal" />
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_datosDirOri" style="margin:auto; vertical-align:central; color:blue" CssClass="labels" runat="server" Text=" Datos de direccion de origen:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_datosDirOri" style="margin:auto; vertical-align:central; color:blue" CssClass="labels" runat="server" Text=" Datos de dirección de origen:"></asp:Label>
             </div>
            <div style="padding-top:15px; clear:both">
                <asp:Label ID="lbl_crearEnvio_calleOrigen" style="float:left" CssClass="labels" runat="server" Text="Calle:"></asp:Label>
                <asp:TextBox ID="txt_crearEnvio_calleOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_numOrigen" style="float:left" CssClass="labels" runat="server" Text="Numero:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_numOrigen" style="float:left" CssClass="labels" runat="server" Text="Número:"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_nroOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_paisOrigen" style="float:left" CssClass="labels" runat="server" Text="Pais:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_paisOrigen" style="float:left" CssClass="labels" runat="server" Text="País:"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_paisOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px; clear:both">
@@ -119,7 +119,7 @@
                 <asp:TextBox ID="txt_crearEnvio_ciudadOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:15px;padding-bottom:30px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_codPostalOrigen" style="float:left" CssClass="labels" runat="server" Text="Codigo Postal:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_codPostalOrigen" style="float:left" CssClass="labels" runat="server" Text="Código Postal:"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_codPostalOrigen" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
 

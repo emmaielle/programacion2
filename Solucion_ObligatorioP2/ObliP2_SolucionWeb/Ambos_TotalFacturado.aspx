@@ -32,7 +32,7 @@
         <div style="margin:10px; margin-top:20px; padding-bottom:15px; padding-left:80px; padding-right:80px; clear:both">
             
             <div id="div_totalFacturado_hidden4Cliente" visible="false" runat="server">
-                <p id="p_totalFacturado_intro" runat="server">Ingrese el numero de cliente para saber su total facturado entre dos fechas</p>
+                <p id="p_totalFacturado_intro" runat="server">Ingrese el número de cliente para saber su total facturado entre dos fechas</p>
 
                 <div style="clear:both; padding-top:10px">
                     <asp:Label ID="lbl_totalFacturado_nroCliente" style="vertical-align:central; margin:auto" runat="server" Text="Nro Cliente:"></asp:Label>

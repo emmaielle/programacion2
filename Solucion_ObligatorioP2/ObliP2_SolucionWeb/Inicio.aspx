@@ -37,7 +37,7 @@
         <div id="div_home_contenedora">
             <p style="font-size:22px; font-family:Verdana;" class="letrasLinks">Bienvenido a EmpresaPostal</p>
             <div id="div_home_central">
-                <p style="font-size:13px; font-family:Verdana;" class="letrasLinks">Registrate como cliente o ingresa si ya estás registrado para simular o seguir tus envíos</p>
+                <p style="font-size:13px; font-family:Verdana;" class="letrasLinks">Regístrate como cliente o ingresa si ya estás registrado para simular o seguir tus envíos</p>
             
                 <div id="div_login_cliente">
                     <p id="p_inicio_iniciarSesion">Inicio de sesión</p>
@@ -68,7 +68,7 @@
                 <div id="div_seguirEnvio">
                     <p id="p_inicio_rastreo">Rastreo de envíos</p>
                     <div id="div_nroEnvio">
-                        <asp:Label ID="lbl_home_nroEnvio" runat="server" Text="Código de envío "></asp:Label>
+                        <asp:Label ID="lbl_home_nroEnvio" runat="server" Text="Número de envío "></asp:Label>
                         <asp:TextBox ID="txt_home_nroEnvio" runat="server"></asp:TextBox>
                     </div>
                     <div id="div_btnHome_seguirEnvio">

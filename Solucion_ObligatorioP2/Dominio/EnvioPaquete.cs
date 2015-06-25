@@ -65,10 +65,10 @@ namespace Dominio
         #region Constructor
 
         // constructor convencional
-        public EnvioPaquete(string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, 
+        public EnvioPaquete(Usuario pRemitente, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, 
                             OficinaPostal pOficinaIngreso, float pAlto, float pAncho, float pLargo, decimal pValorDeclarado, 
                             bool pSeguro, float pPesoKilos, string pDescripcion)
-            : base(pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+            : base(pRemitente, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
             // alto, largo y ancho tienen que ser en cm!!!
             this.Alto = pAlto;
@@ -110,10 +110,10 @@ namespace Dominio
             if (base.Peso > pesoUsado) pesoUsado = base.Peso;
 
             decimal pesoUsadoDecimal;
-            bool d = decimal.TryParse(pesoUsado.ToString(), out pesoUsadoDecimal);
+            bool resultD = decimal.TryParse(pesoUsado.ToString(), out pesoUsadoDecimal);
             decimal precioFinal;
 
-            if (d)
+            if (resultD)
             {
                 precioFinal = this.CostoBasePorGramo * 1000 * pesoUsadoDecimal;
 

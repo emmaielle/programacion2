@@ -6,9 +6,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="div_rastrearEnvio_contenedora" class="labels">
         
-        <p id="p_rastearEnvio_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Rastreo de envios</p>
+        <p id="p_rastearEnvio_head" style="font-size:22px; font-family:Verdana;" runat="server" class="letrasLinks">Rastreo de envíos</p>
         <div style="clear:both">
-            <asp:Label ID="lbl_rastrearEnvio_nroEnvio" runat="server" Text="Ingrese numero de envio:"></asp:Label>
+            <asp:Label ID="lbl_rastrearEnvio_nroEnvio" runat="server" Text="Ingrese número de envío:"></asp:Label>
             <asp:TextBox ID="txt_rastrearEnvio_nroEnvio" style="margin-left:5px" runat="server"></asp:TextBox>
         </div>
         <div id="div_rastrearEnvio_maessagesError" style="clear:both; margin-top:10px; height:30px">
