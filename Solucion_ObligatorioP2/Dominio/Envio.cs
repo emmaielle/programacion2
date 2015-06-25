@@ -10,6 +10,7 @@ namespace Dominio
     public abstract class Envio :IComparable <Envio>
     {
         #region Atributos
+
         protected int nroEnvio;
         private static int ultNroEnvio = 1;
         private Usuario remitente;
@@ -24,7 +25,7 @@ namespace Dominio
         // La diferencia está en los métodos que calculan el precio, donde en documento tengo que pasar a gramos antes de obtener el resultado
 
         protected DateTime fechaIngreso; // ingreso del envio
-        protected string fechaIngresoParaEntregar; // string para gridview. Fecha en que ingreó a etapa "ParaEntregar". Si no ingresó, es vacío.
+        protected string fechaParaEntregar; // string para gridview. Fecha en que ingreó a etapa "ParaEntregar". Si no ingresó, es vacío.
         
         #endregion
         
@@ -110,9 +111,9 @@ namespace Dominio
         // property que esta hecha para las gridview de listar envios tambien. Para visualizar el orden de la fecha de ingreso al estado 
         // paraEntregar. Tiene un atributo asociado. Lo transformo a string para poder dejar campo vacio si no llego a este estado 
         // (en vez del minimo de datetime)
-        public string FechaIngresoParaEntregar
+        public string FechaParaEntregar
         {
-            get { return fechaIngresoParaEntregar; }
+            get { return fechaParaEntregar; }
         }
 
 
@@ -244,7 +245,7 @@ namespace Dominio
 
                 if (pEtapa == EtapaEnvio.Etapas.ParaEntregar)
                 {
-                    this.fechaIngresoParaEntregar = pFechaIngreso.ToString();
+                    this.fechaParaEntregar = pFechaIngreso.ToString();
                 }
 
                 this.EtapasDelEnvio.Add(etp);
