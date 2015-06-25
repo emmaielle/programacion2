@@ -117,7 +117,7 @@ namespace Solucion_ObligatorioP2
 
             if (cliente != null)
             {
-                listaEnviosParaEntregaroEntregados = cliente.ListarEnviosEntregados();
+                listaEnviosParaEntregaroEntregados = elSis.ListarEnviosEntregados(cliente.Documento);
                 pExisteElCliente = true;
             }
             else

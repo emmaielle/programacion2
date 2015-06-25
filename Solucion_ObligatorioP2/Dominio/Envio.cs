@@ -11,7 +11,8 @@ namespace Dominio
     {
         #region Atributos
         protected int nroEnvio;
-        protected static int ultNroEnvio = 1; //necesito hacer una propiedad de esto? creo que lo uso solo internamente
+        private static int ultNroEnvio = 1;
+        private Usuario remitente;
         protected string nombreRecibio;
         protected string firmaRecibio; 
         protected string nombreDestinatario;
@@ -32,7 +33,19 @@ namespace Dominio
         public int NroEnvio
         {
             get { return nroEnvio; }
-            set { nroEnvio = value; } // si es un autonumerado, no deberia tener un set, no?
+            set { nroEnvio = value; } 
+        }
+
+        public static int UltNroEnvio
+        {
+            get { return Envio.ultNroEnvio; }
+            set { Envio.ultNroEnvio = value; }
+        } 
+
+        public Usuario Remitente
+        {
+            get { return remitente; }
+            set { remitente = value; }
         }
 
         public string NombreRecibio
@@ -88,12 +101,6 @@ namespace Dominio
             get { return this.ObtenerEtapaActual().Etapa; }
         }
 
-        // propiedad hecha para gridview de envios atrasados5dias && para IComparable que ordena segun esto
-        public string DocCliente
-        {
-            get { return Sistema.Instancia.BuscarClienteParaUnEnvio(this.NroEnvio); }
-        }
-
         // para que devuelva en el gridview de envios el tipo de envio que es (pasado a string y despues de "Dominio.")
         public string TipoEnvio
         {
@@ -129,22 +136,22 @@ namespace Dominio
         #region Constructor
 
         // constructor convencional
-        public Envio(string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
+        public Envio(Usuario pRemitente, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
         {
-            this.NroEnvio = Envio.ultNroEnvio;
+            this.nroEnvio = Envio.ultNroEnvio;
             Envio.ultNroEnvio += 1; // si pongo una propiedad en el atributo, cambiar aca <---
-            this.NombreDestinatario = pNomDestinatario;
-            this.DirDestinatario = pDirDestino;
-            this.EtapasDelEnvio = new List<EtapaEnvio>();
-            
+            this.nombreDestinatario = pNomDestinatario;
+            this.dirDestinatario = pDirDestino;
+            this.etapasDelEnvio = new List<EtapaEnvio>();
+            this.remitente = pRemitente;
             // si se crea un envio nuevo, en el constructor, de forma automática, se crea la primer 
             // etapa del envio, por eso este constructor toma como parametros tambien la fecha de ingreso
             // y la oficina en la que ingresó:
             EtapaEnvio unaEtapa = new EtapaEnvio(pFechaIngreso, EtapaEnvio.Etapas.EnOrigen, pOficinaIngreso);
            
             // agrego esa etapa en la lista de etapas recorridas de este envío
-            this.EtapasDelEnvio.Add(unaEtapa);
-            this.FechaIngreso = this.etapasDelEnvio[0].FechaIngreso;
+            this.etapasDelEnvio.Add(unaEtapa);
+            this.fechaIngreso = this.etapasDelEnvio[0].FechaIngreso;
 
         }
 
@@ -315,6 +322,72 @@ namespace Dominio
                 if (etapa.Etapa == EtapaEnvio.Etapas.EnOrigen) enOrigen = etapa;
             }
             return enOrigen;
+        }
+
+        /*Return bool de acuerdo con si supera el monto ingresado*/
+        public bool SuperaMonto(decimal pMonto)
+        {
+            bool supera = false;
+
+            if (this.PrecioFinal > pMonto)
+            {
+                supera = true;
+            }
+
+            return supera;
+        }
+
+          /*Devuelve bool determinando si el envio esta PARA ENTREGAR (o sea que ya esta "enviado") o ya fue 
+         * ENTREGADO */
+        public bool EnvioEntregado()
+        {
+            bool entregado = false;
+
+            if (EtapaEnvio.Etapas.ParaEntregar == this.ObtenerEtapaActual().Etapa || EtapaEnvio.Etapas.Entregado ==
+                this.ObtenerEtapaActual().Etapa)
+            {
+                entregado = true;
+            }
+
+            return entregado;
+        }
+
+        // para el envio actual, determina el precioFinal del mismo, sólo si es un envio que fue entregado y la fecha de ingreso 
+        // se encuentra entre las fechas provistas. De forma contraria, el total es igual a 0
+        public decimal TotalFacturado(DateTime pFechaInicio, DateTime pFechaFinal)
+        {
+            decimal total = 0M;
+
+            EtapaEnvio etapaActual = this.ObtenerEtapaActual();
+
+            if (etapaActual.Etapa == EtapaEnvio.Etapas.Entregado &&
+                etapaActual.FechaIngreso >= pFechaInicio && etapaActual.FechaIngreso <= pFechaFinal)
+            {
+                total = this.PrecioFinal;
+            }
+
+
+            return total;
+        }
+
+        // devuelve true cuando el envio se encuentran en estado actual "EnTransito" (de acuerdo con el metodo
+        // ObtenerEtapaActual, en esta clase) y de ellos, toma aquellos que fueron ingresados hace 
+        // mas de 5 dias en la primer oficinaPostal.
+        public bool EnvioEnTransitoAtrasado()
+        {
+            bool enTransitoAtrasado = false;
+
+            if (this.ObtenerEtapaActual().Etapa == EtapaEnvio.Etapas.EnTransito)
+            {
+                int diasDesdeIngreso = this.ObtenerDiasDesdeIngreso();
+
+                if (diasDesdeIngreso > 5)
+                {
+                    enTransitoAtrasado = true;
+                }
+            }
+
+            return enTransitoAtrasado;
         }
 
         #endregion

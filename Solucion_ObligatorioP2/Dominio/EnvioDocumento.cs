@@ -40,9 +40,9 @@ namespace Dominio
 
         #region Constructor
 
-        public EnvioDocumento(Direccion pDirOrigen, string pNomDestinatario, 
+        public EnvioDocumento(Usuario pRemitente, Direccion pDirOrigen, string pNomDestinatario, 
                                 Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso, float pPesoKilos, bool pLegal) 
-            : base(pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
+            : base(pRemitente, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
             
         {
            if (base.dirDestinatario != pDirOrigen)
