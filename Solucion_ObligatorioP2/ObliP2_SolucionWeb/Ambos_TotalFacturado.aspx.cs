@@ -62,7 +62,7 @@ namespace Solucion_ObligatorioP2
                         if (fechaHasta != DateTime.MinValue)
                         {
                             decimal total = elSis.TotalFacturadoAClientePorIntervalo(nroCliente, fechaDesde, fechaHasta);
-                            lbl_totalFacturado_msjTotal.Text = "Total facturado por cliente " + nroCliente + ": U$S" + total.ToString();
+                            lbl_totalFacturado_msjTotal.Text = "Total facturado por cliente " + nroCliente + ": U$S " + total.ToString();
                         }
                         else this.p_totalFacturado_errores.InnerText = "Debe seleccionar fecha de fin";
                     }

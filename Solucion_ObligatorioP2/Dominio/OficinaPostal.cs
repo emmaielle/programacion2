@@ -26,7 +26,8 @@ namespace Dominio
 
         public static int UltNroOficina
         {
-            get { return OficinaPostal.ultNroOficina; } // no tiene set
+            get { return OficinaPostal.ultNroOficina; }
+            set { OficinaPostal.ultNroOficina = value; }
         }
 
         public Direccion DireccionOfiPostal

@@ -51,8 +51,8 @@ namespace Dominio
         public EtapaEnvio(DateTime pFechaIng, Etapas pEtp, OficinaPostal pUbicacion) 
         {
             this.etapa = pEtp;
-            this.FechaIngreso = pFechaIng;
-            this.Ubicacion = pUbicacion;
+            this.fechaIngreso = pFechaIng;
+            this.ubicacion = pUbicacion;
         }
 
         #endregion

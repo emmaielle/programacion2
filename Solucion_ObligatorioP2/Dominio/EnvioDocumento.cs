@@ -47,10 +47,10 @@ namespace Dominio
         {
            if (base.dirDestinatario != pDirOrigen)
             {
-                this.DirOrigen = pDirOrigen;
-                base.Peso = TransformarPesoAGramos(pPesoKilos);
-                this.EsDocLegal = pLegal;
-                base.PrecioFinal = CalcularPrecioFinal();
+                this.dirOrigen = pDirOrigen;
+                base.peso = TransformarPesoAGramos(pPesoKilos);
+                this.esDocLegal = pLegal;
+                base.precioFinal = CalcularPrecioFinal();
             }
         }
 
@@ -58,22 +58,18 @@ namespace Dominio
         public EnvioDocumento(float pPesoKilos, bool pLegal) 
         {
             this.esDocLegal = pLegal;
-            base.Peso = pPesoKilos;
-            base.PrecioFinal = CalcularPrecioFinal();
+            base.peso = pPesoKilos;
+            base.precioFinal = CalcularPrecioFinal();
  
         }
 
-        // este constructor vacio para que está??
-        public EnvioDocumento() { 
-        
-        }
         #endregion
 
         #region Comportamiento
 
         // Transforma automáticamente el peso introducido por el admin en KG a Gramos, como se solicita en la letra para 
-        // los documentos. El atributo peso e encuentra común en la clase base Envio, para ambos tipos de envíos. En el caso de 
-        // los paquetes, no hay ninguna transformación porque se guarda en KG.
+        // calcular el precio. El atributo peso se encuentra común en la clase base Envio, y para ambos tipos de envíos está en KG.
+        // Solo se transforma para el calculo mencionado.
         private float TransformarPesoAGramos(float pPesoKG)
         {
             return pPesoKG * 1000;
@@ -82,14 +78,14 @@ namespace Dominio
         // precioFinal = costoBase/gr X pesoGramos + 5% si es documento legal
         public override decimal CalcularPrecioFinal()
         {
-            decimal pesoDecimal;
-            bool d = decimal.TryParse(base.peso.ToString(), out pesoDecimal);
+            decimal pesoenGramosDecimal;
+            bool d = decimal.TryParse(this.TransformarPesoAGramos(base.peso).ToString(), out pesoenGramosDecimal);
 
             decimal final;
             
             if (d)
             {
-                final = EnvioDocumento.CostoBasePorGramo * pesoDecimal;
+                final = EnvioDocumento.CostoBasePorGramo * pesoenGramosDecimal;
 
                 if (this.EsDocLegal)
                 {
@@ -102,7 +98,7 @@ namespace Dominio
             
         }
 
-        // variante de método base AgregarEtapa, que corrobora si el documento es legal tiene que ser recibido (pNomRecibio) por el 
+        // variante de método base AgregarEtapa, que corrobora que si el documento es legal tiene que ser recibido (pNomRecibio) por el 
         // propio destinatario (base.NombreDestinatario), y devuelve un bool para éxito o fracaso.
         public override bool AgregarEtapa(DateTime pFechaIngreso, EtapaEnvio.Etapas pEtapa, OficinaPostal pUbicacion, 
                                             string pFirmaRecibio, string pNombreRecibio, out string pMensajeError)

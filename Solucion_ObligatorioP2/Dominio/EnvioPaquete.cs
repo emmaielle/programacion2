@@ -70,43 +70,40 @@ namespace Dominio
                             bool pSeguro, float pPesoKilos, string pDescripcion)
             : base(pRemitente, pNomDestinatario, pDirDestino, pFechaIngreso, pOficinaIngreso)
         {
-            // alto, largo y ancho tienen que ser en cm!!!
-            this.Alto = pAlto;
-            this.Ancho = pAncho;
-            this.Largo = pLargo;
-            this.ValorDeclarado = pValorDeclarado;
-            this.TieneSeguro = pSeguro;
-            base.Peso = pPesoKilos;         
-            // El atributo peso se encuentra común en la clase base Envio, para ambos tipos de envíos. En el caso de 
-            // los paquetes, no hay ninguna transformación porque se guarda en KG.
-            this.Descripcion = pDescripcion;        
-            base.PrecioFinal = CalcularPrecioFinal();
+            
+            this.alto = pAlto;
+            this.ancho = pAncho;
+            this.largo = pLargo;
+            this.valorDeclarado = pValorDeclarado;
+            this.tieneSeguro = pSeguro;
+            base.peso = pPesoKilos;         
+            this.descripcion = pDescripcion;        
+            base.precioFinal = CalcularPrecioFinal();
         }
 
         // constructor para simulacion de envioPaquete
         public EnvioPaquete(float pAlto, float pAncho, float pLargo, decimal pValorDeclarado,
                             bool pSeguro, float pPesoKilos) 
         {
-            this.Alto = pAlto;
-            this.Ancho = pAncho;
-            this.Largo = pLargo;
-            this.ValorDeclarado = pValorDeclarado;
-            this.TieneSeguro = pSeguro;
-            base.Peso = pPesoKilos;
-            base.PrecioFinal = CalcularPrecioFinal();
+            this.alto = pAlto;
+            this.ancho = pAncho;
+            this.largo = pLargo;
+            this.valorDeclarado = pValorDeclarado;
+            this.tieneSeguro = pSeguro;
+            base.peso = pPesoKilos;
+            base.precioFinal = CalcularPrecioFinal();
  
         }
 
         #endregion
 
-        // ver si todos los metodos necesitan ser publicos o si puedo hacer privado alguno, como calcularPrecios
         #region Comportamiento
         
-        //toma el peso Volumetrico como el peso final, a no ser que sea menor que el peso en Kg. Multiplica el peso elegido por el costoBasexGramo
-        //para paquetes y por 100, y si tiene seguro, le suma el 1% del valor declarado
+        //toma el peso Volumetrico como el peso final, a no ser que sea menor que el peso en Kg. Multiplica el peso elegido por costoBasexGramo
+        //para paquetes y x 100 y, si tiene seguro, le suma el 1% del valor declarado
         public override decimal CalcularPrecioFinal()
         {
-            float pesoUsado = CalcularPesoVolumetrico();
+            float pesoUsado = this.CalcularPesoVolumetrico();
             if (base.Peso > pesoUsado) pesoUsado = base.Peso;
 
             decimal pesoUsadoDecimal;

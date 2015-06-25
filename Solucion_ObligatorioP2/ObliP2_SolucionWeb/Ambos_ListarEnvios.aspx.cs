@@ -168,7 +168,8 @@ namespace Solucion_ObligatorioP2
 
             if ((bool)Session["esCliente"] == true)
             {
-                cliente = this.elSis.BuscarCliente(Session["UsuarioLogueado"].ToString());
+                string user = Session["UsuarioLogueado"].ToString();
+                cliente = this.elSis.BuscarUsuarioPorUsername(user);
             }
             else
             {

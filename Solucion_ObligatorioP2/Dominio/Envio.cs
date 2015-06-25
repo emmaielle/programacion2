@@ -19,12 +19,12 @@ namespace Dominio
         protected Direccion dirDestinatario;
         protected List<EtapaEnvio> etapasDelEnvio;
         protected decimal precioFinal;
-        protected float peso; // para paquetes se guarda en Kg, para documentos en Gramos (pero en ambos se ingresa en Kg).
+        protected float peso; 
+        // decidimos que para ambos envios el peso se ingresa y se guarda en Kg, ya que tambien lo voy a mostrar en Kg en las gridviews
+        // La diferencia está en los métodos que calculan el precio, donde en documento tengo que pasar a gramos antes de obtener el resultado
 
-        /// esto queda bien aca??? <---- todavia no lo puse en astah!!
-        protected DateTime fechaIngreso;
-        protected string fechaIngresoParaEntregar;
-        /// ---
+        protected DateTime fechaIngreso; // ingreso del envio
+        protected string fechaIngresoParaEntregar; // string para gridview. Fecha en que ingreó a etapa "ParaEntregar". Si no ingresó, es vacío.
         
         #endregion
         
@@ -107,27 +107,12 @@ namespace Dominio
             get { return this.GetType().ToString().Split(new char[] { '.' })[1]; }
         }
 
-        // property que esta hecha para las gridview de listar envios tambien, para visualizar el orden de la fecha de ingreso al estado 
-        // paraEntregar. Tiene un atributo asociado. Lo transformo a string para poder dejar campo vacio si no llego a este estado (en vez del minimo de datetime)
+        // property que esta hecha para las gridview de listar envios tambien. Para visualizar el orden de la fecha de ingreso al estado 
+        // paraEntregar. Tiene un atributo asociado. Lo transformo a string para poder dejar campo vacio si no llego a este estado 
+        // (en vez del minimo de datetime)
         public string FechaIngresoParaEntregar
         {
             get { return fechaIngresoParaEntregar; }
-        }
-
-        // propiedad para las gridview. Porque siempre quierpo mostrar el peso en KG, aun para los documentos
-        public float PesoEnKG
-        {
-            get
-            {
-                if (this.GetType() == typeof(EnvioDocumento))
-                {
-                    return this.peso / 1000;
-                }
-                else
-                {
-                    return this.peso;
-                }
-            }
         }
 
 
@@ -139,11 +124,12 @@ namespace Dominio
         public Envio(Usuario pRemitente, string pNomDestinatario, Direccion pDirDestino, DateTime pFechaIngreso, OficinaPostal pOficinaIngreso) // <-- firmaRecibio: imagen!
         {
             this.nroEnvio = Envio.ultNroEnvio;
-            Envio.ultNroEnvio += 1; // si pongo una propiedad en el atributo, cambiar aca <---
+            Envio.ultNroEnvio += 1; 
             this.nombreDestinatario = pNomDestinatario;
             this.dirDestinatario = pDirDestino;
             this.etapasDelEnvio = new List<EtapaEnvio>();
             this.remitente = pRemitente;
+            
             // si se crea un envio nuevo, en el constructor, de forma automática, se crea la primer 
             // etapa del envio, por eso este constructor toma como parametros tambien la fecha de ingreso
             // y la oficina en la que ingresó:
@@ -151,8 +137,8 @@ namespace Dominio
            
             // agrego esa etapa en la lista de etapas recorridas de este envío
             this.etapasDelEnvio.Add(unaEtapa);
+            
             this.fechaIngreso = this.etapasDelEnvio[0].FechaIngreso;
-
         }
 
         // constructor para simulación
@@ -291,7 +277,7 @@ namespace Dominio
 
         // revisa las fechas de ingreso de cada etapaDeEnvio, para quedarse con la etapa que tiene la fecha más cercana al 
         // día actual (la ultima fecha encontrada), y devolver el enum de Etapas en que se encuentra esa Etapa, que es el estado 
-        // actual del envio <----
+        // actual del envio 
         public EtapaEnvio ObtenerEtapaActual()
         {
             DateTime ultimaFecha = DateTime.MinValue;
@@ -313,7 +299,7 @@ namespace Dominio
         }
 
         // devuelve la etapaEnvio que tiene el enum EnOrigen
-        public EtapaEnvio DevolverEtapaEnOrigen ()
+        public EtapaEnvio DevolverEtapaEnOrigen()
         {
             EtapaEnvio enOrigen = null;
 
@@ -324,7 +310,7 @@ namespace Dominio
             return enOrigen;
         }
 
-        /*Return bool de acuerdo con si supera el monto ingresado*/
+        /* Return bool de acuerdo con si supera el monto ingresado */
         public bool SuperaMonto(decimal pMonto)
         {
             bool supera = false;
@@ -337,8 +323,8 @@ namespace Dominio
             return supera;
         }
 
-          /*Devuelve bool determinando si el envio esta PARA ENTREGAR (o sea que ya esta "enviado") o ya fue 
-         * ENTREGADO */
+         // Devuelve bool determinando si el envio esta PARA ENTREGAR (o sea que ya esta "enviado") o ya fue 
+         // ENTREGADO 
         public bool EnvioEntregado()
         {
             bool entregado = false;
@@ -365,7 +351,6 @@ namespace Dominio
             {
                 total = this.PrecioFinal;
             }
-
 
             return total;
         }
@@ -394,8 +379,8 @@ namespace Dominio
 
         #region Implementacion IComparable
       
-        //Metodo que me compara envios por fechas de manera descendente
-        //No es lógico ordenar por fecha de entregado si el envío puede no haberse entregado aún 
+        // Metodo que me compara envios por fechas de manera ascendente
+        // No es lógico ordenar por fecha de entregado si el envío puede no haberse entregado aún 
         //(si está para entregar en la oficina final). Por lo tanto, ordénenlos por fecha de ENVIADO de forma ascendente.
         int IComparable<Envio>.CompareTo(Envio env)
         {

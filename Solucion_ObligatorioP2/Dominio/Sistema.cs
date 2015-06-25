@@ -96,14 +96,11 @@ namespace Dominio
 
         #region Clientes
 
-        /*TODO: agregar controles y manejar exceptions */
-
-        // Recibe datos para crear un cliente, crea el cliente y su dirección, lo agrega a la lista de usuarios y de clientes y devuelve el 
-        // cliente nuevo o el ya existente
-        public Usuario AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pDoc, string pTel, string pCalle, string pNum,
+        // Recibe datos para crear un cliente, crea el cliente y su dirección, lo agrega a la lista de usuarios y de clientes 
+        public void AltaCliente(string pUsr, string pPass, string pNom, string pApell, string pDoc, string pTel, string pCalle, string pNum,
                                 string pCP, string pCiu, string pPais, string pMail)
         {
-            Usuario encontro = BuscarCliente(pDoc);
+            Usuario encontro = this.BuscarCliente(pDoc);
             Usuario cli = null;
 
             if (encontro == null)
@@ -118,7 +115,6 @@ namespace Dominio
             }
             else cli = encontro;
 
-            return cli;
 
         }
 
@@ -143,14 +139,11 @@ namespace Dominio
 
         #region Administradores
 
-        /*TODO: agregar controles y manejar exceptions*/
-
-        // Recibe datos para crear un Admin, crea el admin y lo agrega a la lista de usuarios y de admins. Devuelve el admin nuevo o 
-        // el ya existente
-        public Usuario AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono,
+        // Recibe datos para crear un Admin, crea el admin y lo agrega a la lista de usuarios y de admins
+        public void AltaAdministrador(string pUsr, string pPass, string pNombre, string pApellido, string pDoc, string pTelefono,
             string pCalle, string pNum, string pCP, string pCiu, string pPais, string pMail)
         {
-            Usuario encontro = BuscarAdmin(pDoc);
+            Usuario encontro = this.BuscarAdmin(pDoc);
             Usuario admin = null;
 
             if (encontro == null)
@@ -164,8 +157,6 @@ namespace Dominio
                 this.listaUsuarios.Add(admin);
             }
             else admin = encontro;
-
-            return admin;
         }
 
         /*Dado un documento, se recorre la lista de admins para buscarlo. Retorna admin encontrado o null*/
@@ -228,6 +219,9 @@ namespace Dominio
             usr.Mail = pMail;
         }
 
+        // se fija si el mail dado en pMail ya fue tomado por otro usuario, y devuelve un bool en base a esto. Toma el dato del mail
+        // anterior de el mismo usuario (se asume que es el mismo usuario, pero nos aseguramos de eso al llamar al método), para que 
+        // permita dejar el mail igual a como estaba previamente para ese usuario
         public bool MailYaUsado(string pMail, string pMailAnterior)
         {
             bool retorno = false;
@@ -237,12 +231,9 @@ namespace Dominio
                 int i = 0;
                 while (retorno == false && i < this.listaUsuarios.Count)
                 {
-                    if (this.listaUsuarios[i].Mail.ToLower() == pMail.ToLower())
+                    if (this.listaUsuarios[i].Mail.ToLower() == pMail.ToLower() && this.listaUsuarios[i].Mail.ToLower() != pMailAnterior.ToLower())
                     {
-                        if (this.listaUsuarios[i].Mail.ToLower() != pMailAnterior.ToLower())
-                        {
-                            retorno = true;
-                        }
+                        retorno = true;
                     }
                     i++;
                 }
@@ -255,10 +246,9 @@ namespace Dominio
 
         #region Envios
 
-        /* TODO: agregar controles y manejar exceptions */
-
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de documento, 
-         * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
+         * (creando tambien una dirección de origen y otra de destino) y lo agrega a la lista de envios. Devuelve el número de envio. 
+         * Si es 0, el envio no fue creado */
         public int AltaEnvioDocumento(string pCliente, string pCalleOrigen, string pNroPtaOrigen, string pCPorigen, string pCiudOrigen,
                                     string pPaisOrigen, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino,
                                     string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso,
@@ -285,10 +275,9 @@ namespace Dominio
             return numeroEnvio;
         }
 
-        /* TODO: agregar controles y manejar exceptions */
-
         /* Busca el cliente con el numero de documento del usuario, si lo encuentra, recibe parametros para crear envio de paquetes, 
-         * y lo agrega a la lista de envios. Y por ultimo, ese cliente agrega ese envio a su propia lista de envios */
+         * (crea tambien una direccion de destino) y lo agrega a la lista de envios. Devuelve el número de envio. Si es 0, el envio
+         * no fue creado */
         public int AltaEnvioPaquete(string pCliente, string pNomDestinatario, string pCalleDestino, string pNroPtaDestino,
                                     string pCPDestino, string pCiudDestino, string pPaisDestino, DateTime pFechaIngreso,
                                     int pNroOficinaIngreso, float pAlto, float pAncho, float pLargo,
@@ -336,11 +325,10 @@ namespace Dominio
         }
 
         // dandole de parámetro el numero de envio, busca si existe el envio. Si existe, 
-        // busca las etapas de envio a partir de ese objeto, para procesarse luego.
-        // Si no existe el envio, devuelve una lista vacia.
+        // busca las etapas de envio a partir de ese objeto. Si no existe el envio, devuelve una lista vacia.
         public List<EtapaEnvio> RastrearEnvio(int pNroEnvio)
         {
-            Envio envioEncontrado = BuscarEnvio(pNroEnvio);
+            Envio envioEncontrado = this.BuscarEnvio(pNroEnvio);
             List<EtapaEnvio> listaEtapas = new List<EtapaEnvio>();
 
             if (envioEncontrado != null)
@@ -352,7 +340,7 @@ namespace Dominio
 
         /* retorna una lista de los envios de un cliente, dado como parámetro, que ya fueron entregados, ordenado
          * por fecha de entregado (pero siempre por fecha de ingreso a etapa "ParaEntregar"!)
-         * en forma descendente*/
+         * en forma ascendente (en la letra decia descendente pero en el foro de aulas se actualizó a ascendente) */
         public List<Envio> ListarEnviosEntregados(string pDoc)
         {
             List<Envio> envEntregados = new List<Envio>();
@@ -377,7 +365,9 @@ namespace Dominio
         }
 
         // arma una lista de todos los envios enTrasito y que fueron ingresados hace mas de 5 dias, 
-        // esto lo hace llamando al metodo EnvioEnTransitoAtrasado en Envio, que devuelve un bool
+        // esto lo hace buscando en cada envio y llamando al metodo EnvioEnTransitoAtrasado en Envio, que devuelve un bool.
+        // Esta lista está ordenada por fecha de ingreso en forma ascendente y documento de remitente en forma descendente, 
+        // usando la clase Comparer_FechaIngresoASCdocDESC que implementa IComparer
         public List<Envio> EnviosEnTransitoAtrasados()
         {
             List<Envio> listaEnvAtrasados = new List<Envio>();
@@ -392,6 +382,7 @@ namespace Dominio
                     }
                 }
             }
+
             Comparer_FechaIngresoASCdocDESC fchASCdocDESC = new Comparer_FechaIngresoASCdocDESC();
 
             if (listaEnvAtrasados != null)
@@ -403,8 +394,8 @@ namespace Dominio
         }
 
         // Busca para todos los envios, si pertenecen al remitente indicado por pDoc, y si lo hacen, consulta el total facturado por cada
-        // uno, para ir sumandolo. Devuelve la suma que va acumulando (dentro del metodo que llama en envio, se verifica que sean envios
-        // entregados y entre las fechas indicadas)
+        // uno, para ir sumandolo. Devuelve la suma que va acumulando de obtener el resultado del metodo TotalFacturado que llama en envio
+        // (donde se verifica que sean envios entregados y entre las fechas indicadas).
         public decimal TotalFacturadoAClientePorIntervalo(string pDoc, DateTime pFechaInicio, DateTime pFechaFinal)
         {
             decimal total = 0M;
@@ -422,6 +413,8 @@ namespace Dominio
             return total;
         }
 
+        // dado un documento de cliente y un monto, busca los envios que pertenecen a ese cliente (remitente) y estos los guarda en una
+        // lista que va a devolver, pero solo los agrega si superan el monto indicado.
         public List<Envio> EnviosQueSuperanMontoParaCliente(string pDoc, decimal pMonto)
         {
             List<Envio> listaEnvSuperanMonto = new List<Envio>();
@@ -472,7 +465,7 @@ namespace Dominio
         // y la suma a la lista de oficinas postales del sistema. No devuelve nada.
         public void AltaOficina(string pCiudad, string pCalle, string pCP, string pPais, string pNro)
         {
-            OficinaPostal encontro = BuscarOficinaXDatos(pCiudad, pCalle, pCP, pPais, pNro);
+            OficinaPostal encontro = this.BuscarOficinaXDatos(pCiudad, pCalle, pCP, pPais, pNro);
             OficinaPostal ofi = null;
 
             if (encontro == null)
@@ -483,9 +476,8 @@ namespace Dominio
             }
         }
 
-        // Busca la oficina postal por la identidad de todos sus atributos, porque lo que no queremos es que se repitan oficinas al dar
-        // altas, ya que el identificador de las oficinas es un autonumerado y eso no lo podemos controlar en la creación.
-        // Devuelve la oficina encontrada o NULL
+        // Busca la oficina postal por la identidad de todos sus atributos, porque no queremos es que se repitan datos de oficinas al dar
+        // altas. Devuelve la oficina encontrada o NULL
         public OficinaPostal BuscarOficinaXDatos(string pCiudad, string pCalle, string pCP, string pPais, string pNroCalle)
         {
             OficinaPostal ofi = null;
@@ -521,6 +513,7 @@ namespace Dominio
             return ofi;
         }
 
+        // metodo que devuelve una lista de enteros con todos los números de oficina que existen
         public List<int> TraerNrosDeOficinasPostales()
         {
             List<int> oficinasRetornadas = new List<int>();

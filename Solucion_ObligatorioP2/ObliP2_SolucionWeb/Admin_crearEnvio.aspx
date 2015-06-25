@@ -131,7 +131,7 @@
                 </asp:DropDownList>
             </div>
             <div style="clear:both">
-                <asp:Button ID="btn_crearEnvio_crearEnvio" style="margin-top:20px;clear:both" CssClass="labels" runat="server" OnClick="btn_crearEnvio_crearEnvio_Click" Text="Crear Envio" />
+                <asp:Button ID="btn_crearEnvio_crearEnvio" style="margin-top:20px;clear:both" CssClass="labels" runat="server" OnClientClick="return validaciones();" OnClick="btn_crearEnvio_crearEnvio_Click" Text="Crear Envio" />
             </div>
             <div>
                 <p runat="server" id="p_crearEnvio_errores" class="letrasLinks" style="color:red;font-family:Verdana"></p>

@@ -48,7 +48,7 @@
         </asp:Panel>
         <div style="padding-left:120px; margin:auto; vertical-align:central; padding-right:120px; padding-top:20px;  width:260px">
             <div>
-                <asp:Button ID="btn_simular" style="margin:auto; vertical-align:central" CssClass="labels" runat="server" Text="Simular envío" OnClick="btn_simular_Click" /> <%--OnClientClick="return validaciones();"--%> 
+                <asp:Button ID="btn_simular" style="margin:auto; vertical-align:central" CssClass="labels" runat="server" Text="Simular envío" OnClientClick="return validaciones();" OnClick="btn_simular_Click" /> <%--OnClientClick="return validaciones();"--%> 
             </div>
             <div id="div_simularEnvio_result" style="clear:both; margin:auto; vertical-align:central; margin-top:15px; margin-bottom:15px" runat="server">
                 <asp:Label ID="lbl_simularEnvio_muestraResultado" runat="server" Text=""></asp:Label>

@@ -101,7 +101,7 @@ namespace Solucion_ObligatorioP2
                     {
                         decimal resultadoDoc = elSis.SimularEnvioDocumento(peso, esLegal);
                         this.lbl_simularEnvio_muestraResultado.Visible = true;
-                        lbl_simularEnvio_muestraResultado.Text = "Su envio tiene un valor de:" + resultadoDoc.ToString();
+                        lbl_simularEnvio_muestraResultado.Text = "Su envio tiene un valor de: " + resultadoDoc.ToString();
                     }
                     else p_simularEnvio_errores.InnerText = "Debe especificar un tipo de envío";
                 }
