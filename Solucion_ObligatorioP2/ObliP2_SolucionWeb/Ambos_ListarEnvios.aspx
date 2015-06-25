@@ -69,7 +69,7 @@
                         </ItemTemplate>
                         </asp:TemplateField>
                         <asp:BoundField DataField="NombreDestinatario" HeaderText="Destinatario" />
-                        <asp:BoundField DataField="PesoEnKG" HeaderText="Peso (Kg)" />
+                        <asp:BoundField DataField="Peso" HeaderText="Peso (Kg)" />
                         <asp:BoundField DataField="PrecioFinal" HeaderText="Precio (U$S)" />
                         <asp:BoundField DataField="NombreRecibio" HeaderText="Recibio" />
                         <asp:ImageField DataImageUrlField="FirmaRecibio" DataImageUrlFormatString="./fotosFirmas/{0}" HeaderText="Firma Recibio">

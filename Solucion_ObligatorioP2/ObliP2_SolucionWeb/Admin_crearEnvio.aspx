@@ -86,7 +86,7 @@
             </div>
             
             <div style="padding-top:15px; clear:both">
-                <asp:Label ID="lbl_crearEnvio_valorDeclarado" style="float:left" CssClass="labels" runat="server" Text=" Valor Declarado:"></asp:Label>
+                <asp:Label ID="lbl_crearEnvio_valorDeclarado" style="float:left" CssClass="labels" runat="server" Text=" Valor Declarado (U$S):"></asp:Label>
                 <asp:TextBox ID="txt_crearEnvio_valorDeclaradoPaquete" style="width:100px ;float:right; margin-left:6px" runat="server"></asp:TextBox>
             </div>
             <div style="padding-top:20px; padding-bottom:30px; clear:both">

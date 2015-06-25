@@ -21,7 +21,7 @@ namespace Solucion_ObligatorioP2
 
             if (this.IsPostBack)
             {
-                p_simularEnvio_errores.InnerText = "";
+                this.p_simularEnvio_errores.InnerText = "";
             }
 
             this.lbl_simularEnvio_muestraResultado.Visible = false;
@@ -81,21 +81,21 @@ namespace Solucion_ObligatorioP2
                                                         this.lbl_simularEnvio_muestraResultado.Visible = true;
                                                         lbl_simularEnvio_muestraResultado.Text = "Su envio tiene un valor de: " + resultadoPaq.ToString();
                                                     }
-                                                    else p_simularEnvio_errores.InnerText = "El valor especificado no es un número";
+                                                    else this.p_simularEnvio_errores.InnerText = "El valor especificado no es un número";
                                                 }
-                                                else p_simularEnvio_errores.InnerText = "Debe especificar un valor declarado";
+                                                else this.p_simularEnvio_errores.InnerText = "Debe especificar un valor declarado";
                                             }
-                                            else p_simularEnvio_errores.InnerText = "El alto especificado no es un número";
+                                            else this.p_simularEnvio_errores.InnerText = "El alto especificado no es un número";
                                         }
-                                        else p_simularEnvio_errores.InnerText = "Debe especificar el alto del paquete";
+                                        else this.p_simularEnvio_errores.InnerText = "Debe especificar el alto del paquete";
                                     }
-                                    else p_simularEnvio_errores.InnerText = "El ancho especificado no es un número";
+                                    else this.p_simularEnvio_errores.InnerText = "El ancho especificado no es un número";
                                 }
-                                else p_simularEnvio_errores.InnerText = "Debe especificar el ancho del paquete";
+                                else this.p_simularEnvio_errores.InnerText = "Debe especificar el ancho del paquete";
                             }
-                            else p_simularEnvio_errores.InnerText = "El largo especificado no es un número";
+                            else this.p_simularEnvio_errores.InnerText = "El largo especificado no es un número";
                         }
-                        else p_simularEnvio_errores.InnerText = "Debe especificar el largo del paquete";
+                        else this.p_simularEnvio_errores.InnerText = "Debe especificar el largo del paquete";
                     }
                     else if (this.radiobtn_simularEnvio_esDoc.Checked == true)
                     {
@@ -103,11 +103,11 @@ namespace Solucion_ObligatorioP2
                         this.lbl_simularEnvio_muestraResultado.Visible = true;
                         lbl_simularEnvio_muestraResultado.Text = "Su envio tiene un valor de: " + resultadoDoc.ToString();
                     }
-                    else p_simularEnvio_errores.InnerText = "Debe especificar un tipo de envío";
+                    else this.p_simularEnvio_errores.InnerText = "Debe especificar un tipo de envío";
                 }
-                else p_simularEnvio_errores.InnerText = "El peso especificado no es un número";
+                else this.p_simularEnvio_errores.InnerText = "El peso especificado no es un número";
             }
-            else p_simularEnvio_errores.InnerText = "Debe especificar el peso del envío";
+            else this.p_simularEnvio_errores.InnerText = "Debe especificar el peso del envío";
 
         }
 

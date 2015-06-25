@@ -122,23 +122,23 @@ namespace Solucion_ObligatorioP2
                                                                                                      nroOficina, alto, ancho, largo, valorDec, tieneSeguro, peso, descrip);
                                                                                                     this.lbl_crearEnvio_muestraNroEnvio.Text = "El número de su envío es: #" + numeroEnvio.ToString();
                                                                                                 }
-                                                                                                else p_crearEnvio_errores.InnerText = "El valor declarado especificado no es un número";
+                                                                                                else this.p_crearEnvio_errores.InnerText = "El valor declarado especificado no es un número";
                                                                                             }
-                                                                                            else p_crearEnvio_errores.InnerText = "Debe especificar el valor declarado del paquete";
+                                                                                            else this.p_crearEnvio_errores.InnerText = "Debe especificar el valor declarado del paquete";
                                                                                         }
-                                                                                        else p_crearEnvio_errores.InnerText = "El alto especificado no es un número";
+                                                                                        else this.p_crearEnvio_errores.InnerText = "El alto especificado no es un número";
                                                                                     }
-                                                                                    else p_crearEnvio_errores.InnerText = "Debe especificar una descripción del paquete";
+                                                                                    else this.p_crearEnvio_errores.InnerText = "Debe especificar una descripción del paquete";
                                                                                 }
-                                                                                else p_crearEnvio_errores.InnerText = "Debe especificar el alto del paquete";
+                                                                                else this.p_crearEnvio_errores.InnerText = "Debe especificar el alto del paquete";
                                                                             }
-                                                                            else p_crearEnvio_errores.InnerText = "El ancho especificado no es un numero";
+                                                                            else this.p_crearEnvio_errores.InnerText = "El ancho especificado no es un numero";
                                                                         }
-                                                                        else p_crearEnvio_errores.InnerText = "Debe especificar el ancho del paquete";
+                                                                        else this.p_crearEnvio_errores.InnerText = "Debe especificar el ancho del paquete";
                                                                     }
-                                                                    else p_crearEnvio_errores.InnerText = "El largo especificado no es un número";
+                                                                    else this.p_crearEnvio_errores.InnerText = "El largo especificado no es un número";
                                                                 }
-                                                                else p_crearEnvio_errores.InnerText = "Debe especificar el largo del paquete";
+                                                                else this.p_crearEnvio_errores.InnerText = "Debe especificar el largo del paquete";
                                                             }
                                                             //chequeos de documento
                                                             else if (this.radiobtn_crearEnvio_esDoc.Checked == true)
@@ -160,59 +160,59 @@ namespace Solucion_ObligatorioP2
                                                                                         peso, esDocLegal);
                                                                                         this.lbl_crearEnvio_muestraNroEnvio.Text = "El número de su envío es: #" + numeroEnvio.ToString();
                                                                                     }
-                                                                                    else p_crearEnvio_errores.InnerText = "Debe especificar el codigo postal de origen";
+                                                                                    else this.p_crearEnvio_errores.InnerText = "Debe especificar el codigo postal de origen";
                                                                                 }
-                                                                                else p_crearEnvio_errores.InnerText = "Debe especificar la ciudad de origen";
+                                                                                else this.p_crearEnvio_errores.InnerText = "Debe especificar la ciudad de origen";
                                                                             }
-                                                                            else p_crearEnvio_errores.InnerText = "Debe especificar el pais de origen";
+                                                                            else this.p_crearEnvio_errores.InnerText = "Debe especificar el pais de origen";
                                                                         }
-                                                                        else p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
+                                                                        else this.p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
                                                                     }
-                                                                    else p_crearEnvio_errores.InnerText = "Debe especificar el nro de puerta de origen";
+                                                                    else this.p_crearEnvio_errores.InnerText = "Debe especificar el nro de puerta de origen";
                                                                 }
-                                                                else p_crearEnvio_errores.InnerText = "Debe especificar la calle de origen";
+                                                                else this.p_crearEnvio_errores.InnerText = "Debe especificar la calle de origen";
                                                             }
-                                                            else p_crearEnvio_errores.InnerText = "Debe elegir un tipo de envio";
+                                                            else this.p_crearEnvio_errores.InnerText = "Debe elegir un tipo de envio";
 
                                                             // fin chequeos documento
                                                         }
-                                                        else p_crearEnvio_errores.InnerText = "Debe especificar una fecha de ingreso";
+                                                        else this.p_crearEnvio_errores.InnerText = "Debe especificar una fecha de ingreso";
                                                     }
-                                                    else p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del destinatario";
+                                                    else this.p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del destinatario";
                                                 }
-                                                else p_crearEnvio_errores.InnerText = "Debe ingresar el código postal de destino";
+                                                else this.p_crearEnvio_errores.InnerText = "Debe ingresar el código postal de destino";
                                             }
-                                            else p_crearEnvio_errores.InnerText = "Debe ingresar la ciudad de destino";
+                                            else this.p_crearEnvio_errores.InnerText = "Debe ingresar la ciudad de destino";
                                         }
-                                        else p_crearEnvio_errores.InnerText = "Debe ingresar el país de destino";
+                                        else this.p_crearEnvio_errores.InnerText = "Debe ingresar el país de destino";
                                     }
-                                    else p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
+                                    else this.p_crearEnvio_errores.InnerText = "El nro de puerta especificado no es un numero";
                                 }
-                                else p_crearEnvio_errores.InnerText = "Debe ingresar el nro de puerta de destino";
+                                else this.p_crearEnvio_errores.InnerText = "Debe ingresar el nro de puerta de destino";
                             }
-                            else p_crearEnvio_errores.InnerText = "Debe ingresar la calle de destino";
+                            else this.p_crearEnvio_errores.InnerText = "Debe ingresar la calle de destino";
                         }
-                        else p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del destinatario";
+                        else this.p_crearEnvio_errores.InnerText = "Debe ingresar el nombre del destinatario";
                     }
-                    else p_crearEnvio_errores.InnerText = "Debe ingresar un Id de cliente";
+                    else this.p_crearEnvio_errores.InnerText = "Debe ingresar un Id de cliente";
                 }
-                else p_crearEnvio_errores.InnerText = "El peso debe ser un número";
+                else this.p_crearEnvio_errores.InnerText = "El peso debe ser un número";
             }
-            else p_crearEnvio_errores.InnerText = "Debe ingresar el peso del envio";
+            else this.p_crearEnvio_errores.InnerText = "Debe ingresar el peso del envio";
         }
 
         protected void radiobtn_crearEnvio_esPaqueteODocCheckedChanged(object sender, EventArgs e)
         {
             if (this.radiobtn_crearEnvio_esDoc.Checked)
             {
-                PanelDocumento.Visible = true;
-                PanelPaquete.Visible = false;
+                this.PanelDocumento.Visible = true;
+                this.PanelPaquete.Visible = false;
             }
 
             if (this.radiobtn_crearEnvio_esPaquete.Checked)
             {
-                PanelPaquete.Visible = true;
-                PanelDocumento.Visible = false;
+                this.PanelPaquete.Visible = true;
+                this.PanelDocumento.Visible = false;
             }
 
 

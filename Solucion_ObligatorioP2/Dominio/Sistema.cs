@@ -61,7 +61,7 @@ namespace Dominio
             this.AltaOficina("Montreal", "Calle", "A231", "Canada", "4321,");
             // 0
             this.AltaEnvioDocumento("43329672", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
-                "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 5, 12), 1, 1.5F, true);
+                "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 5, 12), 1, 1F, true);
             // 1
             this.AltaEnvioDocumento("29394865", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Jose Rodriguez", "Montevideo",
                 "1503", "AA039", "Buenos Aires", "Argentina", new DateTime(2015, 5, 12), 1, 1.5F, true);
@@ -70,13 +70,16 @@ namespace Dominio
                                 1, 12.3F, 13.2F, 40F, 12M, true, 1F, "Es una caja");
             // 3
             this.AltaEnvioPaquete("41954388", "Ariel Arrosa", "Mercedes", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 2, 10),
-                                3, 10.3F, 3.2F, 7F, 10, false, 6F, "Es un paquete");
+                                3, 10.3F, 3.2F, 7F, 10, false, 2.5F, "Es un paquete");
             // 4
             this.AltaEnvioPaquete("41954388", "Mateo Benitez", "Paraguay", "1023", "1400", "Montevideo", "Uruguay", new DateTime(2015, 1, 3),
-                                3, 10.3F, 3.2F, 7F, 10M, false, 6F, "Es un paquete");
+                                3, 10.3F, 3.2F, 7F, 10M, false, 3F, "Es un paquete");
             // 5
             this.AltaEnvioPaquete("41954388", "Neko MrMuffin", "San Martin", "3384", "11700", "Montevideo", "Uruguay", new DateTime(2015, 1, 3),
-                                3, 10.3F, 3.2F, 7F, 10M, false, 8F, "Es una caja con comida de gatos, catnip y un rascador");
+                                3, 10.3F, 3.2F, 7F, 10M, false, 4F, "Es una caja con comida de gatos, catnip y un rascador");
+            // 6
+            this.AltaEnvioDocumento("41954388", "18 de Julio", "1203", "11700", "Montevideo", "Uruguay", "Juana Pereira", "Montevideo",
+               "1503", "AA039", "Seattle", "US", new DateTime(2015, 5, 12), 1, 0.5F, false);
 
             //Actualizo envio
             // datos agregados para consulta de envios en transito ingresados hace mas de 5 dias y para consulta de envios paraEntregar

@@ -10,7 +10,7 @@ namespace Dominio
     {
         #region Atributos
 
-        private static decimal costoBasePorGramo = 20M;
+        private static decimal costoBasePorGramo = 0.05M;
         private bool esDocLegal;
         private Direccion dirOrigen;
 
@@ -48,7 +48,7 @@ namespace Dominio
            if (base.dirDestinatario != pDirOrigen)
             {
                 this.dirOrigen = pDirOrigen;
-                base.peso = TransformarPesoAGramos(pPesoKilos);
+                base.peso = pPesoKilos;
                 this.esDocLegal = pLegal;
                 base.precioFinal = CalcularPrecioFinal();
             }
